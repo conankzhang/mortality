@@ -57,7 +57,8 @@
       }
 
       var now = new Date();
-      var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
+      // var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
+      var duration = this.deathDate - now;
       var temp = duration;
 
       var savedPrecision = localStorage.getItem("precision");
@@ -124,6 +125,7 @@
 
   App.fn.load = function() {
 	  this.dob = getDOB();
+    this.deathDate = getDeathDOB();
     if(this.dob.dst())
     {
       this.dob.setHours(this.dob.getHours()+1);
@@ -294,7 +296,8 @@
   App.fn.renderAge = function()
   {
     var now = new Date();
-    var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
+    // var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
+    var duration = this.deathDate - now;
     var temp = duration;
 
     var savedPrecision = localStorage.getItem("precision");

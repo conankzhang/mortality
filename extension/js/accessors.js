@@ -9,6 +9,16 @@ function getDOB() {
   }
 }
 
+function getDeathDOB() {
+  var savedDoB = localStorage.getItem("deathDate");
+  if( savedDoB === null) {
+    return new Date;
+  }
+  else {
+    return new Date(parseInt(savedDoB));
+  }
+}
+
 function getChapters(monthBorn) {
   var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
   if( savedChapterLengths === null )
