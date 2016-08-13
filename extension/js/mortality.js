@@ -69,7 +69,7 @@
           break;
         }
         duration = (duration % yearMS);
-        var monthsdays = this.dob.getMonthsDaysPassed();
+        var monthsdays = this.deathDate.getMonthsDaysLeft();
         var months = monthsdays[0];
         var days = monthsdays[1];
         //var months = Math.floor(duration / monthMS);
@@ -131,6 +131,8 @@
       this.dob.setHours(this.dob.getHours()+1);
     }
 	  this.dobMinutes = localStorage.dobMinutes || 0;
+    this.deathTime = localStorage.deathTime || 0;
+    this.deathDate.setMinutes(parseInt(this.deathTime));
 
 	  if (localStorage.getItem("hideCircles") === null)
 	  {
@@ -308,7 +310,7 @@
         break;
       }
       duration = (duration % yearMS);
-      var monthsdays = this.dob.getMonthsDaysPassed();
+      var monthsdays = this.deathDate.getMonthsDaysLeft();
       var months = monthsdays[0];
       var days = monthsdays[1];
       //var months = Math.floor(duration / monthMS);
