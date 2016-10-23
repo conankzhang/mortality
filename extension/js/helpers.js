@@ -72,69 +72,22 @@ Date.prototype.getMonthsDaysPassed = function() {
 };
 
 Date.prototype.getMonthsDaysLeft = function() {
-  var currentDate = new Date();
-  var currentMonth = currentDate.getMonth();
-  var currentYear = currentDate.getYear();
-  var deathMonth = this.getMonth();
-  var deathYear = this.getYear();
+  var currentMoment = moment();
+  var deadlineMoment = moment(this);
 
-//0, 8 - 8
-  var monthDifference = deathMonth - currentMonth;
-  var msDifference = this - currentDate;
-// 1
-  var dayDifference = Math.floor((msDifference % 31556952000)/86400000);
-  if( dayDifference < daysInMonth(currentYear, currentMonth) ) //Within the ~31 days (month) of current month
-  {
-    monthDifference = 0;
-    return [monthDifference, dayDifference];
-  }
+  var monthDifference = deadlineMoment.diff(currentMoment, 'months');
+  var dayDifference = deadlineMoment.diff(currentMoment, 'days');
 
-  var loop = 0;
-  var sameMonth = (deathMonth == currentMonth);
-  if( sameMonth && this.getDate() >= currentDate.getDate() )
+  if( monthDifference > 0 )
   {
-    //This just guarantees the dayDifference is correct if within same month
-    dayDifference = this.getDate() - currentDate.getDate();
-    return [monthDifference, dayDifference];
-  }
-  if( sameMonth && this.getDate() < currentDate.getDate() )
-  {
-    //Within same month, but deathDay is before the currentDay.  Need to wrap around
-    var loop = 12;
-  }
-
-  var iterator = currentMonth;
-  while( iterator != deathMonth || loop > 0 )
-  {
-    dayDifference -= daysInMonth(currentYear, iterator);
-    iterator += 1;
-    if( iterator == 12 )
+    var monthIndexOffset = monthDifference;
+    for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
     {
-      iterator = 0;
-      currentYear += 1;
+      currentMoment.month(currentMoment.month()+indexOffset);
+      var currentIndexMonthDays = currentMoment.daysInMonth();
+      dayDifference -= currentIndexMonthDays;
     }
-    loop-=1;
   }
-
-  // if( dayDifference < 0 )
-  // {
-  //   dayDifference = daysInMonth(deathYear, i-1) + dayDifference;
-  //   monthDifference -= 1;
-  // }
-
-  // if( monthDifference < 0 )
-  // {
-  //   monthDifference += 12;
-  // }
-
-  // if( dayDifference > 31 )
-  // {
-  //   dayDifference = dayDifference % 31;
-  // }
-  // else if( dayDifference < 0 )
-  // {
-  //   dayDifference = (-1*dayDifference) % 31;
-  // }
   return [monthDifference, dayDifference];
 };
 
