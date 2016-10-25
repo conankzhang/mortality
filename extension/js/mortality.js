@@ -56,34 +56,53 @@
         var blackFlag = "YES";
       }
 
-      var now = new Date();
-      // var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
-      var duration = this.deathDate - now;
-      var temp = duration;
+      var currentMoment = moment();
+      var deadlineMoment = moment(this.deathDate);
+      var birthMoment = moment(this.dob);
+      if( localStorage.getItem("countdownEnabled") == "YES" )
+      {
+        var duration = deadlineMoment - currentMoment;
+        var startMoment = currentMoment;
+        var endMoment = deadlineMoment;
+      }
+      else
+      {
+        var duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+        var startMoment = birthMoment;
+        var endMoment = currentMoment;
+      }
 
       var savedPrecision = localStorage.getItem("precision");
-      while(true) {
-        var years = Math.floor(duration / yearMS);
+      while(true)
+      {
+        var years = endMoment.diff(startMoment, 'years');
         var yearString = zeroFill(years.toString(), 2);
         if (savedPrecision == "year") {
           break;
         }
-        duration = (duration % yearMS);
-        var monthsdays = this.deathDate.getMonthsDaysLeft();
-        var months = monthsdays[0];
-        var days = monthsdays[1];
-        //var months = Math.floor(duration / monthMS);
+        startMoment.add(years, 'years');
+        var months = endMoment.diff(startMoment, 'months');
         var monthString = zeroFill(months.toString(), 2);
         if (savedPrecision == "month") {
           break;
         }
-        duration = (duration % monthMS);
-        //var days = Math.floor(duration / dayMS);
+        var days = endMoment.diff(startMoment, 'days');
+
+        if( months > 0 )
+        {
+          var monthIndexOffset = months;
+          for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
+          {
+            startMoment.month(startMoment.month()+indexOffset);
+            var currentIndexMonthDays = startMoment.daysInMonth();
+            days -= currentIndexMonthDays;
+          }
+        }
         var dayString = zeroFill(days.toString(), 2);
         if (savedPrecision == "day") {
           break;
         }
-        duration = temp;
+
         duration = (duration % dayMS);
         var hours = Math.floor(duration / hourMS);
         var hourString = zeroFill(hours.toString(), 2);
@@ -297,34 +316,56 @@
 
   App.fn.renderAge = function()
   {
-    var now = new Date();
-    // var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
-    var duration = this.deathDate - now;
-    var temp = duration;
+    var currentMoment = moment();
+    var deadlineMoment = moment(this.deathDate);
+    var birthMoment = moment(this.dob);
+    if( localStorage.getItem("countdownEnabled") == "YES" )
+    {
+      var duration = deadlineMoment - currentMoment;
+      var startMoment = currentMoment;
+      var endMoment = deadlineMoment;
+    }
+    else
+    {
+      var duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+      var startMoment = birthMoment;
+      var endMoment = currentMoment;
+    }
 
     var savedPrecision = localStorage.getItem("precision");
-    while(true) {
-      var years = Math.floor(duration / yearMS);
+    while(true)
+    {
+      if( duration <= 0 )
+      {
+      }
+      var years = endMoment.diff(startMoment, 'years');
       var yearString = zeroFill(years.toString(), 2);
       if (savedPrecision == "year") {
         break;
       }
-      duration = (duration % yearMS);
-      var monthsdays = this.deathDate.getMonthsDaysLeft();
-      var months = monthsdays[0];
-      var days = monthsdays[1];
-      //var months = Math.floor(duration / monthMS);
+      startMoment.add(years, 'years');
+      var months = endMoment.diff(startMoment, 'months');
       var monthString = zeroFill(months.toString(), 2);
       if (savedPrecision == "month") {
         break;
       }
-      duration = (duration % monthMS);
-      //var days = Math.floor(duration / dayMS);
+      var days = endMoment.diff(startMoment, 'days');
+
+      if( months > 0 )
+      {
+        var monthIndexOffset = months;
+        for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
+        {
+          startMoment.month(startMoment.month()+indexOffset);
+          var currentIndexMonthDays = startMoment.daysInMonth();
+          days -= currentIndexMonthDays;
+        }
+      }
       var dayString = zeroFill(days.toString(), 2);
       if (savedPrecision == "day") {
         break;
       }
-      duration = temp;
+
       duration = (duration % dayMS);
       var hours = Math.floor(duration / hourMS);
       var hourString = zeroFill(hours.toString(), 2);
