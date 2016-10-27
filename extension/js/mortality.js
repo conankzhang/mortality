@@ -19,14 +19,14 @@
     localStorage.removeItem("update-3.1.1");
     ////////////////////////////////////
 
-    this.updateInterval();
+    this.initializeTimer();
     loadDarkOrLightTheme();
   };
 
 
   App.fn = App.prototype;
 
-  App.fn.updateInterval = function()
+  App.fn.initializeTimer = function()
   {
     if( localStorage.getItem("hideAge") === null ) {
       if( localStorage.getItem("swap") === null ) {
