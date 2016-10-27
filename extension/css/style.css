@@ -58,6 +58,9 @@ ul {
   padding-left: 1vw;
 }
 
+.timer-value {
+  display: inline-block;
+}
 /*******************/
 /*  Timer Classes  */
 /*******************/
