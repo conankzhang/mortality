@@ -165,6 +165,10 @@ function loadSurveyAnswers()
   if (surveyGender != null) {
     document.getElementById("gender-dropdown").value = surveyGender;
   }
+  var surveyEthnicity = localStorage.getItem("surveyEthnicity");
+  if (surveyEthnicity != null) {
+    document.getElementById("ethnicity-dropdown").value = surveyEthnicity;
+  }
   var surveyDrinking = localStorage.getItem("surveyDrinking");
   if (surveyDrinking != null) {
     document.getElementById("drinking-dropdown").value = surveyDrinking;
@@ -193,17 +197,15 @@ function loadSurveyAnswers()
   if (surveyClumsiness == "true") {
     document.getElementById("clumsiness-checkbox").checked = true;
   }
-  var surveyWildAnimals = localStorage.getItem("surveyWildAnimals");
-  if (surveyWildAnimals == "true") {
-    document.getElementById("wildAnimals-checkbox").checked = true;
-  }
 }
-
 
 function saveSurveyAnswers()
 {
   var surveyGender = document.getElementById("gender-dropdown").value;
   localStorage.setItem("surveyGender", surveyGender);
+
+  var surveyEthnicity = document.getElementById("ethnicity-dropdown").value;
+  localStorage.setItem("surveyEthnicity", surveyEthnicity);
 
   var surveyDrinking = document.getElementById("drinking-dropdown").value;
   localStorage.setItem("surveyDrinking", surveyDrinking);
@@ -225,9 +227,6 @@ function saveSurveyAnswers()
 
   var surveyClumsiness = document.getElementById("clumsiness-checkbox").checked;
   localStorage.setItem("surveyClumsiness", surveyClumsiness);
-
-  var surveyWildAnimals = document.getElementById("wildAnimals-checkbox").checked;
-  localStorage.setItem("surveyWildAnimals", surveyWildAnimals);
 
   var birthDate = getDOB();
   if(birthDate.dst())

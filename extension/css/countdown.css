@@ -63,29 +63,40 @@
   top:12.8vw;
 }
 
-
-#drinking-label {
+#ethnicity-label {
   position:absolute;
   left:2.5vw;
   top:13.7vw;
 }
 
-#drinking-dropdown {
+#ethnicity-dropdown {
   position:absolute;
-  left:14.1vw;
+  left:7.2vw;
   top:14.5vw;
 }
 
-#smoking-label {
+#drinking-label {
   position:absolute;
   left:2.5vw;
   top:15.4vw;
 }
 
+#drinking-dropdown {
+  position:absolute;
+  left:14.1vw;
+  top:16.2vw;
+}
+
+#smoking-label {
+  position:absolute;
+  left:2.5vw;
+  top:17.1vw;
+}
+
 #smoking-dropdown {
   position:absolute;
   left:14.7vw;
-  top:16.2vw;
+  top:17.9vw;
 }
 
 
@@ -94,44 +105,44 @@
 #height-label {
   position:absolute;
   left:2.5vw;
-  top:17.1vw;
+  top:18.8vw;
 }
 
 #heightFeet-label {
   position:absolute;
   left:2.5vw;
-  top:18.8vw;
+  top:20.5vw;
 }
 
 #heightFeet-dropdown {
   position:absolute;
   left:5vw;
-  top:19.6vw;
+  top:21.3vw;
 }
 
 #heightInches-label {
   position:absolute;
   left:9.7vw;
-  top:18.8vw;
+  top:20.5vw;
 }
 
 #heightInches-dropdown {
   position:absolute;
   left:12.9vw;
-  top:19.6vw;
+  top:21.3vw;
 }
 
 #weight-label {
   position:absolute;
   left:2.5vw;
-  top:21.4vw;
+  top:23.1vw;
 }
 
 #weight-input {
   -webkit-text-security: disc;
   position:absolute;
   left:15vw;
-  top:21.3vw;
+  top:23.0vw;
   border-radius: .25vw;
   -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
   -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
@@ -149,17 +160,12 @@
 #heartDisease-label {
   position:absolute;
   left:4vw;
-  top:23vw;
+  top:24.7vw;
 }
 
 #clumsiness-label {
   position:absolute;
   left:4vw;
-  top:24.7vw;
-}
-
-#wildAnimals-label {
-  position:absolute;
-  left:4vw;
   top:26.4vw;
 }
+
