@@ -149,9 +149,9 @@
           var monthIndexOffset = months;
           for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
           {
-            startMoment.month(startMoment.month()+indexOffset);
             var currentIndexMonthDays = startMoment.daysInMonth();
             days -= currentIndexMonthDays;
+            startMoment.month(startMoment.month()+1);
           }
         }
         var dayString = zeroFill(days.toString(), 2);
@@ -384,9 +384,9 @@
         var monthIndexOffset = months;
         for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
         {
-          startMoment.month(startMoment.month()+indexOffset);
           var currentIndexMonthDays = startMoment.daysInMonth();
           days -= currentIndexMonthDays;
+          startMoment.month(startMoment.month()+1);
         }
       }
       var dayString = zeroFill(days.toString(), 2);
