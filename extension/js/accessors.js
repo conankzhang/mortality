@@ -177,6 +177,10 @@ function loadSurveyAnswers()
   if (surveySmoking != null) {
     document.getElementById("smoking-dropdown").value = surveySmoking;
   }
+  var surveyExercise = localStorage.getItem("surveyExercise");
+  if (surveyExercise != null) {
+    document.getElementById("exercise-dropdown").value = surveyExercise;
+  }
   var surveyHeightFeet = localStorage.getItem("surveyHeightFeet");
   if (surveyHeightFeet != null) {
     document.getElementById("heightFeet-dropdown").value = surveyHeightFeet;
@@ -212,6 +216,9 @@ function saveSurveyAnswers()
 
   var surveySmoking = document.getElementById("smoking-dropdown").value;
   localStorage.setItem("surveySmoking", surveySmoking);
+
+  var surveyExercise = document.getElementById("exercise-dropdown").value;
+  localStorage.setItem("surveyExercise", surveyExercise);
 
   var surveyHeightFeet = document.getElementById("heightFeet-dropdown").value;
   localStorage.setItem("surveyHeightFeet", surveyHeightFeet);
