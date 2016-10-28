@@ -20,39 +20,77 @@
     ////////////////////////////////////
 
     this.initializeTimer();
-    loadDarkOrLightTheme();
   };
-
 
   App.fn = App.prototype;
 
+  App.fn.load = function()
+  {
+    this.dob = getDOB();
+    this.deathDate = getDeathDOB();
+    if(this.dob.dst())
+    {
+      this.dob.setHours(this.dob.getHours()+1);
+    }
+    this.dobMinutes = localStorage.dobMinutes || 0;
+    this.deathTime = localStorage.deathTime || 0;
+    this.deathDate.setMinutes(parseInt(this.deathTime));
+
+    if (localStorage.getItem("hideCircles") === null)
+    {
+      var monthBorn = this.dob.getMonth();
+      var chaptersArray = getChapters(monthBorn);
+
+      this.documentCircle = document.querySelector('#circles');
+
+      var currentDate = new Date;
+      var oneDay = 24 * 60 * 60 * 1000;
+
+      var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime()) / (oneDay)));
+      var numberMonths = Math.floor(diffDays / 30);
+
+      this.generateCircleLoops(numberMonths, chaptersArray);
+    }
+  };
+
   App.fn.initializeTimer = function()
   {
-    if( localStorage.getItem("hideAge") === null ) {
-      if( localStorage.getItem("swap") === null ) {
+    if( localStorage.getItem("hideAge") === null )
+    {
+      if( localStorage.getItem("swap") === null )
+      {
         var interval = 60000;
         var savedPrecision = localStorage.getItem("precision");
-        if(savedPrecision == "sec")
+        if( savedPrecision == "sec" )
         {
           interval = 1000
         }
-        else if(savedPrecision == "ms" || savedPrecision === null)
+        else if( savedPrecision == "ms" || savedPrecision === null )
         {
           interval = 113;
         }
         this.renderAge();
         setInterval(this.renderAge.bind(this),interval);
       }
-      else {
+      else
+      {
         this.renderTime();
         setInterval(this.renderTime.bind(this),1000);
       }
 
       var savedTheme = localStorage.getItem("colorTheme");
-      if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
+      if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
+      {
+        document.body.style.backgroundColor = "#F5F5F5";
+        document.body.style.color = "#424242";
+        setBlackInfoButton();
         var whiteFlag = "YES";
       }
-      else {
+      else
+      {
+        document.body.style.backgroundColor = "#1d1d1d";
+        document.body.style.color = "#eff4ff";
+        setWhiteInfoButton();
         var blackFlag = "YES";
       }
 
@@ -139,34 +177,6 @@
         second: secondString,
         ms: msString
       }));
-    }
-  };
-
-  App.fn.load = function() {
-	  this.dob = getDOB();
-    this.deathDate = getDeathDOB();
-    if(this.dob.dst())
-    {
-      this.dob.setHours(this.dob.getHours()+1);
-    }
-	  this.dobMinutes = localStorage.dobMinutes || 0;
-    this.deathTime = localStorage.deathTime || 0;
-    this.deathDate.setMinutes(parseInt(this.deathTime));
-
-	  if (localStorage.getItem("hideCircles") === null)
-	  {
-		  var monthBorn = this.dob.getMonth();
-		  var chaptersArray = getChapters(monthBorn);
-
-		  this.documentCircle = document.querySelector('#circles');
-
-		  var currentDate = new Date;
-		  var oneDay = 24 * 60 * 60 * 1000;
-
-		  var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime()) / (oneDay)));
-		  var numberMonths = Math.floor(diffDays / 30);
-
-		  this.generateCircleLoops(numberMonths, chaptersArray);
     }
   };
 

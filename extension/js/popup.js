@@ -416,23 +416,6 @@ function setBlackInfoButton()
   }
 }
 
-function loadDarkOrLightTheme()
-{
-    var savedTheme = localStorage.getItem("colorTheme");
-    if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky")
-    {
-      document.body.style.backgroundColor = "#F5F5F5";
-      document.body.style.color = "#424242";
-      setBlackInfoButton();
-    }
-    else
-    {
-      document.body.style.backgroundColor = "#1d1d1d";
-      document.body.style.color = "#eff4ff";
-      setWhiteInfoButton();
-    }
-}
-
 function showTimeSelectorIf(isChecked)
 {
   if (isChecked) {
