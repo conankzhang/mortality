@@ -28,13 +28,33 @@
   {
     this.dob = getDOB();
     this.deathDate = getDeathDOB();
-    if(this.dob.dst())
+    if( this.dob.dst() )
     {
       this.dob.setHours(this.dob.getHours()+1);
     }
     this.dobMinutes = localStorage.dobMinutes || 0;
-    this.deathTime = localStorage.deathTime || 0;
-    this.deathDate.setMinutes(parseInt(this.deathTime));
+
+    if (localStorage.getItem("specificTimeSet") == "YES")
+    {
+      this.deathTime = localStorage.deathTime || 0;
+      this.deathDate.setMinutes(parseInt(this.deathTime));
+    }
+    else
+    {
+      this.deathDate = new Date(this.dob.getTime());
+      var yearOffset = 79;
+      var surveyGender = localStorage.getItem("surveyGender");
+      if( surveyGender == "male" )
+      {
+        yearOffset -= 2;
+      }
+      else if( surveyGender == "female" )
+      {
+        yearOffset += 3;
+      }
+      this.deathDate.setFullYear(this.deathDate.getFullYear() + yearOffset);
+
+    }
 
     if (localStorage.getItem("hideCircles") === null)
     {
