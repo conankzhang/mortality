@@ -571,6 +571,10 @@
 **********************/
 
 function animate(theta, radius) {
+  if( isNaN(parseFloat(radius)) )
+  {
+    return;
+  }
   var path = document.getElementById('path');
   var piecircle = document.getElementById('piecircle');
   if(path && piecircle) {
