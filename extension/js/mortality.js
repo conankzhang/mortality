@@ -44,9 +44,7 @@
       this.documentCircle = document.querySelector('#circles');
 
       var currentDate = new Date;
-      var oneDay = 24 * 60 * 60 * 1000;
-
-      var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime()) / (oneDay)));
+      var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime()) / (dayMS)));
       var numberMonths = Math.floor(diffDays / 30);
 
       this.generateCircleLoops(numberMonths, chaptersArray);
@@ -59,11 +57,11 @@
     {
       if( localStorage.getItem("swap") === null )
       {
-        var interval = 60000;
+        var interval = minuteMS;
         var savedPrecision = localStorage.getItem("precision");
         if( savedPrecision == "sec" )
         {
-          interval = 1000
+          interval = secondMS
         }
         else if( savedPrecision == "ms" || savedPrecision === null )
         {
@@ -75,7 +73,7 @@
       else
       {
         this.renderTime();
-        setInterval(this.renderTime.bind(this),1000);
+        setInterval(this.renderTime.bind(this),secondMS);
       }
 
       var savedTheme = localStorage.getItem("colorTheme");
@@ -250,7 +248,7 @@
 
     this.deathDate = deathInput.valueAsDate;
 
-    localStorage.setItem("deathDate", this.deathDate.getTime()+(this.deathDate.getTimezoneOffset() * 60000));
+    localStorage.setItem("deathDate", this.deathDate.getTime()+(this.deathDate.getTimezoneOffset() * minuteMS));
 
     var deathTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
     if( deathTimeCheckbox )
@@ -288,7 +286,7 @@
     if( !dateInput.valueAsDate ) return;
 
     this.dob = dateInput.valueAsDate;
-    localStorage.setItem("dob", this.dob.getTime()+(this.dob.getTimezoneOffset() * 60000));
+    localStorage.setItem("dob", this.dob.getTime()+(this.dob.getTimezoneOffset() * minuteMS));
 
     var timeChecked = document.querySelector('input[id=time-checkbox]').checked;
     if( timeChecked )
