@@ -28,10 +28,7 @@
   {
     this.dob = getDOB();
     this.deathDate = getDeathDOB();
-    if(this.dob.dst())
-    {
-      this.dob.setHours(this.dob.getHours()+1);
-    }
+
     this.dobMinutes = localStorage.dobMinutes || 0;
     this.deathTime = localStorage.deathTime || 0;
     this.deathDate.setMinutes(parseInt(this.deathTime));

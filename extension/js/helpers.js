@@ -11,10 +11,6 @@ Date.prototype.stdTimezoneOffset = function() {
   return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
 };
 
-Date.prototype.dst = function() {
-  return this.getTimezoneOffset() < this.stdTimezoneOffset();
-};
-
 function getTimeStringFromMinutes(totalMinutes) {
   var hours = Math.floor(totalMinutes/60);
   var minutes = totalMinutes%60;
