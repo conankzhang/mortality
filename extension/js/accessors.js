@@ -1,5 +1,6 @@
 
-function getDOB() {
+function getDOB()
+{
   var savedDoB = localStorage.getItem("dob");
   if( savedDoB === null) {
     return new Date;
@@ -9,7 +10,8 @@ function getDOB() {
   }
 }
 
-function getDeathDOB() {
+function getDeathDOB()
+{
   var savedDoB = localStorage.getItem("deathDate");
   if( savedDoB === null) {
     return new Date;
@@ -90,7 +92,8 @@ function saveChapterLengths()
 }
 
 
-function getColorTheme() {
+function getColorTheme()
+{
   var themes = {
     "def" : ['#EEEEEE', '#E0E0E0', '#BDBDBD', '#9E9E9E', '#757575', '#616161', '#424242', '#2E2E2E'],
     "light" : ['#212121', '#424242', '#616161', '#757575', '#9E9E9E', '#BDBDBD', '#E0E0E0', '#ECECEC'],
@@ -107,11 +110,14 @@ function getColorTheme() {
 
   var savedTheme = localStorage.getItem("colorTheme");
 
-  if (savedTheme == null) {
+  if (savedTheme == null)
+  {
     return themes.def;
   }
-  else {
-    switch (savedTheme) {
+  else
+  {
+    switch (savedTheme)
+    {
       case "default":
         return themes.def;
       case "dark":
@@ -148,7 +154,8 @@ function saveTheme()
   var savedTheme = localStorage.getItem("colorTheme");
   var selectedTheme = document.getElementById("theme-dropdown").value;
 
-  if (savedTheme != selectedTheme) {
+  if (savedTheme != selectedTheme)
+  {
     localStorage.setItem("colorTheme", selectedTheme);
   }
 }
@@ -246,8 +253,5 @@ function saveSurveyAnswers()
   var minuteMS = 60000;
   var deathDate = 80*yearMS + (birthDate - (parseInt(birthMinutes)*minuteMS));
 
-  //DEPENDING ON SURVEY RESULTS, ADD OR SUBTRACT FROM DEATHDATE
-
   localStorage.setItem("surveyDeathDate", deathDate);
-
 }
