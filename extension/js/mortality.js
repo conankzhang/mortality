@@ -279,7 +279,6 @@
           var endMoment = currentMoment;
         }
 
-        this.renderAge();
         setInterval(this.renderAge.bind(this),interval);
       }
       else
