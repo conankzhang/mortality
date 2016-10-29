@@ -267,6 +267,14 @@
       if( localStorage.getItem("countdownEnabled") == "YES" )
       {
         var duration = deadlineMoment - currentMoment;
+        if( duration <= 0 )
+        {
+          this.setAppElementHTML(this.getTemplateScript('timeup')({
+            white: whiteFlag,
+            black: blackFlag
+          }));
+          return;
+        }
         var startMoment = currentMoment;
         var endMoment = deadlineMoment;
       }
@@ -499,6 +507,29 @@
     if( localStorage.getItem("countdownEnabled") == "YES" )
     {
       var duration = deadlineMoment - currentMoment;
+      if( duration <= 0 )
+      {
+        var savedTheme = localStorage.getItem("colorTheme");
+        if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
+        {
+          document.body.style.backgroundColor = "#F5F5F5";
+          document.body.style.color = "#424242";
+          setBlackInfoButton();
+          var whiteFlag = "YES";
+        }
+        else
+        {
+          document.body.style.backgroundColor = "#1d1d1d";
+          document.body.style.color = "#eff4ff";
+          setWhiteInfoButton();
+          var blackFlag = "YES";
+        }
+        this.setAppElementHTML(this.getTemplateScript('timeup')({
+          white: whiteFlag,
+          black: blackFlag
+        }));
+        return;
+      }
       var startMoment = currentMoment;
       var endMoment = deadlineMoment;
     }
@@ -512,9 +543,6 @@
     var savedPrecision = localStorage.getItem("precision");
     while(true)
     {
-      if( duration <= 0 )
-      {
-      }
       var years = endMoment.diff(startMoment, 'years');
       var yearString = zeroFill(years.toString(), 2);
       if (savedPrecision == "year") {

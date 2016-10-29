@@ -60,6 +60,17 @@
   </div>
 </script>
 
+<script id="timeup-template" type="text/x-handlebars-template">
+  <div class="timer-container">
+    {{#if white}}
+    <div class="timeup" id="white-timeup">Time's Up ¯\_(ツ)_/¯</div>
+    {{/if}}
+    {{#if black}}
+    <div class="timeup" id="black-timeup">Time's Up ¯\_(ツ)_/¯</div>
+    {{/if}}
+  </div>
+</script>
+
 <script id="age-template" type="text/x-handlebars-template">
 	<div class="timer-container">
     {{#if white}}<span id="white-timer-age" class="timer" >{{/if}}
