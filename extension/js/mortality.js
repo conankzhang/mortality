@@ -224,27 +224,6 @@
   {
     if( localStorage.getItem("hideAge") === null )
     {
-      if( localStorage.getItem("swap") === null )
-      {
-        var interval = minuteMS;
-        var savedPrecision = localStorage.getItem("precision");
-        if( savedPrecision == "sec" )
-        {
-          interval = secondMS
-        }
-        else if( savedPrecision == "ms" || savedPrecision === null )
-        {
-          interval = 113;
-        }
-        this.renderAge();
-        setInterval(this.renderAge.bind(this),interval);
-      }
-      else
-      {
-        this.renderTime();
-        setInterval(this.renderTime.bind(this),secondMS);
-      }
-
       var savedTheme = localStorage.getItem("colorTheme");
       if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
       {
@@ -261,28 +240,53 @@
         var blackFlag = "YES";
       }
 
-      var currentMoment = moment();
-      var deadlineMoment = moment(this.deathDate);
-      var birthMoment = moment(this.dob);
-      if( localStorage.getItem("countdownEnabled") == "YES" )
+      if( localStorage.getItem("swap") === null )
       {
-        var duration = deadlineMoment - currentMoment;
-        if( duration <= 0 )
+        var interval = minuteMS;
+        var savedPrecision = localStorage.getItem("precision");
+        if( savedPrecision == "sec" )
         {
-          this.setAppElementHTML(this.getTemplateScript('timeup')({
-            white: whiteFlag,
-            black: blackFlag
-          }));
-          return;
+          interval = secondMS;
         }
-        var startMoment = currentMoment;
-        var endMoment = deadlineMoment;
+        else if( savedPrecision == "ms" || savedPrecision === null )
+        {
+          interval = 113;
+        }
+
+        var currentMoment = moment();
+        var deadlineMoment = moment(this.deathDate);
+        var birthMoment = moment(this.dob);
+        if( localStorage.getItem("countdownEnabled") == "YES" )
+        {
+          var duration = deadlineMoment - currentMoment;
+          if( duration <= 0 )
+          {
+            this.setAppElementHTML(this.getTemplateScript('timeup')({
+              white: whiteFlag,
+              black: blackFlag
+            }));
+            interval = secondMS;
+            setInterval(this.renderTimeUp.bind(this),interval);
+            return;
+          }
+          var startMoment = currentMoment;
+          var endMoment = deadlineMoment;
+        }
+        else
+        {
+          var duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+          var startMoment = birthMoment;
+          var endMoment = currentMoment;
+        }
+
+        this.renderAge();
+        setInterval(this.renderAge.bind(this),interval);
       }
       else
       {
-        var duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
-        var startMoment = birthMoment;
-        var endMoment = currentMoment;
+        this.renderTime();
+        setInterval(this.renderTime.bind(this),secondMS);
+        return;
       }
 
       var savedPrecision = localStorage.getItem("precision");
@@ -498,6 +502,15 @@
   };
 
 
+  App.fn.renderTimeUp = function()
+  {
+    var timeup = $('white-timeup');
+    if( !timeup )
+    {
+      timeup = $('black-timeup');
+    }
+    this.bubbleNumber(timeup, 1.05);
+  };
 
   App.fn.renderAge = function()
   {
@@ -509,25 +522,7 @@
       var duration = deadlineMoment - currentMoment;
       if( duration <= 0 )
       {
-        var savedTheme = localStorage.getItem("colorTheme");
-        if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
-        {
-          document.body.style.backgroundColor = "#F5F5F5";
-          document.body.style.color = "#424242";
-          setBlackInfoButton();
-          var whiteFlag = "YES";
-        }
-        else
-        {
-          document.body.style.backgroundColor = "#1d1d1d";
-          document.body.style.color = "#eff4ff";
-          setWhiteInfoButton();
-          var blackFlag = "YES";
-        }
-        this.setAppElementHTML(this.getTemplateScript('timeup')({
-          white: whiteFlag,
-          black: blackFlag
-        }));
+        location.reload();
         return;
       }
       var startMoment = currentMoment;
