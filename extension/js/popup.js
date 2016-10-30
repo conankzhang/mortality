@@ -154,6 +154,17 @@ function setupCountdown()
       loadSurveyAnswers();
     }
   }
+  else
+  {
+    var loadedTimeupMessage = localStorage.getItem("timeupMessage");
+    if( loadedTimeupMessage != null ) {
+      document.getElementById("timeup-selector-dropdown").value = loadedTimeupMessage;
+    }
+    else
+    {
+      localStorage.timeupMessage = document.getElementById("timeup-selector-dropdown").value;
+    }
+  }
 
   $("#countdown-submit-button").click(function(){
     var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
@@ -198,6 +209,8 @@ function setupCountdown()
     else
     {
       localStorage.removeItem("countdownEnabled");
+      var timeupMessage = document.getElementById("timeup-selector-dropdown").value;
+      localStorage.setItem("timeupMessage", timeupMessage);
     }
     $("#info-popup").magnificPopup('close');
   });
@@ -292,9 +305,12 @@ function loadCountdownCheckboxes()
     toggleCountdownCheckbox.checked = true;
   }
   showCountdownIf(toggleCountdownCheckbox.checked);
+  //Show the message selector if the checkbox isn't checked
+  showCountdownTimeUpMessageSelectorIf(!toggleCountdownCheckbox.checked);
 
   toggleCountdownCheckbox.addEventListener('change', function () {
     showCountdownIf(toggleCountdownCheckbox.checked);
+    showCountdownTimeUpMessageSelectorIf(!toggleCountdownCheckbox.checked);
   });
 
   var specificTimeCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
@@ -306,6 +322,8 @@ function loadCountdownCheckboxes()
   specificTimeCheckbox.addEventListener('change', function () {
     showSpecificTimeSettingsIf(specificTimeCheckbox.checked);
   });
+
+
 
   var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
   if (localStorage.getItem("countdownTimeSet") == "YES") {
@@ -477,6 +495,15 @@ function showSpecificTimeSettingsIf(isChecked)
       document.getElementById("specific-container").style.display = "none";
       document.getElementById("survey-container").style.display = "block";
       loadSurveyAnswers();
+  }
+}
+
+function showCountdownTimeUpMessageSelectorIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("timeup-selector-container").style.display = "block";
+  } else {
+      document.getElementById("timeup-selector-container").style.display = "none";
   }
 }
 

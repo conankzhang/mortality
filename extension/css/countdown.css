@@ -1,3 +1,9 @@
+.message-dropdown {
+  width: 15vw;
+  font-size: 1vw;
+  border-radius: .25vw;
+}
+
 .countdown-dropdown {
   width: 11vw;
   font-size: 1vw;
@@ -52,6 +58,20 @@
   left:18vw;
   top:11vw;
 }
+
+
+#timeup-selector-label {
+  position:absolute;
+  left:4vw;
+  top:13vw;
+}
+
+#timeup-selector-dropdown {
+  position:absolute;
+  left:4vw;
+  top:15.7vw;
+}
+
 
 /*CONTROLS*/
 

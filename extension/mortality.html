@@ -63,10 +63,10 @@
 <script id="timeup-template" type="text/x-handlebars-template">
   <div class="timer-container">
     {{#if white}}
-    <div class="timeup" id="white-timeup">Time's Up ¯\_(ツ)_/¯</div>
+    <div class="timeup" id="white-timeup">{{message}}</div>
     {{/if}}
     {{#if black}}
-    <div class="timeup" id="black-timeup">Time's Up ¯\_(ツ)_/¯</div>
+    <div class="timeup" id="black-timeup">{{message}}</div>
     {{/if}}
   </div>
 </script>
@@ -311,11 +311,38 @@
       <label for="toggleCountdown-checkbox" id="toggleCountdown-label">Enable Countdown</label>
     </div>
 
+    <div id="timeup-selector-container">
+      <div>
+        <label id="timeup-selector-label" class="label-text" for="timeup-dropdown">Select Message when Time is Up:</label>
+        <select id="timeup-selector-dropdown" class="message-dropdown">
+          <option value="Time's Up.">Time's Up.</option>
+          <option value="TIME IS UP">TIME IS UP</option>
+          <option value="YOU DONE">YOU DONE</option>
+          <option value="¯\_(ツ)_/¯">¯\_(ツ)_/¯</option>
+          <option value="(ಠ_ಠ)">(ಠ_ಠ)</option>
+          <option value="(• ε •)">(• ε •)</option>
+          <option value="(⊙ω⊙)">(⊙ω⊙)</option>
+          <option value="(╥﹏╥)">(╥﹏╥)</option>
+          <option value="( •᷄ὤ•᷅)">( •᷄ὤ•᷅)</option>
+          <option value="ლ(ಠ益ಠლ)">ლ(ಠ益ಠლ)</option>
+          <option value="(ﾉಥДಥ)ﾉ">(ﾉಥДಥ)ﾉ</option>
+          <option value="(´༎ຶ ω ༎ຶ`)">(´༎ຶ ω ༎ຶ`)</option>
+          <option value="(╯°□°)╯︵ ┻━┻">(╯°□°)╯︵ ┻━┻</option>
+          <option value="IT'S HAPPENING">IT'S HAPPENING</option>
+          <option value="ヽ(´▽`)/">ヽ(´▽`)/</option>
+          <option value="(｡◕‿◕｡)">(｡◕‿◕｡)</option>
+          <option value="(☞ﾟヮﾟ)☞">(☞ﾟヮﾟ)☞</option>
+          <option value="ᕕ( ᐛ )ᕗ">ᕕ( ᐛ )ᕗ</option>
+        </select>
+      </div>
+    </div>
+
     <div id="countdown-container">
       <div class="checkbox">
         <input id="specifyCountdown-checkbox" type="checkbox">
         <label for="specifyCountdown-checkbox" id="specifyCountdown-label">Specify Final Date</label>
       </div>
+
       <div id="survey-container">
         <div id="gender-container">
           <div>

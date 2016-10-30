@@ -288,7 +288,8 @@
           {
             this.setAppElementHTML(this.getTemplateScript('timeup')({
               white: whiteFlag,
-              black: blackFlag
+              black: blackFlag,
+              message: localStorage.timeupMessage
             }));
             interval = secondMS;
             setInterval(this.renderTimeUp.bind(this),interval);
