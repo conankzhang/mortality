@@ -257,7 +257,7 @@
         var birthMoment = moment(this.dob);
         if( localStorage.getItem("countdownEnabled") == "YES" )
         {
-          if( localStorage.getItem("countdownDaily") == "YES" )
+          if( localStorage.getItem("countdownDaily") == "YES" && localStorage.getItem("specificTimeSet") == "YES" )
           {
             deadlineMoment = moment();
             var timeInput = localStorage.deathTime;
