@@ -3,7 +3,7 @@ function getDOB()
 {
   var savedDoB = localStorage.getItem("dob");
   if( savedDoB === null) {
-    return new Date;
+    return new Date();
   }
   else {
     return new Date(parseInt(savedDoB));
@@ -14,7 +14,7 @@ function getDeathDOB()
 {
   var savedDoB = localStorage.getItem("deathDate");
   if( savedDoB === null) {
-    return new Date;
+    return new Date();
   }
   else {
     return new Date(parseInt(savedDoB));
@@ -110,7 +110,7 @@ function getColorTheme()
 
   var savedTheme = localStorage.getItem("colorTheme");
 
-  if (savedTheme == null)
+  if (savedTheme === null)
   {
     return themes.def;
   }
