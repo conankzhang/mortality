@@ -209,9 +209,9 @@
 
       this.documentCircle = document.querySelector('#circles');
 
-      var currentDate = new Date();
-      var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime()) / (dayMS)));
-      var numberMonths = Math.floor(diffDays / 30);
+      var startMoment = moment(this.dob);
+      var endMoment = moment();
+      var numberMonths = endMoment.diff(startMoment, 'months');
 
       this.generateCircleLoops(numberMonths, chaptersArray);
     }
