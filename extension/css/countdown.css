@@ -1,0 +1,181 @@
+.countdown-dropdown {
+  width: 11vw;
+  font-size: 1vw;
+  border-radius: .25vw;
+}
+
+.integer-dropdown {
+  width: 3vw;
+  font-size: 1vw;
+  border-radius: .25vw;
+}
+
+
+#countdown-label-text {
+  position:absolute;
+  left:10.2vw;
+  top:14.2vw;
+}
+
+#countdownDate-input {
+  position:absolute;
+  left:10vw;
+  top:16.5vw;
+}
+
+#countdown-addTime-label {
+  position:absolute;
+  left:12vw;
+  top:19.4vw;
+}
+
+#countdownTime-input {
+  position:absolute;
+  left:10vw;
+  top:21.3vw;
+}
+
+
+
+#toggleCountdown-label {
+   position:absolute;
+   left:5vw;
+   top:11vw;
+ }
+
+#specifyCountdown-label {
+  position:absolute;
+  left:18vw;
+  top:11vw;
+}
+
+/*CONTROLS*/
+
+#gender-label {
+  position:absolute;
+  left:2.5vw;
+  top:12vw;
+}
+
+#gender-dropdown {
+  position:absolute;
+  left:6.7vw;
+  top:12.7vw;
+}
+
+#ethnicity-label {
+  position:absolute;
+  left:2.5vw;
+  top:13.7vw;
+}
+
+#ethnicity-dropdown {
+  position:absolute;
+  left:7.2vw;
+  top:14.4vw;
+}
+
+#drinking-label {
+  position:absolute;
+  left:2.5vw;
+  top:15.4vw;
+}
+
+#drinking-dropdown {
+  position:absolute;
+  left:14.1vw;
+  top:16.1vw;
+}
+
+#smoking-label {
+  position:absolute;
+  left:2.5vw;
+  top:17.1vw;
+}
+
+#smoking-dropdown {
+  position:absolute;
+  left:14.7vw;
+  top:17.8vw;
+}
+
+#exercise-label {
+  position:absolute;
+  left:2.5vw;
+  top:18.8vw;
+}
+
+#exercise-dropdown {
+  position:absolute;
+  left:15.4vw;
+  top:19.5vw;
+}
+
+
+#height-label {
+  position:absolute;
+  left:2.5vw;
+  top:20.5vw;
+}
+
+#heightFeet-label {
+  position:absolute;
+  left:11vw;
+  top:20.5vw;
+}
+
+#heightFeet-dropdown {
+  position:absolute;
+  left:13.5vw;
+  top:21.2vw;
+}
+
+#heightInches-label {
+  position:absolute;
+  left:18.2vw;
+  top:20.5vw;
+}
+
+#heightInches-dropdown {
+  position:absolute;
+  left:21.4vw;
+  top:21.2vw;
+}
+
+#weight-label {
+  position:absolute;
+  left:2.5vw;
+  top:23.1vw;
+}
+
+#weight-input {
+  -webkit-text-security: disc;
+  position:absolute;
+  left:15vw;
+  top:23.0vw;
+  border-radius: .25vw;
+  -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  box-shadow: inset 2px 2px 2px 0px #dddddd;
+  padding: .2vw .2vw;
+  border: 1px solid #aaa;
+}
+
+#weight-input::-webkit-outer-spin-button,
+#weight-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#heartDisease-label {
+  position:absolute;
+  left:4vw;
+  top:24.7vw;
+}
+
+#clumsiness-label {
+  position:absolute;
+  left:4vw;
+  top:26.4vw;
+}
+

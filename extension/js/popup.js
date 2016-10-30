@@ -20,7 +20,12 @@ function infoButtonPressed()
   //UPDATE WHEN REVVING VERSIONS
   else if(localStorage.getItem("version")=="3.4.2")
   {
-    setButtonPressed(0);
+    var lastOptionView = localStorage.getItem("lastOptionView");
+    if( lastOptionView === null )
+    {
+      lastOptionView = 0;
+    }
+    setButtonPressed(lastOptionView);
   }
   else
   {
@@ -46,38 +51,44 @@ $('#info-button').click(function()
 
 $("#about-button").click(function()
 {
-  if(localStorage.getItem("dob")===null)
-  {
-    setButtonPressed(2);
-  }
-  else
-  {
-    setButtonPressed(0);
-  }
+  unlessDOBMissingGoToButtonNumber(0);
 });
 
 $("#updates-button").click(function()
 {
+  unlessDOBMissingGoToButtonNumber(1);
+});
+
+$("#settings-button").click(function()
+{
+  unlessDOBMissingGoToButtonNumber(2);
+});
+
+$("#countdown-button").click(function()
+{
+  unlessDOBMissingGoToButtonNumber(3);
+});
+
+function unlessDOBMissingGoToButtonNumber(button)
+{
+  localStorage.setItem("lastOptionView", button);
+
   if(localStorage.getItem("dob")===null)
   {
     setButtonPressed(2);
   }
   else
   {
-    setButtonPressed(1);
+    setButtonPressed(button);
   }
-});
-
-$("#settings-button").click(function()
-{
-  setButtonPressed(2);
-});
+}
 
 function setButtonPressed(button)
 {
   var updatesButton = document.querySelector("#updates-button");
   var aboutButton = document.querySelector("#about-button");
   var settingsButton = document.querySelector("#settings-button");
+  var countdownButton = document.querySelector("#countdown-button");
   var popupBody = document.querySelector('#popup-body');
   if (button == 0)
   {
@@ -85,6 +96,7 @@ function setButtonPressed(button)
     aboutButton.className = "pressed-button";
     updatesButton.className = "default-button";
     settingsButton.className = "default-button";
+    countdownButton.className = "countdown-default-button";
   }
   else if (button == 1)
   {
@@ -92,6 +104,17 @@ function setButtonPressed(button)
     aboutButton.className = "default-button";
     updatesButton.className = "pressed-button";
     settingsButton.className = "default-button";
+    countdownButton.className = "countdown-default-button";
+  }
+  else if (button == 3)
+  {
+    popupBody.innerHTML = window.app.getTemplateScript('countdown-popup')();
+    aboutButton.className = "default-button";
+    updatesButton.className = "default-button";
+    settingsButton.className = "default-button";
+    countdownButton.className = "countdown-pressed-button";
+
+    setupCountdown();
   }
   else
   {
@@ -99,6 +122,7 @@ function setButtonPressed(button)
     aboutButton.className = "default-button";
     updatesButton.className = "default-button";
     settingsButton.className = "pressed-button";
+    countdownButton.className = "countdown-default-button";
 
     setupSettings(window.app.dob, window.app.dobMinutes);
   }
@@ -106,6 +130,68 @@ function setButtonPressed(button)
   {
     $("#cancel-button").toggle();
   }
+}
+
+function setupCountdown()
+{
+  loadCountdownCheckboxes();
+  var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
+  if( toggleCountdownCheckbox.checked )
+  {
+    var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
+    if( specifyCountdownCheckbox.checked )
+    {
+      loadCountdownDate();
+
+      var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+      if( countdownTimeCheckbox.checked )
+      {
+        loadCountdownTime();
+      }
+    }
+    else
+    {
+      loadSurveyAnswers();
+    }
+  }
+
+  $("#countdown-submit-button").click(function(){
+    var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
+    if( toggleCountdownCheckbox.checked )
+    {
+      localStorage.setItem("countdownEnabled", "YES");
+      var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
+      if( specifyCountdownCheckbox.checked )
+      {
+        saveCountdownDeath();
+        localStorage.setItem("specificTimeSet", "YES");
+        var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+        if( countdownTimeCheckbox.checked )
+        {
+          localStorage.setItem("countdownTimeSet", "YES");
+        }
+        else
+        {
+          localStorage.removeItem("countdownTimeSet");
+        }
+      }
+      else
+      {
+        localStorage.removeItem("specificTimeSet");
+        saveSurveyAnswers();
+      }
+    }
+    else
+    {
+      localStorage.removeItem("countdownEnabled");
+    }
+    $("#info-popup").magnificPopup('close');
+  });
+
+  $("#countdown-cancel-button").click(function(){
+    $("#info-popup").magnificPopup('close');
+  });
+
 }
 
 function setupSettings(dob, dobMinutes)
@@ -147,6 +233,73 @@ function setupSettings(dob, dobMinutes)
 
   $("#cancel-button").click(function(){
     $("#info-popup").magnificPopup('close');
+  });
+}
+
+
+function loadCountdownTime()
+{
+  var deathTime = localStorage.getItem("deathTime");
+  if( deathTime === null )
+  {
+    document.getElementById('countdownTime-input').value = "00:00";
+  }
+  else
+  {
+    document.getElementById('countdownTime-input').value = getTimeStringFromMinutes(deathTime);
+  }
+
+
+}
+
+function saveCountdownDeath()
+{
+  window.app.saveDeath();
+}
+
+function loadCountdownDate()
+{
+  var deathDate = localStorage.getItem("deathDate");
+  if( deathDate === null )
+  {
+    document.getElementById('countdownDate-input').value = new Date();
+  }
+  else
+  {
+    document.getElementById('countdownDate-input').value = new Date(parseInt(deathDate)).yyyymmdd();
+  }
+}
+
+function loadCountdownCheckboxes()
+{
+  var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
+  if (localStorage.getItem("countdownEnabled") == "YES") {
+    toggleCountdownCheckbox.checked = true;
+  }
+  showCountdownIf(toggleCountdownCheckbox.checked);
+
+  toggleCountdownCheckbox.addEventListener('change', function () {
+    showCountdownIf(toggleCountdownCheckbox.checked);
+  });
+
+  var specificTimeCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
+  if (localStorage.getItem("specificTimeSet") == "YES") {
+    specificTimeCheckbox.checked = true;
+  }
+  showSpecificTimeSettingsIf(specificTimeCheckbox.checked);
+
+  specificTimeCheckbox.addEventListener('change', function () {
+    showSpecificTimeSettingsIf(specificTimeCheckbox.checked);
+  });
+
+  var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+  if (localStorage.getItem("countdownTimeSet") == "YES") {
+    countdownTimeCheckbox.checked = true;
+  }
+  showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
+
+  countdownTimeCheckbox.addEventListener('change', function () {
+    showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
   });
 }
 
@@ -263,28 +416,45 @@ function setBlackInfoButton()
   }
 }
 
-function loadDarkOrLightTheme()
+function showTimeSelectorIf(isChecked)
 {
-    var savedTheme = localStorage.getItem("colorTheme");
-    if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky")
-    {
-      document.body.style.backgroundColor = "#F5F5F5";
-      document.body.style.color = "#424242";
-      setBlackInfoButton();
-    }
-    else
-    {
-      document.body.style.backgroundColor = "#1d1d1d";
-      document.body.style.color = "#eff4ff";
-      setWhiteInfoButton();
-    }
-}
-
-function showTimeSelectorIf(isChecked) {
   if (isChecked) {
       document.getElementById("time-input").style.display = "block";
   } else {
       document.getElementById("time-input").style.display = "none";
+  }
+}
+
+function showCountdownIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("countdown-container").style.display = "block";
+  } else {
+      document.getElementById("countdown-container").style.display = "none";
+  }
+}
+
+function showCountdownTimeSelectorIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("countdownTime-input").style.display = "block";
+  } else {
+      document.getElementById("countdownTime-input").style.display = "none";
+  }
+}
+
+function showSpecificTimeSettingsIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("specific-container").style.display = "block";
+      document.getElementById("survey-container").style.display = "none";
+      loadCountdownDate();
+      loadCountdownTime();
+
+  } else {
+      document.getElementById("specific-container").style.display = "none";
+      document.getElementById("survey-container").style.display = "block";
+      loadSurveyAnswers();
   }
 }
 

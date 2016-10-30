@@ -19,70 +19,305 @@
     localStorage.removeItem("update-3.1.1");
     ////////////////////////////////////
 
-    this.updateInterval();
-    loadDarkOrLightTheme();
+    this.initializeTimer();
   };
-
 
   App.fn = App.prototype;
 
-  App.fn.updateInterval = function()
+  App.fn.load = function()
   {
-    if( localStorage.getItem("hideAge") === null ) {
-      if( localStorage.getItem("swap") === null ) {
-        var interval = 60000;
+    this.dob = getDOB();
+    this.deathDate = getDeathDOB();
+    if( this.dob.dst() )
+    {
+      this.dob.setHours(this.dob.getHours()+1);
+    }
+    this.dobMinutes = localStorage.dobMinutes || 0;
+
+    if (localStorage.getItem("specificTimeSet") == "YES")
+    {
+      this.deathTime = localStorage.deathTime || 0;
+      this.deathDate.setMinutes(parseInt(this.deathTime));
+    }
+    else
+    {
+      this.deathDate = new Date(this.dob.getTime());
+
+      var ageDiffMS = Date.now() - this.dob.getTime();
+      var ageDate = new Date(ageDiffMS);
+      var ageYears = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+      //https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy
+      var yearOffset = 79.3;
+      var surveyGender = localStorage.getItem("surveyGender");
+      if( surveyGender == "male" )
+      {
+        yearOffset -= 2.4;
+      }
+      else if( surveyGender == "female" )
+      {
+        yearOffset += 2.3;
+      }
+
+      //http://kff.org/other/state-indicator/life-expectancy-by-re/?currentTimeframe=0&selectedRows=%7B%22wrapups%22:%7B%22united-states%22:%7B%7D%7D%7D&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D
+      var surveyEthnicity = localStorage.getItem("surveyEthnicity");
+      if( surveyEthnicity == "white" )
+      {
+        yearOffset -= 0.4;
+      }
+      else if( surveyEthnicity == "black" )
+      {
+        yearOffset -= 4.7;
+      }
+      else if( surveyEthnicity == "latino" )
+      {
+        yearOffset += 3.5;
+      }
+      else if( surveyEthnicity == "asian" )
+      {
+        yearOffset += 7.2;
+      }
+      else if( surveyEthnicity == "native")
+      {
+        yearOffset -= 2.4;
+      }
+
+      //https://www.myabaris.com/tools/life-expectancy-calculator-how-long-will-i-live/results?id=eyJnZW5kZXIiOiJNQUxFIiwicmFjZSI6IldISVRFIiwiaGVpZ2h0Ijo1LjU4MzMzLCJjdXJyZW50X2FnZSI6NjAsIndlaWdodCI6MTUwLCJlZHVjYXRpb24iOiJfOF9UT18xMSIsIm1hcml0YWxfc3RhdHVzIjoiTUFSUklFRCIsImluY29tZSI6IjQwTUlOVVMiLCJpbmNvbWVTdGF0dXMiOiJXT1JLSU5HIiwiZXhlcmNpc2UiOiJfMV9UT18yX1BFUl9XRUVLIiwiaGVhbHRoIjoiR09PRCIsImRpYWJldGVzIjpmYWxzZSwiYWxjb2hvbCI6Il9MVF8xX1BFUl9EQVkiLCJzbW9raW5nIjoiTk9OX1NNT0tFUiIsInVzX3VuaXRzIjp0cnVlLCJvcHRJbiI6ZmFsc2UsInNtb2tpbmdTdGF0dXMiOiJORVZFUl9TTU9LRUQiLCJzbW9raW5nUXVpdCI6bnVsbCwic21va2luZ0Ftb3VudCI6bnVsbCwiaGVpZ2h0X3R5cGUiOiJJTVBFUklBTCIsIndlaWdodF90eXBlIjoiSU1QRVJJQUwifQ&lc_r=y
+      var surveyDrinking = localStorage.getItem("surveyDrinking");
+      if( surveyDrinking == "monthly" )
+      {
+        yearOffset += 1.6;
+      }
+      else if( surveyDrinking == "weekly" )
+      {
+        yearOffset += 1.9;
+      }
+      else if( surveyDrinking == "daily" )
+      {
+        yearOffset += 1.2;
+      }
+      else if( surveyDrinking == "never" )
+      {
+        yearOffset += 0;
+      }
+
+      var surveySmoking = localStorage.getItem("surveySmoking");
+      if( surveySmoking == "drinking" )
+      {
+        surveySmoking = surveyDrinking;
+      }
+      if( surveySmoking == "monthly" )
+      {
+        yearOffset -= 5.6;
+      }
+      else if( surveySmoking == "weekly" )
+      {
+        yearOffset -= 7.7;
+      }
+      else if( surveySmoking == "daily" )
+      {
+        yearOffset -= 9.8;
+      }
+      else if( surveySmoking == "never" )
+      {
+        yearOffset += 0;
+      }
+      else if( surveySmoking == "marijuana" )
+      {
+        //http://www.marijuanadetoxguide.com/life-expectancy-of-smokers-how-soon-before-weed-kills-you/
+        yearOffset += 2;
+      }
+
+      //https://www.myabaris.com/tools/life-expectancy-calculator-how-long-will-i-live
+      var surveyExercise = localStorage.getItem("surveyExercise");
+      if( surveyExercise == "never" )
+      {
+        yearOffset += 0;
+      }
+      else if( surveyExercise == "rarely" )
+      {
+        yearOffset += 1.1;
+      }
+      else if( surveyExercise == "onetwo" )
+      {
+        yearOffset += 2.5;
+      }
+      else if( surveyExercise == "threefour" )
+      {
+        yearOffset += 3.0;
+      }
+      else if( surveyExercise == "fiveplus" )
+      {
+        yearOffset += 3.0;
+      }
+
+      //https://www.ncbi.nlm.nih.gov/books/NBK62367/
+      var surveyHeightFeet = parseInt(localStorage.getItem("surveyHeightFeet"));
+      var surveyHeightInches = parseInt(localStorage.getItem("surveyHeightInches"));
+      var surveyWeight = parseInt(localStorage.getItem("surveyWeight"));
+      surveyHeightInches += surveyHeightFeet*12;
+      var surveyWeightKG = surveyWeight*0.45;
+      var surveyHeightCMSquared = (surveyHeightInches*0.025)*(surveyHeightInches*0.025);
+      var BMI = surveyWeightKG/surveyHeightCMSquared;
+      if( BMI < 18.5 )
+      {
+        yearOffset -= (((18.5 - BMI)/10)*1.5);
+      }
+      else if( BMI >= 18.5 && BMI <= 25 )
+      {
+        yearOffset += 0;
+      }
+      else if( BMI > 25 && BMI <= 30 )
+      {
+        yearOffset -= ((((BMI+5)-30)/5)*0.5);
+      }
+      else if( BMI > 30 && BMI <= 35 )
+      {
+        yearOffset -= ((((BMI+5)-35)/5)*1);
+      }
+      else if( BMI > 35 && BMI <= 40 )
+      {
+        yearOffset -= ((((BMI+5)-40)/5)*3);
+      }
+      else if( BMI > 40 && BMI <= 55 )
+      {
+        yearOffset -= ((((BMI+5)-55)/15)*7);
+      }
+      else if( BMI > 55 )
+      {
+        yearOffset -= 14;
+      }
+
+      //http://apps.who.int/gho/data/view.main.YLLRATEREG6AMRV
+      if( localStorage.getItem("surveyHeartDisease") == "true" )
+      {
+        yearOffset -= (ageYears/2)*0.077;
+      }
+
+      if( localStorage.getItem("surveyClumsiness") == "true" )
+      {
+        yearOffset -= (ageYears/3)*0.055;
+      }
+
+      this.deathDate.setDate(this.deathDate.getDate() + Math.round(yearOffset*365));
+    }
+
+    if (localStorage.getItem("hideCircles") === null)
+    {
+      var monthBorn = this.dob.getMonth();
+      var chaptersArray = getChapters(monthBorn);
+
+      this.documentCircle = document.querySelector('#circles');
+
+      var currentDate = new Date();
+      var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime()) / (dayMS)));
+      var numberMonths = Math.floor(diffDays / 30);
+
+      this.generateCircleLoops(numberMonths, chaptersArray);
+    }
+  };
+
+  App.fn.initializeTimer = function()
+  {
+    if( localStorage.getItem("hideAge") === null )
+    {
+      var savedTheme = localStorage.getItem("colorTheme");
+      var whiteFlag, blackFlag;
+      if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
+      {
+        document.body.style.backgroundColor = "#F5F5F5";
+        document.body.style.color = "#424242";
+        setBlackInfoButton();
+        whiteFlag = "YES";
+      }
+      else
+      {
+        document.body.style.backgroundColor = "#1d1d1d";
+        document.body.style.color = "#eff4ff";
+        setWhiteInfoButton();
+        blackFlag = "YES";
+      }
+
+      var duration, startMoment, endMoment;
+      if( localStorage.getItem("swap") === null )
+      {
+        var interval = minuteMS;
         var savedPrecision = localStorage.getItem("precision");
-        if(savedPrecision == "sec")
+        if( savedPrecision == "sec" )
         {
-          interval = 1000
+          interval = secondMS;
         }
-        else if(savedPrecision == "ms" || savedPrecision === null)
+        else if( savedPrecision == "ms" || savedPrecision === null )
         {
           interval = 113;
         }
-        this.renderAge();
+
+        var currentMoment = moment();
+        var deadlineMoment = moment(this.deathDate);
+        var birthMoment = moment(this.dob);
+        if( localStorage.getItem("countdownEnabled") == "YES" )
+        {
+          duration = deadlineMoment - currentMoment;
+          if( duration <= 0 )
+          {
+            this.setAppElementHTML(this.getTemplateScript('timeup')({
+              white: whiteFlag,
+              black: blackFlag
+            }));
+            interval = secondMS;
+            setInterval(this.renderTimeUp.bind(this),interval);
+            return;
+          }
+          startMoment = currentMoment;
+          endMoment = deadlineMoment;
+        }
+        else
+        {
+          duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+          startMoment = birthMoment;
+          endMoment = currentMoment;
+        }
+
         setInterval(this.renderAge.bind(this),interval);
       }
-      else {
+      else
+      {
         this.renderTime();
-        setInterval(this.renderTime.bind(this),1000);
+        setInterval(this.renderTime.bind(this),secondMS);
+        return;
       }
-
-      var savedTheme = localStorage.getItem("colorTheme");
-      if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
-        var whiteFlag = "YES";
-      }
-      else {
-        var blackFlag = "YES";
-      }
-
-      var now = new Date();
-      var duration  = now - this.dob + (parseInt(this.dobMinutes)*minuteMS);
-      var temp = duration;
 
       var savedPrecision = localStorage.getItem("precision");
-      while(true) {
-        var years = Math.floor(duration / yearMS);
+      while(true)
+      {
+        var years = endMoment.diff(startMoment, 'years');
         var yearString = zeroFill(years.toString(), 2);
         if (savedPrecision == "year") {
           break;
         }
-        duration = (duration % yearMS);
-        var monthsdays = this.dob.getMonthsDaysPassed();
-        var months = monthsdays[0];
-        var days = monthsdays[1];
-        //var months = Math.floor(duration / monthMS);
+        startMoment.add(years, 'years');
+        var months = endMoment.diff(startMoment, 'months');
         var monthString = zeroFill(months.toString(), 2);
         if (savedPrecision == "month") {
           break;
         }
-        duration = (duration % monthMS);
-        //var days = Math.floor(duration / dayMS);
+        var days = endMoment.diff(startMoment, 'days');
+
+        if( months > 0 )
+        {
+          var monthIndexOffset = months;
+          for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
+          {
+            var currentIndexMonthDays = startMoment.daysInMonth();
+            days -= currentIndexMonthDays;
+            startMoment.month(startMoment.month()+1);
+          }
+        }
         var dayString = zeroFill(days.toString(), 2);
         if (savedPrecision == "day") {
           break;
         }
-        duration = temp;
+
         duration = (duration % dayMS);
         var hours = Math.floor(duration / hourMS);
         var hourString = zeroFill(hours.toString(), 2);
@@ -119,31 +354,6 @@
         second: secondString,
         ms: msString
       }));
-    }
-  };
-
-  App.fn.load = function() {
-	  this.dob = getDOB();
-    if(this.dob.dst())
-    {
-      this.dob.setHours(this.dob.getHours()+1);
-    }
-	  this.dobMinutes = localStorage.dobMinutes || 0;
-
-	  if (localStorage.getItem("hideCircles") === null)
-	  {
-		  var monthBorn = this.dob.getMonth();
-		  var chaptersArray = getChapters(monthBorn);
-
-		  this.documentCircle = document.querySelector('#circles');
-
-		  var currentDate = new Date;
-		  var oneDay = 24 * 60 * 60 * 1000;
-
-		  var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime()) / (oneDay)));
-		  var numberMonths = Math.floor(diffDays / 30);
-
-		  this.generateCircleLoops(numberMonths, chaptersArray);
     }
   };
 
@@ -209,6 +419,45 @@
     this.documentCircle.appendChild(circle);
   };
 
+  App.fn.saveDeath = function(deathDate)
+  {
+    var deathInput = $('countdownDate-input');
+
+    if( !deathInput.valueAsDate ) return;
+
+    this.deathDate = deathInput.valueAsDate;
+
+    localStorage.setItem("deathDate", this.deathDate.getTime()+(this.deathDate.getTimezoneOffset() * minuteMS));
+
+    var deathTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+    if( deathTimeCheckbox )
+    {
+      var deathTimeChecked = deathTimeCheckbox.checked;
+      if( deathTimeChecked )
+      {
+        var timeInput = $('countdownTime-input');
+        if( !timeInput.valueAsDate ) return;
+        var timeArray = timeInput.value.split(":");
+        this.deathTime = timeArray[0]*60 + timeArray[1]*1;
+        localStorage.deathTimeSet = "YES";
+        localStorage.deathTime = this.deathTime;
+      }
+      else
+      {
+        this.deathTime = 0;
+        localStorage.removeItem("deathTimeSet");
+        localStorage.removeItem("deathTime");
+      }
+    }
+    else
+    {
+      this.deathTime = 0;
+      localStorage.removeItem("deathTimeSet");
+      localStorage.removeItem("deathTime");
+    }
+  };
+
+
   App.fn.saveDob = function()
   {
     var dateInput = $('dob-input');
@@ -216,7 +465,7 @@
     if( !dateInput.valueAsDate ) return;
 
     this.dob = dateInput.valueAsDate;
-    localStorage.setItem("dob", this.dob.getTime()+(this.dob.getTimezoneOffset() * 60000));
+    localStorage.setItem("dob", this.dob.getTime()+(this.dob.getTimezoneOffset() * minuteMS));
 
     var timeChecked = document.querySelector('input[id=time-checkbox]').checked;
     if( timeChecked )
@@ -232,7 +481,7 @@
     {
       this.dobMinutes = 0;
       localStorage.removeItem("dobTimeSet");
-      localStorage.removeItem("dobMinutes")
+      localStorage.removeItem("dobMinutes");
     }
     var hideAgeChecked = document.querySelector('input[id=hideAge-checkbox').checked;
     hideAgeChecked ? localStorage.setItem("hideAge", "YES") : localStorage.removeItem("hideAge");
@@ -251,36 +500,71 @@
   };
 
 
+  App.fn.renderTimeUp = function()
+  {
+    var timeup = $('white-timeup');
+    if( !timeup )
+    {
+      timeup = $('black-timeup');
+    }
+    this.bubbleNumber(timeup, 1.05);
+  };
 
   App.fn.renderAge = function()
   {
-    var now = new Date();
-    var duration  = now - this.dob + (parseInt(this.dobMinutes)*minuteMS);
-    var temp = duration;
+    var duration, startMoment, endMoment;
+    var currentMoment = moment();
+    var deadlineMoment = moment(this.deathDate);
+    var birthMoment = moment(this.dob);
+    if( localStorage.getItem("countdownEnabled") == "YES" )
+    {
+      duration = deadlineMoment - currentMoment;
+      if( duration <= 0 )
+      {
+        location.reload();
+        return;
+      }
+      startMoment = currentMoment;
+      endMoment = deadlineMoment;
+    }
+    else
+    {
+      duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+      startMoment = birthMoment;
+      endMoment = currentMoment;
+    }
 
     var savedPrecision = localStorage.getItem("precision");
-    while(true) {
-      var years = Math.floor(duration / yearMS);
+    while(true)
+    {
+      var years = endMoment.diff(startMoment, 'years');
       var yearString = zeroFill(years.toString(), 2);
       if (savedPrecision == "year") {
         break;
       }
-      duration = (duration % yearMS);
-      var monthsdays = this.dob.getMonthsDaysPassed();
-      var months = monthsdays[0];
-      var days = monthsdays[1];
-      //var months = Math.floor(duration / monthMS);
+      startMoment.add(years, 'years');
+      var months = endMoment.diff(startMoment, 'months');
       var monthString = zeroFill(months.toString(), 2);
       if (savedPrecision == "month") {
         break;
       }
-      duration = (duration % monthMS);
-      //var days = Math.floor(duration / dayMS);
+      var days = endMoment.diff(startMoment, 'days');
+
+      if( months > 0 )
+      {
+        var monthIndexOffset = months;
+        for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
+        {
+          var currentIndexMonthDays = startMoment.daysInMonth();
+          days -= currentIndexMonthDays;
+          startMoment.month(startMoment.month()+1);
+        }
+      }
       var dayString = zeroFill(days.toString(), 2);
       if (savedPrecision == "day") {
         break;
       }
-      duration = temp;
+
       duration = (duration % dayMS);
       var hours = Math.floor(duration / hourMS);
       var hourString = zeroFill(hours.toString(), 2);
@@ -458,6 +742,10 @@
 **********************/
 
 function animate(theta, radius) {
+  if( isNaN(parseFloat(radius)) )
+  {
+    return;
+  }
   var path = document.getElementById('path');
   var piecircle = document.getElementById('piecircle');
   if(path && piecircle) {

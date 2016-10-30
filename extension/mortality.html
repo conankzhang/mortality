@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/popup.css">
   <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/countdown.css">
 </head>
 <body>
 
@@ -32,6 +33,7 @@
     <button id="about-button">About</button>
     <button id="updates-button">Updates</button>
 	  <button id="settings-button">Settings</button>
+    <button id="countdown-button">Countdown</button>
     <hr id="button-hr">
     <form action="https://www.twitter.com/mattyayoh" target="_blank">
       <button id="twitter-button" type="submit">@MattyAyOh</button>
@@ -58,17 +60,28 @@
   </div>
 </script>
 
+<script id="timeup-template" type="text/x-handlebars-template">
+  <div class="timer-container">
+    {{#if white}}
+    <div class="timeup" id="white-timeup">Time's Up ¯\_(ツ)_/¯</div>
+    {{/if}}
+    {{#if black}}
+    <div class="timeup" id="black-timeup">Time's Up ¯\_(ツ)_/¯</div>
+    {{/if}}
+  </div>
+</script>
+
 <script id="age-template" type="text/x-handlebars-template">
 	<div class="timer-container">
     {{#if white}}<span id="white-timer-age" class="timer" >{{/if}}
     {{#if black}}<span id="black-timer-age" class="timer" >{{/if}}
-      {{#if year}}<span id='year-number'>{{year}}</span>{{/if}}
-      {{#if month}}<span id='month-number'>{{month}}</span>{{/if}}
-      {{#if day}}<span id='day-number'>{{day}}</span>{{/if}}
-      {{#if hour}}<span id='hour-number'>{{hour}}</span>{{/if}}
-      {{#if minute}}<span id='minute-number'>{{minute}}</span>{{/if}}
-      {{#if second}}<span id='second-number'>{{second}}</span>{{/if}}
-      {{#if ms}}<span id='milli-number'>{{ms}}</span>{{/if}}
+      {{#if year}}<span id='year-number' class="timer-value">{{year}}</span>{{/if}}
+      {{#if month}}<span id='month-number' class="timer-value">{{month}}</span>{{/if}}
+      {{#if day}}<span id='day-number' class="timer-value">{{day}}</span>{{/if}}
+      {{#if hour}}<span id='hour-number' class="timer-value">{{hour}}</span>{{/if}}
+      {{#if minute}}<span id='minute-number' class="timer-value">{{minute}}</span>{{/if}}
+      {{#if second}}<span id='second-number' class="timer-value">{{second}}</span>{{/if}}
+      {{#if ms}}<span id='milli-number' class="timer-value">{{ms}}</span>{{/if}}
     </span>
 
     {{#if white}}<span id="white-timer-labels" class="timer-labels">{{/if}}
@@ -273,13 +286,172 @@
     <input type="number" id="eighth-chapter-input" class="years-input" min="0" max="99">
 
     <span class="button-container">
-      <button id="submit-button">Submit</button>
-      <a id="cancel-button" class="button">cancel</a>
+      <button id="submit-button" class="submitButtonClass">Submit</button>
+      <a id="cancel-button" class="cancelButtonClass">cancel</a>
     </span>
 	</form>
 </script>
 
+<script id="countdown-popup-template" type="text/x-handlebars-template">
+  <form id="countdown_form">
+    <div class="checkbox">
+      <input id="toggleCountdown-checkbox" type="checkbox">
+      <label for="toggleCountdown-checkbox" id="toggleCountdown-label">Enable Countdown</label>
+    </div>
+
+    <div id="countdown-container">
+      <div class="checkbox">
+        <input id="specifyCountdown-checkbox" type="checkbox">
+        <label for="specifyCountdown-checkbox" id="specifyCountdown-label">Specify Final Date</label>
+      </div>
+      <div id="survey-container">
+        <div id="gender-container">
+          <div>
+            <label id="gender-label" class="label-text" for="gender-dropdown">Gender?</label>
+            <select id="gender-dropdown" class="countdown-dropdown">
+              <option value="DNE"></option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="ethnicity-container">
+          <div>
+            <label id="ethnicity-label" class="label-text" for="ethnicity-dropdown">Ethnicity?</label>
+            <select id="ethnicity-dropdown" class="countdown-dropdown">
+              <option value="DNE"></option>
+              <option value="white">White</option>
+              <option value="black">Black</option>
+              <option value="latino">Latino</option>
+              <option value="asian">Asian or Arabic</option>
+              <option value="native">Native American</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="drinking-container">
+          <div>
+            <label id="drinking-label" class="label-text" for="precision-dropdown">How often do you drink?</label>
+            <select id="drinking-dropdown" class="countdown-dropdown">
+              <option value="DNE"></option>
+              <option value="never">Never</option>
+              <option value="monthly">~1 Month</option>
+              <option value="weekly">~1 Week</option>
+              <option value="daily">~1 Day</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="smoking-container">
+          <div>
+            <label id="smoking-label" class="label-text" for="precision-dropdown">How often do you smoke?</label>
+            <select id="smoking-dropdown" class="countdown-dropdown">
+              <option value="DNE"></option>
+              <option value="never">Never</option>
+              <option value="monthly">~1 Pack/Month</option>
+              <option value="weekly">~1 Pack/Week</option>
+              <option value="daily">~1 Pack/Day</option>
+              <option value="drinking">Only when drinking</option>
+              <option value="marijuana">tree fiddy</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="exercise-container">
+          <div>
+            <label id="exercise-label" class="label-text" for="precision-dropdown">How often do you exercise?</label>
+            <select id="exercise-dropdown" class="countdown-dropdown">
+              <option value="DNE"></option>
+              <option value="fiveplus">5+ Times/Week</option>
+              <option value="threefour">3-4 Times/Week</option>
+              <option value="onetwo">~1-2 Times/Week</option>
+              <option value="rarely">Rarely</option>
+              <option value="never">Never</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="height-label" class="label-text">
+          How tall are you?:
+        </div>
+
+        <div id="heightFeet-container">
+          <div>
+            <label id="heightFeet-label" class="label-text" for="heightFeet-dropdown">Feet</label>
+            <select id="heightFeet-dropdown" class="integer-dropdown">
+              <option value="DNE"></option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="heightInches-container">
+          <div>
+            <label id="heightInches-label" class="label-text" for="heightInches-dropdown">Inches</label>
+            <select id="heightInches-dropdown" class="integer-dropdown">
+              <option value="DNE"></option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="weight-input" id="weight-label" class="">How much do you weigh?</label>
+        <input type="number" id="weight-input" class="" min="0" max="500">
+
+        <div class="checkbox">
+          <input id="heartDisease-checkbox" type="checkbox">
+          <label for="heartDisease-checkbox" id="heartDisease-label">Family have a history of heart disease?</label>
+        </div>
+
+        <div class="checkbox">
+          <input id="clumsiness-checkbox" type="checkbox">
+          <label for="clumsiness-checkbox" id="clumsiness-label">Clumsy?</label>
+        </div>
+
+      </div>
+      <!-- SPECIFY DATE OPTIONS -->
+
+      <div id="specific-container">
+        <label id="countdown-label-text" class="label-text" for="countdownDate-input">When is your deadline?</label>
+        <input type="date" id="countdownDate-input" class="input-textfield">
+
+        <div class="checkbox">
+          <input id="countdown-addTime-checkbox" type="checkbox">
+          <label for="countdown-addTime-checkbox" id="countdown-addTime-label">Add Time</label>
+        </div>
+
+        <input type="time" id="countdownTime-input" class="input-textfield">
+      </div>
+    </div>
+    <!-- BOTTOM BUTTONS -->
+
+    <span class="button-container">
+      <button id="countdown-submit-button" class="submitButtonClass">Submit</button>
+      <a id="countdown-cancel-button" class="cancelButtonClass">cancel</a>
+    </span>
+  </form>
+</script>
+
 <script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/moment.min.js"></script>
 <script src="js/handlebars.js"></script>
 <script src="js/helpers.js"></script>
 <script src="js/accessors.js"></script>

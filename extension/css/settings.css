@@ -18,8 +18,12 @@
   top: 24.5vw;
   width:2.2vw;
   height: 1.2vw;
-  border-radius:0.05vw;
+  border-radius:.25vw;
   font-size: 1vw;
+  -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  box-shadow: inset 2px 2px 2px 0px #dddddd;
+  padding: .2vw .2vw;
+  border: 1px solid #aaa;
 }
 
 .checkbox label:before {
@@ -197,7 +201,7 @@
   left: 25.6vw;
 }
 
-#submit-button {
+.submitButtonClass {
   position:absolute;
   left:12vw;
   bottom:1vw;
@@ -211,10 +215,11 @@
   cursor: pointer;
 }
 
-#cancel-button {
+.cancelButtonClass {
   position:absolute;
   bottom:1.4vw;
   left:19vw;
   display: inline;
   cursor: pointer;
 }
+
