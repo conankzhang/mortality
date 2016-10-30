@@ -14,28 +14,32 @@
 #countdown-label-text {
   position:absolute;
   left:10.2vw;
-  top:14.2vw;
+  top:13.7vw;
 }
 
 #countdownDate-input {
   position:absolute;
   left:10vw;
-  top:16.5vw;
+  top:16.0vw;
 }
 
 #countdown-addTime-label {
   position:absolute;
   left:12vw;
-  top:19.4vw;
+  top:18.9vw;
 }
 
 #countdownTime-input {
   position:absolute;
   left:10vw;
-  top:21.3vw;
+  top:20.8vw;
 }
 
-
+#countdown-daily-label {
+  position:absolute;
+  left:12vw;
+  top:23.9vw;
+}
 
 #toggleCountdown-label {
    position:absolute;
