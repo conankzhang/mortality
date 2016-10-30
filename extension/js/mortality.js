@@ -157,7 +157,7 @@
       var surveyWeight = parseInt(localStorage.getItem("surveyWeight"));
       surveyHeightInches += surveyHeightFeet*12;
       var surveyWeightKG = surveyWeight*0.45;
-      var surveyHeightCMSquared = (surveyHeightInches*0.025)*(surveyHeightInches*0.025)
+      var surveyHeightCMSquared = (surveyHeightInches*0.025)*(surveyHeightInches*0.025);
       var BMI = surveyWeightKG/surveyHeightCMSquared;
       if( BMI < 18.5 )
       {
@@ -191,18 +191,15 @@
       //http://apps.who.int/gho/data/view.main.YLLRATEREG6AMRV
       if( localStorage.getItem("surveyHeartDisease") == "true" )
       {
-        yearOffset -= (ageYears/2)*0.077
+        yearOffset -= (ageYears/2)*0.077;
       }
 
       if( localStorage.getItem("surveyClumsiness") == "true" )
       {
-        yearOffset -= (ageYears/3)*0.055
+        yearOffset -= (ageYears/3)*0.055;
       }
 
       this.deathDate.setDate(this.deathDate.getDate() + Math.round(yearOffset*365));
-
-      // this.deathDate.setFullYear(this.deathDate.getFullYear() + yearOffset);
-
     }
 
     if (localStorage.getItem("hideCircles") === null)
@@ -521,7 +518,7 @@
     var birthMoment = moment(this.dob);
     if( localStorage.getItem("countdownEnabled") == "YES" )
     {
-      var duration = deadlineMoment - currentMoment;
+      duration = deadlineMoment - currentMoment;
       if( duration <= 0 )
       {
         location.reload();
