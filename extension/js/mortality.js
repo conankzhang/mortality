@@ -275,6 +275,10 @@
               deadlineMoment.hour(hours);
               deadlineMoment.minute(minutes);
               deadlineMoment.second(0);
+              if( timeInput == 0 )
+              {
+                deadlineMoment.day(deadlineMoment.day()+1);
+              }
             }
           }
 
@@ -457,12 +461,7 @@
       var deathTimeChecked = deathTimeCheckbox.checked;
       if( deathTimeChecked )
       {
-        var timeInput = $('countdownTime-input');
-        if( !timeInput.valueAsDate ) return;
-        var timeArray = timeInput.value.split(":");
-        this.deathTime = timeArray[0]*60 + timeArray[1]*1;
-        localStorage.deathTimeSet = "YES";
-        localStorage.deathTime = this.deathTime;
+        this.deathTime = localStorage.deathTime;
       }
       else
       {

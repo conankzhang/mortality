@@ -163,7 +163,12 @@ function setupCountdown()
       var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
       if( specifyCountdownCheckbox.checked )
       {
+        var timeInput = document.getElementById("countdownTime-input").value;
+        var timeArray = timeInput.split(":");
+        localStorage.deathTime = timeArray[0]*60 + timeArray[1]*1;
+
         saveCountdownDeath();
+
         localStorage.setItem("specificTimeSet", "YES");
         var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
         if( countdownTimeCheckbox.checked )
@@ -252,6 +257,7 @@ function loadCountdownTime()
   if( deathTime === null )
   {
     document.getElementById('countdownTime-input').value = "00:00";
+    localStorage.deathTime = "0";
   }
   else
   {
@@ -452,8 +458,10 @@ function showCountdownTimeSelectorIf(isChecked)
 {
   if (isChecked) {
       document.getElementById("countdownTime-input").style.display = "block";
+      document.getElementById("countdown-daily-label").style.display = "block";
   } else {
       document.getElementById("countdownTime-input").style.display = "none";
+      document.getElementById("countdown-daily-label").style.display = "none";
   }
 }
 
