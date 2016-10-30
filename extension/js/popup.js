@@ -174,6 +174,15 @@ function setupCountdown()
         {
           localStorage.removeItem("countdownTimeSet");
         }
+        var countdownDailyCheckbox = document.querySelector('input[id=countdown-daily-checkbox]');
+        if( countdownDailyCheckbox.checked )
+        {
+          localStorage.setItem("countdownDaily", "YES");
+        }
+        else
+        {
+          localStorage.removeItem("countdownDaily");
+        }
       }
       else
       {
@@ -301,6 +310,11 @@ function loadCountdownCheckboxes()
   countdownTimeCheckbox.addEventListener('change', function () {
     showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
   });
+
+  var countdownDailyCheckbox = document.querySelector('input[id=countdown-daily-checkbox]');
+  if (localStorage.getItem("countdownDaily") == "YES") {
+    countdownDailyCheckbox.checked = true;
+  }
 }
 
 function loadCheckBoxes()
