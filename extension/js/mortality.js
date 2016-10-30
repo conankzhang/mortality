@@ -257,6 +257,28 @@
         var birthMoment = moment(this.dob);
         if( localStorage.getItem("countdownEnabled") == "YES" )
         {
+          if( localStorage.getItem("countdownDaily") == "YES" )
+          {
+            deadlineMoment = moment();
+            var timeInput = localStorage.deathTime;
+            if( timeInput === null )
+            {
+              deadlineMoment.hour(0);
+              deadlineMoment.minute(0);
+              deadlineMoment.second(0);
+              deadlineMoment.day(deadlineMoment.day()+1);
+            }
+            else
+            {
+              var hours = Math.floor(timeInput/60);
+              var minutes = timeInput % 60;
+              deadlineMoment.hour(hours);
+              deadlineMoment.minute(minutes);
+              deadlineMoment.second(0);
+            }
+          }
+
+          this.deadlineMoment = deadlineMoment;
           duration = deadlineMoment - currentMoment;
           if( duration <= 0 )
           {
@@ -514,7 +536,7 @@
   {
     var duration, startMoment, endMoment;
     var currentMoment = moment();
-    var deadlineMoment = moment(this.deathDate);
+    var deadlineMoment = this.deadlineMoment;
     var birthMoment = moment(this.dob);
     if( localStorage.getItem("countdownEnabled") == "YES" )
     {
