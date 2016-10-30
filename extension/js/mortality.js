@@ -212,7 +212,7 @@
 
       this.documentCircle = document.querySelector('#circles');
 
-      var currentDate = new Date;
+      var currentDate = new Date();
       var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime()) / (dayMS)));
       var numberMonths = Math.floor(diffDays / 30);
 
@@ -225,21 +225,23 @@
     if( localStorage.getItem("hideAge") === null )
     {
       var savedTheme = localStorage.getItem("colorTheme");
+      var whiteFlag, blackFlag;
       if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
       {
         document.body.style.backgroundColor = "#F5F5F5";
         document.body.style.color = "#424242";
         setBlackInfoButton();
-        var whiteFlag = "YES";
+        whiteFlag = "YES";
       }
       else
       {
         document.body.style.backgroundColor = "#1d1d1d";
         document.body.style.color = "#eff4ff";
         setWhiteInfoButton();
-        var blackFlag = "YES";
+        blackFlag = "YES";
       }
 
+      var duration, startMoment, endMoment;
       if( localStorage.getItem("swap") === null )
       {
         var interval = minuteMS;
@@ -258,7 +260,7 @@
         var birthMoment = moment(this.dob);
         if( localStorage.getItem("countdownEnabled") == "YES" )
         {
-          var duration = deadlineMoment - currentMoment;
+          duration = deadlineMoment - currentMoment;
           if( duration <= 0 )
           {
             this.setAppElementHTML(this.getTemplateScript('timeup')({
@@ -269,14 +271,14 @@
             setInterval(this.renderTimeUp.bind(this),interval);
             return;
           }
-          var startMoment = currentMoment;
-          var endMoment = deadlineMoment;
+          startMoment = currentMoment;
+          endMoment = deadlineMoment;
         }
         else
         {
-          var duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
-          var startMoment = birthMoment;
-          var endMoment = currentMoment;
+          duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+          startMoment = birthMoment;
+          endMoment = currentMoment;
         }
 
         setInterval(this.renderAge.bind(this),interval);
@@ -513,6 +515,7 @@
 
   App.fn.renderAge = function()
   {
+    var duration, startMoment, endMoment;
     var currentMoment = moment();
     var deadlineMoment = moment(this.deathDate);
     var birthMoment = moment(this.dob);
@@ -524,14 +527,14 @@
         location.reload();
         return;
       }
-      var startMoment = currentMoment;
-      var endMoment = deadlineMoment;
+      startMoment = currentMoment;
+      endMoment = deadlineMoment;
     }
     else
     {
-      var duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
-      var startMoment = birthMoment;
-      var endMoment = currentMoment;
+      duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+      startMoment = birthMoment;
+      endMoment = currentMoment;
     }
 
     var savedPrecision = localStorage.getItem("precision");
