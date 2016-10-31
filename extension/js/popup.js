@@ -18,7 +18,7 @@ function infoButtonPressed()
     setButtonPressed(2);
   }
   //UPDATE WHEN REVVING VERSIONS
-  else if(localStorage.getItem("version")=="4.0.0")
+  else if(localStorage.getItem("version")=="4.1.0")
   {
     var lastOptionView = localStorage.getItem("lastOptionView");
     if( lastOptionView === null )
@@ -31,7 +31,7 @@ function infoButtonPressed()
   {
     setButtonPressed(1);
     document.getElementById("update-bubble").style.display = "none";
-    localStorage.setItem("version", "4.0.0");
+    localStorage.setItem("version", "4.1.0");
   }
 
   if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
@@ -432,7 +432,7 @@ function setDropdownWithCurrentTheme(){
 
 function setWhiteInfoButton()
 {
-  if(localStorage.getItem("version") == "4.0.0") {
+  if(localStorage.getItem("version") == "4.1.0") {
     document.getElementById("info-img").src = "assets/infoWhite.png";
     document.getElementById("update-bubble").style.display = "none";
   }
@@ -444,7 +444,7 @@ function setWhiteInfoButton()
 
 function setBlackInfoButton()
 {
-  if(localStorage.getItem("version") == "4.0.0") {
+  if(localStorage.getItem("version") == "4.1.0") {
     document.getElementById("info-img").src = "assets/infoBlack.png";
     document.getElementById("update-bubble").style.display = "none";
   }
