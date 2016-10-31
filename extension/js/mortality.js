@@ -219,25 +219,25 @@
 
   App.fn.initializeTimer = function()
   {
+    var savedTheme = localStorage.getItem("colorTheme");
+    var whiteFlag, blackFlag;
+    if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
+    {
+      document.body.style.backgroundColor = "#F5F5F5";
+      document.body.style.color = "#424242";
+      setBlackInfoButton();
+      whiteFlag = "YES";
+    }
+    else
+    {
+      document.body.style.backgroundColor = "#1d1d1d";
+      document.body.style.color = "#eff4ff";
+      setWhiteInfoButton();
+      blackFlag = "YES";
+    }
+
     if( localStorage.getItem("hideAge") === null )
     {
-      var savedTheme = localStorage.getItem("colorTheme");
-      var whiteFlag, blackFlag;
-      if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
-      {
-        document.body.style.backgroundColor = "#F5F5F5";
-        document.body.style.color = "#424242";
-        setBlackInfoButton();
-        whiteFlag = "YES";
-      }
-      else
-      {
-        document.body.style.backgroundColor = "#1d1d1d";
-        document.body.style.color = "#eff4ff";
-        setWhiteInfoButton();
-        blackFlag = "YES";
-      }
-
       var duration, startMoment, endMoment;
       if( localStorage.getItem("swap") === null )
       {
