@@ -54,6 +54,10 @@
     color: white;
 }
 
+#aboutButtonLI {
+    margin-left:10px;
+}
+
 .navBar li {
     display: inline-block;
     color: rgb(29, 29, 29);
