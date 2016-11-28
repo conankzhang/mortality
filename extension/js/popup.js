@@ -46,7 +46,8 @@ function infoButtonPressed()
 
 $('#info-button').click(function()
 {
-  infoButtonPressed();
+  openNav();
+  // infoButtonPressed();
 });
 
 $("#about-button").click(function()

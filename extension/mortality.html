@@ -14,39 +14,53 @@
 </head>
 <body>
 
-<div id="circles"></div>
-<div id="app"></div>
-
-<a id="inline-popup" href="#info-popup" data-effect="mfp-zoom-in">
-<div id="info-button"><img id="info-img" src="assets/infoBlack.png" /></div>
-</a>
-
-<div id="update-bubble">
-  <div id="update-bubble-text">Mortality has been updated,<br>
-    check out the changes here!</div>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
 </div>
 
-<div id="info-popup" class="white-popup mfp-with-anim mfp-hide">
-  <img id="main-image" src="assets/popup.png">
-  <hr id="banner-hr">
-  <div id="content-container">
-    <button id="about-button">About</button>
-    <button id="updates-button">Updates</button>
-	  <button id="settings-button">Settings</button>
-    <button id="countdown-button">Countdown</button>
-    <hr id="button-hr">
-    <form action="https://www.twitter.com/mattyayoh" target="_blank">
-      <button id="twitter-button" type="submit">@MattyAyOh</button>
-    </form>
-    <form action="https://chrome.google.com/webstore/detail/mortality/eeedcpdcehnikgkhbobmkjcipjhlbmpn/support" target="_blank">
-      <button id="feedback-button">Feedback</button>
-    </form>
-    <label id="link-label" for="link-input">Copy Link to Share ^^</label>
-    <input id="link-input" type="text" value="http://goo.gl/vADzdb" class="field left" readonly>
 
-    <div id="popup-body"></div>
+<div id="main">
+
+  <div id="circles"></div>
+  <div id="app"></div>
+
+  <a id="inline-popup" href="#info-popup" data-effect="mfp-zoom-in">
+  <div id="info-button"><img id="info-img" src="assets/infoBlack.png" /></div>
+  </a>
+
+  <div id="update-bubble">
+    <div id="update-bubble-text">Mortality has been updated,<br>
+      check out the changes here!</div>
   </div>
-  <div id="side-container"></div>
+
+  <div id="info-popup" class="white-popup mfp-with-anim mfp-hide">
+    <img id="main-image" src="assets/popup.png">
+    <hr id="banner-hr">
+    <div id="content-container">
+      <button id="about-button">About</button>
+      <button id="updates-button">Updates</button>
+      <button id="settings-button">Settings</button>
+      <button id="countdown-button">Countdown</button>
+      <hr id="button-hr">
+      <form action="https://www.twitter.com/mattyayoh" target="_blank">
+        <button id="twitter-button" type="submit">@MattyAyOh</button>
+      </form>
+      <form action="https://chrome.google.com/webstore/detail/mortality/eeedcpdcehnikgkhbobmkjcipjhlbmpn/support" target="_blank">
+        <button id="feedback-button">Feedback</button>
+      </form>
+      <label id="link-label" for="link-input">Copy Link to Share ^^</label>
+      <input id="link-input" type="text" value="http://goo.gl/vADzdb" class="field left" readonly>
+
+      <div id="popup-body"></div>
+    </div>
+    <div id="side-container"></div>
+  </div>
+
+
 </div>
 
 <script id="clock-template" type="text/x-handlebars-template">
