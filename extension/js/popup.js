@@ -45,8 +45,8 @@ function infoButtonPressed()
 }
 
 function openNav() {
-  document.getElementById("theSidePanel").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
+  document.getElementById("theSidePanel").style.width = "40vw";
+  document.getElementById("main").style.marginLeft = "40vw";
 }
 
 function closeNav() {
@@ -61,7 +61,6 @@ $('#main').click(function() {
 $('#close-button').click(function()
 {
   closeNav();
-  // infoButtonPressed();
 });
 
 
