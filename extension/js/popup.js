@@ -43,6 +43,12 @@ function infoButtonPressed()
     document.getElementById("info-img").src = "assets/infoBlack.png"
   }
 }
+$('#close-button').click(function()
+{
+  closeNav();
+  // infoButtonPressed();
+});
+
 
 $('#info-button').click(function()
 {
