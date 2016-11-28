@@ -43,6 +43,21 @@ function infoButtonPressed()
     document.getElementById("info-img").src = "assets/infoBlack.png"
   }
 }
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+$('#main').click(function() {
+    closeNav();
+});
+
 $('#close-button').click(function()
 {
   closeNav();
@@ -50,9 +65,10 @@ $('#close-button').click(function()
 });
 
 
-$('#info-button').click(function()
+$('#info-button').click(function(e)
 {
   openNav();
+  e.stopPropagation();
   // infoButtonPressed();
 });
 
