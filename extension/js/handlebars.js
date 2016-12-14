@@ -1,5 +1,5 @@
 /*!
-
+Kotulakk Test Commit
  handlebars v1.3.0
 
 Copyright (C) 2011 by Yehuda Katz
