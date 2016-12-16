@@ -1,0 +1,85 @@
+/*
+ * slider.css v0.0.1 12/14/2016
+ * Kyle J Kotulak for Mortality Extension
+ * Hosted on https://github.com/MattyAyOh/Mortality
+ * Licensed under the MIT License
+ */
+
+/* === Slide Panel === */
+.sidePanel {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background: #F5F5F5;
+    color: black;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+.sidePanel a {
+    text-decoration: none;
+    display: block;
+}
+
+.sidePanel a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidePanel #close-button {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+/* === Slider description list === */
+/*dl*/
+.slider_list {
+    font-size: 1.2rem;
+    width: 100%;
+}
+/*dt*/
+.slider_logo {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+/*dd*/
+
+.sp_item {
+    color: rgb(29, 29, 29);
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.sp_item a {
+    color: rgb(29, 29, 29);
+    cursor: pointer;
+    transition: color .25s, background .25s;
+    text-decoration: none;
+}
+.sp_item > a {
+    padding: .5rem .2rem;
+    align-items: center;
+    width: 100%;
+}
+
+.slider_logo img {
+    margin: 0 auto;
+    height: auto;
+    width: 66%;
+}
+
+
+a
+figure
+img
+span
+dd_divider
+/* end of slider description list */
