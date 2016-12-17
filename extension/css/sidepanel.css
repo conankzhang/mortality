@@ -1,0 +1,105 @@
+/*
+ * sp.css v0.0.1 12/14/2016
+ * Kyle J Kotulak for Mortality Extension
+ * Hosted on https://github.com/MattyAyOh/Mortality
+ * Licensed under the MIT License
+ */
+
+/* === Slide Panel === */
+.sidePanel {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background: #F5F5F5;
+    color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidePanel a {
+    text-decoration: none;
+    display: block;
+}
+
+.sidePanel a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidePanel #close-button {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+/* === sidepanel description list === */
+/*dl*/
+.sp_list {
+    font-size: 1.2rem;
+    width: 100%;
+}
+/*dt*/
+.sp_logo {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.sp_logo img {
+    margin: 0 auto;
+    height: auto;
+    width: 66%;
+}
+/*dd*/
+
+.sp_item {
+    color: rgb(29, 29, 29);
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.sp_item a {
+    color: rgb(29, 29, 29);
+    cursor: pointer;
+    transition: color .25s, background .25s;
+    text-decoration: none;
+}
+.sp_item > a {
+    padding: .5rem 2rem;
+    align-items: center;
+    display: flex;
+}
+
+figure {
+    display:block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 50px;
+    -webkit-margin-end: 50px;
+}
+/*figure*/
+.sp_icon {
+    margin-right: 1rem;
+    max-height: 4rem;
+    width: 4rem;
+    text-align:center;
+    overflow:hidden;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.sp_icon img {
+    margin: 0 auto;
+    height: 44px;
+    width: 44px;
+}
+span
+dd_divider
+/* end of sidepanel description list */
