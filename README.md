@@ -9,5 +9,5 @@ https://chrome.google.com/webstore/detail/mortality-new-tab/eeedcpdcehnikgkhbobm
 ![](screenshot.png)
 
 
-Original Idea from: https://github.com/maccman/motivation
+Concept from: [Wait But Why](http://waitbutwhy.com/2014/05/life-weeks.html)
 
