@@ -1,5 +1,5 @@
 /*
- * slider.css v0.0.1 12/14/2016
+ * sp.css v0.0.1 12/14/2016
  * Kyle J Kotulak for Mortality Extension
  * Hosted on https://github.com/MattyAyOh/Mortality
  * Licensed under the MIT License
@@ -39,14 +39,14 @@
 }
 
 
-/* === Slider description list === */
+/* === sidepanel description list === */
 /*dl*/
-.slider_list {
+.sp_list {
     font-size: 1.2rem;
     width: 100%;
 }
 /*dt*/
-.slider_logo {
+.sp_logo {
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
@@ -70,7 +70,7 @@
     width: 100%;
 }
 
-.slider_logo img {
+.sp_logo img {
     margin: 0 auto;
     height: auto;
     width: 66%;
@@ -82,4 +82,4 @@ figure
 img
 span
 dd_divider
-/* end of slider description list */
+/* end of sidepanel description list */
