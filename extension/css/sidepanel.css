@@ -56,39 +56,34 @@
     overflow: hidden;
     height:54px;
     background-color: #F2F2F2;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #DADADA;
     color: white;
 }
 
-.navItem {
-    display: inline;
-    position: relative;
-    float: left;
+.navBar li {
+    display: inline-block;
     color: rgb(29, 29, 29);
     font-size: 14px;
-    margin: 0;
-    padding: 0;
-    height: 54px;
 }
 
-.navItem a {
+.navBar li a {
     display: block;
-    height: 54px;
+    padding-left: 10px;
     color: rgb(29, 29, 29);
-    text-align: center;
-    vertical-align: middle;
     cursor: pointer;
     transition: color .25s, background .25s;
     text-decoration: none;
 }
 
-.navItem img {
+.navBar li img {
     vertical-align: middle;
+    height: 32px;
+    width: 32px;
+    padding-top: 10px;
+    padding-bottom: 11px;
 }
 
-.navIcon {
-    height: 44px;
-    width: 44px;
-    padding-top:5px;
-    padding-bottom:5px;
+.navBar li span {
+    line-height: 55px;
+    margin-left: 1px;
 }
