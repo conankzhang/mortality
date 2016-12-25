@@ -45,8 +45,8 @@ function infoButtonPressed()
 }
 
 function openNav() {
-  document.getElementById("theSidePanel").style.width = "40vw";
-  document.getElementById("main").style.marginLeft = "40vw";
+  document.getElementById("theSidePanel").style.width = "50vw";
+  document.getElementById("main").style.marginLeft = "50vw";
   $('.timer').animate({
     'font-size':'3vw'
   },1000);
