@@ -64,13 +64,14 @@ label {
   position: relative;
 }
 
+/*updates list
 ul {
   list-style-position: inside;
   font-size:0.8vw;
   margin-top: 0.2vw;
   width:25vw;
   padding-left: 1vw;
-}
+}*/
 
 .timer-value {
   display: inline-block;

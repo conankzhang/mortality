@@ -6,9 +6,8 @@
  */
 
 /* === Slide Panel === */
-.sidePanel {
+.sidePanelClosed {
     height: 100%;
-    width: 0;
     position: fixed;
     z-index: 10;
     top: 0;
@@ -19,12 +18,19 @@
     transition: 0.5s;
 }
 
+.sidePanelClosed {
+    width: 0;
+}
+
+.sidePanelOpened {
+    width: 50vw;
+}
+
 #close-button {
     z-index: 9999;
 }
 .sidePanel a {
     text-decoration: none;
-    display: block;
 }
 
 .sidePanel a:hover, .offcanvas a:focus{
@@ -41,70 +47,48 @@
 }
 
 
-/* === sidepanel description list === */
-/*dl*/
-.sp_list {
-    font-size: 1.2rem;
-    width: 100%;
-}
-/*dt*/
-.sp_logo {
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    z-index: 1;
-}
+/* === SidePanel Nav Bar === */
 
-.sp_logo img {
-    margin: 0 auto;
-    height: auto;
-    width: 66%;
-}
-/*dd*/
-
-.sp_item {
-    color: rgb(29, 29, 29);
+.navBar {
+    list-style-type: none;
     margin: 0;
     padding: 0;
-    position: relative;
+    overflow: hidden;
+    height:54px;
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #eaeaea;
+    color: white;
 }
-.sp_item a {
+
+.navItem {
+    display: inline;
+    position: relative;
+    float: left;
     color: rgb(29, 29, 29);
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    height: 54px;
+}
+
+.navItem a {
+    display: block;
+    height: 54px;
+    color: rgb(29, 29, 29);
+    text-align: center;
+    vertical-align: middle;
     cursor: pointer;
     transition: color .25s, background .25s;
     text-decoration: none;
 }
-.sp_item > a {
-    padding: .5rem 2rem;
-    align-items: center;
-    display: flex;
+
+.navItem img {
+    vertical-align: middle;
 }
 
-figure {
-    display:block;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 50px;
-    -webkit-margin-end: 50px;
-}
-/*figure*/
-.sp_icon {
-    margin-right: 1rem;
-    max-height: 4rem;
-    width: 4rem;
-    text-align:center;
-    overflow:hidden;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    z-index: 1;
-}
-
-.sp_icon img {
-    margin: 0 auto;
+.navIcon {
     height: 44px;
     width: 44px;
+    padding-top:5px;
+    padding-bottom:5px;
 }
-span
-dd_divider
-/* end of sidepanel description list */
