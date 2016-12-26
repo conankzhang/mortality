@@ -177,6 +177,10 @@
     padding: 2vw;
 }
 
+/*
+===== About Body =====
+*/
+
 #banner {
     position: relative;
     width: 100%;
@@ -197,6 +201,26 @@
     position: relative;
     cursor: default;
 }
+
+#link-label {
+    position: absolute;
+    text-align: right;
+    right: 4vw;
+    bottom: 2.5vw;
+    cursor:default;
+}
+
+#link-input {
+    position: absolute;
+    right: 3.7vw;
+    bottom: 0.6vw;
+    width: 120px;
+    cursor: text;
+}
+
+/*
+===== Updates Body =====
+*/
 
 #updatesContent {
   overflow:auto;
