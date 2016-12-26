@@ -9,8 +9,8 @@
     vertical-align: middle;
     height: 32px;
     width: 32px;
-    padding-top: 10px;
-    padding-bottom: 11px;
+    padding-top: 9px;
+    padding-bottom: 12px;
 }
 
 .sidePanelClosed {
@@ -53,8 +53,8 @@
     color: #4CAF50;
     height: 25px;
     width: 92px;
-    margin-top:10px;
-    margin-bottom:15px;
+    margin-top:12px;
+    margin-bottom:13px;
     border-radius: 10px;
     border: 2px solid #4CAF50;
     background-color: none;
@@ -69,8 +69,8 @@
     color: #4CAF50;
     height: 25px;
     width: 82px;
-    margin-top:10px;
-    margin-bottom:15px;
+    margin-top:12px;
+    margin-bottom:13px;
     border-radius: 10px;
     border: 2px solid #4CAF50;
     background-color: none;
@@ -109,6 +109,12 @@
     top: 0;
     right: 15px;
     z-index: 9999;
+}
+
+.sidePanel #close-button svg {
+    padding-top:10px;
+    height: 33px;
+    width: 33px;
 }
 
 
