@@ -5,6 +5,10 @@
  * Licensed under the MIT License
  */
 
+.sidePanelOpened {
+    width: 50vw;
+}
+
 .sidePanelClosed {
     height: 100%;
     width: 0;
@@ -18,19 +22,8 @@
     transition: 0.5s;
 }
 
-.sidePanelOpened {
-    width: 50vw;
-}
-
 .sidePanel a {
     text-decoration: none;
-}
-
-.sidePanel a:hover {
-    color: #03A9F4;
-}
-.sidePanel a:hover path {
-    fill: #03A9F4;
 }
 
 .sidePanel svg {
@@ -77,6 +70,10 @@
 
 .UnpressedButton span{
     color: rgb(34, 47, 81);
+}
+
+.UnpressedButton:hover path{
+    fill: #03A9F4;;
 }
 
 .UnpressedButton:hover span{
