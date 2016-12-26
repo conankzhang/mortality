@@ -100,11 +100,7 @@
 .sidePanel #contact-button:hover path {
     fill: white;
 }
-/*
-.sidePanel #contact-button:hover:after {
-    background: #4CAF50;
-}
-*/
+
 .sidePanel #contact-button svg {
     vertical-align: middle;
     height: 24px;
@@ -120,13 +116,6 @@
 .sidePanel a > span {
     line-height: 25px;
 }
-
-/*.sidePanel #contact-button:after {
-    content:'';
-    position:absolute;
-    top:10px;
-
-}*/
 
 .sidePanel #close-button {
     cursor: pointer;
