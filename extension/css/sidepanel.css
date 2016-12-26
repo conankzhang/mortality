@@ -36,6 +36,14 @@
     fill: #03A9F4;
 }
 
+.sidePanel svg {
+    vertical-align: middle;
+    height: 32px;
+    width: 32px;
+    padding-top: 9px;
+    padding-bottom: 12px;
+}
+
 /* === SidePanel Nav Bar === */
 
 .navBar {
