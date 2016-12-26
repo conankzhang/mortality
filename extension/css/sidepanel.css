@@ -5,14 +5,6 @@
  * Licensed under the MIT License
  */
 
-.sidePanel svg {
-    vertical-align: middle;
-    height: 32px;
-    width: 32px;
-    padding-top: 9px;
-    padding-bottom: 12px;
-}
-
 .sidePanelClosed {
     height: 100%;
     position: fixed;
@@ -42,6 +34,39 @@
 }
 .sidePanel a:hover path {
     fill: #03A9F4;
+}
+
+/* === SidePanel Nav Bar === */
+
+.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height:54px;
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #DADADA;
+    color: white;
+}
+
+.navBar li {
+    display: inline-block;
+    color: rgb(29, 29, 29);
+    font-size: 14px;
+}
+
+.navBar li a {
+    display: block;
+    padding-left: 10px;
+    color: rgb(29, 29, 29);
+    cursor: pointer;
+    transition: color .25s, background .25s;
+    text-decoration: none;
+}
+
+.navBar li span {
+    line-height: 55px;
+    margin-left: 1px;
 }
 
 .sidePanel #feedback-button {
@@ -115,38 +140,4 @@
     padding-top:10px;
     height: 33px;
     width: 33px;
-}
-
-
-/* === SidePanel Nav Bar === */
-
-.navBar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    height:54px;
-    background-color: #F2F2F2;
-    border-bottom: 1px solid #DADADA;
-    color: white;
-}
-
-.navBar li {
-    display: inline-block;
-    color: rgb(29, 29, 29);
-    font-size: 14px;
-}
-
-.navBar li a {
-    display: block;
-    padding-left: 10px;
-    color: rgb(29, 29, 29);
-    cursor: pointer;
-    transition: color .25s, background .25s;
-    text-decoration: none;
-}
-
-.navBar li span {
-    line-height: 55px;
-    margin-left: 1px;
 }
