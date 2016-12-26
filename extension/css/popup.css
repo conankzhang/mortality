@@ -22,22 +22,6 @@
   border-radius: 0.5vw;
 }
 
-hr {
-    border: 0;
-    position: absolute;
-    height: 1px;
-    background: #333;
-    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
-    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc);
-    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc);
-    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc);
-}
-
-#banner-hr {
-  width:38vw;
-  left:1vw;
-  top:9.8vw;
-}
 
 #button-hr {
   width:8vw;
@@ -49,19 +33,9 @@ a:visited {
   color:blue;
 }
 
-.popup-content {
-	position: absolute;
-  cursor: default;
-	top: 11vw;
-	left: 1.5vw;
-	height:17.5vw;
-	width:28vw;
-}
 
-#main-image {
-	width: 39.2vw;
-	height: 9.2vw;
-}
+
+
 
 #link-label {
 	position: absolute;

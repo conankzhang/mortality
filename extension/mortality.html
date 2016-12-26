@@ -60,8 +60,6 @@
   <!--</a>-->
 
   <div id="info-popup" class="white-popup mfp-with-anim mfp-hide">
-    <img id="main-image" src="assets/popup.png">
-    <hr id="banner-hr">
     <div id="content-container">
       <button id="about-button">About</button>
       <button id="updates-button">Updates</button>
@@ -133,7 +131,9 @@
 </script>
 
 <script id="about-template" type="text/x-handlebars-template">
-  <div id="about" class="popup-content">
+  <img id="banner" src="assets/popup.png">
+  <hr id="banner-hr">
+  <div id="aboutContent">
     Mortality is a new tab extension that reminds you of your precise age.<br>
     A bitter-sweet motivational tool; it illustrates how little time we have.<br>
     Circles represent months, for the average lifespan of 80 years.<br>
