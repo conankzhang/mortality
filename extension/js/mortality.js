@@ -223,14 +223,14 @@
     {
       document.body.style.backgroundColor = "#F5F5F5";
       document.body.style.color = "#424242";
-      setBlackInfoButton();
+      // setBlackInfoButton();
       whiteFlag = "YES";
     }
     else
     {
       document.body.style.backgroundColor = "#1d1d1d";
       document.body.style.color = "#eff4ff";
-      setWhiteInfoButton();
+      // setWhiteInfoButton();
       blackFlag = "YES";
     }
 
@@ -854,7 +854,7 @@ function animate(theta, radius) {
       if(localStorage.getItem("dob")===null)
       {
         $("#cancel-button").toggle();
-        $("#info-button")[0].click();
+        $("#menu-button")[0].click();
       }
     });
 })(jQuery);

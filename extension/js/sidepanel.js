@@ -43,7 +43,7 @@ $('#close-button').click(function()
   closeNav();
 });
 
-$('#info-button').click(function(e)
+$('#menu-button').click(function(e)
 {
   openNav();
   e.stopPropagation();
