@@ -152,7 +152,7 @@
     line-height: 25px;
 }
 
-.sidePanel #close-button {
+.sidePanel #closeButton {
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -160,7 +160,7 @@
     z-index: 9999;
 }
 
-.sidePanel #close-button svg {
+.sidePanel #closeButton svg {
     padding-top:10px;
     height: 33px;
     width: 33px;

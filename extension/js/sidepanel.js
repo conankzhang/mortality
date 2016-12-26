@@ -38,7 +38,7 @@ $('#main').click(function() {
   closeNav();
 });
 
-$('#close-button').click(function()
+$('#closeButton').click(function()
 {
   closeNav();
 });
