@@ -220,6 +220,14 @@ ul {
 #menu-button {
   position: fixed;
   left: 15px;
-  top: 7px;
+  top: 15px;
   cursor: pointer;
+}
+
+#menu-svg path {
+  fill: #FFFFFF;
+}
+
+#menu-svg:hover path {
+  fill: #A1A1A1;
 }
