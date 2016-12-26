@@ -175,9 +175,9 @@
 
 #sidepanelBody {
     position: absolute;
-    width: 45vw;
+    width: 46vw;
     height: 80vh;
-    padding: 5vh 2.5vw;
+    padding: 2vw;
 }
 
 #banner {
