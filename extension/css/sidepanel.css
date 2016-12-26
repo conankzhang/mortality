@@ -175,7 +175,7 @@
 
 #sidepanelBody {
     position: absolute;
-    width: 100%-50px;
-    height: 100%-50px;
-    padding: 50px;
+    width: 45vw;
+    height: 80vh;
+    padding: 5vh 2.5vw;
 }
