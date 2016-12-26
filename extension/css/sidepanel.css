@@ -200,3 +200,12 @@
     position: relative;
     cursor: default;
 }
+
+#updatesContent {
+  overflow:auto;
+}
+
+.version {
+  font-weight: bold;
+  font-size:1vw;
+}

@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/sidepanel.css">
-  <!--link rel="stylesheet" href="css/popup.css"-->
   <link rel="stylesheet" href="css/settings.css">
   <link rel="stylesheet" href="css/countdown.css">
 </head>
@@ -72,8 +71,6 @@
       <form action="https://chrome.google.com/webstore/detail/mortality/eeedcpdcehnikgkhbobmkjcipjhlbmpn/support" target="_blank">
         <button id="feedback-button">Feedback</button>
       </form>
-      <label id="link-label" for="link-input">Copy Link to Share ^^</label>
-      <input id="link-input" type="text" value="http://goo.gl/vADzdb" class="field left" readonly>
 
       <div id="popup-body"></div>
     </div>
@@ -151,10 +148,12 @@
     Get busy living, or get busy dying.<br>
     You can never go back :)
   </div>
+  <label id="link-label" for="link-input">Copy Link to Share ^^</label>
+  <input id="link-input" type="text" value="http://goo.gl/vADzdb" class="field left" readonly>
 </script>
 
 <script id="updates-template" type="text/x-handlebars-template">
-  <div id="updates" class="popup-content">
+  <div id="updatesContent">
     <div class="version">Feedback is Appreciated ^^</div>
     <div id="v4.1.0" class="version">Version 4.1.0 [10/31/2016]</div>
     <ul>
