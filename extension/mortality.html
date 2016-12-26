@@ -17,35 +17,33 @@
 
 <div id="theSidePanel" class="sidePanel sidePanelClosed">
   <ul class="navBar">
-    <li>
-      <a>
-        <img class="svg" src="assets/Info.svg">
-        <span>About</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <img class="svg" src="assets/List.svg">
-        <span>Updates</span>
-      </a>
-    </li>
-    <li>
-      <a>
-        <img class="svg" src="assets/Settings.svg">
-        <span>Settings</span>
-      </a>
-    </li>
+    <li><a id="aboutButton" class="UnpressedButton">
+      <img class="svg" src="assets/Info.svg">
+      <span>About</span>
+    </a></li>
+    <li><a id="updatesButton" class="UnpressedButton">
+      <img class="svg" src="assets/List.svg">
+      <span>Updates</span>
+    </a></li>
+    <li><a id="settingsButton" class="UnpressedButton">
+      <img class="svg" src="assets/Settings.svg">
+      <span>Settings</span>
+    </a></li>
   </ul>
+
   <a id="feedback-button" class="right-navButtons">
     <img class="svg" src="assets/InboxIn.svg">
     <span>Feedback</span>
   </a>
-
   <a id="contact-button" class="right-navButtons">
     <img class="svg" src="assets/send.svg">
     <span>Matt Ao</span>
   </a>
+
   <a id="close-button"><img class="svg" src="assets/CircleFilledClose.svg"></a>
+
+  <!-- BODY START -->
+  <div id="sidepanelBody"></div>
 
 </div>
 
@@ -81,7 +79,6 @@
 
       <div id="popup-body"></div>
     </div>
-    <div id="side-container"></div>
   </div>
 
 
@@ -135,7 +132,7 @@
 	</div>
 </script>
 
-<script id="about-popup-template" type="text/x-handlebars-template">
+<script id="about-template" type="text/x-handlebars-template">
   <div id="about" class="popup-content">
     Mortality is a new tab extension that reminds you of your precise age.<br>
     A bitter-sweet motivational tool; it illustrates how little time we have.<br>
@@ -156,7 +153,7 @@
   </div>
 </script>
 
-<script id="updates-popup-template" type="text/x-handlebars-template">
+<script id="updates-template" type="text/x-handlebars-template">
   <div id="updates" class="popup-content">
     <div class="version">Feedback is Appreciated ^^</div>
     <div id="v4.1.0" class="version">Version 4.1.0 [10/31/2016]</div>
@@ -242,7 +239,7 @@
   </div>
 </script>
 
-<script id="settings-popup-template" type="text/x-handlebars-template">
+<script id="settings-template" type="text/x-handlebars-template">
 	<form id="options_form">
     <label id="dob-text" class="label-text" for="dob-input">When were you born?</label>
     <input type="date" id="dob-input" class="input-textfield">

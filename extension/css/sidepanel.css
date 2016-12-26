@@ -7,6 +7,7 @@
 
 .sidePanelClosed {
     height: 100%;
+    width: 0;
     position: fixed;
     z-index: 10;
     top: 0;
@@ -15,10 +16,6 @@
     color: black;
     overflow-x: hidden;
     transition: 0.5s;
-}
-
-.sidePanelClosed {
-    width: 0;
 }
 
 .sidePanelOpened {
@@ -44,7 +41,9 @@
     padding-bottom: 12px;
 }
 
-/* === SidePanel Nav Bar === */
+/*
+===== SidePanel Nav Bar =====
+*/
 
 .navBar {
     list-style-type: none;
@@ -68,8 +67,28 @@
     padding-left: 10px;
     color: rgb(29, 29, 29);
     cursor: pointer;
-    transition: color .25s, background .25s;
+    /*transition: color 1s, background 1s;*/
     text-decoration: none;
+}
+
+.UnpressedButton path {
+    fill: rgb(34, 47, 81);
+}
+
+.UnpressedButton span{
+    color: rgb(34, 47, 81);
+}
+
+.UnpressedButton:hover span{
+    color: #03A9F4;;
+}
+
+.PressedButton path {
+    fill: #03A9F4;
+}
+
+.PressedButton span {
+    color: #03A9F4;
 }
 
 .navBar li span {

@@ -47,4 +47,108 @@ $('#menu-button').click(function(e)
 {
   openNav();
   e.stopPropagation();
+
+  if(localStorage.getItem("dob")===null)
+  {
+    setButtonPressed(2);
+  }
+  //UPDATE WHEN REVVING VERSIONS
+  else if(localStorage.getItem("version")=="4.1.0")
+  {
+    var lastOptionView = localStorage.getItem("lastOptionView");
+    if( lastOptionView === null )
+    {
+      lastOptionView = 0;
+    }
+    setButtonPressed(lastOptionView);
+  }
+  else
+  {
+    setButtonPressed(1);
+    localStorage.setItem("version", "4.1.0");
+  }
+
+  // if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
+  // {
+  //   document.getElementById("info-img").src = "assets/infoWhite.png"
+  // }
+  // else if(document.getElementById("info-img").src.indexOf("assets/infoBlackAlert.png") > -1)
+  // {
+  //   document.getElementById("info-img").src = "assets/infoBlack.png"
+  // }
 });
+
+
+///////////////////////
+// SidePanel Navigation
+///////////////////////
+
+$("#about-button").click(function()
+{
+  unlessDOBMissingGoToButtonNumber(0);
+});
+
+$("#updates-button").click(function()
+{
+  unlessDOBMissingGoToButtonNumber(1);
+});
+
+$("#settings-button").click(function()
+{
+  unlessDOBMissingGoToButtonNumber(2);
+});
+
+$("#countdown-button").click(function()
+{
+  unlessDOBMissingGoToButtonNumber(3);
+});
+
+function unlessDOBMissingGoToButtonNumber(button)
+{
+  localStorage.setItem("lastOptionView", button);
+
+  if(localStorage.getItem("dob")===null)
+  {
+    setButtonPressed(2);
+  }
+  else
+  {
+    setButtonPressed(button);
+  }
+}
+
+function setButtonPressed(button)
+{
+  var aboutButton = document.querySelector("#aboutButton");
+  var updatesButton = document.querySelector("#updatesButton");
+  var settingsButton = document.querySelector("#settingsButton");
+  var sidepanelBody = document.querySelector('#sidepanelBody');
+
+  if (button == 0)
+  {
+    sidepanelBody.innerHTML = window.app.getTemplateScript('about')();
+    aboutButton.className = "PressedButton";
+    updatesButton.className = "UnpressedButton";
+    settingsButton.className = "UnpressedButton";
+  }
+  else if (button == 1)
+  {
+    sidepanelBody.innerHTML = window.app.getTemplateScript('updates')();
+    aboutButton.className = "UnpressedButton";
+    updatesButton.className = "PressedButton";
+    settingsButton.className = "UnpressedButton";
+  }
+  else
+  {
+    sidepanelBody.innerHTML = window.app.getTemplateScript('settings')();
+    aboutButton.className = "UnpressedButton";
+    updatesButton.className = "UnpressedButton";
+    settingsButton.className = "PressedButton";
+
+    setupSettings(window.app.dob, window.app.dobMinutes);
+  }
+  // if(localStorage.getItem("dob")===null)
+  // {
+  //   $("#cancel-button").toggle();
+  // }
+}
