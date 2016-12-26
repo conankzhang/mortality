@@ -33,7 +33,7 @@
     text-decoration: none;
 }
 
-.navBar a:hover, .offcanvas a:focus, .navBar a:hover path{
+.sidePanel a:hover, .offcanvas a:focus, .navBar a:hover path{
     color: #03A9F4;
     fill: #03A9F4;
 }
