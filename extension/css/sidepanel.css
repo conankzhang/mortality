@@ -48,11 +48,11 @@
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: 170px;
+    right: 153px;
     font-size: 12;
     color: #4CAF50;
     height: 25px;
-    width: 90px;
+    width: 92px;
     margin-top:10px;
     margin-bottom:15px;
     border-radius: 10px;
@@ -64,11 +64,11 @@
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: 70px;
+    right: 60px;
     font-size: 12;
     color: #4CAF50;
     height: 25px;
-    width: 80px;
+    width: 82px;
     margin-top:10px;
     margin-bottom:15px;
     border-radius: 10px;
@@ -90,8 +90,9 @@
     vertical-align: middle;
     height: 24px;
     width: 24px;
+    margin-left:3px;
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 2px;
 }
 
 .sidePanel .right-navButtons svg path {
