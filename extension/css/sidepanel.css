@@ -51,30 +51,13 @@
     right: 170px;
     font-size: 12;
     color: #4CAF50;
-    z-index: 9999;
-}
-
-.sidePanel #feedback-button svg {
-    vertical-align: middle;
-    height: 24px;
-    width: 24px;
-    padding-top: 13px;
-    padding-bottom: 16px;
-}
-
-.sidePanel #feedback-button svg path {
-    fill: #4CAF50;
-}
-
-.sidePanel #feedback-button:after {
-    content:'';
-    position:absolute;
-    top:10px;
-    right:-13px;
-    width:120%;
-    height:50%;
+    height: 25px;
+    width: 90px;
+    margin-top:10px;
+    margin-bottom:15px;
     border-radius: 10px;
     border: 2px solid #4CAF50;
+    background-color: none;
 }
 
 .sidePanel #contact-button {
@@ -93,15 +76,17 @@
     background-color: none;
 }
 
-.sidePanel #contact-button:hover {
-    color: white;
+.sidePanel .right-navButtons:hover {
     background-color: #4CAF50;
 }
-.sidePanel #contact-button:hover path {
+.sidePanel .right-navButtons:hover span {
+    color: white;
+}
+.sidePanel .right-navButtons:hover path {
     fill: white;
 }
 
-.sidePanel #contact-button svg {
+.sidePanel .right-navButtons svg {
     vertical-align: middle;
     height: 24px;
     width: 24px;
@@ -109,11 +94,11 @@
     padding-bottom: 0;
 }
 
-.sidePanel #contact-button svg path {
+.sidePanel .right-navButtons svg path {
     fill: #4CAF50;
 }
 
-.sidePanel a > span {
+.sidePanel .right-navButtons span {
     line-height: 25px;
 }
 
