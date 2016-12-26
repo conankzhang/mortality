@@ -5,7 +5,14 @@
  * Licensed under the MIT License
  */
 
-/* === Slide Panel === */
+#theSidePanel svg {
+    vertical-align: middle;
+    height: 32px;
+    width: 32px;
+    padding-top: 10px;
+    padding-bottom: 11px;
+}
+
 .sidePanelClosed {
     height: 100%;
     position: fixed;
@@ -26,15 +33,14 @@
     width: 50vw;
 }
 
-#close-button {
-    z-index: 9999;
-}
 .sidePanel a {
     text-decoration: none;
 }
 
-.sidePanel a:hover, .offcanvas a:focus, .navBar a:hover path{
+.sidePanel a:hover {
     color: #03A9F4;
+}
+.sidePanel a:hover path {
     fill: #03A9F4;
 }
 
@@ -42,8 +48,9 @@
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: 25px;
+    right: 15px;
     font-size: 36px;
+    z-index: 9999;
 }
 
 
@@ -73,14 +80,6 @@
     cursor: pointer;
     transition: color .25s, background .25s;
     text-decoration: none;
-}
-
-.navBar li svg {
-    vertical-align: middle;
-    height: 32px;
-    width: 32px;
-    padding-top: 10px;
-    padding-bottom: 11px;
 }
 
 .navBar li span {
