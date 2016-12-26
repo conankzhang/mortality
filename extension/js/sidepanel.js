@@ -1,4 +1,5 @@
-function openNav() {
+function openNav()
+{
   document.getElementById("theSidePanel").style.width = "50vw";
   document.getElementById("main").style.marginLeft = "50vw";
   $('.timer').animate({
@@ -16,7 +17,8 @@ function openNav() {
   },1000);
 }
 
-function closeNav() {
+function closeNav()
+{
   document.getElementById("theSidePanel").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
   $('.timer').animate({
@@ -34,7 +36,8 @@ function closeNav() {
   },1000);
 }
 
-$('#main').click(function() {
+$('#main').click(function()
+{
   closeNav();
 });
 
