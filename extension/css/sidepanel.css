@@ -33,8 +33,9 @@
     text-decoration: none;
 }
 
-.sidePanel a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+.navBar a:hover, .offcanvas a:focus, .navBar a:hover path{
+    color: #03A9F4;
+    fill: #03A9F4;
 }
 
 .sidePanel #close-button {
@@ -43,7 +44,6 @@
     top: 0;
     right: 25px;
     font-size: 36px;
-    margin-left: 50px;
 }
 
 
@@ -75,7 +75,7 @@
     text-decoration: none;
 }
 
-.navBar li img {
+.navBar li svg {
     vertical-align: middle;
     height: 32px;
     width: 32px;
