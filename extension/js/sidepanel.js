@@ -86,24 +86,19 @@ $('#menu-button').click(function(e)
 // SidePanel Navigation
 ///////////////////////
 
-$("#about-button").click(function()
+$("#aboutButton").click(function()
 {
   unlessDOBMissingGoToButtonNumber(0);
 });
 
-$("#updates-button").click(function()
+$("#updatesButton").click(function()
 {
   unlessDOBMissingGoToButtonNumber(1);
 });
 
-$("#settings-button").click(function()
+$("#settingsButton").click(function()
 {
   unlessDOBMissingGoToButtonNumber(2);
-});
-
-$("#countdown-button").click(function()
-{
-  unlessDOBMissingGoToButtonNumber(3);
 });
 
 function unlessDOBMissingGoToButtonNumber(button)
