@@ -153,87 +153,89 @@
 </script>
 
 <script id="updates-template" type="text/x-handlebars-template">
-  <div id="updatesContent">
-    <div class="version">Feedback is Appreciated ^^</div>
-    <div id="v4.1.0" class="version">Version 4.1.0 [10/31/2016]</div>
-    <ul>
-      <li>You can make the Countdown count daily to a specific time, or something like the end of the workday.</li>
-      <li>You can now choose a Time Up Message.</li>
-      <li>Couple of bug fixes that came through from yesterday, Thanks for the bug reports and feedback!</li>
-      <li>I'll make the UX bareable soon, sit tight :)</li>
-    </ul>
-    <div id="v4.0.0" class="version">Major Version 4 [10/30/2016]</div>
-    <ul>
-      <li>This is a big one, added the highly requested Countdown.</li>
-      <li>There is a new panel where you can toggle it ON/OFF.</li>
-      <li>Fill out a survey to guess your deathdate, Data is pulled from World Health Organization.</li>
-      <li>Or specify an exact date if you have a deadline, event, or if you have an idea of when you're gonna die.</li>
-      <li>Fixed a lot of edge cases with the month/day calculation, Thanks to everyone who gave feedback on bugs!</li>
-      <li>It's very likely I am still missing edge cases, I promise I'll be more active on fixing those quickly :)</li>
-      <li>Yes sorry I know my UX is horrible.  You'll figure it out ^^</li>
-      <li>I kinda rushed to push this out, but will polish soon.</li>
-      <li>#agile</li>
-    </ul>
-    <div id="v3.4.2" class="version">Version 3.4.2 [11/12/2015]</div>
-    <ul>
-      <li>Bugs fixed with month/day calculations from last release-- though I may have missed some cases, please let me know if your age doesn't seem right.</li>
-      <li>I have been watching the surveys!  Default is now Dark.</li>
-      <li>I'm changing the themes again in the next release, so if you would like changes, please fill out the survey below.</li>
-    </ul>
-    <div id="v3.4.1" class="version">Version 3.4.1 [11/11/2015]</div>
-    <ul>
-      <li>I want to update themes!  Please fill out <a href="http://goo.gl/forms/61S5Mr3g65">this survey</a>.</li>
-      <li>Numbers now pop when they go up.</li>
-      <li>Months & Days now what you expect.</li>
-      <li>Updated font styling.</li>
-      <li>Fixed a few bugs you guys found :)</li>
-    </ul>
-    <div id="v3.3.1" class="version">Version 3.3.1 [5/16/2015]</div>
-    <ul>
-      <li>Fix for issue with positive timezone offsets from UTC.</li>
-    </ul>
-    <div id="v3.3.0" class="version">Version 3.3.0 [4/5/2015]</div>
-    <ul>
-      <li>You can now show squares instead of circles for Chapters.</li>
-      <li>Fix settings sizing for smaller screens.</li>
-      <li>Add Cupid, Rasta, Sky themes. Changed Retro again.</li>
-      <li>Rephrase settings for clarity.</li>
-      <li>Added an update bubble.</li>
-    </ul>
-    <div id="v3.2.0" class="version">Version 3.2.0 [3/26/2015]</div>
-    <ul>
-      <li>Actually following reasonable version numbers now.</li>
-      <li>Ability to specify precision of your age.</li>
-      <li>Can hide circles.</li>
-      <li>Can show current time instead of your age.</li>
-      <li>Added fields to allow you to change the length of your chapters.</li>
-      <li>Added an eighth chapter, it is defaulted to 0 years.</li>
-      <li>Update Themes.</li>
-      <li>Refactoring to decrease burden of computations.</li>
-    </ul>
-    <div id="v3.0.0" class="version">Major Version 3 [1/8/2015]</div>
-    <ul>
-      <li>Fix for the current month circle filling the wrong way.</li>
-      <li>Add the ability to remove the age timer.</li>
-      <li>Fix for cancel button inconsistency.</li>
-      <li>Changing formatting for settings & info.</li>
-    </ul>
-    <div id="v2.0.0" class="version">Major Version 2 [12/25/2014]</div>
-    <ul>
-      <li>Ability to add time to birth date.</li>
-      <li>Cancel button in settings.</li>
-      <li>Info button on bottom left.</li>
-      <li>Info popup you are looking at right now.</li>
-      <li>Fix for leap days miscalculating age.</li>
-      <li>Make "Retro" less ugly. If you have a theme idea let me know.</li>
-    </ul>
-    <div id="v1.0.0" class="version">Major Version 1 [12/25/2015]</div>
-    <ul>
-      <li>Add birthday.</li>
-      <li>Circles indicating months lived.</li>
-      <li>Circles split into chapters.</li>
-      <li>Themes added.</li>
-    </ul>
+  <div id="updatesContainer">
+    <div id="updatesContent">
+      <div class="version">Feedback is Appreciated ^^</div>
+      <div id="v4.1.0" class="version">Version 4.1.0 [10/31/2016]</div>
+      <ul>
+        <li>You can make the Countdown count daily to a specific time, or something like the end of the workday.</li>
+        <li>You can now choose a Time Up Message.</li>
+        <li>Couple of bug fixes that came through from yesterday, Thanks for the bug reports and feedback!</li>
+        <li>I'll make the UX bareable soon, sit tight :)</li>
+      </ul>
+      <div id="v4.0.0" class="version">Major Version 4 [10/30/2016]</div>
+      <ul>
+        <li>This is a big one, added the highly requested Countdown.</li>
+        <li>There is a new panel where you can toggle it ON/OFF.</li>
+        <li>Fill out a survey to guess your deathdate, Data is pulled from World Health Organization.</li>
+        <li>Or specify an exact date if you have a deadline, event, or if you have an idea of when you're gonna die.</li>
+        <li>Fixed a lot of edge cases with the month/day calculation, Thanks to everyone who gave feedback on bugs!</li>
+        <li>It's very likely I am still missing edge cases, I promise I'll be more active on fixing those quickly :)</li>
+        <li>Yes sorry I know my UX is horrible.  You'll figure it out ^^</li>
+        <li>I kinda rushed to push this out, but will polish soon.</li>
+        <li>#agile</li>
+      </ul>
+      <div id="v3.4.2" class="version">Version 3.4.2 [11/12/2015]</div>
+      <ul>
+        <li>Bugs fixed with month/day calculations from last release-- though I may have missed some cases, please let me know if your age doesn't seem right.</li>
+        <li>I have been watching the surveys!  Default is now Dark.</li>
+        <li>I'm changing the themes again in the next release, so if you would like changes, please fill out the survey below.</li>
+      </ul>
+      <div id="v3.4.1" class="version">Version 3.4.1 [11/11/2015]</div>
+      <ul>
+        <li>I want to update themes!  Please fill out <a href="http://goo.gl/forms/61S5Mr3g65">this survey</a>.</li>
+        <li>Numbers now pop when they go up.</li>
+        <li>Months & Days now what you expect.</li>
+        <li>Updated font styling.</li>
+        <li>Fixed a few bugs you guys found :)</li>
+      </ul>
+      <div id="v3.3.1" class="version">Version 3.3.1 [5/16/2015]</div>
+      <ul>
+        <li>Fix for issue with positive timezone offsets from UTC.</li>
+      </ul>
+      <div id="v3.3.0" class="version">Version 3.3.0 [4/5/2015]</div>
+      <ul>
+        <li>You can now show squares instead of circles for Chapters.</li>
+        <li>Fix settings sizing for smaller screens.</li>
+        <li>Add Cupid, Rasta, Sky themes. Changed Retro again.</li>
+        <li>Rephrase settings for clarity.</li>
+        <li>Added an update bubble.</li>
+      </ul>
+      <div id="v3.2.0" class="version">Version 3.2.0 [3/26/2015]</div>
+      <ul>
+        <li>Actually following reasonable version numbers now.</li>
+        <li>Ability to specify precision of your age.</li>
+        <li>Can hide circles.</li>
+        <li>Can show current time instead of your age.</li>
+        <li>Added fields to allow you to change the length of your chapters.</li>
+        <li>Added an eighth chapter, it is defaulted to 0 years.</li>
+        <li>Update Themes.</li>
+        <li>Refactoring to decrease burden of computations.</li>
+      </ul>
+      <div id="v3.0.0" class="version">Major Version 3 [1/8/2015]</div>
+      <ul>
+        <li>Fix for the current month circle filling the wrong way.</li>
+        <li>Add the ability to remove the age timer.</li>
+        <li>Fix for cancel button inconsistency.</li>
+        <li>Changing formatting for settings & info.</li>
+      </ul>
+      <div id="v2.0.0" class="version">Major Version 2 [12/25/2014]</div>
+      <ul>
+        <li>Ability to add time to birth date.</li>
+        <li>Cancel button in settings.</li>
+        <li>Info button on bottom left.</li>
+        <li>Info popup you are looking at right now.</li>
+        <li>Fix for leap days miscalculating age.</li>
+        <li>Make "Retro" less ugly. If you have a theme idea let me know.</li>
+      </ul>
+      <div id="v1.0.0" class="version">Major Version 1 [12/25/2015]</div>
+      <ul>
+        <li>Add birthday.</li>
+        <li>Circles indicating months lived.</li>
+        <li>Circles split into chapters.</li>
+        <li>Themes added.</li>
+      </ul>
+    </div>
   </div>
 </script>
 
