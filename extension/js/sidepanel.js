@@ -34,6 +34,7 @@ function closeNav()
   $('.timer-labels').animate({
     'margin-left':'-1vw'
   },1000);
+  document.getElementById("updateBadge").style.display = "none";
 }
 
 $('#main').click(function()

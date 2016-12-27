@@ -12,10 +12,15 @@
     this.appElement = appElement;
     this.load();
 
-    // CHANGE Previous Version /////////
-    localStorage.removeItem("infoSeen");
-    localStorage.removeItem("update-3.1.1");
-    ////////////////////////////////////
+    /* #VERSIONING ===================================================*/
+    if(localStorage.getItem("version") != "4.1.0") {
+      document.getElementById("updateBadge").style.display = "block";
+    }
+    else
+    {
+      document.getElementById("updateBadge").style.display = "none";
+    }
+    /*================================================================*/
 
     this.initializeTimer();
   };
@@ -217,9 +222,6 @@
 
   App.fn.initializeTimer = function()
   {
-    if(localStorage.getItem("version") != "4.1.0") {
-      document.getElementById("updateBadge").style.display = "none";
-    }
     var savedTheme = localStorage.getItem("colorTheme");
     var whiteFlag, blackFlag;
     if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
