@@ -309,27 +309,6 @@ function setDropdownWithCurrentTheme(){
   }
 }
 
-
-function setWhiteInfoButton()
-{
-  if(localStorage.getItem("version") == "4.1.0") {
-    document.getElementById("info-img").src = "assets/infoWhite.png";
-  }
-  else {
-    document.getElementById("info-img").src = "assets/infoWhiteAlert.png";
-  }
-}
-
-function setBlackInfoButton()
-{
-  if(localStorage.getItem("version") == "4.1.0") {
-    document.getElementById("info-img").src = "assets/infoBlack.png";
-  }
-  else {
-    document.getElementById("info-img").src = "assets/infoBlackAlert.png";
-  }
-}
-
 function showTimeSelectorIf(isChecked)
 {
   if (isChecked) {

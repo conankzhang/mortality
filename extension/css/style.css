@@ -172,16 +172,36 @@ ul {
   cursor: pointer;
 }
 
-#menu-button:hover div {
-  background: rgba(176, 7, 10, 1);
+.WhiteMenu svg path {
+  fill: #FFFFFF;
 }
 
-#menu-button:hover svg path {
+.WhiteMenu:hover svg path {
   fill: #A1A1A1;
 }
 
-#menu-svg path {
-  fill: #FFFFFF;
+.WhiteMenu div {
+  background: #FF1744;
+}
+
+.WhiteMenu:hover div {
+  background: #B71C1C;
+}
+
+.BlackMenu svg path {
+  fill: #212121;
+}
+
+.BlackMenu:hover svg path {
+  fill: #9E9E9E;
+}
+
+.BlackMenu div {
+  background: #D50000;
+}
+
+.BlackMenu:hover div {
+  background: #FF1744;
 }
 
 #updateBadge {
@@ -191,5 +211,4 @@ ul {
   width: 10px;
   height: 10px;
   -webkit-border-radius: 25px;
-  background: rgb(246, 45, 47);
 }

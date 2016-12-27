@@ -217,20 +217,23 @@
 
   App.fn.initializeTimer = function()
   {
+    if(localStorage.getItem("version") != "4.1.0") {
+      document.getElementById("updateBadge").style.display = "none";
+    }
     var savedTheme = localStorage.getItem("colorTheme");
     var whiteFlag, blackFlag;
     if( savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky" )
     {
       document.body.style.backgroundColor = "#F5F5F5";
       document.body.style.color = "#424242";
-      // setBlackInfoButton();
+      document.querySelector("#menu-button").className = "BlackMenu";
       whiteFlag = "YES";
     }
     else
     {
       document.body.style.backgroundColor = "#1d1d1d";
       document.body.style.color = "#eff4ff";
-      // setWhiteInfoButton();
+      document.querySelector("#menu-button").className = "WhiteMenu";
       blackFlag = "YES";
     }
 
