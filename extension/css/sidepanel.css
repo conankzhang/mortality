@@ -73,19 +73,27 @@
 }
 
 .UnpressedButton:hover path{
-    fill: #03A9F4;;
+    fill: #00B0FF;;
 }
 
 .UnpressedButton:hover span{
-    color: #03A9F4;;
+    color: #00B0FF;;
 }
 
 .PressedButton path {
-    fill: #03A9F4;
+    fill: #0091EA;
 }
 
 .PressedButton span {
-    color: #03A9F4;
+    color: #0091EA;
+}
+
+.PressedButton:hover path {
+    fill: #00B0FF;
+}
+
+.PressedButton:hover span {
+    color: #00B0FF;
 }
 
 .navBar li span {
