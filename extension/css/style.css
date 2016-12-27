@@ -59,9 +59,7 @@ button {
 }
 
 label {
-  font-size: 1vw;
   cursor: pointer;
-  position: relative;
 }
 
 /*updates list
