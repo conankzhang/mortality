@@ -244,3 +244,14 @@
     font-weight: bold;
     font-size:1vw;
 }
+
+/*
+===== Settings Body =====
+*/
+
+.segmented-control {
+    display:block;
+    margin: 0 auto;
+    width: 300px;
+    color: #0288D1;
+}
