@@ -240,57 +240,64 @@
 </script>
 
 <script id="settings-template" type="text/x-handlebars-template">
-  <div class="segmented-control">
-    <input type="radio" name="sc-2-1" id="sc-2-1-1" checked="">
-    <input type="radio" name="sc-2-1" id="sc-2-1-2">
-    <label for="sc-2-1-1" data-value="Show Time Spent">Show Time Spent</label>
-    <label for="sc-2-1-2" data-value="Show Time Left">Show Time Left</label>
-  </div>
-
-	<form id="options_form">
-    <label id="dob-text" class="label-text" for="dob-input">When were you born?</label>
-    <input type="date" id="dob-input" class="input-textfield">
-
-    <div class="checkbox">
-      <input id="time-checkbox" type="checkbox">
-      <label for="time-checkbox" id="addTime-label">Add Time</label>
+  <div id="settingsContainer">
+    <div class="segmented-control">
+      <input type="radio" name="sc-2-1" id="sc-2-1-1" checked="">
+      <input type="radio" name="sc-2-1" id="sc-2-1-2">
+      <label for="sc-2-1-1" data-value="Show Time Spent">Show Time Spent</label>
+      <label for="sc-2-1-2" data-value="Show Time Left">Show Time Left</label>
     </div>
-    <label for="time-input"></label>
-    <input type="time" id="time-input" class="input-textfield">
 
-		<div id="theme-container">
-			<div>
+    <div id="dobContainer">
+      <div id="dobDateContainer">
+        <label id="dobLabel" for="dobInput">When were you born?</label>
+        <input id="dobInput" class="InputTextfield" type="date">
+      </div>
+
+      <div id="dobTimeContainer">
+        <div id="timeCheckboxContainer" class="Checkbox">
+          <input id="timeCheckbox" type="checkbox">
+          <label id="addTimeLabel" for="timeCheckbox">Add Time</label>
+        </div>
+        <input id="timeInput" class="InputTextfield" type="time">
+      </div>
+    </div>
+
+
+
+  	<div id="theme-container">
+  		<div>
         <label id="theme-text" class="label-text" for="theme-dropdown">Select Theme</label>
         <select id="theme-dropdown" class="input-textfield">
-					<option value="default">Default</option>
-					<option value="light">Light</option>
-					<option value="dawn">Dawn</option>
-					<option value="dusk">Dusk</option>
-					<option value="twilight">Twilight</option>
-					<option value="retro">Retro</option>
-					<option value="rainbowd">Rainbow-Dark</option>
-					<option value="rainbowl">Rainbow-Light</option>
+  				<option value="default">Default</option>
+  				<option value="light">Light</option>
+  				<option value="dawn">Dawn</option>
+  				<option value="dusk">Dusk</option>
+  				<option value="twilight">Twilight</option>
+  				<option value="retro">Retro</option>
+  				<option value="rainbowd">Rainbow-Dark</option>
+  				<option value="rainbowl">Rainbow-Light</option>
           <option value="cupid">Cupid</option>
           <option value="rasta">Rasta</option>
           <option value="sky">Sky</option>
-				</select>
-			</div>
-		</div>
+  			</select>
+  		</div>
+  	</div>
 
-		<div id="precision-container">
-			<div>
+  	<div id="precision-container">
+  		<div>
         <label id="precision-text" class="label-text" for="precision-dropdown">Select Precision</label>
-				<select id="precision-dropdown" class="input-textfield">
-					<option value="ms">Milliseconds</option>
-					<option value="sec">Seconds</option>
-					<option value="min">Minutes</option>
-					<option value="hour">Hours</option>
-					<option value="day">Days</option>
-					<option value="month">Months</option>
-					<option value="year">Years</option>
-				</select>
-			</div>
-		</div>
+  			<select id="precision-dropdown" class="input-textfield">
+  				<option value="ms">Milliseconds</option>
+  				<option value="sec">Seconds</option>
+  				<option value="min">Minutes</option>
+  				<option value="hour">Hours</option>
+  				<option value="day">Days</option>
+  				<option value="month">Months</option>
+  				<option value="year">Years</option>
+  			</select>
+  		</div>
+  	</div>
 
     <div class="checkbox">
       <input id="shapeCircle-checkbox" type="checkbox">
@@ -302,19 +309,19 @@
       <label for="shapeSquare-checkbox" id="shapeSquare-label">Squares</label>
     </div>
 
-		<div class="checkbox">
-			<input id="swapTimer-checkbox" type="checkbox">
-			<label for="swapTimer-checkbox" id="swapTimer-label">Show Current Time</label>
-		</div>
+  	<div class="checkbox">
+  		<input id="swapTimer-checkbox" type="checkbox">
+  		<label for="swapTimer-checkbox" id="swapTimer-label">Show Current Time</label>
+  	</div>
 
-		<div class="checkbox">
-			<input id="hideAge-checkbox" type="checkbox">
-			<label for="hideAge-checkbox" id="hideAge-label">Hide Age/Time</label>
-		</div>
-		<div class="checkbox">
-			<input id="hideCircles-checkbox" type="checkbox">
-			<label for="hideCircles-checkbox" id="hideCircles-label">Hide Life Progress</label>
-		</div>
+  	<div class="checkbox">
+  		<input id="hideAge-checkbox" type="checkbox">
+  		<label for="hideAge-checkbox" id="hideAge-label">Hide Age/Time</label>
+  	</div>
+  	<div class="checkbox">
+  		<input id="hideCircles-checkbox" type="checkbox">
+  		<label for="hideCircles-checkbox" id="hideCircles-label">Hide Life Progress</label>
+  	</div>
 
     <div id="chapter-label" class="label-text">
       Modify Length of Life Chapters (in Years):
@@ -351,7 +358,7 @@
       <button id="submit-button" class="submitButtonClass">Submit</button>
       <a id="cancel-button" class="cancelButtonClass">cancel</a>
     </span>
-	</form>
+  </div>
 </script>
 
 <script id="countdown-popup-template" type="text/x-handlebars-template">

@@ -485,17 +485,17 @@
 
   App.fn.saveDob = function()
   {
-    var dateInput = $('dob-input');
+    var dateInput = $('dobInput');
     //TODO: Show ERROR
     if( !dateInput.valueAsDate ) return;
 
     this.dob = dateInput.valueAsDate;
     localStorage.setItem("dob", this.dob.getTime()+(this.dob.getTimezoneOffset() * minuteMS));
 
-    var timeChecked = document.querySelector('input[id=time-checkbox]').checked;
+    var timeChecked = document.querySelector('input[id=timeCheckbox]').checked;
     if( timeChecked )
     {
-      var timeInput = $('time-input');
+      var timeInput = $('timeInput');
       if( !timeInput.valueAsDate ) return;
       var timeArray = timeInput.value.split(":");
       this.dobMinutes = timeArray[0]*60 + timeArray[1]*1;

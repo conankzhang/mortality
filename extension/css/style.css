@@ -32,24 +32,11 @@ body {
 }
 
 body, input {
-  display: -webkit-flex;
   font-family: 'Avenir', 'NUNITO', 'Museo Sans', 'Muli', 'helvetica neue', helvetica, arial, sans-serif;
 }
 
 a, button {
 outline: none;
-}
-
-input[type=checkbox] {
-    display: none;
-}
-
-input[type=checkbox]:checked + label:before {
-    content: "\2713";
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-    color: #000000;
-    text-align: center;
-    line-height: 1.5vw;
 }
 
 button {

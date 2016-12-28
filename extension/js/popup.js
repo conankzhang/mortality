@@ -101,49 +101,6 @@ function setupCountdown()
 
 }
 
-function setupSettings(dob, dobMinutes)
-{
-  loadCheckBoxes();
-
-  document.getElementById('dob-input').value = dob.yyyymmdd();
-  document.getElementById('time-input').value = getTimeStringFromMinutes(dobMinutes);
-  setDropdownWithCurrentTheme();
-
-  var savedPrecision = localStorage.getItem("precision");
-  if (savedPrecision != null) {
-    document.getElementById("precision-dropdown").value = savedPrecision;
-  }
-
-  var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
-  if( savedChapterLengths === null )
-  {
-    savedChapterLengths = [5,7,2,4,4,43,15,0];
-  }
-
-  $("#first-chapter-input").val(savedChapterLengths[0]);
-  $("#second-chapter-input").val(savedChapterLengths[1]);
-  $("#third-chapter-input").val(savedChapterLengths[2]);
-  $("#fourth-chapter-input").val(savedChapterLengths[3]);
-  $("#fifth-chapter-input").val(savedChapterLengths[4]);
-  $("#sixth-chapter-input").val(savedChapterLengths[5]);
-  $("#seventh-chapter-input").val(savedChapterLengths[6]);
-  $("#eighth-chapter-input").val(savedChapterLengths[7]);
-
-
-  $("#submit-button").click(function(){
-    window.app.saveDob();
-    saveTheme();
-    savePrecision();
-    saveChapterLengths();
-    $("#info-popup").magnificPopup('close');
-  });
-
-  $("#cancel-button").click(function(){
-    $("#info-popup").magnificPopup('close');
-  });
-}
-
-
 function loadCountdownTime()
 {
   var deathTime = localStorage.getItem("deathTime");
@@ -156,8 +113,6 @@ function loadCountdownTime()
   {
     document.getElementById('countdownTime-input').value = getTimeStringFromMinutes(deathTime);
   }
-
-
 }
 
 function saveCountdownDeath()
@@ -221,9 +176,97 @@ function loadCountdownCheckboxes()
   }
 }
 
+function showCountdownIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("countdown-container").style.display = "block";
+  } else {
+      document.getElementById("countdown-container").style.display = "none";
+  }
+}
+
+function showCountdownTimeSelectorIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("countdownTime-input").style.display = "block";
+      document.getElementById("countdown-daily-label").style.display = "block";
+  } else {
+      document.getElementById("countdownTime-input").style.display = "none";
+      document.getElementById("countdown-daily-label").style.display = "none";
+  }
+}
+
+function showSpecificTimeSettingsIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("specific-container").style.display = "block";
+      document.getElementById("survey-container").style.display = "none";
+      loadCountdownDate();
+      loadCountdownTime();
+
+  } else {
+      document.getElementById("specific-container").style.display = "none";
+      document.getElementById("survey-container").style.display = "block";
+      loadSurveyAnswers();
+  }
+}
+
+function showCountdownTimeUpMessageSelectorIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("timeup-selector-container").style.display = "block";
+  } else {
+      document.getElementById("timeup-selector-container").style.display = "none";
+  }
+}
+
+
+
+function setupSettings(dob, dobMinutes)
+{
+  loadCheckBoxes();
+
+  document.getElementById('dobInput').value = dob.yyyymmdd();
+  document.getElementById('timeInput').value = getTimeStringFromMinutes(dobMinutes);
+  setDropdownWithCurrentTheme();
+
+  var savedPrecision = localStorage.getItem("precision");
+  if (savedPrecision != null) {
+    document.getElementById("precision-dropdown").value = savedPrecision;
+  }
+
+  var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
+  if( savedChapterLengths === null )
+  {
+    savedChapterLengths = [5,7,2,4,4,43,15,0];
+  }
+
+  $("#first-chapter-input").val(savedChapterLengths[0]);
+  $("#second-chapter-input").val(savedChapterLengths[1]);
+  $("#third-chapter-input").val(savedChapterLengths[2]);
+  $("#fourth-chapter-input").val(savedChapterLengths[3]);
+  $("#fifth-chapter-input").val(savedChapterLengths[4]);
+  $("#sixth-chapter-input").val(savedChapterLengths[5]);
+  $("#seventh-chapter-input").val(savedChapterLengths[6]);
+  $("#eighth-chapter-input").val(savedChapterLengths[7]);
+
+
+  $("#submit-button").click(function(){
+    window.app.saveDob();
+    saveTheme();
+    savePrecision();
+    saveChapterLengths();
+    $("#info-popup").magnificPopup('close');
+  });
+
+  $("#cancel-button").click(function(){
+    $("#info-popup").magnificPopup('close');
+  });
+}
+
 function loadCheckBoxes()
 {
-  var timeCheckbox = document.querySelector('input[id=time-checkbox]');
+  var timeCheckbox = document.querySelector('input[id=timeCheckbox]');
   if (localStorage.getItem("dobTimeSet") == "YES") {
     timeCheckbox.checked = true;
   }
@@ -312,53 +355,8 @@ function setDropdownWithCurrentTheme(){
 function showTimeSelectorIf(isChecked)
 {
   if (isChecked) {
-      document.getElementById("time-input").style.display = "block";
+      document.getElementById("timeInput").style.display = "block";
   } else {
-      document.getElementById("time-input").style.display = "none";
+      document.getElementById("timeInput").style.display = "none";
   }
 }
-
-function showCountdownIf(isChecked)
-{
-  if (isChecked) {
-      document.getElementById("countdown-container").style.display = "block";
-  } else {
-      document.getElementById("countdown-container").style.display = "none";
-  }
-}
-
-function showCountdownTimeSelectorIf(isChecked)
-{
-  if (isChecked) {
-      document.getElementById("countdownTime-input").style.display = "block";
-      document.getElementById("countdown-daily-label").style.display = "block";
-  } else {
-      document.getElementById("countdownTime-input").style.display = "none";
-      document.getElementById("countdown-daily-label").style.display = "none";
-  }
-}
-
-function showSpecificTimeSettingsIf(isChecked)
-{
-  if (isChecked) {
-      document.getElementById("specific-container").style.display = "block";
-      document.getElementById("survey-container").style.display = "none";
-      loadCountdownDate();
-      loadCountdownTime();
-
-  } else {
-      document.getElementById("specific-container").style.display = "none";
-      document.getElementById("survey-container").style.display = "block";
-      loadSurveyAnswers();
-  }
-}
-
-function showCountdownTimeUpMessageSelectorIf(isChecked)
-{
-  if (isChecked) {
-      document.getElementById("timeup-selector-container").style.display = "block";
-  } else {
-      document.getElementById("timeup-selector-container").style.display = "none";
-  }
-}
-
