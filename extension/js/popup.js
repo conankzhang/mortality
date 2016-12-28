@@ -300,11 +300,6 @@ function loadCheckBoxes()
     }
   });
 
-  var swapTimerCheckbox = document.querySelector('input[id=swapTimer-checkbox]');
-  if (localStorage.getItem("swap") == "YES") {
-    swapTimerCheckbox.checked = true;
-  }
-
   var shapeCircleCheckbox = document.querySelector('input[id=shapeCircle-checkbox]');
   if (localStorage.getItem("hideCircles") == "YES") {
     shapeCircleCheckbox.checked = true;

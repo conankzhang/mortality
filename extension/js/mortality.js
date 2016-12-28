@@ -242,7 +242,7 @@
     if( localStorage.getItem("hideAge") === null )
     {
       var duration, startMoment, endMoment;
-      if( localStorage.getItem("swap") === null )
+      if( localStorage.getItem("showCurrentTime") === null )
       {
         var interval = minuteMS;
         var savedPrecision = localStorage.getItem("precision");
@@ -513,9 +513,6 @@
 
 	  var hideCirclesChecked = document.querySelector('input[id=hideCircles-checkbox').checked;
 	  hideCirclesChecked ? localStorage.setItem("hideCircles", "YES") : localStorage.removeItem("hideCircles");
-
-    var swapTimerChecked = document.querySelector('input[id=swapTimer-checkbox').checked;
-    swapTimerChecked ? localStorage.setItem("swap", "YES") : localStorage.removeItem("swap");
 
     var shapeCircleChecked = document.querySelector('input[id=shapeCircle-checkbox').checked;
     shapeCircleChecked ? localStorage.setItem("shape", "circle") : localStorage.removeItem("shape");
