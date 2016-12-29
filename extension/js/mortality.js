@@ -861,5 +861,11 @@ function animate(theta, radius) {
     });
 })(jQuery);
 
+(function() {
+  [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+    new SelectFx(el);
+  } );
+})();
+
 window.onresize();
 

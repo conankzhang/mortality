@@ -314,3 +314,11 @@ input[type=checkbox]:checked + label:before {
 #timeInput {
     margin-left: -22px;
 }
+
+#precisionContainer {
+    margin-top: 15px;
+}
+
+#precisionLabel {
+    margin-right:10px;
+}

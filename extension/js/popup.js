@@ -232,7 +232,7 @@ function setupSettings(dob, dobMinutes)
 
   var savedPrecision = localStorage.getItem("precision");
   if (savedPrecision != null) {
-    document.getElementById("precision-dropdown").value = savedPrecision;
+    document.getElementById("precisionDropdown").value = savedPrecision;
   }
 
   var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
@@ -262,6 +262,11 @@ function setupSettings(dob, dobMinutes)
   $("#cancel-button").click(function(){
     $("#info-popup").magnificPopup('close');
   });
+
+
+  [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+    new SelectFx(el);
+  } );
 }
 
 function loadCheckBoxes()

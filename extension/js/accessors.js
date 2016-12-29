@@ -162,7 +162,7 @@ function saveTheme()
 
 function savePrecision()
 {
-  var selectedPrecision = document.getElementById("precision-dropdown").value;
+  var selectedPrecision = document.getElementById("precisionDropdown").value;
   localStorage.setItem("precision", selectedPrecision);
 }
 
