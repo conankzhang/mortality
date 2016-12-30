@@ -2,7 +2,7 @@ div.cs-skin-elastic {
 	background: transparent;
 	font-size: 14px;
 	font-weight: 700;
-	color: #5b8583;
+	color: #0288D1;
 }
 
 @media screen and (max-width: 30em) {
@@ -10,8 +10,12 @@ div.cs-skin-elastic {
 }
 
 .cs-skin-elastic > span {
-	background-color: #fff;
-	z-index: 100;
+    background-color: white;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #0288D1;
+    z-index: 100;
+    border-style: solid;
 }
 
 .cs-skin-elastic > span::after {
@@ -58,6 +62,10 @@ div.cs-skin-elastic {
 	transition: none;
 	-webkit-animation: expand 0.6s ease-out;
   	animation: expand 0.6s ease-out;
+    border-radius: 5px;
+    border-color: #0288D1;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .cs-skin-elastic .cs-options ul li {
@@ -113,7 +121,8 @@ div.cs-skin-elastic {
 .cs-skin-elastic .cs-options span:hover,
 .cs-skin-elastic .cs-options li.cs-focus span,
 .cs-skin-elastic .cs-options .cs-selected span {
-	color: #1e4c4a;
+	color: white;
+	background-color: #0288D1;
 }
 
 .cs-skin-elastic .cs-options .cs-selected span::after {
