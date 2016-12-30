@@ -220,7 +220,10 @@ function showCountdownTimeUpMessageSelectorIf(isChecked)
   }
 }
 
-
+function setupThemes()
+{
+  setDropdownWithCurrentTheme();
+}
 
 function setupSettings(dob, dobMinutes)
 {
@@ -228,7 +231,6 @@ function setupSettings(dob, dobMinutes)
 
   document.getElementById('dobInput').value = dob.yyyymmdd();
   document.getElementById('timeInput').value = getTimeStringFromMinutes(dobMinutes);
-  setDropdownWithCurrentTheme();
 
   var savedPrecision = localStorage.getItem("precision");
   if (savedPrecision != null) {

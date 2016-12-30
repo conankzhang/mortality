@@ -97,9 +97,14 @@ $("#updatesButton").click(function()
   unlessDOBMissingGoToButtonNumber(1);
 });
 
-$("#settingsButton").click(function()
+$("#themeButton").click(function()
 {
   unlessDOBMissingGoToButtonNumber(2);
+});
+
+$("#settingsButton").click(function()
+{
+  unlessDOBMissingGoToButtonNumber(3);
 });
 
 function unlessDOBMissingGoToButtonNumber(button)
@@ -108,7 +113,7 @@ function unlessDOBMissingGoToButtonNumber(button)
 
   if(localStorage.getItem("dob")===null)
   {
-    setButtonPressed(2);
+    setButtonPressed(3);
   }
   else
   {
@@ -120,6 +125,7 @@ function setButtonPressed(button)
 {
   var aboutButton = document.querySelector("#aboutButton");
   var updatesButton = document.querySelector("#updatesButton");
+  var themeButton = document.querySelector('#themeButton');
   var settingsButton = document.querySelector("#settingsButton");
   var sidepanelBody = document.querySelector('#sidepanelBody');
 
@@ -128,6 +134,7 @@ function setButtonPressed(button)
     sidepanelBody.innerHTML = window.app.getTemplateScript('about')();
     aboutButton.className = "PressedButton";
     updatesButton.className = "UnpressedButton";
+    themeButton.className = "UnpressedButton";
     settingsButton.className = "UnpressedButton";
   }
   else if (button == 1)
@@ -135,13 +142,25 @@ function setButtonPressed(button)
     sidepanelBody.innerHTML = window.app.getTemplateScript('updates')();
     aboutButton.className = "UnpressedButton";
     updatesButton.className = "PressedButton";
+    themeButton.className = "UnpressedButton";
     settingsButton.className = "UnpressedButton";
+  }
+  else if (button == 2)
+  {
+    sidepanelBody.innerHTML = window.app.getTemplateScript('theme')();
+    aboutButton.className = "UnpressedButton";
+    updatesButton.className = "UnpressedButton";
+    themeButton.className = "PressedButton";
+    settingsButton.className = "UnpressedButton";
+
+    setupThemes();
   }
   else
   {
     sidepanelBody.innerHTML = window.app.getTemplateScript('settings')();
     aboutButton.className = "UnpressedButton";
     updatesButton.className = "UnpressedButton";
+    themeButton.className = "UnpressedButton";
     settingsButton.className = "PressedButton";
 
     setupSettings(window.app.dob, window.app.dobMinutes);
