@@ -322,3 +322,7 @@ input[type=checkbox]:checked + label:before {
 #precisionLabel {
     margin-right:10px;
 }
+
+#hideProgressContainer {
+    text-align: left;
+}
