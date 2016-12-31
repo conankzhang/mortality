@@ -306,45 +306,6 @@ function loadCheckBoxes()
       hideAgeCheckbox.checked = false;
     }
   });
-
-  var shapeCircleCheckbox = document.querySelector('input[id=shapeCircle-checkbox]');
-  if (localStorage.getItem("hideCircles") == "YES") {
-    shapeCircleCheckbox.checked = true;
-  }
-
-  shapeCircleCheckbox.addEventListener('change', function () {
-    var shapeCircleCheckbox = document.querySelector('input[id=shapeCircle-checkbox]');
-    if(shapeCircleCheckbox.checked == false) {
-      shapeCircleCheckbox.checked = true;
-    }
-    var shapeSquareCheckbox = document.querySelector('input[id=shapeSquare-checkbox]');
-    if(shapeSquareCheckbox.checked == true) {
-      shapeSquareCheckbox.checked = false;
-    }
-  });
-
-  var shapeSquareCheckbox = document.querySelector('input[id=shapeSquare-checkbox]');
-  if (localStorage.getItem("hideCircles") == "YES") {
-    shapeSquareCheckbox.checked = true;
-  }
-
-  shapeSquareCheckbox.addEventListener('change', function () {
-    var shapeSquareCheckbox = document.querySelector('input[id=shapeSquare-checkbox]');
-    if(shapeSquareCheckbox.checked == false) {
-      shapeSquareCheckbox.checked = true;
-    }
-    var shapeCircleCheckbox = document.querySelector('input[id=shapeCircle-checkbox]');
-    if(shapeCircleCheckbox.checked == true) {
-      shapeCircleCheckbox.checked = false;
-    }
-  });
-
-  if( localStorage.getItem("shape") == "square") {
-    shapeSquareCheckbox.checked = true;
-  }
-  else {
-    shapeCircleCheckbox.checked = true;
-  }
 }
 
 function setDropdownWithCurrentTheme(){

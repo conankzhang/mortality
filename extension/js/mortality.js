@@ -513,12 +513,6 @@
 
 	  var hideCirclesChecked = document.querySelector('input[id=hideCircles-checkbox').checked;
 	  hideCirclesChecked ? localStorage.setItem("hideCircles", "YES") : localStorage.removeItem("hideCircles");
-
-    var shapeCircleChecked = document.querySelector('input[id=shapeCircle-checkbox').checked;
-    shapeCircleChecked ? localStorage.setItem("shape", "circle") : localStorage.removeItem("shape");
-
-    var shapeSquareChecked = document.querySelector('input[id=shapeSquare-checkbox').checked;
-    shapeSquareChecked ? localStorage.setItem("shape", "square") : localStorage.removeItem("shape");
   };
 
 
