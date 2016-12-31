@@ -298,3 +298,115 @@
 #hideProgressContainer {
     text-align: left;
 }
+
+/*///////////*/
+
+
+#shapePickerList {
+    list-style: none;
+    display: inline-block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+    height: 25px;
+}
+
+#shapePickerList li{
+    color: #AAAAAA;
+    display: inline-block;
+    position: relative;
+    float: left;
+    margin-left:10px;
+}
+
+#shapePickerList li input[type=radio]{
+    display:none;
+}
+
+#shapePickerList li label{
+    display: inline-block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+}
+
+#shapePickerList li:hover label{
+    color: #00B0FF;
+}
+
+#shapePickerList .circleRadio .check{
+    display: inline-block;
+    position: absolute;
+    border: 3px solid #AAAAAA;
+    border-radius: 100%;
+    top: 0;
+    height: 18px;
+    width: 18px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+#shapePickerList .squareRadio .check{
+    display: inline-block;
+    position: absolute;
+    border: 3px solid #AAAAAA;
+    border-radius: 0;
+    top: 0;
+    height: 18px;
+    width: 18px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+#shapePickerList li:hover .check {
+  border: 3px solid #00B0FF;
+}
+
+#shapePickerList .circleRadio .check::before {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 10px;
+    width: 10px;
+    top: 4px;
+    left: 4px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
+#shapePickerList .squareRadio .check::before {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    border-radius: 0;
+    height: 10px;
+    width: 10px;
+    top: 4px;
+    left: 4px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
+input[type=radio]:checked ~ .check {
+    border: 3px solid #0288D1 !important;
+}
+
+input[type=radio]:checked ~ .check::before{
+    background: #0288D1;
+}
+
+input[type=radio]:checked ~ label{
+    color: #0288D1;
+}
+
+#shapePickerLabel {
+    display: inline-block;
+}
