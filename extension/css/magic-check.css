@@ -90,8 +90,8 @@
   border-radius: 3px; }
 
 .magic-checkbox + label:after {
-  top: 3px;
-  left: 7px;
+  top: 4px;
+  left: 8px;
   box-sizing: border-box;
   width: 6px;
   height: 12px;
@@ -104,7 +104,10 @@
 
 .magic-checkbox:checked + label:before {
   border: #3e97eb;
-  background: #3e97eb; }
+  background: #3e97eb;
+  height: 22px;
+  width: 22px;
+}
 
 .magic-checkbox:checked[disabled] + label:before {
   border: #c9e2f9;
