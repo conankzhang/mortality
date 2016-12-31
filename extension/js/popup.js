@@ -283,29 +283,30 @@ function loadCheckBoxes()
     showTimeSelectorIf(timeCheckbox.checked);
   });
 
-  var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
-  if (localStorage.getItem("hideAge") == "YES") {
-    hideAgeCheckbox.checked = true;
-  }
+//SET HIDE FLAGS
+  // var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
+  // if (localStorage.getItem("hideAge") == "YES") {
+  //   hideAgeCheckbox.checked = true;
+  // }
 
-  hideAgeCheckbox.addEventListener('change', function () {
-    var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
-    if(hideCirclesCheckbox.checked == true) {
-      hideCirclesCheckbox.checked = false;
-    }
-  });
+  // hideAgeCheckbox.addEventListener('change', function () {
+  //   var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
+  //   if(hideCirclesCheckbox.checked == true) {
+  //     hideCirclesCheckbox.checked = false;
+  //   }
+  // });
 
-  var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
-  if (localStorage.getItem("hideCircles") == "YES") {
-    hideCirclesCheckbox.checked = true;
-  }
+  // var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
+  // if (localStorage.getItem("hideCircles") == "YES") {
+  //   hideCirclesCheckbox.checked = true;
+  // }
 
-  hideCirclesCheckbox.addEventListener('change', function () {
-    var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
-    if(hideAgeCheckbox.checked == true) {
-      hideAgeCheckbox.checked = false;
-    }
-  });
+  // hideCirclesCheckbox.addEventListener('change', function () {
+  //   var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
+  //   if(hideAgeCheckbox.checked == true) {
+  //     hideAgeCheckbox.checked = false;
+  //   }
+  // });
 }
 
 function setDropdownWithCurrentTheme(){

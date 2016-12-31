@@ -508,11 +508,12 @@
       localStorage.removeItem("dobTimeSet");
       localStorage.removeItem("dobMinutes");
     }
-    var hideAgeChecked = document.querySelector('input[id=hideAge-checkbox').checked;
-    hideAgeChecked ? localStorage.setItem("hideAge", "YES") : localStorage.removeItem("hideAge");
+    //SET HIDE FLAGS
+   //  var hideAgeChecked = document.querySelector('input[id=hideAge-checkbox').checked;
+   //  hideAgeChecked ? localStorage.setItem("hideAge", "YES") : localStorage.removeItem("hideAge");
 
-	  var hideCirclesChecked = document.querySelector('input[id=hideCircles-checkbox').checked;
-	  hideCirclesChecked ? localStorage.setItem("hideCircles", "YES") : localStorage.removeItem("hideCircles");
+	  // var hideCirclesChecked = document.querySelector('input[id=hideCircles-checkbox').checked;
+	  // hideCirclesChecked ? localStorage.setItem("hideCircles", "YES") : localStorage.removeItem("hideCircles");
   };
 
 
