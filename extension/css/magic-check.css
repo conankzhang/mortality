@@ -19,7 +19,8 @@
   display: block;
   padding-left: 30px;
   cursor: pointer;
-  vertical-align: middle; }
+  vertical-align: middle;
+  line-height: 25px; }
   .magic-radio + label:hover:before,
   .magic-checkbox + label:hover:before {
     animation-duration: 0.4s;
