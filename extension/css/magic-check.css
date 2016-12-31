@@ -19,8 +19,7 @@
   display: block;
   padding-left: 30px;
   cursor: pointer;
-  vertical-align: middle;
-  padding-top: 1px; }
+  vertical-align: middle; }
   .magic-radio + label:hover:before,
   .magic-checkbox + label:hover:before {
     animation-duration: 0.4s;
@@ -29,7 +28,7 @@
   .magic-radio + label:before,
   .magic-checkbox + label:before {
     position: absolute;
-    top: 0;
+    top: 1px;
     left: 0;
     display: inline-block;
     width: 20px;
@@ -91,7 +90,7 @@
   border-radius: 3px; }
 
 .magic-checkbox + label:after {
-  top: 2px;
+  top: 3px;
   left: 7px;
   box-sizing: border-box;
   width: 6px;

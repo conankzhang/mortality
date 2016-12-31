@@ -295,10 +295,24 @@
     margin-right:10px;
 }
 
-#hideProgressContainer {
-    text-align: left;
+#progressSettingsContainer {
+    text-align: center;
+    margin-top: 25px;
 }
 
+#hideProgressContainer {
+    position: absolute;
+    display: inline-block;
+    text-align: left;
+    line-height: 25px;
+}
+
+#shapePickerContainer {
+    display: inline-block;
+    height: 25px;
+    margin-left: 180px;
+    text-align: left;
+}
 /*///////////*/
 
 
