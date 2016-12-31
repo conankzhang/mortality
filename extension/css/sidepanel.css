@@ -309,6 +309,7 @@
     -webkit-margin-after: 0;
     -webkit-padding-start: 0;
     height: 25px;
+    margin-left: 45px;
 }
 
 #shapePickerList li{
@@ -317,6 +318,7 @@
     position: relative;
     float: left;
     margin-left:10px;
+    height: 25px;
 }
 
 #shapePickerList li input[type=radio]{
@@ -409,4 +411,6 @@ input[type=radio]:checked ~ label{
 
 #shapePickerLabel {
     display: inline-block;
+    position: absolute;
+    line-height: 25px;
 }
