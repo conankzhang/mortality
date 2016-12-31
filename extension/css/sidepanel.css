@@ -275,8 +275,8 @@
     display: inline-block;
     vertical-align: top;
     height: 40px;
-    width: 85px;
-    margin-left: 50px;
+    width: 100px;
+    margin-left: 30px;
 }
 
 .InputTextfield {
@@ -285,10 +285,6 @@
     border-radius: 5px;
     height: 25px;
     margin-top: 5px;
-}
-
-#timeInput {
-    margin-left: -22px;
 }
 
 #precisionContainer {
