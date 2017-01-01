@@ -516,7 +516,7 @@ input[type=radio]:checked ~ .check::before{
     font-size:9.5px;
 }
 
-#chapterLengthsContainer {
+#chapterLengthsSpecifyContainer {
     margin-top: 15px;
 }
 
@@ -587,6 +587,35 @@ input[type=radio]:checked ~ .check::before{
     border: 1px solid #01579B;
 }
 
+.yearsInput {
+    position: absolute;
+    bottom: 45px;
+    display: block;
+    margin: 0 auto;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+}
+
+.monthsInput {
+    position: absolute;
+    bottom: 5px;
+    display: block;
+    margin: 0 auto;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+}
 
 #modifyChaptersContainer {
     display: inline-block;
@@ -650,4 +679,44 @@ input[type=radio]:checked ~ .check::before{
 
 #removeChapterButton:active {
     background-color: #01579B;
+}
+
+#chapterLengthsFixedContainer {
+    margin-top: 15px;
+}
+
+#chapterLengthsFixedYearsLabel {
+    display: inline-block;
+    margin-right: 2px;
+}
+
+.fixedYearsInput {
+    display: inline-block;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+}
+
+#chapterLengthsFixedMonthsLabel {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 2px;
+}
+
+.fixedMonthsInput {
+    display: inline-block;
+    margin-right:30px;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
 }
