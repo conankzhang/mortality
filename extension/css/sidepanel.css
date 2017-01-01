@@ -293,7 +293,7 @@
 }
 
 #precisionContainer {
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 #precisionLabel {
@@ -302,7 +302,7 @@
 
 #progressSettingsContainer {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 #hideProgressContainer {
@@ -431,4 +431,9 @@ input[type=radio]:checked ~ label{
     display: inline-block;
     position: absolute;
     line-height: 25px;
+}
+
+#chapterLengthSegmentedControl {
+    width: 300px;
+    font-size: 12px;
 }

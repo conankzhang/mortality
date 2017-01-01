@@ -278,18 +278,20 @@
       <label for="sc-3-1-3" data-value="Time Left">Time Left</label>
     </div>
 
-    <div id="dobContainer">
-      <div id="dobDateContainer">
-        <label id="dobLabel" for="dobInput">When were you born?</label>
-        <input id="dobInput" class="InputTextfield" type="date">
-      </div>
-
-      <div id="dobTimeContainer">
-        <div id="timeCheckboxContainer">
-          <input id="timeCheckbox" class="magic-checkbox" type="checkbox">
-          <label for="timeCheckbox">Add Time</label>
+    <div id="timerTypeSettingsContainer">
+      <div id="dobContainer">
+        <div id="dobDateContainer">
+          <label id="dobLabel" for="dobInput">When were you born?</label>
+          <input id="dobInput" class="InputTextfield" type="date">
         </div>
-        <input id="timeInput" class="InputTextfield" type="time">
+
+        <div id="dobTimeContainer">
+          <div id="timeCheckboxContainer">
+            <input id="timeCheckbox" class="magic-checkbox" type="checkbox">
+            <label for="timeCheckbox">Add Time</label>
+          </div>
+          <input id="timeInput" class="InputTextfield" type="time">
+        </div>
       </div>
     </div>
 
@@ -331,6 +333,13 @@
         </li>
         </ul>
       </div>
+    </div>
+
+    <div id="chapterLengthSegmentedControl" class="segmented-control">
+      <input type="radio" name="sc-2-1" id="sc-2-1-1" checked="">
+      <input type="radio" name="sc-2-1" id="sc-2-1-2">
+      <label for="sc-2-1-1" data-value="Specify Chapters"ime Spent">Specify Chapters</label>
+      <label for="sc-2-1-2" data-value="Fixed Chapters">Fixed Chapters</label>
     </div>
 
     <div id="chapter-label" class="label-text">
