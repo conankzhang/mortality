@@ -10,12 +10,6 @@ $('#inline-popup').magnificPopup({
   midClick: true
 });
 
-$.easing.easeOutBack = function (x, t, b, c, d, s) {
-  if (s == undefined) s = 1.70158;
-  return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
-};
-
-
 function setupCountdown()
 {
   loadCountdownCheckboxes();
@@ -233,34 +227,27 @@ function setupSettings(dob, dobMinutes)
 {
   loadCheckBoxes();
 
-// #:checked ~ label:first-of-type:nth-last-of-type(3):before,
-  // var timerSettingsSegmentedControl = $("#timerSettingsSegmentedControl");
   var timerSettingsSegmentedControl1 = $("#timerSettingsSegmentedControl > input:nth-child(1)");
   var timerSettingsSegmentedControl2 = $("#timerSettingsSegmentedControl > input:nth-child(2)");
   var timerSettingsSegmentedControl3 = $("#timerSettingsSegmentedControl > input:nth-child(3)");
-    // var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
 
   timerSettingsSegmentedControl1.change( function () {
     if( timerSettingsSegmentedControl1.is(":checked") ) {
-      $("#extraTimerSettingsSegmentedControl").slideUp(100);
+      $("#extraTimerSettingsSegmentedControl").fadeOut(1);
     }
   });
 
   timerSettingsSegmentedControl2.change( function () {
     if( timerSettingsSegmentedControl2.is(":checked") ) {
-      $("#extraTimerSettingsSegmentedControl").slideUp(100);
+      $("#extraTimerSettingsSegmentedControl").fadeOut(1);
     }
   });
 
   timerSettingsSegmentedControl3.change( function () {
     if( timerSettingsSegmentedControl3.is(":checked") ) {
-      // $("#extraTimerSettingsSegmentedControl").css({'border': 'none;'});
       $("#extraTimerSettingsSegmentedControl").addClass("borderless-segmented-control");
-      $("#extraTimerSettingsSegmentedControl").slideDown(100, 'easeOutBack', function () {
-        $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
-      });
-
-      // $("#extraTimerSettingsSegmentedControl").css({'border': 1px solid currentColor;'});
+      $("#extraTimerSettingsSegmentedControl").hide().fadeIn(500);
+      $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
     }
   });
 
