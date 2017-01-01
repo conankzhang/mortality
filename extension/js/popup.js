@@ -251,6 +251,15 @@ function setupSettings(dob, dobMinutes)
     }
   });
 
+
+  $('#addChapterButton').on( "click", function() {
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">1</div><input type="text" class="yearsInput"><input type="text" class="monthsInput"></div>')
+  });
+
+  $('#removeChapterButton').on( "click", function() {
+    $('#chapterLengthStackView .chapter').last().remove();
+  });
+
   document.getElementById('dobInput').value = dob.yyyymmdd();
   document.getElementById('timeInput').value = getTimeStringFromMinutes(dobMinutes);
 
