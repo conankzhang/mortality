@@ -616,31 +616,12 @@ input[type=radio]:checked ~ .check::before{
     fill: #ffffff;
 }
 
-#foregroundAddSVG svg {
-    height:32px;
-    width:32px;
-    margin-top: -1px;
-    margin-left: -1px;
-}
-
-#foregroundAddSVG path {
-    fill: #0288D1 !important;
-}
-
 #addChapterButton:hover {
     background-color: #29B6F6;
 }
 
-#addChapterButton:hover div svg path {
-    fill: #29B6F6 !important;
-}
-
 #addChapterButton:active {
     background-color: #01579B;
-}
-
-#addChapterButton:active div svg path {
-    fill: #01579B !important;
 }
 
 #removeChapterButton {
@@ -654,33 +635,14 @@ input[type=radio]:checked ~ .check::before{
     background-color: #0288D1;
 }
 
-#removeChapterButton svg path {
+#removeChapterButton svg g {
     fill: #ffffff;
-}
-
-#foregroundRemoveSVG svg {
-    height:32px;
-    width:32px;
-    margin-top: -1px;
-    margin-left: -1px;
-}
-
-#foregroundRemoveSVG path {
-    fill: #0288D1 !important;
 }
 
 #removeChapterButton:hover {
     background-color: #29B6F6;
 }
 
-#removeChapterButton:hover div svg path {
-    fill: #29B6F6 !important;
-}
-
 #removeChapterButton:active {
     background-color: #01579B;
-}
-
-#removeChapterButton:active div svg path {
-    fill: #01579B !important;
 }
