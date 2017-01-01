@@ -269,13 +269,22 @@
 
 <script id="settings-template" type="text/x-handlebars-template">
   <div id="settingsContainer">
-    <div class="segmented-control">
+    <div id="timerSettingsSegmentedControl" class="segmented-control">
       <input type="radio" name="sc-3-1" id="sc-3-1-1" checked="">
       <input type="radio" name="sc-3-1" id="sc-3-1-2">
       <input type="radio" name="sc-3-1" id="sc-3-1-3">
       <label for="sc-3-1-1" data-value="Time Spent"ime Spent">Time Spent</label>
-      <label for="sc-3-1-2" data-value="Current Time">Current Time</label>
-      <label for="sc-3-1-3" data-value="Time Left">Time Left</label>
+      <label for="sc-3-1-2" data-value="Time Left">Time Left</label>
+      <label for="sc-3-1-3" data-value="Extras">Extras</label>
+    </div>
+
+    <div id="extraTimerSettingsSegmentedControl" class="segmented-control">
+      <input type="radio" name="sc-3-2" id="sc-3-2-1" checked="">
+      <input type="radio" name="sc-3-2" id="sc-3-2-2">
+      <input type="radio" name="sc-3-2" id="sc-3-2-3">
+      <label for="sc-3-2-1" data-value="Clock">Clock</label>
+      <label for="sc-3-2-2" data-value="People">People</label>
+      <label for="sc-3-2-3" data-value="Hide">Hide</label>
     </div>
 
     <div id="timerTypeSettingsContainer">
@@ -353,8 +362,8 @@
     <div id="chapterLengthSegmentedControl" class="segmented-control">
       <input type="radio" name="sc-2-1" id="sc-2-1-1" checked="">
       <input type="radio" name="sc-2-1" id="sc-2-1-2">
-      <label for="sc-2-1-1" data-value="Specify Chapters"ime Spent">Specify Chapters</label>
-      <label for="sc-2-1-2" data-value="Fixed Chapters">Fixed Chapters</label>
+      <label for="sc-2-1-1" data-value="Specify"ime Spent">Specify</label>
+      <label for="sc-2-1-2" data-value="Fixed">Fixed</label>
     </div>
 
     <!-- <div id="chapter-label" class="label-text">

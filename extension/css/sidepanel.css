@@ -283,6 +283,14 @@
     margin-top: 10px;
 }
 
+#timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3):before, #timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3) ~ label:before {
+  color: #01579B;
+}
+
+#extraTimerSettingsSegmentedControl {
+    color: #01579B;
+}
+
 .InputTextfield {
     font-size: 14px;
     display: block;
@@ -444,10 +452,6 @@ input[type=radio]:checked ~ .check {
 
 input[type=radio]:checked ~ .check::before{
     background: #0288D1;
-}
-
-input[type=radio]:checked ~ label{
-    color: #0288D1;
 }
 
 #shapePickerLabel {
