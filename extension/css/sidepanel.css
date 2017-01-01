@@ -608,7 +608,7 @@ input[type=radio]:checked ~ .check::before{
 }
 
 #foregroundAddSVG path {
-    fill: #F44336;
+    fill: #4CAF50;
 }
 
 #foregroundRemoveSVG svg {
@@ -619,7 +619,7 @@ input[type=radio]:checked ~ .check::before{
 }
 
 #foregroundRemoveSVG path {
-    fill: #4CAF50;
+    fill: #F44336;
 }
 
 #addChapterButton {
@@ -627,9 +627,10 @@ input[type=radio]:checked ~ .check::before{
     bottom: 44px;
     width: 30px;
     height: 30px;
-    border: 1px solid #0288D1;
+    border-right: 2px solid #388E3C;
+    border-bottom: 2px solid #388E3C;
     border-radius: 5px;
-    background-color: #F44336;
+    background-color: #4CAF50;
 }
 
 #removeChapterButton {
@@ -637,7 +638,8 @@ input[type=radio]:checked ~ .check::before{
     bottom: 6px;
     width: 30px;
     height: 30px;
-    border: 1px solid #0288D1;
+    border-right: 2px solid #D32F2F;
+    border-bottom: 2px solid #D32F2F;
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #F44336;
 }
