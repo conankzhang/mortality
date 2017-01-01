@@ -496,21 +496,22 @@ input[type=radio]:checked ~ .check::before{
     display: inline-block;
     position: relative;
     height: 100px;
-    width: 60px;
+    width: 40px;
     vertical-align:bottom;
     text-align: right;
 }
 
 #chapterLengthsYearsLabel {
     position: absolute;
-    bottom: 45px;
-    width: 60px;
+    bottom: 51px;
+    width: 40px;
 }
 
 #chapterLengthsMonthsLabel {
     position: absolute;
-    bottom: 10px;
-    width: 60px;
+    bottom: 14px;
+    width: 40px;
+    font-size:9.5px;
 }
 
 #chapterLengthsContainer {
@@ -523,19 +524,64 @@ input[type=radio]:checked ~ .check::before{
     height:100px;
     border: 1px solid #0288D1;
     vertical-align: middle;
+    text-align: left;
 }
+
+.chapter {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height:100px;
+    width:40px;
+    margin-left:2px;
+    margin-right:2px;
+}
+
+.chapterNum {
+    text-align: center;
+    font-size: 18px;
+}
+
+.yearsInput {
+    position: absolute;
+    bottom: 45px;
+    display: block;
+    margin: 0 auto;
+    width:30px;
+    height:22px;
+    border-radius:5px;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    padding: 3px 3px;
+    border: 1px solid black;
+}
+
+.monthsInput {
+    position: absolute;
+    bottom: 5px;
+    display: block;
+    margin: 0 auto;
+    width:30px;
+    height:22px;
+    border-radius:5px;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    padding: 3px 3px;
+    border: 1px solid black;
+}
+
 
 #modifyChaptersContainer {
     display: inline-block;
     position: relative;
     height: 100px;
-    width: 30px;
+    width: 40px;
     vertical-align: bottom;
 }
 
 #addChapterButton {
     position: absolute;
-    bottom: 45px;
+    bottom: 44px;
     width: 30px;
     height: 30px;
     border: 1px solid #0288D1;
@@ -543,7 +589,7 @@ input[type=radio]:checked ~ .check::before{
 
 #removeChapterButton {
     position: absolute;
-    bottom: 5px;
+    bottom: 6px;
     width: 30px;
     height: 30px;
     border: 1px solid #0288D1;
