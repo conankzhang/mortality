@@ -96,25 +96,3 @@
   left: 25.6vw;
 }
 
-.submitButtonClass {
-  position:absolute;
-  left:12vw;
-  bottom:1vw;
-  margin-top:1vw;
-  display: inline;
-  border: none;
-  border-radius: 0.25vw;
-  outline: none;
-  background-color: #0BE;
-  color: #FFF;
-  cursor: pointer;
-}
-
-.cancelButtonClass {
-  position:absolute;
-  bottom:1.4vw;
-  left:19vw;
-  display: inline;
-  cursor: pointer;
-}
-

@@ -275,17 +275,14 @@ function setupSettings(dob, dobMinutes)
   $("#eighth-chapter-input").val(savedChapterLengths[7]);
 
 
-  $("#submit-button").click(function(){
-    window.app.saveDob();
-    saveTheme();
-    savePrecision();
-    saveChapterLengths();
-    $("#info-popup").magnificPopup('close');
-  });
+  // $("#submit-button").click(function(){
+  //   window.app.saveDob();
+  //   saveTheme();
+  //   savePrecision();
+  //   saveChapterLengths();
+  //   $("#info-popup").magnificPopup('close');
+  // });
 
-  $("#cancel-button").click(function(){
-    $("#info-popup").magnificPopup('close');
-  });
 
 
   [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {

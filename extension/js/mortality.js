@@ -850,7 +850,6 @@ function animate(theta, radius) {
     $(window).load(function () {
       if(localStorage.getItem("dob")===null)
       {
-        $("#cancel-button").toggle();
         $("#menu-button")[0].click();
       }
     });
