@@ -10,6 +10,22 @@ $('#inline-popup').magnificPopup({
   midClick: true
 });
 
+function getOrdinal(n) {
+   var s=["th","st","nd","rd"],
+       v=n%100;
+   return n+(s[(v-20)%10]||s[v]||s[0]);
+}
+
+String.prototype.format = function() {
+    var s = this,
+        i = arguments.length;
+
+    while (i--) {
+        s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+    }
+    return s;
+};
+
 function setupCountdown()
 {
   loadCountdownCheckboxes();
@@ -225,6 +241,8 @@ function setupThemes()
 
 function setupSettings(dob, dobMinutes)
 {
+  localStorage.setItem("chapterNum", 1);
+
   loadCheckBoxes();
 
   var timerSettingsSegmentedControl1 = $("#timerSettingsSegmentedControl > input:nth-child(1)");
@@ -253,7 +271,12 @@ function setupSettings(dob, dobMinutes)
 
 
   $('#addChapterButton').on( "click", function() {
-    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">1</div><input type="text" class="yearsInput"><input type="text" class="monthsInput"></div>')
+    var chapterValue = localStorage.getItem("chapterNum");
+    chapterNum = parseInt(chapterValue);
+    var chapterNumString = getOrdinal(chapterNum);
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="text" class="yearsInput"><input type="text" class="monthsInput"></div>'.format(chapterNumString))
+    chapterNum+=1;
+    localStorage.setItem("chapterNum", chapterNum);
   });
 
   $('#removeChapterButton').on( "click", function() {
