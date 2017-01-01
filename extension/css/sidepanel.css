@@ -505,12 +505,14 @@ input[type=radio]:checked ~ .check::before{
     position: absolute;
     bottom: 51px;
     width: 40px;
+    font-weight:500;
 }
 
 #chapterLengthsMonthsLabel {
     position: absolute;
     bottom: 14px;
     width: 40px;
+    font-weight:500;
     font-size:9.5px;
 }
 
@@ -540,6 +542,7 @@ input[type=radio]:checked ~ .check::before{
 .chapterNum {
     text-align: center;
     font-size: 18px;
+    font-weight:500;
 }
 
 .yearsInput {
@@ -549,6 +552,7 @@ input[type=radio]:checked ~ .check::before{
     margin: 0 auto;
     width:30px;
     height:22px;
+    font-size:16px;
     border-radius:5px;
     -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
     box-shadow: inset 2px 2px 2px 0px #dddddd;
@@ -563,6 +567,7 @@ input[type=radio]:checked ~ .check::before{
     margin: 0 auto;
     width:30px;
     height:22px;
+    font-size:16px;
     border-radius:5px;
     -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
     box-shadow: inset 2px 2px 2px 0px #dddddd;
