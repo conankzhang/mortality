@@ -491,3 +491,60 @@ input[type=radio]:checked ~ .check::before{
     width: 300px;
     font-size: 12px;
 }
+
+#chapterLengthsLabelContainer {
+    display: inline-block;
+    position: relative;
+    height: 100px;
+    width: 60px;
+    vertical-align:bottom;
+    text-align: right;
+}
+
+#chapterLengthsYearsLabel {
+    position: absolute;
+    bottom: 45px;
+    width: 60px;
+}
+
+#chapterLengthsMonthsLabel {
+    position: absolute;
+    bottom: 10px;
+    width: 60px;
+}
+
+#chapterLengthsContainer {
+    margin-top: 15px;
+}
+
+#chapterLengthStackView {
+    display: inline-block;
+    width:300px;
+    height:100px;
+    border: 1px solid #0288D1;
+    vertical-align: middle;
+}
+
+#modifyChaptersContainer {
+    display: inline-block;
+    position: relative;
+    height: 100px;
+    width: 30px;
+    vertical-align: bottom;
+}
+
+#addChapterButton {
+    position: absolute;
+    bottom: 45px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #0288D1;
+}
+
+#removeChapterButton {
+    position: absolute;
+    bottom: 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #0288D1;
+}
