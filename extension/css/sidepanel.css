@@ -527,6 +527,13 @@ input[type=radio]:checked ~ .check::before{
     border: 1px solid #0288D1;
     vertical-align: middle;
     text-align: left;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+#chapterLengthStackView::-webkit-scrollbar {
+    display: none;
 }
 
 .chapter {
