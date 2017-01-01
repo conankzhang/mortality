@@ -683,6 +683,7 @@ input[type=radio]:checked ~ .check::before{
 
 #chapterLengthsFixedContainer {
     margin-top: 15px;
+    display: none; /*TEMPORARY UNTIL THE CORRECT CONTAINER IS CHOSEN ON LAUNCH TO DISPLAY*/
 }
 
 #chapterLengthsFixedYearsLabel {

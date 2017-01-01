@@ -270,6 +270,24 @@ function setupSettings(dob, dobMinutes)
   });
 
 
+  var chapterLengthSegmentedControl1 = $("#chapterLengthSegmentedControl > input:nth-child(1)");
+  var chapterLengthSegmentedControl2 = $("#chapterLengthSegmentedControl > input:nth-child(2)");
+
+  chapterLengthSegmentedControl1.change( function () {
+    if( chapterLengthSegmentedControl1.is(":checked") ) {
+      $("#chapterLengthsFixedContainer").fadeOut(1, function() {
+        $("#chapterLengthsSpecifyContainer").fadeIn(1);
+      });
+    }
+  });
+
+  chapterLengthSegmentedControl2.change( function () {
+    if( chapterLengthSegmentedControl2.is(":checked") ) {
+      $("#chapterLengthsSpecifyContainer").fadeOut(1);
+      $("#chapterLengthsFixedContainer").fadeIn(1);
+    }
+  });
+
   $('#addChapterButton').on( "click", function() {
     var chapterValue = localStorage.getItem("chapterNum");
     chapterNum = parseInt(chapterValue);
