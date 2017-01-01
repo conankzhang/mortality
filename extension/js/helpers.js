@@ -35,7 +35,8 @@ function zeroFill(number, width)
  * Replace all SVG images with inline SVG
  * http://stackoverflow.com/questions/11978995/how-to-change-color-of-svg-image-using-css-jquery-svg-image-replacement
  */
-jQuery('img.svg').each(function(){
+function convertIMG2SVG() {
+  jQuery('img.svg').each(function(){
     var $img = jQuery(this);
     var imgID = $img.attr('id');
     var imgClass = $img.attr('class');
@@ -61,5 +62,7 @@ jQuery('img.svg').each(function(){
         $img.replaceWith($svg);
 
     }, 'xml');
+  });
+}
 
-});
+convertIMG2SVG();

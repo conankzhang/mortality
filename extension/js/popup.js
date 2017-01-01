@@ -242,7 +242,7 @@ function setupThemes()
 function setupSettings(dob, dobMinutes)
 {
   localStorage.setItem("chapterNum", 1);
-
+  convertIMG2SVG();
   loadCheckBoxes();
 
   var timerSettingsSegmentedControl1 = $("#timerSettingsSegmentedControl > input:nth-child(1)");
