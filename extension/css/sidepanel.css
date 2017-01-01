@@ -253,6 +253,18 @@
 #settingsContainer {
     text-align: center;
 }
+
+.segmentedControlLabelHR {
+    position: relative;
+    width: 200px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+}
+
 .segmented-control {
     display:block;
     margin: 0 auto;
@@ -260,12 +272,25 @@
     color: #0288D1;
 }
 
+/*
+===== Timer Settings =====
+*/
+
 #dobContainer {
     display: inline-block;
     text-align: left;
     margin: 0 auto;
     margin-top: 10px;
 }
+
+.InputTextfield {
+    font-size: 14px;
+    display: block;
+    border-radius: 5px;
+    height: 25px;
+    margin-top: 5px;
+}
+
 #dobDateContainer {
     display: inline-block;
     margin-top: 4px;
@@ -284,13 +309,9 @@
     margin-left: 30px;
 }
 
-.InputTextfield {
-    font-size: 14px;
-    display: block;
-    border-radius: 5px;
-    height: 25px;
-    margin-top: 5px;
-}
+/*
+===== Precision Settings =====
+*/
 
 #precisionContainer {
     margin-top: 25px;
@@ -299,6 +320,10 @@
 #precisionLabel {
     margin-right:10px;
 }
+
+/*
+===== Progress Settings =====
+*/
 
 #progressSettingsContainer {
     text-align: center;
@@ -317,8 +342,6 @@
     margin-left: 180px;
     text-align: left;
 }
-/*///////////*/
-
 
 #shapePickerList {
     list-style: none;
@@ -432,6 +455,22 @@ input[type=radio]:checked ~ label{
     position: absolute;
     line-height: 25px;
 }
+
+/*
+===== Chapter Precision Settings =====
+*/
+
+#chapterPrecisionLabel {
+    margin-top: 25px;
+}
+#chapterPrecisionSegmentedControl {
+    width: 300px;
+    font-size: 12px;
+}
+
+/*
+===== Chapter Length Settings =====
+*/
 
 #chapterLengthSegmentedControl {
     width: 300px;
