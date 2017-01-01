@@ -524,7 +524,6 @@ input[type=radio]:checked ~ .check::before{
     display: inline-block;
     width:300px;
     height:100px;
-    border: 1px solid #0288D1;
     vertical-align: middle;
     text-align: left;
     overflow-x: scroll;
@@ -550,6 +549,12 @@ input[type=radio]:checked ~ .check::before{
     text-align: center;
     font-size: 18px;
     font-weight:400;
+}
+
+#firstChapterNum {
+    font-size: 10px;
+    white-space: normal;
+    margin-top: -2px;
 }
 
 .yearsInput {

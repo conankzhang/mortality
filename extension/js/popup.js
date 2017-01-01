@@ -241,7 +241,7 @@ function setupThemes()
 
 function setupSettings(dob, dobMinutes)
 {
-  localStorage.setItem("chapterNum", 1);
+  localStorage.setItem("chapterNum", 2);
   convertIMG2SVG();
   loadCheckBoxes();
 
@@ -280,11 +280,11 @@ function setupSettings(dob, dobMinutes)
   });
 
   $('#removeChapterButton').on( "click", function() {
-    $('#chapterLengthStackView .chapter').last().remove();
     var chapterValue = localStorage.getItem("chapterNum");
     chapterNum = parseInt(chapterValue);
-    if( chapterNum > 0 )
+    if( chapterNum > 2 )
     {
+      $('#chapterLengthStackView .chapter').last().remove();
       chapterNum-=1;
       localStorage.setItem("chapterNum", chapterNum);
     }
