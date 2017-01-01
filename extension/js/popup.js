@@ -283,8 +283,11 @@ function setupSettings(dob, dobMinutes)
     $('#chapterLengthStackView .chapter').last().remove();
     var chapterValue = localStorage.getItem("chapterNum");
     chapterNum = parseInt(chapterValue);
-    chapterNum-=1;
-    localStorage.setItem("chapterNum", chapterNum);
+    if( chapterNum > 0 )
+    {
+      chapterNum-=1;
+      localStorage.setItem("chapterNum", chapterNum);
+    }
   });
 
   document.getElementById('dobInput').value = dob.yyyymmdd();
