@@ -272,6 +272,10 @@
     color: #0288D1;
 }
 
+.borderless-segmented-control {
+    border: none !important;
+}
+
 /*
 ===== Timer Settings =====
 */
@@ -283,11 +287,17 @@
     margin-top: 10px;
 }
 
-#timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3):before, #timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3) ~ label:before {
+#timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3):before,
+#timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3) ~ label:before {
   color: #01579B;
 }
 
+#timerSettingsSegmentedControl > input:nth-child(3):checked ~ #extraTimerSettingsSegmentedControl {
+    display: block;
+}
+
 #extraTimerSettingsSegmentedControl {
+    display: none;
     color: #01579B;
 }
 
