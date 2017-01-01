@@ -633,6 +633,22 @@ input[type=radio]:checked ~ .check::before{
     background-color: #4CAF50;
 }
 
+#addChapterButton:hover {
+    background-color: #66BB6A;
+}
+
+#addChapterButton:hover div svg path {
+    fill: #66BB6A;
+}
+
+#addChapterButton:active {
+    background-color: #388E3C;
+}
+
+#addChapterButton:active div svg path {
+    fill: #388E3C;
+}
+
 #removeChapterButton {
     position: absolute;
     bottom: 6px;
@@ -642,4 +658,20 @@ input[type=radio]:checked ~ .check::before{
     border-bottom: 2px solid #D32F2F;
     border-radius: 5px;
     background-color: #F44336;
+}
+
+#removeChapterButton:hover {
+    background-color: #EF5350;
+}
+
+#removeChapterButton:hover div svg path {
+    fill: #EF5350;
+}
+
+#removeChapterButton:active {
+    background-color: #D32F2F;
+}
+
+#removeChapterButton:active div svg path {
+    fill: #D32F2F;
 }
