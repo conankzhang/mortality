@@ -390,8 +390,11 @@ input[type=radio]:checked ~ .check::before{
 
 
 #peopleTimerList li{
-    margin-left:10px;
     height: 25px;
+}
+
+#peopleTimerList li ~ li {
+    margin-left:10px;
 }
 
 #peopleTimerList li input[type=radio]{
