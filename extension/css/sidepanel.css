@@ -551,70 +551,46 @@ input[type=radio]:checked ~ .check::before{
     font-weight:400;
 }
 
-#firstChapterNum {
-    font-size: 10px;
+.yearsInput {
+    position: absolute;
+    bottom: 45px;
+    display: block;
+    margin: 0 auto;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+    outline-width: 0;
+}
+
+.monthsInput {
+    position: absolute;
+    bottom: 5px;
+    display: block;
+    margin: 0 auto;
+    width:30px;
+    height:22px;
+    font-size:16px;
+    border-radius:5px;
+    padding: 3px 3px;
+    border: 1px solid #01579B;
+    outline-width: 0;
+}
+
+#firstChapterYearsInput {
+    border: 1px solid #B71C1C;
+}
+
+#schoolAgeLabel {
+    position: absolute;
+    bottom: 0px;
+    font-size: 9px;
+    width: 40px;
+    text-align: center;
     white-space: normal;
-    margin-top: -2px;
-}
-
-.yearsInput {
-    position: absolute;
-    bottom: 45px;
-    display: block;
-    margin: 0 auto;
-    width:30px;
-    height:22px;
-    font-size:16px;
-    border-radius:5px;
-    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
-    box-shadow: inset 2px 2px 2px 0px #dddddd;
-    padding: 3px 3px;
-    border: 1px solid #01579B;
-}
-
-.monthsInput {
-    position: absolute;
-    bottom: 5px;
-    display: block;
-    margin: 0 auto;
-    width:30px;
-    height:22px;
-    font-size:16px;
-    border-radius:5px;
-    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
-    box-shadow: inset 2px 2px 2px 0px #dddddd;
-    padding: 3px 3px;
-    border: 1px solid #01579B;
-}
-
-.yearsInput {
-    position: absolute;
-    bottom: 45px;
-    display: block;
-    margin: 0 auto;
-    width:30px;
-    height:22px;
-    font-size:16px;
-    border-radius:5px;
-    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
-    box-shadow: inset 2px 2px 2px 0px #dddddd;
-    padding: 3px 3px;
-    border: 1px solid #01579B;
-}
-
-.monthsInput {
-    position: absolute;
-    bottom: 5px;
-    display: block;
-    margin: 0 auto;
-    width:30px;
-    height:22px;
-    font-size:16px;
-    border-radius:5px;
-    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
-    box-shadow: inset 2px 2px 2px 0px #dddddd;
-    padding: 3px 3px;
-    border: 1px solid #01579B;
+    color: #B71C1C;
 }
 
 #modifyChaptersContainer {
@@ -697,9 +673,8 @@ input[type=radio]:checked ~ .check::before{
     height:22px;
     font-size:16px;
     border-radius:5px;
-    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
-    box-shadow: inset 2px 2px 2px 0px #dddddd;
     padding: 3px 3px;
+    outline-width: 0;
     border: 1px solid #01579B;
 }
 
@@ -716,8 +691,6 @@ input[type=radio]:checked ~ .check::before{
     height:22px;
     font-size:16px;
     border-radius:5px;
-    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
-    box-shadow: inset 2px 2px 2px 0px #dddddd;
     padding: 3px 3px;
     border: 1px solid #01579B;
 }
