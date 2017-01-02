@@ -285,12 +285,15 @@ input[type=radio]:checked ~ .check::before{
     -webkit-padding-start: 0;
 }
 
-
 .mortalityRadioUL li {
     color: #AAAAAA;
     display: inline-block;
     position: relative;
     float: left;
+}
+
+.mortalityRadioUL li:hover label{
+    color: #00B0FF;
 }
 
 .mortalityRadioUL li input[type=radio]{
@@ -309,7 +312,7 @@ input[type=radio]:checked ~ .check::before{
 }
 
 .mortalityRadioUL li:hover .check {
-  border: 3px solid #00B0FF;
+  border: 3px solid #00B0FF !important;
 }
 
 /*
@@ -417,10 +420,6 @@ input[type=radio]:checked ~ .check::before{
     padding-right: 27px;
 }
 
-#peopleTimerList li:hover label{
-    color: #00B0FF;
-}
-
 #peopleTimerList .circleRadio .check{
     display: inline-block;
     position: absolute;
@@ -433,10 +432,6 @@ input[type=radio]:checked ~ .check::before{
     z-index: 5;
     transition: border .25s linear;
     -webkit-transition: border .25s linear;
-}
-
-#peopleTimerList li:hover .check {
-  border: 3px solid #00B0FF;
 }
 
 #peopleTimerList .circleRadio .check::before {
