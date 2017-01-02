@@ -315,6 +315,10 @@
     border: 1px solid #01579B;
 }
 
+/*
+===== Time Spent Settings =====
+*/
+
 #dobDateContainer {
     display: inline-block;
     margin-top: 4px;
@@ -333,7 +337,9 @@
     margin-left: 30px;
 }
 
-
+/*
+===== Clock Timer Settings =====
+*/
 
 #clockTimerContainer {
     text-align: left;
@@ -341,6 +347,74 @@
     /*display: inline-block; !!!WHEN DISPLAYING, USE INLINE-BLOCK*/
     margin: 0 auto;
 }
+
+/*
+===== People Timer Settings =====
+*/
+
+#peopleTimerList {
+    list-style: none;
+    display: inline-block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+}
+
+#peopleTimerList li{
+    color: #AAAAAA;
+    display: inline-block;
+    position: relative;
+    float: left;
+    margin-left:10px;
+    height: 25px;
+}
+
+#peopleTimerList li input[type=radio]{
+    display:none;
+}
+
+#peopleTimerList li label{
+    position: relative;
+    top: -1px;
+    margin-right: 2px;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+}
+
+#peopleTimerList li:hover label{
+    color: #00B0FF;
+}
+
+#peopleTimerList .circleRadio .check{
+    display: inline-block;
+    border: 3px solid #AAAAAA;
+    border-radius: 100%;
+    top: 0;
+    height: 18px;
+    width: 18px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+#peopleTimerList li:hover .check {
+  border: 3px solid #00B0FF;
+}
+
+#peopleTimerList .circleRadio .check::before {
+    display: inline-block;
+    content: '';
+    border-radius: 100%;
+    height: 10px;
+    width: 10px;
+    top: 4px;
+    left: 4px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
 /*
 ===== Precision Settings =====
 */
