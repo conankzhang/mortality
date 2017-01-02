@@ -315,6 +315,10 @@ input[type=radio]:checked ~ .check::before{
   border: 3px solid #00B0FF !important;
 }
 
+.mortalityRadioUL li:hover input[type=radio]:checked ~ .check::before{
+    background: #00B0FF;
+}
+
 /*
 ===== Timer Settings =====
 */
