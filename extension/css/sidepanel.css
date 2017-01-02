@@ -388,6 +388,9 @@ input[type=radio]:checked ~ .check::before{
 ===== People Timer Settings =====
 */
 
+#peopleTimerContainer {
+    display: none;
+}
 
 #peopleTimerList li{
     height: 25px;
