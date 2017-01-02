@@ -190,6 +190,7 @@ ul {
 }
 
 #updateBadge {
+  display: none;
   position: absolute;
   top: 4px;
   right: 1px;
