@@ -280,11 +280,14 @@
 ===== Timer Settings =====
 */
 
+#timerTypeSettingsContainer {
+    margin-top: 15px;
+}
+
 #dobContainer {
     display: inline-block;
     text-align: left;
     margin: 0 auto;
-    margin-top: 10px;
 }
 
 #timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3):before,
@@ -330,6 +333,14 @@
     margin-left: 30px;
 }
 
+
+
+#clockTimerContainer {
+    text-align: left;
+    display: none;
+    /*display: inline-block; !!!WHEN DISPLAYING, USE INLINE-BLOCK*/
+    margin: 0 auto;
+}
 /*
 ===== Precision Settings =====
 */
