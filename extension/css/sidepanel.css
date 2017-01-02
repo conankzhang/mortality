@@ -307,6 +307,8 @@
     border-radius: 5px;
     height: 25px;
     margin-top: 5px;
+    outline-width: 0;
+    border: 1px solid #01579B;
 }
 
 #dobDateContainer {
@@ -691,5 +693,6 @@ input[type=radio]:checked ~ .check::before{
     font-size:16px;
     border-radius:5px;
     padding: 3px 3px;
+    outline-width: 0;
     border: 1px solid #01579B;
 }
