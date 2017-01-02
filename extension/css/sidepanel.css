@@ -402,8 +402,8 @@ input[type=radio]:checked ~ .check::before{
 }
 
 #peopleTimerList li label{
-    top: -1px;
-    margin-right: 2px;
+    top: 2px;
+    padding-right: 27px;
 }
 
 #peopleTimerList li:hover label{
@@ -412,9 +412,11 @@ input[type=radio]:checked ~ .check::before{
 
 #peopleTimerList .circleRadio .check{
     display: inline-block;
+    position: absolute;
     border: 3px solid #AAAAAA;
     border-radius: 100%;
     top: 0;
+    right: 0;
     height: 18px;
     width: 18px;
     z-index: 5;
