@@ -269,6 +269,34 @@ function setupSettings(dob, dobMinutes)
     }
   });
 
+  var extraTimerSettingsSegmentedControl1 = $("#extraTimerSettingsSegmentedControl > input:nth-child(1)");
+  var extraTimerSettingsSegmentedControl2 = $("#extraTimerSettingsSegmentedControl > input:nth-child(2)");
+  var extraTimerSettingsSegmentedControl3 = $("#extraTimerSettingsSegmentedControl > input:nth-child(3)");
+
+  extraTimerSettingsSegmentedControl1.change( function () {
+    if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
+      $("#spentTimerContainer").fadeOut(100);
+      $("#peopleTimerContainer").fadeOut(100);
+      $("#clockTimerContainer").fadeIn(100);
+    }
+  });
+
+  extraTimerSettingsSegmentedControl2.change( function () {
+    if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
+      $("#spentTimerContainer").fadeOut(100);
+      $("#clockTimerContainer").fadeOut(100);
+      $("#peopleTimerContainer").fadeIn(100);
+    }
+  });
+
+  extraTimerSettingsSegmentedControl3.change( function () {
+    if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
+      $("#extraTimerSettingsSegmentedControl").addClass("borderless-segmented-control");
+      $("#extraTimerSettingsSegmentedControl").hide().fadeIn(500);
+      $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
+    }
+  });
+
 
   var chapterLengthSegmentedControl1 = $("#chapterLengthSegmentedControl > input:nth-child(1)");
   var chapterLengthSegmentedControl2 = $("#chapterLengthSegmentedControl > input:nth-child(2)");
