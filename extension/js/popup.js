@@ -278,6 +278,7 @@ function setupSettings(dob, dobMinutes)
       $("#spentTimerContainer").fadeOut(100);
       $("#peopleTimerContainer").fadeOut(100);
       $("#clockTimerContainer").fadeIn(100);
+      $("#precisionContainer").fadeIn(100);
     }
   });
 
@@ -286,14 +287,16 @@ function setupSettings(dob, dobMinutes)
       $("#spentTimerContainer").fadeOut(100);
       $("#clockTimerContainer").fadeOut(100);
       $("#peopleTimerContainer").fadeIn(100);
+      $("#precisionContainer").fadeIn(100);
     }
   });
 
   extraTimerSettingsSegmentedControl3.change( function () {
     if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
-      $("#extraTimerSettingsSegmentedControl").addClass("borderless-segmented-control");
-      $("#extraTimerSettingsSegmentedControl").hide().fadeIn(500);
-      $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
+      $("#spentTimerContainer").fadeOut(100);
+      $("#clockTimerContainer").fadeOut(100);
+      $("#peopleTimerContainer").fadeOut(100);
+      $("#precisionContainer").fadeOut(100);
     }
   });
 

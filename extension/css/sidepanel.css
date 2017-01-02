@@ -327,6 +327,10 @@ input[type=radio]:checked ~ .check::before{
     margin-top: 15px;
 }
 
+#timerSettingsGap {
+    height:5px;
+}
+
 #spentTimerContainer {
     display: inline-block;
     text-align: left;
@@ -456,7 +460,7 @@ input[type=radio]:checked ~ .check::before{
 */
 
 #precisionContainer {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 #precisionLabel {
@@ -469,7 +473,7 @@ input[type=radio]:checked ~ .check::before{
 
 #progressSettingsContainer {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 #hideProgressContainer {
@@ -566,7 +570,7 @@ input[type=radio]:checked ~ .check::before{
 */
 
 #chapterPrecisionLabel {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 #chapterPrecisionSegmentedControl {
     width: 300px;
@@ -576,6 +580,10 @@ input[type=radio]:checked ~ .check::before{
 /*
 ===== Chapter Length Settings =====
 */
+
+#chapterSegmentsLabel {
+    margin-top: 15px;
+}
 
 #chapterLengthSegmentedControl {
     width: 300px;
