@@ -190,6 +190,11 @@
 
 }
 
+.UnpressedButton:hover {
+    position: relative;
+    top: -7px;
+}
+
 .UnpressedButton:hover path{
     fill: #00B0FF;;
 }
