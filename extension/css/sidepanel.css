@@ -196,11 +196,14 @@
 }
 
 .UnpressedButton:hover path{
-    fill: #00B0FF;;
+    fill: #00B0FF;
 }
 
 .UnpressedButton:hover span{
-    color: #00B0FF;;
+    color: #00B0FF;
+    position: absolute;
+    left: 0px;
+    top: 21px;
 }
 
 .PressedButton path {
