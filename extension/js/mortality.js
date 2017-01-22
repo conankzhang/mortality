@@ -492,7 +492,7 @@
     this.dob = dateInput.valueAsDate;
     localStorage.setItem("dob", this.dob.getTime()+(this.dob.getTimezoneOffset() * minuteMS));
 
-    var timeChecked = document.querySelector('input[id=timeCheckbox]').checked;
+    var timeChecked = document.querySelector('input[id=dobTimeCheckbox]').checked;
     if( timeChecked )
     {
       var timeInput = $('timeInput');

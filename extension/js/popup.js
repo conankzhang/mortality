@@ -398,7 +398,7 @@ function setupSettings(dob, dobMinutes)
   });
 
   document.getElementById('dobInput').value = dob.yyyymmdd();
-  document.getElementById('timeInput').value = getTimeStringFromMinutes(dobMinutes);
+  document.getElementById('dobTimeInput').value = getTimeStringFromMinutes(dobMinutes);
 
   var savedPrecision = localStorage.getItem("precision");
   if (savedPrecision != null) {
@@ -438,14 +438,26 @@ function setupSettings(dob, dobMinutes)
 
 function loadCheckBoxes()
 {
-  var timeCheckbox = document.querySelector('input[id=timeCheckbox]');
+  var dobTimeCheckbox = document.querySelector('input[id=dobTimeCheckbox]');
   if (localStorage.getItem("dobTimeSet") == "YES") {
-    timeCheckbox.checked = true;
+    dobTimeCheckbox.checked = true;
   }
-  showTimeSelectorIf(timeCheckbox.checked);
+  showDOBTimeSelectorIf(dobTimeCheckbox.checked);
 
-  timeCheckbox.addEventListener('change', function () {
-    showTimeSelectorIf(timeCheckbox.checked);
+  dobTimeCheckbox.addEventListener('change', function () {
+    showDOBTimeSelectorIf(dobTimeCheckbox.checked);
+    localStorage.setItem("dobTimeSet", dobTimeCheckbox.checked?"YES":"NO");
+  });
+
+  var dodTimeCheckbox = document.querySelector('input[id=dodTimeCheckbox]');
+  if (localStorage.getItem("dodTimeSet") == "YES") {
+    dodTimeCheckbox.checked = true;
+  }
+  showDODTimeSelectorIf(dodTimeCheckbox.checked);
+
+  dodTimeCheckbox.addEventListener('change', function () {
+    showDODTimeSelectorIf(dodTimeCheckbox.checked);
+    localStorage.setItem("dodTimeSet", dodTimeCheckbox.checked?"YES":"NO");
   });
 
 //SET HIDE FLAGS
@@ -481,11 +493,21 @@ function setDropdownWithCurrentTheme(){
   }
 }
 
-function showTimeSelectorIf(isChecked)
+function showDOBTimeSelectorIf(isChecked)
 {
   if (isChecked) {
-      document.getElementById("timeInput").style.display = "block";
+      document.getElementById("dobTimeInput").style.display = "block";
   } else {
-      document.getElementById("timeInput").style.display = "none";
+      document.getElementById("dobTimeInput").style.display = "none";
   }
 }
+
+function showDODTimeSelectorIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("dodTimeInput").style.display = "block";
+  } else {
+      document.getElementById("dodTimeInput").style.display = "none";
+  }
+}
+

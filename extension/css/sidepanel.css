@@ -417,6 +417,23 @@ input[type=radio]:checked ~ .check::before{
     margin-left: 30px;
 }
 
+/*#weight-input {
+  -webkit-text-security: disc;
+  border-radius: .25vw;
+  -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  box-shadow: inset 2px 2px 2px 0px #dddddd;
+  padding: .2vw .2vw;
+  border: 1px solid #aaa;
+}
+
+#weight-input::-webkit-outer-spin-button,
+#weight-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}*/
+
+
 /*
 ===== Clock Timer Settings =====
 */
