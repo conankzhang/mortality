@@ -239,6 +239,37 @@ function setupThemes()
   setDropdownWithCurrentTheme();
 }
 
+function displayExtraSettingsContainer()
+{
+  var extraTimerSettingsSegmentedControl1 = $("#extraTimerSettingsSegmentedControl > input:nth-child(1)");
+  var extraTimerSettingsSegmentedControl2 = $("#extraTimerSettingsSegmentedControl > input:nth-child(2)");
+  var extraTimerSettingsSegmentedControl3 = $("#extraTimerSettingsSegmentedControl > input:nth-child(3)");
+
+  if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
+    $("#spentTimerContainer").fadeOut(100);
+    $("#leftTimerContainer").fadeOut(100);
+    $("#peopleTimerContainer").fadeOut(100);
+    $("#clockTimerContainer").fadeIn(100);
+    $("#precisionContainer").fadeIn(100);
+  }
+
+  else if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
+    $("#spentTimerContainer").fadeOut(100);
+    $("#leftTimerContainer").fadeOut(100);
+    $("#clockTimerContainer").fadeOut(100);
+    $("#peopleTimerContainer").fadeIn(100);
+    $("#precisionContainer").fadeIn(100);
+  }
+
+  else if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
+    $("#spentTimerContainer").fadeOut(100);
+    $("#leftTimerContainer").fadeOut(100);
+    $("#clockTimerContainer").fadeOut(100);
+    $("#peopleTimerContainer").fadeOut(100);
+    $("#precisionContainer").fadeOut(100);
+  }
+}
+
 function setupSettings(dob, dobMinutes)
 {
   localStorage.setItem("chapterNum", 2);
@@ -280,44 +311,22 @@ function setupSettings(dob, dobMinutes)
       $("#extraTimerSettingsSegmentedControl").addClass("borderless-segmented-control");
       $("#extraTimerSettingsSegmentedControl").hide().fadeIn(500);
       $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
-      $("#spentTimerContainer").fadeOut(100);
-      $("#leftTimerContainer").fadeOut(100);
-      $("#peopleTimerContainer").fadeOut(100);
-      $("#clockTimerContainer").fadeIn(100);
-      $("#precisionContainer").fadeIn(100);
+      displayExtraSettingsContainer();
     }
   });
 
 
 
   extraTimerSettingsSegmentedControl1.change( function () {
-    if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
-      $("#spentTimerContainer").fadeOut(100);
-      $("#leftTimerContainer").fadeOut(100);
-      $("#peopleTimerContainer").fadeOut(100);
-      $("#clockTimerContainer").fadeIn(100);
-      $("#precisionContainer").fadeIn(100);
-    }
+    displayExtraSettingsContainer();
   });
 
   extraTimerSettingsSegmentedControl2.change( function () {
-    if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
-      $("#spentTimerContainer").fadeOut(100);
-      $("#leftTimerContainer").fadeOut(100);
-      $("#clockTimerContainer").fadeOut(100);
-      $("#peopleTimerContainer").fadeIn(100);
-      $("#precisionContainer").fadeIn(100);
-    }
+    displayExtraSettingsContainer();
   });
 
   extraTimerSettingsSegmentedControl3.change( function () {
-    if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
-      $("#spentTimerContainer").fadeOut(100);
-      $("#leftTimerContainer").fadeOut(100);
-      $("#clockTimerContainer").fadeOut(100);
-      $("#peopleTimerContainer").fadeOut(100);
-      $("#precisionContainer").fadeOut(100);
-    }
+    displayExtraSettingsContainer();
   });
 
 
