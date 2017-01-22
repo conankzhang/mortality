@@ -245,6 +245,12 @@
 
 #settingsContainer {
     text-align: center;
+    max-height: 100%;
+    overflow: auto;
+}
+
+#settingsContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .segmentedControlLabelHR {
@@ -532,6 +538,7 @@ input[type=radio]:checked ~ .check::before{
 #progressSettingsContainer {
     text-align: center;
     margin-top: 25px;
+    position: relative;
 }
 
 #hideProgressContainer {
@@ -674,6 +681,7 @@ input[type=radio]:checked ~ .check::before{
 
 #chapterLengthsSpecifyContainer {
     margin-top: 15px;
+    margin-bottom: 50px;
 }
 
 #chapterLengthStackView {

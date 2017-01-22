@@ -460,6 +460,17 @@ function loadCheckBoxes()
     localStorage.setItem("dodTimeSet", dodTimeCheckbox.checked?"YES":"NO");
   });
 
+  var takeSurveyCheckbox = document.querySelector('input[id=takeSurveyCheckbox]');
+  if (localStorage.getItem("surveyDOD") == "YES") {
+    takeSurveyCheckbox.checked = true;
+  }
+  showSurveyIf(takeSurveyCheckbox.checked);
+
+  takeSurveyCheckbox.addEventListener('change', function () {
+    showSurveyIf(takeSurveyCheckbox.checked);
+    localStorage.setItem("surveyDOD", takeSurveyCheckbox.checked?"YES":"NO");
+  });
+
 //SET HIDE FLAGS
   // var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
   // if (localStorage.getItem("hideAge") == "YES") {
@@ -508,6 +519,17 @@ function showDODTimeSelectorIf(isChecked)
       document.getElementById("dodTimeInput").style.display = "block";
   } else {
       document.getElementById("dodTimeInput").style.display = "none";
+  }
+}
+
+function showSurveyIf(isChecked)
+{
+  if( isChecked ) {
+    $("#surveyDeathContainer").fadeIn(100);
+    $("#specifyDeathContainer").fadeOut(100);
+  } else {
+    $("#surveyDeathContainer").fadeOut(100);
+    $("#specifyDeathContainer").fadeIn(100);
   }
 }
 
