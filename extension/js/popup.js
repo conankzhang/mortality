@@ -249,15 +249,29 @@ function setupSettings(dob, dobMinutes)
   var timerSettingsSegmentedControl2 = $("#timerSettingsSegmentedControl > input:nth-child(2)");
   var timerSettingsSegmentedControl3 = $("#timerSettingsSegmentedControl > input:nth-child(3)");
 
+  var extraTimerSettingsSegmentedControl1 = $("#extraTimerSettingsSegmentedControl > input:nth-child(1)");
+  var extraTimerSettingsSegmentedControl2 = $("#extraTimerSettingsSegmentedControl > input:nth-child(2)");
+  var extraTimerSettingsSegmentedControl3 = $("#extraTimerSettingsSegmentedControl > input:nth-child(3)");
+
   timerSettingsSegmentedControl1.change( function () {
     if( timerSettingsSegmentedControl1.is(":checked") ) {
       $("#extraTimerSettingsSegmentedControl").fadeOut(1);
+      $("#spentTimerContainer").fadeIn(100);
+      $("#leftTimerContainer").fadeOut(100);
+      $("#peopleTimerContainer").fadeOut(100);
+      $("#clockTimerContainer").fadeOut(100);
+      $("#precisionContainer").fadeIn(100);
     }
   });
 
   timerSettingsSegmentedControl2.change( function () {
     if( timerSettingsSegmentedControl2.is(":checked") ) {
       $("#extraTimerSettingsSegmentedControl").fadeOut(1);
+      $("#spentTimerContainer").fadeOut(100);
+      $("#leftTimerContainer").fadeIn(100);
+      $("#peopleTimerContainer").fadeOut(100);
+      $("#clockTimerContainer").fadeOut(100);
+      $("#precisionContainer").fadeIn(100);
     }
   });
 
@@ -266,16 +280,20 @@ function setupSettings(dob, dobMinutes)
       $("#extraTimerSettingsSegmentedControl").addClass("borderless-segmented-control");
       $("#extraTimerSettingsSegmentedControl").hide().fadeIn(500);
       $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
+      $("#spentTimerContainer").fadeOut(100);
+      $("#leftTimerContainer").fadeOut(100);
+      $("#peopleTimerContainer").fadeOut(100);
+      $("#clockTimerContainer").fadeIn(100);
+      $("#precisionContainer").fadeIn(100);
     }
   });
 
-  var extraTimerSettingsSegmentedControl1 = $("#extraTimerSettingsSegmentedControl > input:nth-child(1)");
-  var extraTimerSettingsSegmentedControl2 = $("#extraTimerSettingsSegmentedControl > input:nth-child(2)");
-  var extraTimerSettingsSegmentedControl3 = $("#extraTimerSettingsSegmentedControl > input:nth-child(3)");
+
 
   extraTimerSettingsSegmentedControl1.change( function () {
     if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
       $("#spentTimerContainer").fadeOut(100);
+      $("#leftTimerContainer").fadeOut(100);
       $("#peopleTimerContainer").fadeOut(100);
       $("#clockTimerContainer").fadeIn(100);
       $("#precisionContainer").fadeIn(100);
@@ -285,6 +303,7 @@ function setupSettings(dob, dobMinutes)
   extraTimerSettingsSegmentedControl2.change( function () {
     if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
       $("#spentTimerContainer").fadeOut(100);
+      $("#leftTimerContainer").fadeOut(100);
       $("#clockTimerContainer").fadeOut(100);
       $("#peopleTimerContainer").fadeIn(100);
       $("#precisionContainer").fadeIn(100);
@@ -294,6 +313,7 @@ function setupSettings(dob, dobMinutes)
   extraTimerSettingsSegmentedControl3.change( function () {
     if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
       $("#spentTimerContainer").fadeOut(100);
+      $("#leftTimerContainer").fadeOut(100);
       $("#clockTimerContainer").fadeOut(100);
       $("#peopleTimerContainer").fadeOut(100);
       $("#precisionContainer").fadeOut(100);

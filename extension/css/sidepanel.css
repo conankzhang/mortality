@@ -323,18 +323,8 @@ input[type=radio]:checked ~ .check::before{
 ===== Timer Settings =====
 */
 
-#timerTypeSettingsContainer {
-    margin-top: 15px;
-}
-
 #timerSettingsGap {
-    height:5px;
-}
-
-#spentTimerContainer {
-    display: inline-block;
-    text-align: left;
-    margin: 0 auto;
+    height:10px;
 }
 
 #timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3):before,
@@ -366,6 +356,12 @@ input[type=radio]:checked ~ .check::before{
 ===== Time Spent Settings =====
 */
 
+#spentTimerContainer {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+
 #dobDateContainer {
     display: inline-block;
     margin-top: 4px;
@@ -382,6 +378,24 @@ input[type=radio]:checked ~ .check::before{
     height: 40px;
     width: 110px;
     margin-left: 30px;
+}
+
+/*
+===== Time Left Settings =====
+*/
+
+#leftTimerContainer {
+    display: none;
+    margin-top: 4px;
+}
+
+#specifyDeathCheckboxContainer {
+    text-align: left;
+}
+
+#specifyDeathCheckboxContainer label {
+    width: 191px;
+    margin: 0 auto;
 }
 
 /*
