@@ -20,7 +20,8 @@
   padding-left: 30px;
   cursor: pointer;
   vertical-align: middle;
-  line-height: 25px; }
+  line-height: 25px;
+  text-align: left;}
   .magic-radio + label:hover:before,
   .magic-checkbox + label:hover:before {
     animation-duration: 0.4s;
