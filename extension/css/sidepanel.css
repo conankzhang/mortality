@@ -481,6 +481,14 @@ input[type=radio]:checked ~ .check::before{
     margin-right:10px;
 }
 
+#clockPrecisionContainer {
+    display: none;
+}
+
+#populationPrecisionContainer {
+    display: none;
+}
+
 /*
 ===== Progress Settings =====
 */

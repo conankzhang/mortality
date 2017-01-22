@@ -337,8 +337,8 @@
     </div>
 
     <div id="precisionContainer">
-      <div>
-        <label id="precisionLabel" for="precisionDropdown">Counting Precision</label>
+      <div id="timerPrecisionContainer">
+        <label id="precisionLabel" for="precisionDropdown">Timer Precision</label>
         <select id="precisionDropdown" class="cs-select cs-skin-elastic">
           <option value="ms">Milliseconds</option>
           <option value="sec">Seconds</option>
@@ -347,6 +347,27 @@
           <option value="day">Days</option>
           <option value="month">Months</option>
           <option value="year">Years</option>
+        </select>
+      </div>
+      <div id="clockPrecisionContainer">
+        <label id="precisionLabel" for="precisionDropdown">Clock Precision</label>
+        <select id="precisionDropdown" class="cs-select cs-skin-elastic">
+          <option value="min">Minutes</option>
+          <option value="sec">Seconds</option>
+          <option value="ms">Milliseconds</option>
+          <option value="hour">Hours</option>
+        </select>
+      </div>
+      <div id="populationPrecisionContainer">
+        <label id="precisionLabel" for="precisionDropdown">Population Precision</label>
+        <select id="precisionDropdown" class="cs-select cs-skin-elastic">
+          <option value="one">Ones</option>
+          <option value="ten">Tens</option>
+          <option value="hund">Hundreds</option>
+          <option value="thou">Thousands</option>
+          <option value="tenthou">Ten Thousands</option>
+          <option value="hundthou">Hundred Thousands</option>
+          <option value="milo">Millions</option>
         </select>
       </div>
     </div>

@@ -239,6 +239,29 @@ function setupThemes()
   setDropdownWithCurrentTheme();
 }
 
+function swapPrecisionSelect(timerType)
+{
+  if( timerType == "timer" )
+  {
+    $("#timerPrecisionContainer").fadeIn(100);
+    $("#clockPrecisionContainer").fadeOut(100);
+    $("#populationPrecisionContainer").fadeOut(100);
+  }
+  else if( timerType == "clock" )
+  {
+    $("#timerPrecisionContainer").fadeOut(100);
+    $("#clockPrecisionContainer").fadeIn(100);
+    $("#populationPrecisionContainer").fadeOut(100);
+  }
+  else if( timerType == "population")
+  {
+    $("#timerPrecisionContainer").fadeOut(100);
+    $("#clockPrecisionContainer").fadeOut(100);
+    $("#populationPrecisionContainer").fadeIn(100);
+  }
+}
+
+
 function displayExtraSettingsContainer()
 {
   var extraTimerSettingsSegmentedControl1 = $("#extraTimerSettingsSegmentedControl > input:nth-child(1)");
@@ -251,6 +274,8 @@ function displayExtraSettingsContainer()
     $("#peopleTimerContainer").fadeOut(100);
     $("#clockTimerContainer").fadeIn(100);
     $("#precisionContainer").fadeIn(100);
+    $("#precisionLabel").text("Clock Precision");
+    swapPrecisionSelect("clock");
   }
 
   else if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
@@ -259,6 +284,8 @@ function displayExtraSettingsContainer()
     $("#clockTimerContainer").fadeOut(100);
     $("#peopleTimerContainer").fadeIn(100);
     $("#precisionContainer").fadeIn(100);
+    $("#precisionLabel").text("Population Precision");
+    swapPrecisionSelect("population");
   }
 
   else if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
@@ -292,6 +319,8 @@ function setupSettings(dob, dobMinutes)
       $("#peopleTimerContainer").fadeOut(100);
       $("#clockTimerContainer").fadeOut(100);
       $("#precisionContainer").fadeIn(100);
+      $("#precisionLabel").text("Timer Precision");
+      swapPrecisionSelect("timer");
     }
   });
 
@@ -303,6 +332,8 @@ function setupSettings(dob, dobMinutes)
       $("#peopleTimerContainer").fadeOut(100);
       $("#clockTimerContainer").fadeOut(100);
       $("#precisionContainer").fadeIn(100);
+      $("#precisionLabel").text("Timer Precision");
+      swapPrecisionSelect("timer");
     }
   });
 
@@ -314,8 +345,6 @@ function setupSettings(dob, dobMinutes)
       displayExtraSettingsContainer();
     }
   });
-
-
 
   extraTimerSettingsSegmentedControl1.change( function () {
     displayExtraSettingsContainer();
