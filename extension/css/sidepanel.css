@@ -473,7 +473,7 @@ input[type=radio]:checked ~ .check::before{
 
 #weightTextfield {
     float: right;
-    width: 50px;
+    width: 30px;
     font-size: 15px;
     border-radius: 5px;
     -webkit-text-security: disc;
@@ -481,6 +481,7 @@ input[type=radio]:checked ~ .check::before{
     -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
     box-shadow: inset 2px 2px 2px 0px #dddddd;
     border: 1px solid #aaa;
+    padding-left:5px;
 }
 
 #weightTextfield::-webkit-outer-spin-button,
