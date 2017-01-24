@@ -329,10 +329,10 @@
 
 
 
-          <div id="gender-container">
+          <div class="surveyQuestionContainer">
             <div>
-              <label id="gender-label" class="label-text" for="gender-dropdown">Gender?</label>
-              <select id="gender-dropdown" class="countdown-dropdown">
+              <label id="gender-label" class="surveyQuestionLabel" for="gender-dropdown">Gender?</label>
+              <select id="gender-dropdown" class="surveyQuestionDropdown">
                 <option value="DNE"></option>
                 <option value="female">Female</option>
                 <option value="male">Male</option>
@@ -340,10 +340,10 @@
             </div>
           </div>
 
-          <div id="ethnicity-container">
+          <div class="surveyQuestionContainer">
             <div>
-              <label id="ethnicity-label" class="label-text" for="ethnicity-dropdown">Ethnicity?</label>
-              <select id="ethnicity-dropdown" class="countdown-dropdown">
+              <label id="ethnicity-label" class="surveyQuestionLabel" for="ethnicity-dropdown">Ethnicity?</label>
+              <select id="ethnicity-dropdown" class="surveyQuestionDropdown">
                 <option value="DNE"></option>
                 <option value="white">White</option>
                 <option value="black">Black</option>
@@ -354,10 +354,10 @@
             </div>
           </div>
 
-          <div id="drinking-container">
+          <div class="surveyQuestionContainer">
             <div>
-              <label id="drinking-label" class="label-text" for="precision-dropdown">How often do you drink?</label>
-              <select id="drinking-dropdown" class="countdown-dropdown">
+              <label id="drinking-label" class="surveyQuestionLabel" for="precision-dropdown">How often do you drink?</label>
+              <select id="drinking-dropdown" class="surveyQuestionDropdown">
                 <option value="DNE"></option>
                 <option value="never">Never</option>
                 <option value="monthly">~1 Month</option>
@@ -367,10 +367,10 @@
             </div>
           </div>
 
-          <div id="smoking-container">
+          <div class="surveyQuestionContainer">
             <div>
-              <label id="smoking-label" class="label-text" for="precision-dropdown">How often do you smoke?</label>
-              <select id="smoking-dropdown" class="countdown-dropdown">
+              <label id="smoking-label" class="surveyQuestionLabel" for="precision-dropdown">How often do you smoke?</label>
+              <select id="smoking-dropdown" class="surveyQuestionDropdown">
                 <option value="DNE"></option>
                 <option value="never">Never</option>
                 <option value="monthly">~1 Pack/Month</option>
@@ -382,10 +382,10 @@
             </div>
           </div>
 
-          <div id="exercise-container">
+          <div class="surveyQuestionContainer">
             <div>
-              <label id="exercise-label" class="label-text" for="precision-dropdown">How often do you exercise?</label>
-              <select id="exercise-dropdown" class="countdown-dropdown">
+              <label id="exercise-label" class="surveyQuestionLabel" for="precision-dropdown">How often do you exercise?</label>
+              <select id="exercise-dropdown" class="surveyQuestionDropdown">
                 <option value="DNE"></option>
                 <option value="fiveplus">5+ Times/Week</option>
                 <option value="threefour">3-4 Times/Week</option>
@@ -396,58 +396,66 @@
             </div>
           </div>
 
-          <div id="height-label" class="label-text">
-            How tall are you?:
+          <div class="surveyQuestionContainer">
+            <div id="height-label" class="surveyQuestionLabel">How tall are you?</div>
+            <div id="heightDropdownContainer" class="surveyQuestionDropdown">
+              <div id="heightInches-container">
+                <div>
+                  <label id="heightInches-label" class="surveyQuestionLabel" for="heightInches-dropdown">Inches</label>
+                  <select id="heightInches-dropdown" class="surveyQuestionIntegerDropdown">
+                    <option value="DNE"></option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="heightFeet-container">
+                <div>
+                  <label id="heightFeet-label" class="surveyQuestionLabel" for="heightFeet-dropdown">Feet</label>
+                  <select id="heightFeet-dropdown" class="surveyQuestionIntegerDropdown">
+                    <option value="DNE"></option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div id="heightFeet-container">
-            <div>
-              <label id="heightFeet-label" class="label-text" for="heightFeet-dropdown">Feet</label>
-              <select id="heightFeet-dropdown" class="integer-dropdown">
-                <option value="DNE"></option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-              </select>
+          <div class="surveyQuestionContainer">
+            <label for="weight-input" id="weight-label" class="surveyQuestionLabel">How much do you weigh?</label>
+            <input type="number" id="weightTextfield" min="0" max="500">
+          </div>
+
+          <div class="surveyQuestionContainer">
+            <div class="checkbox">
+              <input id="heartDisease-checkbox" class="right-magic-checkbox" type="checkbox">
+              <label for="heartDisease-checkbox" id="heartDisease-label">Family have a history of heart disease?</label>
             </div>
           </div>
 
-          <div id="heightInches-container">
-            <div>
-              <label id="heightInches-label" class="label-text" for="heightInches-dropdown">Inches</label>
-              <select id="heightInches-dropdown" class="integer-dropdown">
-                <option value="DNE"></option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-              </select>
+          <div class="surveyQuestionContainer">
+            <div class="checkbox">
+              <input id="clumsiness-checkbox" class="right-magic-checkbox" type="checkbox">
+              <label for="clumsiness-checkbox" id="clumsiness-label">Clumsy?</label>
             </div>
-          </div>
-
-          <label for="weight-input" id="weight-label" class="">How much do you weigh?</label>
-          <input type="number" id="weight-input" class="" min="0" max="500">
-
-          <div class="checkbox">
-            <input id="heartDisease-checkbox" type="checkbox">
-            <label for="heartDisease-checkbox" id="heartDisease-label">Family have a history of heart disease?</label>
-          </div>
-
-          <div class="checkbox">
-            <input id="clumsiness-checkbox" type="checkbox">
-            <label for="clumsiness-checkbox" id="clumsiness-label">Clumsy?</label>
           </div>
 
 
