@@ -490,7 +490,13 @@ input[type=radio]:checked ~ .check::before{
   margin: 0;
 }
 
+#timeupMessageContainer {
+    margin-top: 15px;
+}
 
+#timeupMessageContainer div.cs-select {
+    max-width: 180px;
+}
 /*
 ===== Clock Timer Settings =====
 */
