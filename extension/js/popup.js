@@ -239,63 +239,7 @@ function setupThemes()
   setDropdownWithCurrentTheme();
 }
 
-function swapPrecisionSelect(timerType)
-{
-  if( timerType == "timer" )
-  {
-    $("#timerPrecisionContainer").show();
-    $("#clockPrecisionContainer").hide();
-    $("#populationPrecisionContainer").hide();
-  }
-  else if( timerType == "clock" )
-  {
-    $("#timerPrecisionContainer").hide();
-    $("#clockPrecisionContainer").show();
-    $("#populationPrecisionContainer").hide();
-  }
-  else if( timerType == "population")
-  {
-    $("#timerPrecisionContainer").hide();
-    $("#clockPrecisionContainer").hide();
-    $("#populationPrecisionContainer").show();
-  }
-}
 
-
-function displayExtraSettingsContainer()
-{
-  var extraTimerSettingsSegmentedControl1 = $("#extraTimerSettingsSegmentedControl > input:nth-child(1)");
-  var extraTimerSettingsSegmentedControl2 = $("#extraTimerSettingsSegmentedControl > input:nth-child(2)");
-  var extraTimerSettingsSegmentedControl3 = $("#extraTimerSettingsSegmentedControl > input:nth-child(3)");
-
-  if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
-    $("#spentTimerContainer").hide();
-    $("#leftTimerContainer").hide();
-    $("#peopleTimerContainer").hide();
-    $("#clockTimerContainer").show();
-    $("#precisionContainer").show();
-    $("#precisionLabel").text("Clock Precision");
-    swapPrecisionSelect("clock");
-  }
-
-  else if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
-    $("#spentTimerContainer").hide();
-    $("#leftTimerContainer").hide();
-    $("#clockTimerContainer").hide();
-    $("#peopleTimerContainer").show();
-    $("#precisionContainer").show();
-    $("#precisionLabel").text("Population Precision");
-    swapPrecisionSelect("population");
-  }
-
-  else if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
-    $("#spentTimerContainer").hide();
-    $("#leftTimerContainer").hide();
-    $("#clockTimerContainer").hide();
-    $("#peopleTimerContainer").hide();
-    $("#precisionContainer").hide();
-  }
-}
 
 function setupSettings(dob, dobMinutes)
 {
@@ -303,80 +247,8 @@ function setupSettings(dob, dobMinutes)
   convertIMG2SVG();
   loadCheckBoxes();
   loadRadioButtons();
+  loadSegmentedControls();
 
-  var timerSettingsSegmentedControl1 = $("#timerSettingsSegmentedControl > input:nth-child(1)");
-  var timerSettingsSegmentedControl2 = $("#timerSettingsSegmentedControl > input:nth-child(2)");
-  var timerSettingsSegmentedControl3 = $("#timerSettingsSegmentedControl > input:nth-child(3)");
-
-  var extraTimerSettingsSegmentedControl1 = $("#extraTimerSettingsSegmentedControl > input:nth-child(1)");
-  var extraTimerSettingsSegmentedControl2 = $("#extraTimerSettingsSegmentedControl > input:nth-child(2)");
-  var extraTimerSettingsSegmentedControl3 = $("#extraTimerSettingsSegmentedControl > input:nth-child(3)");
-
-  timerSettingsSegmentedControl1.change( function () {
-    if( timerSettingsSegmentedControl1.is(":checked") ) {
-      $("#extraTimerSettingsSegmentedControl").fadeOut(1);
-      $("#spentTimerContainer").show();
-      $("#leftTimerContainer").hide();
-      $("#peopleTimerContainer").hide();
-      $("#clockTimerContainer").hide();
-      $("#precisionContainer").show();
-      $("#precisionLabel").text("Timer Precision");
-      swapPrecisionSelect("timer");
-    }
-  });
-
-  timerSettingsSegmentedControl2.change( function () {
-    if( timerSettingsSegmentedControl2.is(":checked") ) {
-      $("#extraTimerSettingsSegmentedControl").fadeOut(1);
-      $("#spentTimerContainer").fadeOut(1);
-      $("#leftTimerContainer").fadeIn(1);
-      $("#peopleTimerContainer").hide();
-      $("#clockTimerContainer").hide();
-      $("#precisionContainer").show();
-      $("#precisionLabel").text("Timer Precision");
-      swapPrecisionSelect("timer");
-    }
-  });
-
-  timerSettingsSegmentedControl3.change( function () {
-    if( timerSettingsSegmentedControl3.is(":checked") ) {
-      $("#extraTimerSettingsSegmentedControl").addClass("borderless-segmented-control");
-      $("#extraTimerSettingsSegmentedControl").hide().fadeIn(500);
-      $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
-      displayExtraSettingsContainer();
-    }
-  });
-
-  extraTimerSettingsSegmentedControl1.change( function () {
-    displayExtraSettingsContainer();
-  });
-
-  extraTimerSettingsSegmentedControl2.change( function () {
-    displayExtraSettingsContainer();
-  });
-
-  extraTimerSettingsSegmentedControl3.change( function () {
-    displayExtraSettingsContainer();
-  });
-
-
-  var chapterLengthSegmentedControl1 = $("#chapterLengthSegmentedControl > input:nth-child(1)");
-  var chapterLengthSegmentedControl2 = $("#chapterLengthSegmentedControl > input:nth-child(2)");
-
-  chapterLengthSegmentedControl1.change( function () {
-    if( chapterLengthSegmentedControl1.is(":checked") ) {
-      $("#chapterLengthsFixedContainer").fadeOut(1, function() {
-        $("#chapterLengthsSpecifyContainer").fadeIn(1);
-      });
-    }
-  });
-
-  chapterLengthSegmentedControl2.change( function () {
-    if( chapterLengthSegmentedControl2.is(":checked") ) {
-      $("#chapterLengthsSpecifyContainer").fadeOut(1);
-      $("#chapterLengthsFixedContainer").fadeIn(1);
-    }
-  });
 
   $('#addChapterButton').on( "click", function() {
     var chapterValue = localStorage.getItem("chapterNum");
