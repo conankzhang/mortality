@@ -281,6 +281,51 @@ function loadSegmentedControls()
     displayExtraSettingsContainer();
   });
 
+  var chapterPrecisionSegmentedControl1 = $("#chapterPrecisionSegmentedControl > input:nth-child(1)");
+  var chapterPrecisionSegmentedControl2 = $("#chapterPrecisionSegmentedControl > input:nth-child(2)");
+  var chapterPrecisionSegmentedControl3 = $("#chapterPrecisionSegmentedControl > input:nth-child(3)");
+  var chapterPrecisionSegmentedControl4 = $("#chapterPrecisionSegmentedControl > input:nth-child(4)");
+
+  if( localStorage.getItem("chapterPrecision") === null ){
+    localStorage.setItem("chapterPrecision", "months");
+  }
+
+  chapterPrecisionSegmentedControl1.change( function () {
+    if( chapterLengthSegmentedControl1.is(":checked") ) {
+      localStorage.setItem("chapterPrecision", "days");
+    }
+  });
+
+  chapterPrecisionSegmentedControl2.change( function () {
+    if( chapterPrecisionSegmentedControl2.is(":checked") ) {
+      localStorage.setItem("chapterPrecision", "weeks");
+    }
+  });
+
+  chapterPrecisionSegmentedControl3.change( function () {
+    if( chapterPrecisionSegmentedControl3.is(":checked") ) {
+      localStorage.setItem("chapterPrecision", "months");
+    }
+  });
+
+  chapterPrecisionSegmentedControl4.change( function () {
+    if( chapterPrecisionSegmentedControl4.is(":checked") ) {
+      localStorage.setItem("chapterPrecision", "years");
+    }
+  });
+
+  if( localStorage.getItem("chapterPrecision") == "days" ) {
+      $('#chapterPrecisionSegmentedControl > input:nth-child(1)').prop('checked', true);
+  }
+  else if( localStorage.getItem("chapterPrecision") == "weeks" ) {
+      $('#chapterPrecisionSegmentedControl > input:nth-child(2)').prop('checked', true);
+  }
+  else if( localStorage.getItem("chapterPrecision") == "months" ) {
+      $('#chapterPrecisionSegmentedControl > input:nth-child(3)').prop('checked', true);
+  }
+  else if( localStorage.getItem("chapterPrecision") == "years" ) {
+      $('#chapterPrecisionSegmentedControl > input:nth-child(4)').prop('checked', true);
+  }
 
   var chapterLengthSegmentedControl1 = $("#chapterLengthSegmentedControl > input:nth-child(1)");
   var chapterLengthSegmentedControl2 = $("#chapterLengthSegmentedControl > input:nth-child(2)");
@@ -289,6 +334,7 @@ function loadSegmentedControls()
     if( chapterLengthSegmentedControl1.is(":checked") ) {
       $("#chapterLengthsFixedContainer").fadeOut(1, function() {
         $("#chapterLengthsSpecifyContainer").fadeIn(1);
+        localStorage.setItem("fixedChapters", "NO");
       });
     }
   });
@@ -297,8 +343,16 @@ function loadSegmentedControls()
     if( chapterLengthSegmentedControl2.is(":checked") ) {
       $("#chapterLengthsSpecifyContainer").fadeOut(1);
       $("#chapterLengthsFixedContainer").fadeIn(1);
+      localStorage.setItem("fixedChapters", "YES");
     }
   });
+
+  if( localStorage.getItem("fixedChapters") == "YES" )
+  {
+    $('#chapterLengthSegmentedControl > input:nth-child(2)').prop('checked', true);
+    $("#chapterLengthsSpecifyContainer").fadeOut(1);
+    $("#chapterLengthsFixedContainer").fadeIn(1);
+  }
 }
 
 function loadRadioButtons()
