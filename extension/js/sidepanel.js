@@ -165,8 +165,70 @@ function setButtonPressed(button)
 
     setupSettings(window.app.dob, window.app.dobMinutes);
   }
-  // if(localStorage.getItem("dob")===null)
-  // {
-  //   $("#cancel-button").toggle();
-  // }
+}
+
+
+function loadCheckBoxes()
+{
+  var dobTimeCheckbox = document.querySelector('input[id=dobTimeCheckbox]');
+  if (localStorage.getItem("dobTimeSet") == "YES") {
+    dobTimeCheckbox.checked = true;
+  }
+  showDOBTimeSelectorIf(dobTimeCheckbox.checked);
+
+  dobTimeCheckbox.addEventListener('change', function () {
+    showDOBTimeSelectorIf(dobTimeCheckbox.checked);
+    localStorage.setItem("dobTimeSet", dobTimeCheckbox.checked?"YES":"NO");
+  });
+
+  var dodTimeCheckbox = document.querySelector('input[id=dodTimeCheckbox]');
+  if (localStorage.getItem("dodTimeSet") == "YES") {
+    dodTimeCheckbox.checked = true;
+  }
+  showDODTimeSelectorIf(dodTimeCheckbox.checked);
+
+  dodTimeCheckbox.addEventListener('change', function () {
+    showDODTimeSelectorIf(dodTimeCheckbox.checked);
+    localStorage.setItem("dodTimeSet", dodTimeCheckbox.checked?"YES":"NO");
+  });
+
+  var takeSurveyCheckbox = document.querySelector('input[id=takeSurveyCheckbox]');
+  if (localStorage.getItem("surveyDOD") == "YES") {
+    takeSurveyCheckbox.checked = true;
+  }
+  showSurveyIf(takeSurveyCheckbox.checked);
+
+  takeSurveyCheckbox.addEventListener('change', function () {
+    showSurveyIf(takeSurveyCheckbox.checked);
+    localStorage.setItem("surveyDOD", takeSurveyCheckbox.checked?"YES":"NO");
+  });
+
+  var dailyCountdownCheckbox = document.querySelector('input[id=dailyCountdownCheckbox]');
+  if (localStorage.getItem("dailyCountdown") == "YES") {
+    dailyCountdownCheckbox.checked = true;
+  }
+  disableDODDateIf(dailyCountdownCheckbox.checked);
+
+  dailyCountdownCheckbox.addEventListener('change', function () {
+    disableDODDateIf(dailyCountdownCheckbox.checked);
+    localStorage.setItem("dailyCountdown", dailyCountdownCheckbox.checked?"YES":"NO");
+  });
+
+  var hideProgressCheckbox = document.querySelector('input[id=hideProgressCheckbox]');
+  if (localStorage.getItem("hideProgress") == "YES") {
+    hideProgressCheckbox.checked = true;
+  }
+
+  hideProgressCheckbox.addEventListener('change', function () {
+    localStorage.setItem("hideProgress", hideProgressCheckbox.checked?"YES":"NO");
+  });
+
+  var twentyFourCheckbox = document.querySelector('input[id=twentyFourCheckbox]');
+  if (localStorage.getItem("twentyFour") == "YES") {
+    twentyFourCheckbox.checked = true;
+  }
+
+  twentyFourCheckbox.addEventListener('change', function () {
+    localStorage.setItem("twentyFour", twentyFourCheckbox.checked?"YES":"NO");
+  });
 }
