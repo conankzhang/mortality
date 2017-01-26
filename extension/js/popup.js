@@ -530,6 +530,9 @@ function showDODTimeSelectorIf(isChecked)
       $('#dodTimeInput').show();
       $('#dailyCountdownCheckboxContainer').show();
   } else {
+      $('#dailyCountdownCheckbox').prop('checked', false);
+      disableDODDateIf(false);
+      localStorage.setItem("dailyCountdown", "NO");
       $('#dodTimeInput').hide();
       $('#dailyCountdownCheckboxContainer').hide();
   }
