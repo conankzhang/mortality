@@ -28,7 +28,6 @@ String.prototype.format = function() {
 
 function setupCountdown()
 {
-  loadCountdownCheckboxes();
   var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
   if( toggleCountdownCheckbox.checked )
   {
@@ -144,49 +143,6 @@ function loadCountdownDate()
   else
   {
     document.getElementById('countdownDate-input').value = new Date(parseInt(deathDate)).yyyymmdd();
-  }
-}
-
-function loadCountdownCheckboxes()
-{
-  var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
-  if (localStorage.getItem("countdownEnabled") == "YES") {
-    toggleCountdownCheckbox.checked = true;
-  }
-  showCountdownIf(toggleCountdownCheckbox.checked);
-  //Show the message selector if the checkbox isn't checked
-  showCountdownTimeUpMessageSelectorIf(!toggleCountdownCheckbox.checked);
-
-  toggleCountdownCheckbox.addEventListener('change', function () {
-    showCountdownIf(toggleCountdownCheckbox.checked);
-    showCountdownTimeUpMessageSelectorIf(!toggleCountdownCheckbox.checked);
-  });
-
-  var specificTimeCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
-  if (localStorage.getItem("specificTimeSet") == "YES") {
-    specificTimeCheckbox.checked = true;
-  }
-  showSpecificTimeSettingsIf(specificTimeCheckbox.checked);
-
-  specificTimeCheckbox.addEventListener('change', function () {
-    showSpecificTimeSettingsIf(specificTimeCheckbox.checked);
-  });
-
-
-
-  var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
-  if (localStorage.getItem("countdownTimeSet") == "YES") {
-    countdownTimeCheckbox.checked = true;
-  }
-  showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
-
-  countdownTimeCheckbox.addEventListener('change', function () {
-    showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
-  });
-
-  var countdownDailyCheckbox = document.querySelector('input[id=countdown-daily-checkbox]');
-  if (localStorage.getItem("countdownDaily") == "YES") {
-    countdownDailyCheckbox.checked = true;
   }
 }
 
