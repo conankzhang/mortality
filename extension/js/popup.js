@@ -471,6 +471,17 @@ function loadCheckBoxes()
     localStorage.setItem("surveyDOD", takeSurveyCheckbox.checked?"YES":"NO");
   });
 
+  var dailyCountdownCheckbox = document.querySelector('input[id=dailyCountdownCheckbox]');
+  if (localStorage.getItem("dailyCountdown") == "YES") {
+    dailyCountdownCheckbox.checked = true;
+  }
+  disableDODDateIf(dailyCountdownCheckbox.checked);
+
+  dailyCountdownCheckbox.addEventListener('change', function () {
+    disableDODDateIf(dailyCountdownCheckbox.checked);
+    localStorage.setItem("dailyCountdown", dailyCountdownCheckbox.checked?"YES":"NO");
+  });
+
 //SET HIDE FLAGS
   // var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
   // if (localStorage.getItem("hideAge") == "YES") {
@@ -507,18 +518,31 @@ function setDropdownWithCurrentTheme(){
 function showDOBTimeSelectorIf(isChecked)
 {
   if (isChecked) {
-      document.getElementById("dobTimeInput").style.display = "block";
+      $('#dobTimeInput').show();
   } else {
-      document.getElementById("dobTimeInput").style.display = "none";
+      $('#dobTimeInput').hide();
   }
 }
 
 function showDODTimeSelectorIf(isChecked)
 {
   if (isChecked) {
-      document.getElementById("dodTimeInput").style.display = "block";
+      $('#dodTimeInput').show();
+      $('#dailyCountdownCheckboxContainer').show();
   } else {
-      document.getElementById("dodTimeInput").style.display = "none";
+      $('#dodTimeInput').hide();
+      $('#dailyCountdownCheckboxContainer').hide();
+  }
+}
+
+function disableDODDateIf(isChecked)
+{
+  if (isChecked) {
+      $('#dodInput').prop('disabled', true);
+      $('#dodLabel').addClass("DisabledLabel");
+  } else {
+      $('#dodInput').prop('disabled', false);
+      $('#dodLabel').removeClass("DisabledLabel");
   }
 }
 
