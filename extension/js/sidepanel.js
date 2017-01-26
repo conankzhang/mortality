@@ -203,6 +203,7 @@ function displayExtraSettingsContainer()
     $("#precisionContainer").show();
     $("#precisionLabel").text("Clock Precision");
     swapPrecisionSelect("clock");
+    localStorage.setItem("timerSetting", "clock");
   }
 
   else if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
@@ -213,6 +214,7 @@ function displayExtraSettingsContainer()
     $("#precisionContainer").show();
     $("#precisionLabel").text("Population Precision");
     swapPrecisionSelect("population");
+    localStorage.setItem("timerSetting", "population");
   }
 
   else if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
@@ -221,6 +223,7 @@ function displayExtraSettingsContainer()
     $("#clockTimerContainer").hide();
     $("#peopleTimerContainer").hide();
     $("#precisionContainer").hide();
+    localStorage.setItem("timerSetting", "hide");
   }
 }
 
@@ -244,6 +247,7 @@ function loadSegmentedControls()
       $("#precisionContainer").show();
       $("#precisionLabel").text("Timer Precision");
       swapPrecisionSelect("timer");
+      localStorage.setItem("timerSetting", "spent");
     }
   });
 
@@ -257,6 +261,7 @@ function loadSegmentedControls()
       $("#precisionContainer").show();
       $("#precisionLabel").text("Timer Precision");
       swapPrecisionSelect("timer");
+      localStorage.setItem("timerSetting", "left");
     }
   });
 
@@ -281,6 +286,28 @@ function loadSegmentedControls()
     displayExtraSettingsContainer();
   });
 
+  if( localStorage.getItem("timerSetting") == "left" ) {
+      $('#timerSettingsSegmentedControl > input:nth-child(2)').prop('checked', true);
+      $("#spentTimerContainer").fadeOut(1);
+      $("#leftTimerContainer").fadeIn(1);
+      $("#precisionContainer").show();
+      $("#precisionLabel").text("Timer Precision");
+      swapPrecisionSelect("timer");
+  }
+  else if( localStorage.getItem("timerSetting") == "clock" || localStorage.getItem("timerSetting") == "population" || localStorage.getItem("timerSetting") == "hide" ) {
+    $('#timerSettingsSegmentedControl > input:nth-child(3)').prop('checked', true);
+    $("#extraTimerSettingsSegmentedControl").addClass("borderless-segmented-control");
+    $("#extraTimerSettingsSegmentedControl").hide().fadeIn(500);
+    $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
+
+    if( localStorage.getItem("timerSetting") == "population" ) {
+      $('#extraTimerSettingsSegmentedControl > input:nth-child(2)').prop('checked', true);
+    }
+    else if( localStorage.getItem("timerSetting") == "hide" ) {
+      $('#extraTimerSettingsSegmentedControl > input:nth-child(3)').prop('checked', true);
+    }
+    displayExtraSettingsContainer();
+  }
   var chapterPrecisionSegmentedControl1 = $("#chapterPrecisionSegmentedControl > input:nth-child(1)");
   var chapterPrecisionSegmentedControl2 = $("#chapterPrecisionSegmentedControl > input:nth-child(2)");
   var chapterPrecisionSegmentedControl3 = $("#chapterPrecisionSegmentedControl > input:nth-child(3)");
