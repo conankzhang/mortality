@@ -302,6 +302,7 @@ function setupSettings(dob, dobMinutes)
   localStorage.setItem("chapterNum", 2);
   convertIMG2SVG();
   loadCheckBoxes();
+  loadRadioButtons();
 
   var timerSettingsSegmentedControl1 = $("#timerSettingsSegmentedControl > input:nth-child(1)");
   var timerSettingsSegmentedControl2 = $("#timerSettingsSegmentedControl > input:nth-child(2)");

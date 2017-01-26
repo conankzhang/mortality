@@ -167,6 +167,43 @@ function setButtonPressed(button)
   }
 }
 
+function loadRadioButtons()
+{
+  var youngerOption = document.querySelector('input[id=youngerOption]');
+  var olderOption = document.querySelector('input[id=olderOption]');
+  if (localStorage.getItem("youngerOption") == "YES") {
+    youngerOption.checked = true;
+  }
+  else {
+    olderOption.checked = true;
+  }
+
+  youngerOption.addEventListener('change', function () {
+    localStorage.setItem("youngerOption", youngerOption.checked?"YES":"NO");
+  });
+
+  olderOption.addEventListener('change', function () {
+    localStorage.setItem("youngerOption", olderOption.checked?"NO":"YES");
+  });
+
+
+  var circleOption = document.querySelector('input[id=circleOption]');
+  var squareOption = document.querySelector('input[id=squareOption]');
+  if (localStorage.getItem("circleOption") == "YES") {
+    circleOption.checked = true;
+  }
+  else {
+    squareOption.checked = true;
+  }
+
+  circleOption.addEventListener('change', function () {
+    localStorage.setItem("circleOption", circleOption.checked?"YES":"NO");
+  });
+
+  squareOption.addEventListener('change', function () {
+    localStorage.setItem("circleOption", squareOption.checked?"NO":"YES");
+  });
+}
 
 function loadCheckBoxes()
 {
