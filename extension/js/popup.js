@@ -482,30 +482,23 @@ function loadCheckBoxes()
     localStorage.setItem("dailyCountdown", dailyCountdownCheckbox.checked?"YES":"NO");
   });
 
-//SET HIDE FLAGS
-  // var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
-  // if (localStorage.getItem("hideAge") == "YES") {
-  //   hideAgeCheckbox.checked = true;
-  // }
+  var hideProgressCheckbox = document.querySelector('input[id=hideProgressCheckbox]');
+  if (localStorage.getItem("hideProgress") == "YES") {
+    hideProgressCheckbox.checked = true;
+  }
 
-  // hideAgeCheckbox.addEventListener('change', function () {
-  //   var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
-  //   if(hideCirclesCheckbox.checked == true) {
-  //     hideCirclesCheckbox.checked = false;
-  //   }
-  // });
+  hideProgressCheckbox.addEventListener('change', function () {
+    localStorage.setItem("hideProgress", hideProgressCheckbox.checked?"YES":"NO");
+  });
 
-  // var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
-  // if (localStorage.getItem("hideCircles") == "YES") {
-  //   hideCirclesCheckbox.checked = true;
-  // }
+  var twentyFourCheckbox = document.querySelector('input[id=twentyFourCheckbox]');
+  if (localStorage.getItem("twentyFour") == "YES") {
+    twentyFourCheckbox.checked = true;
+  }
 
-  // hideCirclesCheckbox.addEventListener('change', function () {
-  //   var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
-  //   if(hideAgeCheckbox.checked == true) {
-  //     hideAgeCheckbox.checked = false;
-  //   }
-  // });
+  twentyFourCheckbox.addEventListener('change', function () {
+    localStorage.setItem("twentyFour", twentyFourCheckbox.checked?"YES":"NO");
+  });
 }
 
 function setDropdownWithCurrentTheme(){
