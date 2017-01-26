@@ -243,21 +243,21 @@ function swapPrecisionSelect(timerType)
 {
   if( timerType == "timer" )
   {
-    $("#timerPrecisionContainer").fadeIn(100);
-    $("#clockPrecisionContainer").fadeOut(100);
-    $("#populationPrecisionContainer").fadeOut(100);
+    $("#timerPrecisionContainer").show();
+    $("#clockPrecisionContainer").hide();
+    $("#populationPrecisionContainer").hide();
   }
   else if( timerType == "clock" )
   {
-    $("#timerPrecisionContainer").fadeOut(100);
-    $("#clockPrecisionContainer").fadeIn(100);
-    $("#populationPrecisionContainer").fadeOut(100);
+    $("#timerPrecisionContainer").hide();
+    $("#clockPrecisionContainer").show();
+    $("#populationPrecisionContainer").hide();
   }
   else if( timerType == "population")
   {
-    $("#timerPrecisionContainer").fadeOut(100);
-    $("#clockPrecisionContainer").fadeOut(100);
-    $("#populationPrecisionContainer").fadeIn(100);
+    $("#timerPrecisionContainer").hide();
+    $("#clockPrecisionContainer").hide();
+    $("#populationPrecisionContainer").show();
   }
 }
 
@@ -269,31 +269,31 @@ function displayExtraSettingsContainer()
   var extraTimerSettingsSegmentedControl3 = $("#extraTimerSettingsSegmentedControl > input:nth-child(3)");
 
   if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
-    $("#spentTimerContainer").fadeOut(100);
-    $("#leftTimerContainer").fadeOut(100);
-    $("#peopleTimerContainer").fadeOut(100);
-    $("#clockTimerContainer").fadeIn(100);
-    $("#precisionContainer").fadeIn(100);
+    $("#spentTimerContainer").hide();
+    $("#leftTimerContainer").hide();
+    $("#peopleTimerContainer").hide();
+    $("#clockTimerContainer").show();
+    $("#precisionContainer").show();
     $("#precisionLabel").text("Clock Precision");
     swapPrecisionSelect("clock");
   }
 
   else if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
-    $("#spentTimerContainer").fadeOut(100);
-    $("#leftTimerContainer").fadeOut(100);
-    $("#clockTimerContainer").fadeOut(100);
-    $("#peopleTimerContainer").fadeIn(100);
-    $("#precisionContainer").fadeIn(100);
+    $("#spentTimerContainer").hide();
+    $("#leftTimerContainer").hide();
+    $("#clockTimerContainer").hide();
+    $("#peopleTimerContainer").show();
+    $("#precisionContainer").show();
     $("#precisionLabel").text("Population Precision");
     swapPrecisionSelect("population");
   }
 
   else if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
-    $("#spentTimerContainer").fadeOut(100);
-    $("#leftTimerContainer").fadeOut(100);
-    $("#clockTimerContainer").fadeOut(100);
-    $("#peopleTimerContainer").fadeOut(100);
-    $("#precisionContainer").fadeOut(100);
+    $("#spentTimerContainer").hide();
+    $("#leftTimerContainer").hide();
+    $("#clockTimerContainer").hide();
+    $("#peopleTimerContainer").hide();
+    $("#precisionContainer").hide();
   }
 }
 
@@ -314,11 +314,11 @@ function setupSettings(dob, dobMinutes)
   timerSettingsSegmentedControl1.change( function () {
     if( timerSettingsSegmentedControl1.is(":checked") ) {
       $("#extraTimerSettingsSegmentedControl").fadeOut(1);
-      $("#spentTimerContainer").fadeIn(100);
-      $("#leftTimerContainer").fadeOut(100);
-      $("#peopleTimerContainer").fadeOut(100);
-      $("#clockTimerContainer").fadeOut(100);
-      $("#precisionContainer").fadeIn(100);
+      $("#spentTimerContainer").show();
+      $("#leftTimerContainer").hide();
+      $("#peopleTimerContainer").hide();
+      $("#clockTimerContainer").hide();
+      $("#precisionContainer").show();
       $("#precisionLabel").text("Timer Precision");
       swapPrecisionSelect("timer");
     }
@@ -327,11 +327,11 @@ function setupSettings(dob, dobMinutes)
   timerSettingsSegmentedControl2.change( function () {
     if( timerSettingsSegmentedControl2.is(":checked") ) {
       $("#extraTimerSettingsSegmentedControl").fadeOut(1);
-      $("#spentTimerContainer").fadeOut(100);
-      $("#leftTimerContainer").fadeIn(100);
-      $("#peopleTimerContainer").fadeOut(100);
-      $("#clockTimerContainer").fadeOut(100);
-      $("#precisionContainer").fadeIn(100);
+      $("#spentTimerContainer").fadeOut(1);
+      $("#leftTimerContainer").fadeIn(1);
+      $("#peopleTimerContainer").hide();
+      $("#clockTimerContainer").hide();
+      $("#precisionContainer").show();
       $("#precisionLabel").text("Timer Precision");
       swapPrecisionSelect("timer");
     }
@@ -525,11 +525,13 @@ function showDODTimeSelectorIf(isChecked)
 function showSurveyIf(isChecked)
 {
   if( isChecked ) {
-    $("#surveyDeathContainer").fadeIn(100);
-    $("#specifyDeathContainer").fadeOut(100);
+    $('#specifyDeathContainer').hide();
+    $('#surveyDeathContainer').show();
   } else {
-    $("#surveyDeathContainer").fadeOut(100);
-    $("#specifyDeathContainer").fadeIn(100);
+    $('#surveyDeathContainer').hide();
+    $('#specifyDeathContainer').show();
   }
 }
+
+
 
