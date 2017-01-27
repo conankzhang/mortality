@@ -781,10 +781,12 @@ function loadChapters()
   var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
   if( savedChapterYearLengths === null ) {
     savedChapterYearLengths = [5,7,2,4,4,43,15];
+    localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
   }
   var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
   if( savedChapterMonthLengths === null ) {
     savedChapterMonthLengths = [0,0,0,0,0,0];
+    localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
   }
 
   $("#firstChapterYearsInput").val(savedChapterYearLengths[0]);
@@ -806,5 +808,13 @@ function loadChapters()
     }
     $('#chapterMonth{0}'.format(chapterNum)).val(monthValue);
   }
+
+  var chapterMonthInputs = $('.monthsInput');
+  chapterMonthInputs.on('input',function(e){
+    var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
+    monthNumber = e.currentTarget.id.slice(-1);
+    savedChapterMonthLengths[monthNumber - 2] = e.currentTarget.value;
+    localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
+  });
 }
 
