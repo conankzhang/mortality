@@ -138,6 +138,7 @@ function setupSettings(dob, dobMinutes)
   loadDropdowns();
   loadSegmentedControls();
   loadSurvey();
+  loadChapterPrecision();
 
 
   $('#addChapterButton').on( "click", function() {

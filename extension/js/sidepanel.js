@@ -714,5 +714,32 @@ function loadSurvey()
   });
 }
 
+function loadChapterPrecision()
+{
+  var chapterPrecisionYear = localStorage.getItem("chapterPrecisionYear");
+  var chapterPrecisionYearTextfield = $("#fixedYearsInput");
+  if (chapterPrecisionYear === null) {
+    localStorage.chapterPrecisionYear = "10";
+    chapterPrecisionYearTextfield.val("10");
+  }
+  else {
+    chapterPrecisionYearTextfield.val(chapterPrecisionYear);
+  }
+  chapterPrecisionYearTextfield.on('input',function(e){
+    localStorage.chapterPrecisionYear = chapterPrecisionYearTextfield.val();
+  });
 
+  var chapterPrecisionMonth = localStorage.getItem("chapterPrecisionMonth");
+  var chapterPrecisionMonthTextfield = $("#fixedMonthsInput");
+  if (chapterPrecisionMonth === null) {
+    localStorage.chapterPrecisionMonth = "0";
+    chapterPrecisionMonthTextfield.val("0");
+  }
+  else {
+    chapterPrecisionMonthTextfield.val(chapterPrecisionMonth);
+  }
+  chapterPrecisionMonthTextfield.on('input',function(e){
+    localStorage.chapterPrecisionMonth = chapterPrecisionMonthTextfield.val();
+  });
+}
 
