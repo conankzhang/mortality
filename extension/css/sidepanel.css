@@ -903,7 +903,7 @@ input:disabled {
     margin-right: 2px;
 }
 
-.fixedYearsInput {
+#fixedYearsInput {
     display: inline-block;
     width:30px;
     height:22px;
@@ -920,7 +920,7 @@ input:disabled {
     margin-right: 2px;
 }
 
-.fixedMonthsInput {
+#fixedMonthsInput {
     display: inline-block;
     margin-right:30px;
     width:30px;
@@ -930,4 +930,16 @@ input:disabled {
     padding: 3px 3px;
     outline-width: 0;
     border: 1px solid #01579B;
+}
+
+#fixedYearsInput::-webkit-outer-spin-button,
+#fixedYearsInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#fixedMonthsInput::-webkit-outer-spin-button,
+#fixedMonthsInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
