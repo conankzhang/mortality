@@ -124,50 +124,6 @@ function loadCountdownDate()
   }
 }
 
-function showCountdownIf(isChecked)
-{
-  if (isChecked) {
-      document.getElementById("countdown-container").style.display = "block";
-  } else {
-      document.getElementById("countdown-container").style.display = "none";
-  }
-}
-
-function showCountdownTimeSelectorIf(isChecked)
-{
-  if (isChecked) {
-      document.getElementById("countdownTime-input").style.display = "block";
-      document.getElementById("countdown-daily-label").style.display = "block";
-  } else {
-      document.getElementById("countdownTime-input").style.display = "none";
-      document.getElementById("countdown-daily-label").style.display = "none";
-  }
-}
-
-function showSpecificTimeSettingsIf(isChecked)
-{
-  if (isChecked) {
-      document.getElementById("specific-container").style.display = "block";
-      document.getElementById("survey-container").style.display = "none";
-      loadCountdownDate();
-      loadCountdownTime();
-
-  } else {
-      document.getElementById("specific-container").style.display = "none";
-      document.getElementById("survey-container").style.display = "block";
-      loadSurveyAnswers();
-  }
-}
-
-function showCountdownTimeUpMessageSelectorIf(isChecked)
-{
-  if (isChecked) {
-      document.getElementById("timeup-selector-container").style.display = "block";
-  } else {
-      document.getElementById("timeup-selector-container").style.display = "none";
-  }
-}
-
 function setupThemes()
 {
   setDropdownWithCurrentTheme();
