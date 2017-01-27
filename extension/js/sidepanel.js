@@ -610,7 +610,106 @@ function loadDropdowns()
 
 function loadSurvey()
 {
+  var surveyGender = localStorage.getItem("surveyGender");
+  var surveyGenderDropdown = $("#gender-dropdown");
+  if (surveyGender !== null) {
+    surveyGenderDropdown.val(surveyGender);
+  }
+  surveyGenderDropdown.change(function() {
+    localStorage.surveyGender = surveyGenderDropdown.val();
+  });
 
+  var surveyEthnicity = localStorage.getItem("surveyEthnicity");
+  var surveyEthnicityDropdown = $("#ethnicity-dropdown");
+  if (surveyEthnicity !== null) {
+    surveyEthnicityDropdown.val(surveyEthnicity);
+  }
+  surveyEthnicityDropdown.change(function() {
+    localStorage.surveyEthnicity = surveyEthnicityDropdown.val();
+  });
+
+  var surveyDrinking = localStorage.getItem("surveyDrinking");
+  var surveyDrinkingDropdown = $("#drinking-dropdown");
+  if (surveyDrinking !== null) {
+    surveyDrinkingDropdown.val(surveyDrinking);
+  }
+  surveyDrinkingDropdown.change(function() {
+    localStorage.surveyDrinking = surveyDrinkingDropdown.val();
+  });
+
+  var surveySmoking = localStorage.getItem("surveySmoking");
+  var surveySmokingDropdown = $("#smoking-dropdown");
+  if (surveySmoking !== null) {
+    surveySmokingDropdown.val(surveySmoking);
+  }
+  surveySmokingDropdown.change(function() {
+    localStorage.surveySmoking = surveySmokingDropdown.val();
+  });
+
+  var surveyExercise = localStorage.getItem("surveyExercise");
+  var surveyExerciseDropdown = $("#exercise-dropdown");
+  if (surveyExercise !== null) {
+    surveyExerciseDropdown.val(surveyExercise);
+  }
+  surveyExerciseDropdown.change(function() {
+    localStorage.surveyExercise = surveyExerciseDropdown.val();
+  });
+
+  var surveyHeightFeet = localStorage.getItem("surveyHeightFeet");
+  var surveyHeightFeetDropdown = $("#heightFeet-dropdown");
+  if (surveyHeightFeet !== null) {
+    surveyHeightFeetDropdown.val(surveyHeightFeet);
+  }
+  surveyHeightFeetDropdown.change(function() {
+    localStorage.surveyHeightFeet = surveyHeightFeetDropdown.val();
+  });
+
+  var surveyHeightInches = localStorage.getItem("surveyHeightInches");
+  var surveyHeightInchesDropdown = $("#heightInches-dropdown");
+  if (surveyHeightInches !== null) {
+    surveyHeightInchesDropdown.val(surveyHeightInches);
+  }
+  surveyHeightInchesDropdown.change(function() {
+    localStorage.surveyHeightInches = surveyHeightInchesDropdown.val();
+  });
+
+  var surveyWeight = localStorage.getItem("surveyWeight");
+  var surveyWeightTextfield = $("#weightTextfield");
+  if (surveyWeight !== null) {
+    surveyWeightTextfield.val(surveyWeight);
+  }
+  surveyWeightTextfield.on('input',function(e){
+    localStorage.surveyWeight = surveyWeightTextfield.val();
+  });
+
+  var surveyHeartCheckbox = document.querySelector('input[id=heartDisease-checkbox]');
+  if (localStorage.getItem("surveyHeartDisease") == "YES") {
+    surveyHeartCheckbox.checked = true;
+  }
+  surveyHeartCheckbox.addEventListener('change', function () {
+    localStorage.setItem("surveyHeartDisease", surveyHeartCheckbox.checked?"YES":"NO");
+  });
+
+  var surveyClumsinessCheckbox = document.querySelector('input[id=clumsiness-checkbox]');
+  if (localStorage.getItem("surveyClumsiness") == "YES") {
+    surveyClumsinessCheckbox.checked = true;
+  }
+  surveyClumsinessCheckbox.addEventListener('change', function () {
+    localStorage.setItem("surveyClumsiness", surveyClumsinessCheckbox.checked?"YES":"NO");
+  });
+
+  // var birthDate = getDOB();
+  // if(birthDate.dst())
+  // {
+  //   birthDate.setHours(birthDate.getHours()+1);
+  // }
+  // var birthMinutes = localStorage.dobMinutes || 0;
+
+  // var yearMS = 31556952000;
+  // var minuteMS = 60000;
+  // var deathDate = 80*yearMS + (birthDate - (parseInt(birthMinutes)*minuteMS));
+
+  // localStorage.setItem("surveyDeathDate", deathDate);
 }
 
 
