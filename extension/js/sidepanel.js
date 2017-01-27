@@ -488,13 +488,21 @@ function loadCheckBoxes()
 function loadDropdowns()
 {
   populationPrecision = localStorage.populationPrecision;
-
   populationPrecisionDropdown = $('#populationPrecisionDropdown');
   if( populationPrecision != null ) {
     populationPrecisionDropdown.val(populationPrecision);
   }
   else {
     localStorage.populationPrecision = "one";
+  }
+
+  clockPrecision = localStorage.clockPrecision;
+  clockPrecisionDropdown = $('#clockPrecisionDropdown');
+  if( clockPrecision != null ) {
+    clockPrecisionDropdown.val(clockPrecision);
+  }
+  else {
+    localStorage.clockPrecision = "min";
   }
 
   [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
@@ -507,6 +515,14 @@ function loadDropdowns()
   selectPopulationValue.text(currentPopulationValue);
   selectPopulation.click(function() {
     localStorage.populationPrecision = populationPrecisionDropdown.val();
+  });
+
+  selectClock = $( "#clockPrecisionContainer > div" );
+  selectClockValue = $( "#clockPrecisionContainer > div > span" );
+  currentClockValue = $("#clockPrecisionDropdown option[value='" + clockPrecision + "']").text();
+  selectClockValue.text(currentClockValue);
+  selectClock.click(function() {
+    localStorage.clockPrecision = clockPrecisionDropdown.val();
   });
 }
 
