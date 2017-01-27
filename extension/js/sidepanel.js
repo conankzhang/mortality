@@ -487,13 +487,14 @@ function loadCheckBoxes()
 
 function loadDropdowns()
 {
-  populationPrecision = localStorage.populationPrecision;
-  populationPrecisionDropdown = $('#populationPrecisionDropdown');
-  if( populationPrecision != null ) {
-    populationPrecisionDropdown.val(populationPrecision);
+  timerPrecision = localStorage.timerPrecision;
+  timerPrecisionDropdown = $('#timerPrecisionDropdown');
+  if( timerPrecision != null ) {
+    timerPrecisionDropdown.val(timerPrecision);
   }
   else {
-    localStorage.populationPrecision = "one";
+    timerPrecision = "ms";
+    localStorage.timerPrecision = "ms";
   }
 
   clockPrecision = localStorage.clockPrecision;
@@ -502,19 +503,30 @@ function loadDropdowns()
     clockPrecisionDropdown.val(clockPrecision);
   }
   else {
+    clockPrecision = "min";
     localStorage.clockPrecision = "min";
+  }
+
+  populationPrecision = localStorage.populationPrecision;
+  populationPrecisionDropdown = $('#populationPrecisionDropdown');
+  if( populationPrecision != null ) {
+    populationPrecisionDropdown.val(populationPrecision);
+  }
+  else {
+    populationPrecision = "one";
+    localStorage.populationPrecision = "one";
   }
 
   [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
     new SelectFx(el);
   } );
 
-  selectPopulation = $( "#populationPrecisionContainer > div" );
-  selectPopulationValue = $( "#populationPrecisionContainer > div > span" );
-  currentPopulationValue = $("#populationPrecisionDropdown option[value='" + populationPrecision + "']").text();
-  selectPopulationValue.text(currentPopulationValue);
-  selectPopulation.click(function() {
-    localStorage.populationPrecision = populationPrecisionDropdown.val();
+  selectTimer = $( "#timerPrecisionContainer > div" );
+  selectTimerValue = $( "#timerPrecisionContainer > div > span" );
+  currentTimerValue = $("#timerPrecisionDropdown option[value='" + timerPrecision + "']").text();
+  selectTimerValue.text(currentTimerValue);
+  selectTimer.click(function() {
+    localStorage.timerPrecision = timerPrecisionDropdown.val();
   });
 
   selectClock = $( "#clockPrecisionContainer > div" );
@@ -523,6 +535,14 @@ function loadDropdowns()
   selectClockValue.text(currentClockValue);
   selectClock.click(function() {
     localStorage.clockPrecision = clockPrecisionDropdown.val();
+  });
+
+  selectPopulation = $( "#populationPrecisionContainer > div" );
+  selectPopulationValue = $( "#populationPrecisionContainer > div > span" );
+  currentPopulationValue = $("#populationPrecisionDropdown option[value='" + populationPrecision + "']").text();
+  selectPopulationValue.text(currentPopulationValue);
+  selectPopulation.click(function() {
+    localStorage.populationPrecision = populationPrecisionDropdown.val();
   });
 }
 
