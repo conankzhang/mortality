@@ -129,8 +129,6 @@ function setupThemes()
   setDropdownWithCurrentTheme();
 }
 
-
-
 function setupSettings(dob, dobMinutes)
 {
   localStorage.setItem("chapterNum", 2);
@@ -187,10 +185,6 @@ function setupSettings(dob, dobMinutes)
   //   saveChapterLengths();
   //   $("#info-popup").magnificPopup('close');
   // });
-
-
-
-
 }
 
 function setDropdownWithCurrentTheme(){
@@ -199,51 +193,3 @@ function setDropdownWithCurrentTheme(){
     document.getElementById("theme-dropdown").value = theme;
   }
 }
-
-function showDOBTimeSelectorIf(isChecked)
-{
-  if (isChecked) {
-      $('#dobTimeInput').show();
-  } else {
-      $('#dobTimeInput').hide();
-  }
-}
-
-function showDODTimeSelectorIf(isChecked)
-{
-  if (isChecked) {
-      $('#dodTimeInput').show();
-      $('#dailyCountdownCheckboxContainer').show();
-  } else {
-      $('#dailyCountdownCheckbox').prop('checked', false);
-      disableDODDateIf(false);
-      localStorage.setItem("dailyCountdown", "NO");
-      $('#dodTimeInput').hide();
-      $('#dailyCountdownCheckboxContainer').hide();
-  }
-}
-
-function disableDODDateIf(isChecked)
-{
-  if (isChecked) {
-      $('#dodInput').prop('disabled', true);
-      $('#dodLabel').addClass("DisabledLabel");
-  } else {
-      $('#dodInput').prop('disabled', false);
-      $('#dodLabel').removeClass("DisabledLabel");
-  }
-}
-
-function showSurveyIf(isChecked)
-{
-  if( isChecked ) {
-    $('#specifyDeathContainer').hide();
-    $('#surveyDeathContainer').show();
-  } else {
-    $('#surveyDeathContainer').hide();
-    $('#specifyDeathContainer').show();
-  }
-}
-
-
-

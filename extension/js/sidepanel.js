@@ -167,6 +167,51 @@ function setButtonPressed(button)
   }
 }
 
+function showDOBTimeSelectorIf(isChecked)
+{
+  if (isChecked) {
+      $('#dobTimeInput').show();
+  } else {
+      $('#dobTimeInput').hide();
+  }
+}
+
+function showDODTimeSelectorIf(isChecked)
+{
+  if (isChecked) {
+      $('#dodTimeInput').show();
+      $('#dailyCountdownCheckboxContainer').show();
+  } else {
+      $('#dailyCountdownCheckbox').prop('checked', false);
+      disableDODDateIf(false);
+      localStorage.setItem("dailyCountdown", "NO");
+      $('#dodTimeInput').hide();
+      $('#dailyCountdownCheckboxContainer').hide();
+  }
+}
+
+function disableDODDateIf(isChecked)
+{
+  if (isChecked) {
+      $('#dodInput').prop('disabled', true);
+      $('#dodLabel').addClass("DisabledLabel");
+  } else {
+      $('#dodInput').prop('disabled', false);
+      $('#dodLabel').removeClass("DisabledLabel");
+  }
+}
+
+function showSurveyIf(isChecked)
+{
+  if( isChecked ) {
+    $('#specifyDeathContainer').hide();
+    $('#surveyDeathContainer').show();
+  } else {
+    $('#surveyDeathContainer').hide();
+    $('#specifyDeathContainer').show();
+  }
+}
+
 function swapPrecisionSelect(timerType)
 {
   if( timerType == "timer" )
@@ -561,6 +606,11 @@ function loadDropdowns()
   selectTimeupMessage.click(function() {
     localStorage.timeupMessage = timeupMessageDropdown.val();
   });
+}
+
+function loadSurvey()
+{
+
 }
 
 
