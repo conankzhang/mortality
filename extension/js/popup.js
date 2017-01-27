@@ -203,6 +203,7 @@ function setupSettings(dob, dobMinutes)
   convertIMG2SVG();
   loadCheckBoxes();
   loadRadioButtons();
+  loadDropdowns();
   loadSegmentedControls();
 
 
@@ -260,9 +261,7 @@ function setupSettings(dob, dobMinutes)
 
 
 
-  [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
-    new SelectFx(el);
-  } );
+
 }
 
 function setDropdownWithCurrentTheme(){

@@ -484,3 +484,31 @@ function loadCheckBoxes()
     localStorage.setItem("twentyFour", twentyFourCheckbox.checked?"YES":"NO");
   });
 }
+
+function loadDropdowns()
+{
+  populationPrecision = localStorage.populationPrecision;
+
+  populationPrecisionDropdown = $('#populationPrecisionDropdown');
+  if( populationPrecision != null ) {
+    populationPrecisionDropdown.val(populationPrecision);
+  }
+  else {
+    localStorage.populationPrecision = "one";
+  }
+
+  [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+    new SelectFx(el);
+  } );
+
+  selectPopulation = $( "#populationPrecisionContainer > div" );
+  selectPopulationValue = $( "#populationPrecisionContainer > div > span" );
+  currentPopulationValue = $("#populationPrecisionDropdown option[value='" + populationPrecision + "']").text();
+  selectPopulationValue.text(currentPopulationValue);
+  selectPopulation.click(function() {
+    localStorage.populationPrecision = populationPrecisionDropdown.val();
+  });
+}
+
+
+
