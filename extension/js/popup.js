@@ -46,50 +46,43 @@ function setupCountdown()
 
   $("#countdown-submit-button").click(function(){
     var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
-    if( toggleCountdownCheckbox.checked )
+
+    localStorage.setItem("countdownEnabled", "YES");
+    var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
+    if( specifyCountdownCheckbox.checked )
     {
-      localStorage.setItem("countdownEnabled", "YES");
-      var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
-      if( specifyCountdownCheckbox.checked )
+      var timeInput = document.getElementById("countdownTime-input").value;
+      var timeArray = timeInput.split(":");
+      localStorage.deathTime = timeArray[0]*60 + timeArray[1]*1;
+
+      saveCountdownDeath();
+
+      localStorage.setItem("specificTimeSet", "YES");
+      var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+      if( countdownTimeCheckbox.checked )
       {
-        var timeInput = document.getElementById("countdownTime-input").value;
-        var timeArray = timeInput.split(":");
-        localStorage.deathTime = timeArray[0]*60 + timeArray[1]*1;
-
-        saveCountdownDeath();
-
-        localStorage.setItem("specificTimeSet", "YES");
-        var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
-        if( countdownTimeCheckbox.checked )
-        {
-          localStorage.setItem("countdownTimeSet", "YES");
-        }
-        else
-        {
-          localStorage.removeItem("countdownTimeSet");
-        }
-        var countdownDailyCheckbox = document.querySelector('input[id=countdown-daily-checkbox]');
-        if( countdownDailyCheckbox.checked )
-        {
-          localStorage.setItem("countdownDaily", "YES");
-        }
-        else
-        {
-          localStorage.removeItem("countdownDaily");
-        }
+        localStorage.setItem("countdownTimeSet", "YES");
       }
       else
       {
-        localStorage.removeItem("specificTimeSet");
-        saveSurveyAnswers();
+        localStorage.removeItem("countdownTimeSet");
+      }
+      var countdownDailyCheckbox = document.querySelector('input[id=countdown-daily-checkbox]');
+      if( countdownDailyCheckbox.checked )
+      {
+        localStorage.setItem("countdownDaily", "YES");
+      }
+      else
+      {
+        localStorage.removeItem("countdownDaily");
       }
     }
     else
     {
-      localStorage.removeItem("countdownEnabled");
-      var timeupMessage = document.getElementById("timeup-selector-dropdown").value;
-      localStorage.setItem("timeupMessage", timeupMessage);
+      localStorage.removeItem("specificTimeSet");
+      saveSurveyAnswers();
     }
+
     $("#info-popup").magnificPopup('close');
   });
 
@@ -214,11 +207,6 @@ function setupSettings(dob, dobMinutes)
 
   document.getElementById('dobInput').value = dob.yyyymmdd();
   document.getElementById('dobTimeInput').value = getTimeStringFromMinutes(dobMinutes);
-
-  var savedPrecision = localStorage.getItem("precision");
-  if (savedPrecision != null) {
-    document.getElementById("timerPrecisionDropdown").value = savedPrecision;
-  }
 
   var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
   if( savedChapterLengths === null )
