@@ -232,7 +232,7 @@ function setupSettings(dob, dobMinutes)
 
   var savedPrecision = localStorage.getItem("precision");
   if (savedPrecision != null) {
-    document.getElementById("precisionDropdown").value = savedPrecision;
+    document.getElementById("timerPrecisionDropdown").value = savedPrecision;
   }
 
   var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
