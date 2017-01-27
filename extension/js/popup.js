@@ -131,7 +131,9 @@ function setupThemes()
 
 function setupSettings(dob, dobMinutes)
 {
-  localStorage.setItem("chapterNum", 2);
+  if( localStorage.getItem("chapterNum") === null) {
+    localStorage.setItem("chapterNum", 1);
+  }
   convertIMG2SVG();
   loadCheckBoxes();
   loadRadioButtons();
@@ -140,11 +142,18 @@ function setupSettings(dob, dobMinutes)
   loadSurvey();
   loadChapterPrecision();
 
+  numberOfChapters = localStorage.chapterNum;
+  for( i=1; i<numberOfChapters; i++ )
+  {
+    chapterNum = parseInt(i+1);
+    var chapterNumString = getOrdinal(chapterNum);
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="text" class="yearsInput"><input type="text" class="monthsInput"></div>'.format(chapterNumString))
+  }
 
   $('#addChapterButton').on( "click", function() {
     var chapterValue = localStorage.getItem("chapterNum");
     chapterNum = parseInt(chapterValue);
-    var chapterNumString = getOrdinal(chapterNum);
+    var chapterNumString = getOrdinal(chapterNum+1);
     $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="text" class="yearsInput"><input type="text" class="monthsInput"></div>'.format(chapterNumString))
     chapterNum+=1;
     localStorage.setItem("chapterNum", chapterNum);
@@ -153,7 +162,7 @@ function setupSettings(dob, dobMinutes)
   $('#removeChapterButton').on( "click", function() {
     var chapterValue = localStorage.getItem("chapterNum");
     chapterNum = parseInt(chapterValue);
-    if( chapterNum > 2 )
+    if( chapterNum > 1 )
     {
       $('#chapterLengthStackView .chapter').last().remove();
       chapterNum-=1;
