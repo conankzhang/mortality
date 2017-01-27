@@ -943,3 +943,15 @@ input:disabled {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.monthsInput::-webkit-outer-spin-button,
+.monthsInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.yearsInput::-webkit-outer-spin-button,
+.yearsInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -31,6 +31,12 @@ function zeroFill(number, width)
   return number + "";
 }
 
+function getOrdinal(n) {
+   var s=["th","st","nd","rd"],
+       v=n%100;
+   return n+(s[(v-20)%10]||s[v]||s[0]);
+}
+
 /*
  * Replace all SVG images with inline SVG
  * http://stackoverflow.com/questions/11978995/how-to-change-color-of-svg-image-using-css-jquery-svg-image-replacement
