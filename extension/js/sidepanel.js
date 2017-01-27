@@ -743,3 +743,55 @@ function loadChapterPrecision()
   });
 }
 
+function loadChapters()
+{
+  if( localStorage.getItem("chapterNum") === null) {
+    localStorage.setItem("chapterNum", 7);
+  }
+
+  var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
+  if( savedChapterLengths === null )
+  {
+    savedChapterLengths = [5,7,2,4,4,43,15];
+  }
+
+  $("#first-chapter-input").val(savedChapterLengths[0]);
+  $("#second-chapter-input").val(savedChapterLengths[1]);
+  $("#third-chapter-input").val(savedChapterLengths[2]);
+  $("#fourth-chapter-input").val(savedChapterLengths[3]);
+  $("#fifth-chapter-input").val(savedChapterLengths[4]);
+  $("#sixth-chapter-input").val(savedChapterLengths[5]);
+  $("#seventh-chapter-input").val(savedChapterLengths[6]);
+  $("#eighth-chapter-input").val(savedChapterLengths[7]);
+
+
+
+  numberOfChapters = localStorage.chapterNum;
+  for( i=1; i<numberOfChapters; i++ )
+  {
+    chapterNum = parseInt(i+1);
+    var chapterNumString = getOrdinal(chapterNum);
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11"></div>'.format(chapterNumString, chapterNum))
+  }
+
+  $('#addChapterButton').on( "click", function() {
+    var chapterValue = localStorage.getItem("chapterNum");
+    chapterNum = parseInt(chapterValue);
+    var chapterNumString = getOrdinal(chapterNum+1);
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11"></div>'.format(chapterNumString, chapterNum))
+    chapterNum+=1;
+    localStorage.setItem("chapterNum", chapterNum);
+  });
+
+  $('#removeChapterButton').on( "click", function() {
+    var chapterValue = localStorage.getItem("chapterNum");
+    chapterNum = parseInt(chapterValue);
+    if( chapterNum > 1 )
+    {
+      $('#chapterLengthStackView .chapter').last().remove();
+      chapterNum-=1;
+      localStorage.setItem("chapterNum", chapterNum);
+    }
+  });
+}
+

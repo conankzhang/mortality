@@ -10,12 +10,6 @@ $('#inline-popup').magnificPopup({
   midClick: true
 });
 
-function getOrdinal(n) {
-   var s=["th","st","nd","rd"],
-       v=n%100;
-   return n+(s[(v-20)%10]||s[v]||s[0]);
-}
-
 String.prototype.format = function() {
     var s = this,
         i = arguments.length;
@@ -131,9 +125,6 @@ function setupThemes()
 
 function setupSettings(dob, dobMinutes)
 {
-  if( localStorage.getItem("chapterNum") === null) {
-    localStorage.setItem("chapterNum", 1);
-  }
   convertIMG2SVG();
   loadCheckBoxes();
   loadRadioButtons();
@@ -141,53 +132,10 @@ function setupSettings(dob, dobMinutes)
   loadSegmentedControls();
   loadSurvey();
   loadChapterPrecision();
-
-  numberOfChapters = localStorage.chapterNum;
-  for( i=1; i<numberOfChapters; i++ )
-  {
-    chapterNum = parseInt(i+1);
-    var chapterNumString = getOrdinal(chapterNum);
-    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="text" class="yearsInput"><input type="text" class="monthsInput"></div>'.format(chapterNumString))
-  }
-
-  $('#addChapterButton').on( "click", function() {
-    var chapterValue = localStorage.getItem("chapterNum");
-    chapterNum = parseInt(chapterValue);
-    var chapterNumString = getOrdinal(chapterNum+1);
-    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="text" class="yearsInput"><input type="text" class="monthsInput"></div>'.format(chapterNumString))
-    chapterNum+=1;
-    localStorage.setItem("chapterNum", chapterNum);
-  });
-
-  $('#removeChapterButton').on( "click", function() {
-    var chapterValue = localStorage.getItem("chapterNum");
-    chapterNum = parseInt(chapterValue);
-    if( chapterNum > 1 )
-    {
-      $('#chapterLengthStackView .chapter').last().remove();
-      chapterNum-=1;
-      localStorage.setItem("chapterNum", chapterNum);
-    }
-  });
+  loadChapters();
 
   document.getElementById('dobInput').value = dob.yyyymmdd();
   document.getElementById('dobTimeInput').value = getTimeStringFromMinutes(dobMinutes);
-
-  var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
-  if( savedChapterLengths === null )
-  {
-    savedChapterLengths = [5,7,2,4,4,43,15,0];
-  }
-
-  $("#first-chapter-input").val(savedChapterLengths[0]);
-  $("#second-chapter-input").val(savedChapterLengths[1]);
-  $("#third-chapter-input").val(savedChapterLengths[2]);
-  $("#fourth-chapter-input").val(savedChapterLengths[3]);
-  $("#fifth-chapter-input").val(savedChapterLengths[4]);
-  $("#sixth-chapter-input").val(savedChapterLengths[5]);
-  $("#seventh-chapter-input").val(savedChapterLengths[6]);
-  $("#eighth-chapter-input").val(savedChapterLengths[7]);
-
 
   // $("#submit-button").click(function(){
   //   window.app.saveDob();
