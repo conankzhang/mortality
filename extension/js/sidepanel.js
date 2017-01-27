@@ -809,6 +809,14 @@ function loadChapters()
     $('#chapterMonth{0}'.format(chapterNum)).val(monthValue);
   }
 
+  var chapterYearInputs = $('.yearsInput');
+  chapterYearInputs.on('input',function(e){
+    var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
+    yearNumber = e.currentTarget.id.slice(-1);
+    savedChapterYearLengths[yearNumber - 1] = e.currentTarget.value;
+    localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
+  });
+
   var chapterMonthInputs = $('.monthsInput');
   chapterMonthInputs.on('input',function(e){
     var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
