@@ -28,35 +28,20 @@ String.prototype.format = function() {
 
 function setupCountdown()
 {
-  var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
-  if( toggleCountdownCheckbox.checked )
+  var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
+  if( specifyCountdownCheckbox.checked )
   {
-    var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
-    if( specifyCountdownCheckbox.checked )
-    {
-      loadCountdownDate();
+    loadCountdownDate();
 
-      var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
-      if( countdownTimeCheckbox.checked )
-      {
-        loadCountdownTime();
-      }
-    }
-    else
+    var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+    if( countdownTimeCheckbox.checked )
     {
-      loadSurveyAnswers();
+      loadCountdownTime();
     }
   }
   else
   {
-    var loadedTimeupMessage = localStorage.getItem("timeupMessage");
-    if( loadedTimeupMessage != null ) {
-      document.getElementById("timeup-selector-dropdown").value = loadedTimeupMessage;
-    }
-    else
-    {
-      localStorage.timeupMessage = document.getElementById("timeup-selector-dropdown").value;
-    }
+    loadSurveyAnswers();
   }
 
   $("#countdown-submit-button").click(function(){
