@@ -517,6 +517,16 @@ function loadDropdowns()
     localStorage.populationPrecision = "one";
   }
 
+  timeupMessage = localStorage.timeupMessage;
+  timeupMessageDropdown = $('#timeupMessageDropdown');
+  if( timeupMessage != null ) {
+    timeupMessageDropdown.val(timeupMessage);
+  }
+  else {
+    timeupMessage = "¯\\_(ツ)_/¯";
+    localStorage.timeupMessage = "¯\\_(ツ)_/¯";
+  }
+
   [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
     new SelectFx(el);
   } );
@@ -543,6 +553,13 @@ function loadDropdowns()
   selectPopulationValue.text(currentPopulationValue);
   selectPopulation.click(function() {
     localStorage.populationPrecision = populationPrecisionDropdown.val();
+  });
+
+  selectTimeupMessage = $( "#timeupMessageContainer > div" );
+  selectTimeupMessageValue = $( "#timeupMessageContainer > div > span" );
+  selectTimeupMessageValue.text(timeupMessage);
+  selectTimeupMessage.click(function() {
+    localStorage.timeupMessage = timeupMessageDropdown.val();
   });
 }
 
