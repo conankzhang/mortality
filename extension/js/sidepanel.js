@@ -178,7 +178,7 @@ function setButtonPressed(button)
     themeButton.className = "UnpressedButton";
     settingsButton.className = "PressedButton";
 
-    setupSettings(window.app.dob, window.app.dobMinutes);
+    setupSettings();
   }
 }
 
@@ -849,6 +849,25 @@ function loadChapters()
     monthNumber = e.currentTarget.id.slice(-1);
     savedChapterMonthLengths[monthNumber - 2] = e.currentTarget.value;
     localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
+  });
+}
+
+function loadDOB()
+{
+  var dobDate = getDOB();
+  var dobDateInput = $("#dobInput");
+  var dobDateInputDoc = document.getElementById("dobInput");
+  dobDateInput.val(dobDate.yyyymmdd());
+
+  dobDateInput.on('input',function(e){
+    if( !dobDateInputDoc.valueAsDate) {
+      var newDate = new Date();
+      localStorage.dob = newDate.getTime();
+    }
+    else {
+      var dobDateFromInput = dobDateInputDoc.valueAsDate;
+      localStorage.setItem("dob", dobDateFromInput.getTime()+(dobDateFromInput.getTimezoneOffset() * 60000));
+    }
   });
 }
 
