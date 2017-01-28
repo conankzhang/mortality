@@ -760,10 +760,28 @@ function loadChapters()
   $('#addChapterButton').on( "click", function() {
     var chapterValue = localStorage.getItem("chapterNum");
     chapterNum = parseInt(chapterValue);
+    var chapterNumOffset = chapterNum + 1;
     var chapterNumString = getOrdinal(chapterNum+1);
-    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100" value="0"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11" value="0"></div>'.format(chapterNumString, chapterNum))
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100" value="0"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11" value="0"></div>'.format(chapterNumString, chapterNumOffset))
     chapterNum+=1;
     localStorage.setItem("chapterNum", chapterNum);
+
+    var newChapterYearsInput = $('#chapterYear{0}'.format(chapterNumOffset));
+    newChapterYearsInput.on('input',function(e){
+      var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
+      yearNumber = e.currentTarget.id.slice(-1);
+      savedChapterYearLengths[yearNumber - 1] = e.currentTarget.value;
+      localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
+    });
+
+    var newChapterMonthsInput = $('#chapterMonth{0}'.format(chapterNumOffset));
+    newChapterMonthsInput.on('input',function(e){
+      var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
+      monthNumber = e.currentTarget.id.slice(-1);
+      savedChapterMonthLengths[monthNumber - 2] = e.currentTarget.value;
+      localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
+    });
+
   });
 
   $('#removeChapterButton').on( "click", function() {
@@ -775,6 +793,14 @@ function loadChapters()
       chapterNum-=1;
       localStorage.setItem("chapterNum", chapterNum);
     }
+
+    var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
+    savedChapterYearLengths[chapterNum] = 0;
+    localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
+
+    var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
+    savedChapterMonthLengths[chapterNum-1] = 0;
+    localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
   });
 
 
