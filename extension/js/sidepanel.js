@@ -856,17 +856,33 @@ function loadDOB()
 {
   var dobDate = getDOB();
   var dobDateInput = $("#dobInput");
-  var dobDateInputDoc = document.getElementById("dobInput");
   dobDateInput.val(dobDate.yyyymmdd());
 
   dobDateInput.on('input',function(e){
-    if( !dobDateInputDoc.valueAsDate) {
+    var dobDateInputDOM = document.getElementById("dobInput");
+    if( !dobDateInputDOM.valueAsDate) {
       var newDate = new Date();
       localStorage.dob = newDate.getTime();
     }
     else {
-      var dobDateFromInput = dobDateInputDoc.valueAsDate;
+      var dobDateFromInput = dobDateInputDOM.valueAsDate;
       localStorage.setItem("dob", dobDateFromInput.getTime()+(dobDateFromInput.getTimezoneOffset() * 60000));
+    }
+  });
+
+  // window.app.dobMinutes = localStorage.dobMinutes || 0;
+  var dobMinutes = localStorage.dobMinutes || 0;
+  var dobTimeInput = $("#dobTimeInput");
+  dobTimeInput.val(getTimeStringFromMinutes(dobMinutes));
+
+  dobTimeInput.on('input',function(e){
+    var dobTimeInputDOM = document.getElementById("dobTimeInput");
+    if( !dobTimeInputDOM.valueAsDate ) {
+      localStorage.dobMinutes = 0;
+    }
+    else {
+      var timeArray = dobTimeInputDOM.value.split(":");
+      localStorage.dobMinutes = timeArray[0]*60 + timeArray[1]*1;
     }
   });
 }

@@ -45,11 +45,6 @@ function setupSettings()
   loadChapters();
   loadDOB();
 
-  // dob = window.app.dob;
-  // dobMinutes = window.app.dobMinutes;
-  // document.getElementById('dobInput').value = dob.yyyymmdd();
-  // document.getElementById('dobTimeInput').value = getTimeStringFromMinutes(dobMinutes);
-
   // $("#submit-button").click(function(){
   //   window.app.saveDob();
   //   saveTheme();
