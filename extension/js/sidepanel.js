@@ -69,7 +69,7 @@ $('#menu-button').click(function(e)
 
   if(localStorage.getItem("dob")===null)
   {
-    setButtonPressed(2);
+    setButtonPressed(3);
   }
   //UPDATE WHEN REVVING VERSIONS
   else if(localStorage.getItem("version")=="4.1.0")
