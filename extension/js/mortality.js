@@ -245,7 +245,7 @@
       if( localStorage.getItem("showCurrentTime") === null )
       {
         var interval = minuteMS;
-        var savedPrecision = localStorage.getItem("precision");
+        var savedPrecision = localStorage.getItem("timerPrecision");
         if( savedPrecision == "sec" )
         {
           interval = secondMS;
@@ -317,7 +317,7 @@
         return;
       }
 
-      var savedPrecision = localStorage.getItem("precision");
+      var savedPrecision = localStorage.getItem("timerPrecision");
       while(true)
       {
         var years = endMoment.diff(startMoment, 'years');
@@ -516,7 +516,7 @@
       endMoment = currentMoment;
     }
 
-    var savedPrecision = localStorage.getItem("precision");
+    var savedPrecision = localStorage.getItem("timerPrecision");
     while(true)
     {
       var years = endMoment.diff(startMoment, 'years');

@@ -21,7 +21,7 @@ function openNav()
     'font-size':'3vw'
   },1000);
   $('.timer-container').animate({
-    'left':'70%'
+    'left':'75%'
   },1000);
 
   $('.timer-labels').animate({
@@ -597,6 +597,11 @@ function loadDropdowns()
   selectTimerValue.text(currentTimerValue);
   selectTimer.click(function() {
     localStorage.timerPrecision = timerPrecisionDropdown.val();
+      window.app.initializeTimer();  
+      $('.timer').css('font-size','3vw');
+      $('.timer-container').css('left','75%');
+      $('.timer-labels').css('font-size','0.8vw');
+      $('.timer-labels').css('margin-left','-0.5vw');
   });
 
   selectClock = $( "#clockPrecisionContainer > div" );
