@@ -866,7 +866,9 @@ function loadDOB()
     }
     else {
       var dobDateFromInput = dobDateInputDOM.valueAsDate;
-      localStorage.setItem("dob", dobDateFromInput.getTime()+(dobDateFromInput.getTimezoneOffset() * 60000));
+      var newDOBDate = dobDateFromInput.getTime()+(dobDateFromInput.getTimezoneOffset() * 60000);
+      localStorage.dob = newDOBDate;
+      window.app.dob = newDOBDate;
     }
   });
 
@@ -882,11 +884,12 @@ function loadDOB()
     }
     else {
       var timeArray = dobTimeInputDOM.value.split(":");
-      localStorage.dobMinutes = timeArray[0]*60 + timeArray[1]*1;
+      var newDOBTime = timeArray[0]*60 + timeArray[1]*1;
+      localStorage.dobMinutes = newDOBTime;
+      window.app.dobMinutes = newDOBTime;
     }
   });
 }
-
 
 function loadDOD()
 {

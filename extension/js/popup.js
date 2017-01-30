@@ -47,7 +47,6 @@ function setupSettings()
   loadDOD();
 
   // $("#submit-button").click(function(){
-  //   window.app.saveDob();
   //   saveTheme();
   // });
 }

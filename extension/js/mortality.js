@@ -482,41 +482,6 @@
     }
   };
 
-
-  App.fn.saveDob = function()
-  {
-    var dateInput = $('dobInput');
-    //TODO: Show ERROR
-    if( !dateInput.valueAsDate ) return;
-
-    this.dob = dateInput.valueAsDate;
-    localStorage.setItem("dob", this.dob.getTime()+(this.dob.getTimezoneOffset() * minuteMS));
-
-    var timeChecked = document.querySelector('input[id=dobTimeCheckbox]').checked;
-    if( timeChecked )
-    {
-      var timeInput = $('timeInput');
-      if( !timeInput.valueAsDate ) return;
-      var timeArray = timeInput.value.split(":");
-      this.dobMinutes = timeArray[0]*60 + timeArray[1]*1;
-      localStorage.dobTimeSet = "YES";
-      localStorage.dobMinutes = this.dobMinutes;
-    }
-    else
-    {
-      this.dobMinutes = 0;
-      localStorage.removeItem("dobTimeSet");
-      localStorage.removeItem("dobMinutes");
-    }
-    //SET HIDE FLAGS
-   //  var hideAgeChecked = document.querySelector('input[id=hideAge-checkbox').checked;
-   //  hideAgeChecked ? localStorage.setItem("hideAge", "YES") : localStorage.removeItem("hideAge");
-
-	  // var hideCirclesChecked = document.querySelector('input[id=hideCircles-checkbox').checked;
-	  // hideCirclesChecked ? localStorage.setItem("hideCircles", "YES") : localStorage.removeItem("hideCircles");
-  };
-
-
   App.fn.renderTimeUp = function()
   {
     var timeup = $('white-timeup');
