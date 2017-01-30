@@ -887,3 +887,38 @@ function loadDOB()
   });
 }
 
+
+function loadDOD()
+{
+  var dodDate = getDOD();
+  var dodDateInput = $("#dodInput");
+  dodDateInput.val(dodDate.yyyymmdd());
+
+  dodDateInput.on('input',function(e){
+    var dodDateInputDOM = document.getElementById("dodInput");
+    if( !dodDateInputDOM.valueAsDate) {
+      var newDate = new Date();
+      localStorage.dod = newDate.getTime();
+    }
+    else {
+      var dodDateFromInput = dodDateInputDOM.valueAsDate;
+      localStorage.setItem("dod", dodDateFromInput.getTime()+(dodDateFromInput.getTimezoneOffset() * 60000));
+    }
+  });
+
+  // window.app.dobMinutes = localStorage.dobMinutes || 0;
+  var dodMinutes = localStorage.dodMinutes || 0;
+  var dodTimeInput = $("#dodTimeInput");
+  dodTimeInput.val(getTimeStringFromMinutes(dodMinutes));
+
+  dodTimeInput.on('input',function(e){
+    var dodTimeInputDOM = document.getElementById("dodTimeInput");
+    if( !dodTimeInputDOM.valueAsDate ) {
+      localStorage.dodMinutes = 0;
+    }
+    else {
+      var timeArray = dodTimeInputDOM.value.split(":");
+      localStorage.dodMinutes = timeArray[0]*60 + timeArray[1]*1;
+    }
+  });
+}

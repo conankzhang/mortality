@@ -44,6 +44,7 @@ function setupSettings()
   loadChapterPrecision();
   loadChapters();
   loadDOB();
+  loadDOD();
 
   // $("#submit-button").click(function(){
   //   window.app.saveDob();

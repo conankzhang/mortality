@@ -30,7 +30,7 @@
   App.fn.load = function()
   {
     this.dob = getDOB();
-    this.deathDate = getDeathDOB();
+    this.deathDate = getDOD();
     if( this.dob.dst() )
     {
       this.dob.setHours(this.dob.getHours()+1);

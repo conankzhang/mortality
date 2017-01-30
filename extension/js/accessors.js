@@ -10,14 +10,14 @@ function getDOB()
   }
 }
 
-function getDeathDOB()
+function getDOD()
 {
-  var savedDoB = localStorage.getItem("deathDate");
-  if( savedDoB === null) {
+  var savedDOD = localStorage.getItem("dod");
+  if( savedDOD === null) {
     return new Date();
   }
   else {
-    return new Date(parseInt(savedDoB));
+    return new Date(parseInt(savedDOD));
   }
 }
 
