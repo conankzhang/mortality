@@ -1,7 +1,5 @@
 (function(){
 
-  var $  = document.getElementById.bind(document);
-
   var dayMS = 86400000;
   var hourMS = 3600000;
   var minuteMS = 60000;
@@ -454,7 +452,7 @@
 
   App.fn.saveDeath = function(deathDate)
   {
-    var deathInput = $('countdownDate-input');
+    var deathInput = document.getElementById('countdownDate-input');
 
     if( !deathInput.valueAsDate ) return;
 
@@ -487,10 +485,10 @@
 
   App.fn.renderTimeUp = function()
   {
-    var timeup = $('white-timeup');
+    var timeup = document.getElementById('white-timeup');
     if( !timeup )
     {
-      timeup = $('black-timeup');
+      timeup = document.getElementById('black-timeup');
     }
     this.bubbleNumber(timeup, 1.05);
   };
@@ -575,7 +573,7 @@
     }
     var notBubbled = true;
 
-    var year = $('year-number');
+    var year = document.getElementById('year-number');
     if(year) {
       var yearFlag = year.innerHTML != yearString;
     }
@@ -585,7 +583,7 @@
       notBubbled = false;
     }
 
-    var month = $('month-number');
+    var month = document.getElementById('month-number');
     if(month) {
       var monthFlag = month.innerHTML != monthString;
     }
@@ -597,7 +595,7 @@
       }
     }
 
-    var day = $('day-number');
+    var day = document.getElementById('day-number');
     if(day) {
       var dayFlag = day.innerHTML != dayString;
     }
@@ -609,7 +607,7 @@
       }
     }
 
-    var hour = $('hour-number');
+    var hour = document.getElementById('hour-number');
     if(hour) {
       var hourFlag = hour.innerHTML != hourString;
     }
@@ -621,7 +619,7 @@
       }
     }
 
-    var minute = $('minute-number');
+    var minute = document.getElementById('minute-number');
     if(minute) {
       var minuteFlag = minute.innerHTML != minuteString;
     }
@@ -633,12 +631,12 @@
       }
     }
 
-    var second = $('second-number');
+    var second = document.getElementById('second-number');
     if(second) {
       second.innerHTML = secondString;
     }
 
-    var millisecond = $('milli-number');
+    var millisecond = document.getElementById('milli-number');
     if(millisecond) {
       millisecond.innerHTML = msString;
     }
@@ -703,11 +701,11 @@
   };
 
   App.fn.getTemplateScript = function(name){
-    var templateElement = $(name + '-template');
+    var templateElement = document.getElementById(name + '-template');
     return Handlebars.compile(templateElement.innerHTML);
   };
 
-  window.app = new App($('app'))
+  window.app = new App(document.getElementById('app'))
 
 })();
 
