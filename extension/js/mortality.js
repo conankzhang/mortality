@@ -731,17 +731,25 @@ function updateProgressUnit()
 {
   var radius = $(".pie").width()/2;
 
-  var tempDoB = localStorage.dob;
-  var tempDateDoB;
-  if( tempDoB != 'null') {
-    tempDateDoB = new Date(parseInt(tempDoB));
+  var endMoment = moment();
+  var startMoment = moment(getDOB());
+
+  var years = endMoment.diff(startMoment, 'years');
+  startMoment.add(years, 'years');
+  var months = endMoment.diff(startMoment, 'months');
+  var days = endMoment.diff(startMoment, 'days');
+  if( months > 0 )
+  {
+    var monthIndexOffset = months;
+    for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
+    {
+      var currentIndexMonthDays = startMoment.daysInMonth();
+      days -= currentIndexMonthDays;
+      startMoment.month(startMoment.month()+1);
+    }
   }
 
-  var currentDate = new Date;
-  var oneDay = 24*60*60*1000;
-
-  var diffDays = Math.round(Math.abs((currentDate.getTime() - tempDateDoB.getTime())/(oneDay)));
-  var theta = ((diffDays%30)/30.0)*360;
+  var theta = ((days%31)/31.0)*360;
 
   var progressUnit = $('#progressUnit');
   if( progressUnit )
