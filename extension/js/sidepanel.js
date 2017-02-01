@@ -887,17 +887,28 @@ function loadDOB()
   var dobDateInput = $("#dobInput");
   dobDateInput.val(dobDate.yyyymmdd());
 
+  $('#dobInput').on('focusin', function(){
+      $(this).data('val', $(this).val());
+  });
+
   dobDateInput.on('input',function(e){
     var dobDateInputDOM = document.getElementById("dobInput");
     if( !dobDateInputDOM.valueAsDate) {
-      var newDate = new Date();
-      localStorage.dob = newDate.getTime();
+      var prev = $(this).data('val');
+      if( prev ) {
+        $(this).val(prev);
+      }
+      else {
+        var newDate = new Date();
+        localStorage.dob = newDate.getTime();
+      }
     }
     else {
       var dobDateFromInput = dobDateInputDOM.valueAsDate;
       var newDOBDate = dobDateFromInput.getTime()+(dobDateFromInput.getTimezoneOffset() * 60000);
       localStorage.dob = newDOBDate;
       window.app.dob = newDOBDate;
+      $(this).data('val', $(this).val());
     }
 
     window.app.generateLifeProgress();
