@@ -203,20 +203,22 @@
       this.deathDate.setDate(this.deathDate.getDate() + Math.round(yearOffset*365));
     }
 
-    if (localStorage.getItem("hideCircles") === null)
+    var monthBorn = this.dob.getMonth();
+    var chaptersArray = getChapters(monthBorn);
+
+    this.documentCircle = document.querySelector('#circles');
+
+    var startMoment = moment(this.dob);
+    var endMoment = moment();
+    var numberMonths = endMoment.diff(startMoment, 'months');
+
+    this.generateCircleLoops(numberMonths, chaptersArray);
+
+    setInterval(updateProgressUnit(),7200000);
+
+    if( localStorage.getItem("hideProgress") == "YES" )
     {
-      var monthBorn = this.dob.getMonth();
-      var chaptersArray = getChapters(monthBorn);
-
-      this.documentCircle = document.querySelector('#circles');
-
-      var startMoment = moment(this.dob);
-      var endMoment = moment();
-      var numberMonths = endMoment.diff(startMoment, 'months');
-
-      this.generateCircleLoops(numberMonths, chaptersArray);
-
-      setInterval(updateProgressUnit(),7200000);
+      $('#circles').css('opacity',0);
     }
   };
 

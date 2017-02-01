@@ -551,6 +551,12 @@ function loadCheckBoxes()
 
   hideProgressCheckbox.addEventListener('change', function () {
     localStorage.setItem("hideProgress", hideProgressCheckbox.checked?"YES":"NO");
+    if( hideProgressCheckbox.checked ) {
+      $('#circles').css('opacity',0);
+    }
+    else {
+      $('#circles').css('opacity',1);
+    }
   });
 
   var twentyFourCheckbox = document.querySelector('input[id=twentyFourCheckbox]');
