@@ -130,14 +130,16 @@ ul {
 
 .pie {
   float: left;
-  width: 1.9%;
+  width: 1.9vw;
+  height: 1.9vw;
   margin: 0.16%;
 }
 
 .circle {
   float: left;
 
-  width: 1.9%;
+  width: 1.9vw;
+  height: 1.9vw;
   box-sizing: border-box;
   margin: 0.16%;
   border: solid transparent;

@@ -217,6 +217,8 @@
       var numberMonths = endMoment.diff(startMoment, 'months');
 
       this.generateCircleLoops(numberMonths, chaptersArray);
+
+      setInterval(updateProgressUnit(),7200000);
     }
   };
 
@@ -723,22 +725,36 @@
 // Window Functions
 **********************/
 
-function animate(theta, radius) {
-  if( isNaN(parseFloat(radius)) )
-  {
-    return;
+function updateProgressUnit()
+{
+  var radius = $(".pie").width()/2;
+
+  var tempDoB = localStorage.dob;
+  var tempDateDoB;
+  if( tempDoB != 'null') {
+    tempDateDoB = new Date(parseInt(tempDoB));
   }
+
+  var currentDate = new Date;
+  var oneDay = 24*60*60*1000;
+
+  var diffDays = Math.round(Math.abs((currentDate.getTime() - tempDateDoB.getTime())/(oneDay)));
+  var theta = ((diffDays%30)/30.0)*360;
+
   var path = document.getElementById('path');
   var piecircle = document.getElementById('piecircle');
-  if(path && piecircle) {
-    if (localStorage.getItem("shape") == "square") {
+  if(path && piecircle)
+  {
+    if (localStorage.getItem("shape") == "square")
+    {
       piecircle.setAttribute("height", (2 * radius));
       piecircle.setAttribute("width", (2 * radius));
       var fraction = theta/360;
       path.setAttribute("height", (2*radius));
       path.setAttribute("width", (fraction*(2*radius)));
     }
-    else {
+    else
+    {
       piecircle.setAttribute("cx", radius);
       piecircle.setAttribute("cy", radius);
       piecircle.setAttribute("r", radius);
@@ -752,63 +768,17 @@ function animate(theta, radius) {
       path.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
     }
   }
-  setTimeout(animate, 7200000); // 1/360 of a month in ms
 }
 
 
 (function() {
   window.onresize= function() {
-    var div = document.querySelector('#circles');
-    var circleWidth = div.childNodes[0].offsetWidth;
-    circle.style.height= circleWidth +'px';
     if(localStorage.getItem("shape") == "square") {
-      circle.style.borderRadius = 0;
-    }
-    var radius = circle.style.height;
-    pie.style.width = radius;
-    pie.style.height = radius;
-
-    var tempDoB = localStorage.dob;
-    var tempDateDoB;
-    if( tempDoB != 'null') {
-      tempDateDoB = new Date(parseInt(tempDoB));
+      $('.circle').css('borderRadius',0);
     }
 
-    var currentDate = new Date;
-    var oneDay = 24*60*60*1000;
-
-    var diffDays = Math.round(Math.abs((currentDate.getTime() - tempDateDoB.getTime())/(oneDay)));
-    var fractionOfMonth = ((diffDays%30)/30.0)*360;
-
-    animate(fractionOfMonth, circleWidth/2);
+    updateProgressUnit();
   };
-
-  var styleSheets = document.styleSheets,
-      circle,
-      pie,
-      i, j, k;
-  k = 0;
-  var rules;
-  for (i = 0; i < styleSheets.length; i++) {
-    rules = styleSheets[i].rules ||
-    styleSheets[i].cssRules;
-    for (j = 0; j < rules.length; j++) {
-      if (rules[j].selectorText === '.circle') {
-        circle = rules[j];
-        k++;
-        if (k > 1) {
-          break;
-        }
-      }
-      else if (rules[j].selectorText === '.pie') {
-        pie = rules[j];
-        k++;
-        if (k > 1) {
-          break;
-        }
-      }
-    }
-  }
 })();
 
 (function($) {

@@ -30,6 +30,10 @@ function openNav()
   $('.timer-labels').animate({
     'margin-left':'-0.5vw'
   },1000);
+  $('.circle').css('width','0.95vw');
+  $('.circle').css('height','0.95vw');
+  $('.pie').css('width','0.95vw');
+  $('.pie').css('height','0.95vw');
 }
 
 function closeNav()
@@ -49,6 +53,10 @@ function closeNav()
   $('.timer-labels').animate({
     'margin-left':'-1vw'
   },1000);
+  $('.circle').css('width','1.9vw');
+  $('.circle').css('height','1.9vw');
+  $('.pie').css('width','1.9vw');
+  $('.pie').css('height','1.9vw');
   document.getElementById("updateBadge").style.display = "none";
 }
 
@@ -464,7 +472,7 @@ function loadRadioButtons()
 
   var circleOption = document.querySelector('input[id=circleOption]');
   var squareOption = document.querySelector('input[id=squareOption]');
-  if (localStorage.getItem("circleOption") == "YES") {
+  if (localStorage.getItem("shape") == "circle") {
     circleOption.checked = true;
   }
   else {
@@ -472,11 +480,15 @@ function loadRadioButtons()
   }
 
   circleOption.addEventListener('change', function () {
-    localStorage.setItem("circleOption", circleOption.checked?"YES":"NO");
+    localStorage.setItem("shape", circleOption.checked?"circle":"square");
+    $(".circle").css("borderRadius","50%");
+    updateProgressUnit();
   });
 
   squareOption.addEventListener('change', function () {
-    localStorage.setItem("circleOption", squareOption.checked?"NO":"YES");
+    localStorage.setItem("shape", squareOption.checked?"square":"circle");
+    $(".circle").css("borderRadius","0");
+    updateProgressUnit();
   });
 }
 
@@ -597,7 +609,7 @@ function loadDropdowns()
   selectTimerValue.text(currentTimerValue);
   selectTimer.click(function() {
     localStorage.timerPrecision = timerPrecisionDropdown.val();
-      window.app.initializeTimer();  
+      window.app.initializeTimer();
       $('.timer').css('font-size','3vw');
       $('.timer-container').css('left','75%');
       $('.timer-labels').css('font-size','0.8vw');
