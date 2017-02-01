@@ -407,28 +407,29 @@
           this.createCircle(bkgdColor, '1.00');
         }
 
-        var pie = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        pie.setAttribute("class","pie");
-        pie.setAttribute("opacity","1.0");
+        var progressUnit = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        progressUnit.setAttribute("class","pie");
+        progressUnit.setAttribute("opacity","1.0");
+        progressUnit.id = 'progressUnit';
 
-        var circle;
-        var path;
+        var progressBackground;
+        var progressForeground;
         if(localStorage.getItem("shape") == "square") {
-          circle = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-          path = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          progressBackground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          progressForeground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
         }
         else {
-          circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-          path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          progressBackground = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          progressForeground = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         }
-        circle.id = 'piecircle';
-        circle.setAttribute("fill", bkgdColor);
-        circle.setAttribute("fill-opacity","0.25");
-        path.setAttribute("fill",bkgdColor);
-        path.id = 'path';
-        pie.appendChild(circle);
-        pie.appendChild(path);
-        this.documentCircle.appendChild(pie);
+        progressBackground.id = 'progressBackground';
+        progressBackground.setAttribute("fill", bkgdColor);
+        progressBackground.setAttribute("fill-opacity","0.25");
+        progressForeground.setAttribute("fill",bkgdColor);
+        progressForeground.id = 'progressForeground';
+        progressUnit.appendChild(progressBackground);
+        progressUnit.appendChild(progressForeground);
+        this.documentCircle.appendChild(progressUnit);
 
         for(x = (numberMonths+1) ; x <= endMonth ; x++) {
           this.createCircle(bkgdColor, '0.25');
@@ -741,32 +742,49 @@ function updateProgressUnit()
   var diffDays = Math.round(Math.abs((currentDate.getTime() - tempDateDoB.getTime())/(oneDay)));
   var theta = ((diffDays%30)/30.0)*360;
 
-  var path = document.getElementById('path');
-  var piecircle = document.getElementById('piecircle');
-  if(path && piecircle)
+  var progressUnit = $('#progressUnit');
+  if( progressUnit )
   {
+    var progressBackground;
+    var progressForeground;
     if (localStorage.getItem("shape") == "square")
     {
-      piecircle.setAttribute("height", (2 * radius));
-      piecircle.setAttribute("width", (2 * radius));
+      progressBackground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      progressForeground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+
+      progressBackground.setAttribute("height", (2 * radius));
+      progressBackground.setAttribute("width", (2 * radius));
       var fraction = theta/360;
-      path.setAttribute("height", (2*radius));
-      path.setAttribute("width", (fraction*(2*radius)));
+      progressForeground.setAttribute("height", (2*radius));
+      progressForeground.setAttribute("width", (fraction*(2*radius)));
     }
     else
     {
-      piecircle.setAttribute("cx", radius);
-      piecircle.setAttribute("cy", radius);
-      piecircle.setAttribute("r", radius);
+      progressBackground = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      progressForeground = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+      progressBackground.setAttribute("cx", radius);
+      progressBackground.setAttribute("cy", radius);
+      progressBackground.setAttribute("r", radius);
 
       theta += 0.5;
       theta %= 360;
       var x = Math.sin(theta * Math.PI / 180) * radius;
       var y = Math.cos(theta * Math.PI / 180) * -radius;
       var d = 'M0,0 v' + -radius + 'A' + radius + ',' + radius + ' 1 ' + ((theta > 180) ? 1 : 0) + ',1 ' + x + ',' + y + 'z';
-      path.setAttribute('d', d);
-      path.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
+      progressForeground.setAttribute('d', d);
+      progressForeground.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
     }
+
+    var bkgdColor = $('#progressBackground').attr('fill')
+    progressBackground.id = 'progressBackground';
+    progressBackground.setAttribute("fill",bkgdColor);
+    progressBackground.setAttribute("fill-opacity","0.25");
+    progressForeground.id = 'progressForeground';
+    progressForeground.setAttribute("fill",bkgdColor);
+
+    $('#progressBackground').replaceWith(progressBackground);
+    $('#progressForeground').replaceWith(progressForeground);
   }
 }
 
@@ -775,6 +793,9 @@ function updateProgressUnit()
   window.onresize= function() {
     if(localStorage.getItem("shape") == "square") {
       $('.circle').css('borderRadius',0);
+    }
+    else {
+      $('.circle').css('borderRadius','50%');
     }
 
     updateProgressUnit();

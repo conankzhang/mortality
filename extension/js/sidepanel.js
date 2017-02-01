@@ -34,6 +34,7 @@ function openNav()
   $('.circle').css('height','0.95vw');
   $('.pie').css('width','0.95vw');
   $('.pie').css('height','0.95vw');
+  updateProgressUnit();
 }
 
 function closeNav()
@@ -57,6 +58,7 @@ function closeNav()
   $('.circle').css('height','1.9vw');
   $('.pie').css('width','1.9vw');
   $('.pie').css('height','1.9vw');
+  updateProgressUnit();
   document.getElementById("updateBadge").style.display = "none";
 }
 
