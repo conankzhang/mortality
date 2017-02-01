@@ -203,16 +203,7 @@
       this.deathDate.setDate(this.deathDate.getDate() + Math.round(yearOffset*365));
     }
 
-    var monthBorn = this.dob.getMonth();
-    var chaptersArray = getChapters(monthBorn);
-
-    this.documentCircle = document.querySelector('#circles');
-
-    var startMoment = moment(this.dob);
-    var endMoment = moment();
-    var numberMonths = endMoment.diff(startMoment, 'months');
-
-    this.generateCircleLoops(numberMonths, chaptersArray);
+    this.generateLifeProgress();
 
     setInterval(updateProgressUnit(),7200000);
 
@@ -389,8 +380,18 @@
     }
   };
 
-  App.fn.generateCircleLoops = function(numberMonths, chaptersArray)
+  App.fn.generateLifeProgress = function()
   {
+    $('#circles').empty();
+    var monthBorn = getDOB().getMonth();
+    var chaptersArray = getChapters(monthBorn);
+
+    this.documentCircle = document.querySelector('#circles');
+
+    var startMoment = moment(getDOB());
+    var endMoment = moment();
+    var numberMonths = endMoment.diff(startMoment, 'months');
+
     for (var chapter = 0; chapter < chaptersArray.length; chapter++) {
       var startMonth = chaptersArray[chapter][0] + 1;
       var endMonth = chaptersArray[chapter][1];

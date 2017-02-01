@@ -899,6 +899,20 @@ function loadDOB()
       localStorage.dob = newDOBDate;
       window.app.dob = newDOBDate;
     }
+
+    window.app.generateLifeProgress();
+    $('.circle').css('width','0.95vw');
+    $('.circle').css('height','0.95vw');
+    $('.pie').css('width','0.95vw');
+    $('.pie').css('height','0.95vw');
+    if(localStorage.getItem("shape") == "square") {
+      $('.circle').css('borderRadius',0);
+    }
+    else {
+      $('.circle').css('borderRadius','50%');
+    }
+
+    updateProgressUnit();
   });
 
   // window.app.dobMinutes = localStorage.dobMinutes || 0;
