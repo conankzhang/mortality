@@ -505,6 +505,10 @@ function loadCheckBoxes()
   dobTimeCheckbox.addEventListener('change', function () {
     showDOBTimeSelectorIf(dobTimeCheckbox.checked);
     localStorage.setItem("dobTimeSet", dobTimeCheckbox.checked?"YES":"NO");
+    if( !dobTimeCheckbox.checked ) {
+      localStorage.dobMinutes = 0;
+      window.app.dobMinutes = 0;
+    }
   });
 
   var dodTimeCheckbox = document.querySelector('input[id=dodTimeCheckbox]');
