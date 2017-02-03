@@ -727,9 +727,17 @@
 // Window Functions
 **********************/
 
-function updateProgressIntervalsAndSize(years,unit)
+function updateProgressIntervalsAndSize(years,unit, newWidth)
 {
-  var width = $('#main').width();
+  var width = $(window).width();
+  if( $("#theSidePanel").width() > 50 ) {
+    width *= 0.50;
+  }
+  width -= 40;
+
+  if( newWidth > 0 ) {
+    width = newWidth;
+  }
   var height = $(window).height() - 40;
   // var area = width*height;
   // if( unit == "month" ) {

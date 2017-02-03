@@ -15,6 +15,7 @@
 
 function openNav()
 {
+  var newWidth = $(window).width()*0.50 - 40;
   document.getElementById("theSidePanel").style.width = "50vw";
   document.getElementById("main").style.marginLeft = "50vw";
   $('.timer').animate({
@@ -22,24 +23,21 @@ function openNav()
   },300);
   $('.timer-container').animate({
     'left':'75%'
-  }, {
-    duration: 500,
-    complete: function() {
-      updateProgressIntervalsAndSize();
-      updateProgressUnit();
-    }
-  });
+  },500);
+
   $('.timer-labels').animate({
     'font-size':'0.8vw'
   },300);
   $('.timer-labels').animate({
     'margin-left':'-0.5vw'
   },500);
-
+  updateProgressIntervalsAndSize(0,"year",newWidth);
+  updateProgressUnit();
 }
 
 function closeNav()
 {
+  var newWidth = $(window).width() - 40;
   document.getElementById("theSidePanel").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
   $('.timer').animate({
@@ -47,19 +45,16 @@ function closeNav()
   },300);
   $('.timer-container').animate({
     'left':'50%'
-  }, {
-    duration: 500,
-    complete: function() {
-      updateProgressIntervalsAndSize();
-      updateProgressUnit();
-    }
-  });
+  },500);
+
   $('.timer-labels').animate({
     'font-size':'1.5vw'
   },300);
   $('.timer-labels').animate({
     'margin-left':'-1vw'
   },500);
+  updateProgressIntervalsAndSize(0,"year",newWidth);
+  updateProgressUnit();
   document.getElementById("updateBadge").style.display = "none";
 }
 
