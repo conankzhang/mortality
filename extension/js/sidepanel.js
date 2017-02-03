@@ -19,17 +19,17 @@ function openNav()
   document.getElementById("main").style.marginLeft = "50vw";
   $('.timer').animate({
     'font-size':'3vw'
-  },1000);
+  },300);
   $('.timer-container').animate({
     'left':'75%'
-  },1000);
+  },500);
 
   $('.timer-labels').animate({
     'font-size':'0.8vw'
-  },1000);
+  },300);
   $('.timer-labels').animate({
     'margin-left':'-0.5vw'
-  },1000);
+  },500);
   $('.circle').css('width','0.95vw');
   $('.circle').css('height','0.95vw');
   $('.pie').css('width','0.95vw');
@@ -43,17 +43,17 @@ function closeNav()
   document.getElementById("main").style.marginLeft = "0";
   $('.timer').animate({
     'font-size':'6vw'
-  },1000);
+  },300);
   $('.timer-container').animate({
     'left':'50%'
-  },1000);
+  },500);
 
   $('.timer-labels').animate({
     'font-size':'1.5vw'
-  },1000);
+  },300);
   $('.timer-labels').animate({
     'margin-left':'-1vw'
-  },1000);
+  },500);
   $('.circle').css('width','1.9vw');
   $('.circle').css('height','1.9vw');
   $('.pie').css('width','1.9vw');
