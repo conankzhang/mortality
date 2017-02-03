@@ -727,6 +727,46 @@
 // Window Functions
 **********************/
 
+function updateProgressIntervalsAndSize(years,unit)
+{
+  var width = $('#main').width();
+  var height = $(window).height() - 40;
+  // var area = width*height;
+  // if( unit == "month" ) {
+  //   // years*=12;
+  // }
+  // if( unit == "week" ) {
+  //   years*=52;
+  // }
+  // if( unit == "day") {
+  //   years*=365;
+  // }
+
+  years = 965;
+
+  var partsX = Math.ceil(Math.sqrt(years*width/height));
+  var sideX, sideY;
+  if( Math.floor(partsX*height/width)*partsX < years ) {
+    sideX = height/Math.ceil(partsX*height/width);
+  }
+  else {
+    sideX = width/partsX;
+  }
+  var partsY = Math.ceil(Math.sqrt(years*height/width));
+  if( Math.floor(partsY*width/height)*partsY < years ) {
+    sideY = width/Math.ceil(width*partsY/height);
+  }
+  else {
+    sideY = height/partsY;
+  }
+  var allocatedUnitSide = Math.max(sideX, sideY) - 5;
+
+  $('.circle').css('width','{0}px'.format(allocatedUnitSide));
+  $('.circle').css('height','{0}px'.format(allocatedUnitSide));
+  $('.pie').css('width','{0}px'.format(allocatedUnitSide));
+  $('.pie').css('height','{0}px'.format(allocatedUnitSide));
+}
+
 function updateProgressUnit()
 {
   var radius = $(".pie").width()/2;
@@ -806,6 +846,8 @@ function updateProgressUnit()
     else {
       $('.circle').css('borderRadius','50%');
     }
+
+    updateProgressIntervalsAndSize(80,"month");
 
     updateProgressUnit();
   };

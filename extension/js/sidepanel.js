@@ -22,19 +22,20 @@ function openNav()
   },300);
   $('.timer-container').animate({
     'left':'75%'
-  },500);
-
+  }, {
+    duration: 500,
+    complete: function() {
+      updateProgressIntervalsAndSize();
+      updateProgressUnit();
+    }
+  });
   $('.timer-labels').animate({
     'font-size':'0.8vw'
   },300);
   $('.timer-labels').animate({
     'margin-left':'-0.5vw'
   },500);
-  $('.circle').css('width','0.95vw');
-  $('.circle').css('height','0.95vw');
-  $('.pie').css('width','0.95vw');
-  $('.pie').css('height','0.95vw');
-  updateProgressUnit();
+
 }
 
 function closeNav()
@@ -46,19 +47,19 @@ function closeNav()
   },300);
   $('.timer-container').animate({
     'left':'50%'
-  },500);
-
+  }, {
+    duration: 500,
+    complete: function() {
+      updateProgressIntervalsAndSize();
+      updateProgressUnit();
+    }
+  });
   $('.timer-labels').animate({
     'font-size':'1.5vw'
   },300);
   $('.timer-labels').animate({
     'margin-left':'-1vw'
   },500);
-  $('.circle').css('width','1.9vw');
-  $('.circle').css('height','1.9vw');
-  $('.pie').css('width','1.9vw');
-  $('.pie').css('height','1.9vw');
-  updateProgressUnit();
   document.getElementById("updateBadge").style.display = "none";
 }
 
@@ -912,17 +913,13 @@ function loadDOB()
     }
 
     window.app.generateLifeProgress();
-    $('.circle').css('width','0.95vw');
-    $('.circle').css('height','0.95vw');
-    $('.pie').css('width','0.95vw');
-    $('.pie').css('height','0.95vw');
     if(localStorage.getItem("shape") == "square") {
       $('.circle').css('borderRadius',0);
     }
     else {
       $('.circle').css('borderRadius','50%');
     }
-
+    updateProgressIntervalsAndSize();
     updateProgressUnit();
   });
 

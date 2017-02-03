@@ -132,7 +132,7 @@ ul {
   float: left;
   width: 1.9vw;
   height: 1.9vw;
-  margin: 0.16%;
+  margin: 2.5px;
 }
 
 .circle {
@@ -141,7 +141,7 @@ ul {
   width: 1.9vw;
   height: 1.9vw;
   box-sizing: border-box;
-  margin: 0.16%;
+  margin: 2.5px;
   border: solid transparent;
   border-radius: 50%;
 
