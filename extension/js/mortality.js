@@ -788,24 +788,44 @@ function updateProgressUnit()
   var radius = $(".pie").width()/2;
 
   var endMoment = moment();
+  var currentDate = endMoment.date();
   var startMoment = moment(getDOB());
 
   var years = endMoment.diff(startMoment, 'years');
   startMoment.add(years, 'years');
   var months = endMoment.diff(startMoment, 'months');
   var days = endMoment.diff(startMoment, 'days');
+  var fullDaysDiff = days;
+  var currentIndexMonthDays
   if( months > 0 )
   {
     var monthIndexOffset = months;
     for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
     {
-      var currentIndexMonthDays = startMoment.daysInMonth();
+      currentIndexMonthDays = startMoment.daysInMonth();
       days -= currentIndexMonthDays;
       startMoment.month(startMoment.month()+1);
     }
   }
 
-  var theta = ((days%31)/31.0)*360;
+  var theta;
+  var offsetDays;
+  var chapterPrecision = localStorage.chapterPrecision;
+  if( chapterPrecision == "weeks" ) {
+    offsetDays = days-currentDate;
+    if( offsetDays < 0 ) {
+      offsetDays += currentIndexMonthDays;
+    }
+    theta = ((offsetDays%7)/7)*360;
+  }
+  else if( chapterPrecision == "months" ) {
+    theta = ((days%31)/31.0)*360;
+  }
+  else if( chapterPrecision == "years" ) {
+    theta = (fullDaysDiff/365)*360;
+  }
+
+
 
   var progressUnit = $('#progressUnit');
   if( progressUnit )

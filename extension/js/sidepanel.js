@@ -920,7 +920,7 @@ function loadDOB()
       $(this).data('val', $(this).val());
     }
 
-    updateProgressBecauseSettingsChanged(true)
+    updateProgressBecauseSettingsChanged()
   });
 
   // window.app.dobMinutes = localStorage.dobMinutes || 0;
@@ -977,12 +977,9 @@ function loadDOD()
   });
 }
 
-function updateProgressBecauseSettingsChanged(noChangeToProgressLength)
+function updateProgressBecauseSettingsChanged()
 {
-  if( noChangeToProgressLength ){}
-  else {
-    window.app.generateLifeProgress();
-  }
+  window.app.generateLifeProgress();
 
   if(localStorage.getItem("shape") == "square") {
     $('.circle').css('borderRadius',0);
