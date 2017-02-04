@@ -389,7 +389,8 @@
 
     var startMoment = moment(getDOB());
     var endMoment = moment();
-    var numberMonths = endMoment.diff(startMoment, 'months');
+    var chapterPrecision = localStorage.chapterPrecision;
+    var numberMonths = endMoment.diff(startMoment, chapterPrecision)+1;
 
     for (var chapter = 0; chapter < chaptersArray.length; chapter++) {
       var startMonth = chaptersArray[chapter][0] + 1;
