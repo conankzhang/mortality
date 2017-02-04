@@ -748,7 +748,7 @@ function updateProgressIntervalsAndSize(newWidth)
   }
   else if( chapterPrecision == "months" ) {
     totalProgressUnits *= 12;
-    margin = 2.5;
+    margin = 2.0;
   }
   else if( chapterPrecision == "years" ) {
     margin = 3.0;
