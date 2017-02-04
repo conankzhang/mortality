@@ -385,18 +385,45 @@ function loadSegmentedControls()
   chapterPrecisionSegmentedControl1.change( function () {
     if( chapterLengthSegmentedControl1.is(":checked") ) {
       localStorage.setItem("chapterPrecision", "weeks");
+      window.app.generateLifeProgress();
+      if(localStorage.getItem("shape") == "square") {
+        $('.circle').css('borderRadius',0);
+      }
+      else {
+        $('.circle').css('borderRadius','50%');
+      }
+      updateProgressIntervalsAndSize();
+      updateProgressUnit();
     }
   });
 
   chapterPrecisionSegmentedControl2.change( function () {
     if( chapterPrecisionSegmentedControl2.is(":checked") ) {
       localStorage.setItem("chapterPrecision", "months");
+      window.app.generateLifeProgress();
+      if(localStorage.getItem("shape") == "square") {
+        $('.circle').css('borderRadius',0);
+      }
+      else {
+        $('.circle').css('borderRadius','50%');
+      }
+      updateProgressIntervalsAndSize();
+      updateProgressUnit();
     }
   });
 
   chapterPrecisionSegmentedControl3.change( function () {
     if( chapterPrecisionSegmentedControl3.is(":checked") ) {
       localStorage.setItem("chapterPrecision", "years");
+      window.app.generateLifeProgress();
+      if(localStorage.getItem("shape") == "square") {
+        $('.circle').css('borderRadius',0);
+      }
+      else {
+        $('.circle').css('borderRadius','50%');
+      }
+      updateProgressIntervalsAndSize();
+      updateProgressUnit();
     }
   });
 

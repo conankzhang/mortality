@@ -858,9 +858,7 @@ function updateProgressUnit()
     else {
       $('.circle').css('borderRadius','50%');
     }
-
     updateProgressIntervalsAndSize();
-
     updateProgressUnit();
   };
 })();
