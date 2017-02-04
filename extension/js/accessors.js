@@ -34,10 +34,7 @@ function getChapters() {
 
   var totalProgressUnits = localStorage.idealDeathYears;
   var chapterPrecision = localStorage.chapterPrecision;
-  if( chapterPrecision == "days" ) {
-    totalProgressUnits *= 365;
-  }
-  else if( chapterPrecision == "weeks" ) {
+  if( chapterPrecision == "weeks" ) {
     totalProgressUnits *= 52;
   }
   else if( chapterPrecision == "months" ) {

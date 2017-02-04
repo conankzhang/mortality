@@ -741,15 +741,20 @@ function updateProgressIntervalsAndSize(newWidth)
 
   var totalProgressUnits = localStorage.idealDeathYears;
   var chapterPrecision = localStorage.chapterPrecision;
-  if( chapterPrecision == "days" ) {
-    totalProgressUnits *= 365;
-  }
-  else if( chapterPrecision == "weeks" ) {
+  var margin = 0;
+  if( chapterPrecision == "weeks" ) {
     totalProgressUnits *= 52;
+    margin = 0.5;
   }
   else if( chapterPrecision == "months" ) {
     totalProgressUnits *= 12;
+    margin = 2.5;
   }
+  else if( chapterPrecision == "years" ) {
+    margin = 3.0;
+  }
+  $('.circle').css('margin','{0}px'.format(margin));
+  $('.pie').css('margin','{0}px'.format(margin));
 
   var partsX = Math.ceil(Math.sqrt(totalProgressUnits*width/height));
   var sideX, sideY;
@@ -766,7 +771,7 @@ function updateProgressIntervalsAndSize(newWidth)
   else {
     sideY = height/partsY;
   }
-  var allocatedUnitSide = Math.max(sideX, sideY) - 5;
+  var allocatedUnitSide = Math.max(sideX, sideY) - (margin*2);
 
   $('.circle').css('width','{0}px'.format(allocatedUnitSide));
   $('.circle').css('height','{0}px'.format(allocatedUnitSide));
