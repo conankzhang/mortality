@@ -385,45 +385,21 @@ function loadSegmentedControls()
   chapterPrecisionSegmentedControl1.change( function () {
     if( chapterLengthSegmentedControl1.is(":checked") ) {
       localStorage.setItem("chapterPrecision", "weeks");
-      window.app.generateLifeProgress();
-      if(localStorage.getItem("shape") == "square") {
-        $('.circle').css('borderRadius',0);
-      }
-      else {
-        $('.circle').css('borderRadius','50%');
-      }
-      updateProgressIntervalsAndSize();
-      updateProgressUnit();
+      updateProgressBecauseSettingsChanged()
     }
   });
 
   chapterPrecisionSegmentedControl2.change( function () {
     if( chapterPrecisionSegmentedControl2.is(":checked") ) {
       localStorage.setItem("chapterPrecision", "months");
-      window.app.generateLifeProgress();
-      if(localStorage.getItem("shape") == "square") {
-        $('.circle').css('borderRadius',0);
-      }
-      else {
-        $('.circle').css('borderRadius','50%');
-      }
-      updateProgressIntervalsAndSize();
-      updateProgressUnit();
+      updateProgressBecauseSettingsChanged()
     }
   });
 
   chapterPrecisionSegmentedControl3.change( function () {
     if( chapterPrecisionSegmentedControl3.is(":checked") ) {
       localStorage.setItem("chapterPrecision", "years");
-      window.app.generateLifeProgress();
-      if(localStorage.getItem("shape") == "square") {
-        $('.circle').css('borderRadius',0);
-      }
-      else {
-        $('.circle').css('borderRadius','50%');
-      }
-      updateProgressIntervalsAndSize();
-      updateProgressUnit();
+      updateProgressBecauseSettingsChanged()
     }
   });
 
@@ -938,15 +914,7 @@ function loadDOB()
       $(this).data('val', $(this).val());
     }
 
-    window.app.generateLifeProgress();
-    if(localStorage.getItem("shape") == "square") {
-      $('.circle').css('borderRadius',0);
-    }
-    else {
-      $('.circle').css('borderRadius','50%');
-    }
-    updateProgressIntervalsAndSize();
-    updateProgressUnit();
+    updateProgressBecauseSettingsChanged(true)
   });
 
   // window.app.dobMinutes = localStorage.dobMinutes || 0;
@@ -1001,4 +969,21 @@ function loadDOD()
       localStorage.dodMinutes = timeArray[0]*60 + timeArray[1]*1;
     }
   });
+}
+
+function updateProgressBecauseSettingsChanged(noChangeToProgressLength)
+{
+  if( noChangeToProgressLength ){}
+  else {
+    window.app.generateLifeProgress();
+  }
+
+  if(localStorage.getItem("shape") == "square") {
+    $('.circle').css('borderRadius',0);
+  }
+  else {
+    $('.circle').css('borderRadius','50%');
+  }
+  updateProgressIntervalsAndSize();
+  updateProgressUnit();
 }
