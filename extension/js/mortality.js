@@ -737,7 +737,7 @@ function updateProgressIntervalsAndSize(newWidth)
   if( newWidth > 0 ) {
     width = newWidth;
   }
-  var height = $(window).height() - 40;
+  var height = $(window).height() - 100;
 
   var totalProgressUnits = localStorage.idealDeathYears;
   var chapterPrecision = localStorage.chapterPrecision;
