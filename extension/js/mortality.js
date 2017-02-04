@@ -726,7 +726,7 @@
 // Window Functions
 **********************/
 
-function updateProgressIntervalsAndSize(years,unit, newWidth)
+function updateProgressIntervalsAndSize(newWidth)
 {
   var width = $(window).width();
   if( $("#theSidePanel").width() > 50 ) {
@@ -738,29 +738,29 @@ function updateProgressIntervalsAndSize(years,unit, newWidth)
     width = newWidth;
   }
   var height = $(window).height() - 40;
-  // var area = width*height;
-  // if( unit == "month" ) {
-  //   // years*=12;
-  // }
-  // if( unit == "week" ) {
-  //   years*=52;
-  // }
-  // if( unit == "day") {
-  //   years*=365;
-  // }
 
-  years = 965;
+  var totalProgressUnits = localStorage.idealDeathYears;
+  var chapterPrecision = localStorage.chapterPrecision;
+  if( chapterPrecision == "days" ) {
+    totalProgressUnits *= 365;
+  }
+  else if( chapterPrecision == "weeks" ) {
+    totalProgressUnits *= 52;
+  }
+  else if( chapterPrecision == "months" ) {
+    totalProgressUnits *= 12;
+  }
 
-  var partsX = Math.ceil(Math.sqrt(years*width/height));
+  var partsX = Math.ceil(Math.sqrt(totalProgressUnits*width/height));
   var sideX, sideY;
-  if( Math.floor(partsX*height/width)*partsX < years ) {
+  if( Math.floor(partsX*height/width)*partsX < totalProgressUnits ) {
     sideX = height/Math.ceil(partsX*height/width);
   }
   else {
     sideX = width/partsX;
   }
-  var partsY = Math.ceil(Math.sqrt(years*height/width));
-  if( Math.floor(partsY*width/height)*partsY < years ) {
+  var partsY = Math.ceil(Math.sqrt(totalProgressUnits*height/width));
+  if( Math.floor(partsY*width/height)*partsY < totalProgressUnits ) {
     sideY = width/Math.ceil(width*partsY/height);
   }
   else {
@@ -854,7 +854,7 @@ function updateProgressUnit()
       $('.circle').css('borderRadius','50%');
     }
 
-    updateProgressIntervalsAndSize(80,"month");
+    updateProgressIntervalsAndSize();
 
     updateProgressUnit();
   };

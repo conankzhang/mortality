@@ -32,11 +32,23 @@ function getChapters() {
     savedChapterLengths[i] = savedChapterLengths[i]*12
   }
 
+  var totalProgressUnits = localStorage.idealDeathYears;
+  var chapterPrecision = localStorage.chapterPrecision;
+  if( chapterPrecision == "days" ) {
+    totalProgressUnits *= 365;
+  }
+  else if( chapterPrecision == "weeks" ) {
+    totalProgressUnits *= 52;
+  }
+  else if( chapterPrecision == "months" ) {
+    totalProgressUnits *= 12;
+  }
+
   var index = 0;
   var totalMonths = 0;
   for( index; index<8; index++ ) {
-    if((totalMonths+savedChapterLengths[index]) > 945) {
-      savedChapterLengths[index] = (945-totalMonths);
+    if((totalMonths+savedChapterLengths[index]) > totalProgressUnits) {
+      savedChapterLengths[index] = (totalProgressUnits-totalMonths);
     }
     totalMonths += savedChapterLengths[index];
   }
@@ -54,22 +66,22 @@ function getChapters() {
    educationStartOffset = (7-monthBorn);
   }
   firstChapter += educationStartOffset;
-  if( firstChapter > 945 ) firstChapter = 945;
+  if( firstChapter > totalProgressUnits ) firstChapter = totalProgressUnits;
   var secondChapter = firstChapter + (savedChapterLengths[1]);
-  if( secondChapter > 945 ) secondChapter = 945;
+  if( secondChapter > totalProgressUnits ) secondChapter = totalProgressUnits;
   var thirdChapter = secondChapter + (savedChapterLengths[2]);
-  if( thirdChapter > 945 ) thirdChapter = 945;
+  if( thirdChapter > totalProgressUnits ) thirdChapter = totalProgressUnits;
   var fourthChapter = thirdChapter + (savedChapterLengths[3]);
-  if( fourthChapter > 945 ) fourthChapter = 945;
+  if( fourthChapter > totalProgressUnits ) fourthChapter = totalProgressUnits;
   var fifthChapter = fourthChapter + (savedChapterLengths[4]);
-  if( fifthChapter > 945 ) fifthChapter = 945;
+  if( fifthChapter > totalProgressUnits ) fifthChapter = totalProgressUnits;
   //540
   var sixthChapter = fifthChapter + (savedChapterLengths[5]);
-  if( sixthChapter > 945 ) sixthChapter = 945;
+  if( sixthChapter > totalProgressUnits ) sixthChapter = totalProgressUnits;
   //141
   var seventhChapter = sixthChapter + (savedChapterLengths[6]);
-  if( seventhChapter > 945 ) seventhChapter = 945;
-  var eighthChapter = 945;
+  if( seventhChapter > totalProgressUnits ) seventhChapter = totalProgressUnits;
+  var eighthChapter = totalProgressUnits;
 
   return [[beginningChapter, firstChapter], [firstChapter, secondChapter], [secondChapter, thirdChapter]
     ,[thirdChapter, fourthChapter], [fourthChapter, fifthChapter]

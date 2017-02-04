@@ -31,7 +31,7 @@ function openNav()
   $('.timer-labels').animate({
     'margin-left':'-0.5vw'
   },500);
-  updateProgressIntervalsAndSize(0,"year",newWidth);
+  updateProgressIntervalsAndSize(newWidth);
   updateProgressUnit();
 }
 
@@ -53,7 +53,7 @@ function closeNav()
   $('.timer-labels').animate({
     'margin-left':'-1vw'
   },500);
-  updateProgressIntervalsAndSize(0,"year",newWidth);
+  updateProgressIntervalsAndSize(newWidth);
   updateProgressUnit();
   document.getElementById("updateBadge").style.display = "none";
 }
@@ -881,6 +881,9 @@ function loadTextFields()
 {
   var idealDeathInput = $('#idealDeathInput');
   var idealDeathYears = localStorage.idealDeathYears || 79;
+  if( !localStorage.idealDeathYears ) {
+    localStorage.idealDeathYears = 79;
+  }
   idealDeathInput.val(idealDeathYears);
   idealDeathInput.on('input',function(e){
     localStorage.idealDeathYears = $(this).val();
