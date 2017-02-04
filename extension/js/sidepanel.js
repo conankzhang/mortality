@@ -791,6 +791,7 @@ function loadChapters()
       yearNumber = e.currentTarget.id.slice(-1);
       savedChapterYearLengths[yearNumber - 1] = e.currentTarget.value;
       localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
+    updateProgressBecauseSettingsChanged();
     });
 
     var newChapterMonthsInput = $('#chapterMonth{0}'.format(chapterNumOffset));
@@ -799,6 +800,7 @@ function loadChapters()
       monthNumber = e.currentTarget.id.slice(-1);
       savedChapterMonthLengths[monthNumber - 2] = e.currentTarget.value;
       localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
+    updateProgressBecauseSettingsChanged();
     });
 
   });
@@ -820,6 +822,7 @@ function loadChapters()
     var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
     savedChapterMonthLengths[chapterNum-1] = 0;
     localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
+    updateProgressBecauseSettingsChanged();
   });
 
 
@@ -860,7 +863,8 @@ function loadChapters()
     yearNumber = e.currentTarget.id.slice(-1);
     savedChapterYearLengths[yearNumber - 1] = e.currentTarget.value;
     localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
-  });
+    updateProgressBecauseSettingsChanged();
+});
 
   var chapterMonthInputs = $('.monthsInput');
   chapterMonthInputs.on('input',function(e){
@@ -868,6 +872,7 @@ function loadChapters()
     monthNumber = e.currentTarget.id.slice(-1);
     savedChapterMonthLengths[monthNumber - 2] = e.currentTarget.value;
     localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
+    updateProgressBecauseSettingsChanged();
   });
 }
 
