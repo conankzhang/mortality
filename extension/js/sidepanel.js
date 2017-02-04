@@ -377,7 +377,6 @@ function loadSegmentedControls()
   var chapterPrecisionSegmentedControl1 = $("#chapterPrecisionSegmentedControl > input:nth-child(1)");
   var chapterPrecisionSegmentedControl2 = $("#chapterPrecisionSegmentedControl > input:nth-child(2)");
   var chapterPrecisionSegmentedControl3 = $("#chapterPrecisionSegmentedControl > input:nth-child(3)");
-  var chapterPrecisionSegmentedControl4 = $("#chapterPrecisionSegmentedControl > input:nth-child(4)");
 
   if( localStorage.getItem("chapterPrecision") === null ){
     localStorage.setItem("chapterPrecision", "months");
@@ -385,39 +384,31 @@ function loadSegmentedControls()
 
   chapterPrecisionSegmentedControl1.change( function () {
     if( chapterLengthSegmentedControl1.is(":checked") ) {
-      localStorage.setItem("chapterPrecision", "days");
+      localStorage.setItem("chapterPrecision", "weeks");
     }
   });
 
   chapterPrecisionSegmentedControl2.change( function () {
     if( chapterPrecisionSegmentedControl2.is(":checked") ) {
-      localStorage.setItem("chapterPrecision", "weeks");
+      localStorage.setItem("chapterPrecision", "months");
     }
   });
 
   chapterPrecisionSegmentedControl3.change( function () {
     if( chapterPrecisionSegmentedControl3.is(":checked") ) {
-      localStorage.setItem("chapterPrecision", "months");
-    }
-  });
-
-  chapterPrecisionSegmentedControl4.change( function () {
-    if( chapterPrecisionSegmentedControl4.is(":checked") ) {
       localStorage.setItem("chapterPrecision", "years");
     }
   });
 
-  if( localStorage.getItem("chapterPrecision") == "days" ) {
+
+  if( localStorage.getItem("chapterPrecision") == "weeks" ) {
       $('#chapterPrecisionSegmentedControl > input:nth-child(1)').prop('checked', true);
   }
-  else if( localStorage.getItem("chapterPrecision") == "weeks" ) {
+  else if( localStorage.getItem("chapterPrecision") == "months" ) {
       $('#chapterPrecisionSegmentedControl > input:nth-child(2)').prop('checked', true);
   }
-  else if( localStorage.getItem("chapterPrecision") == "months" ) {
-      $('#chapterPrecisionSegmentedControl > input:nth-child(3)').prop('checked', true);
-  }
   else if( localStorage.getItem("chapterPrecision") == "years" ) {
-      $('#chapterPrecisionSegmentedControl > input:nth-child(4)').prop('checked', true);
+      $('#chapterPrecisionSegmentedControl > input:nth-child(3)').prop('checked', true);
   }
 
   var chapterLengthSegmentedControl1 = $("#chapterLengthSegmentedControl > input:nth-child(1)");
