@@ -771,7 +771,10 @@ function updateProgressIntervalsAndSize(newWidth)
   else {
     sideY = height/partsY;
   }
-  var allocatedUnitSide = Math.max(sideX, sideY) - (margin*2);
+  var allocatedUnitSide = Math.max(sideX, sideY);
+  var widthMain = allocatedUnitSide * partsX;
+  $('#circles').width(widthMain);
+  allocatedUnitSide -= (margin*2);
 
   $('.circle').css('width','{0}px'.format(allocatedUnitSide));
   $('.circle').css('height','{0}px'.format(allocatedUnitSide));
