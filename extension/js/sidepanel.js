@@ -877,6 +877,16 @@ function loadChapters()
   });
 }
 
+function loadTextFields()
+{
+  var idealDeathInput = $('#idealDeathInput');
+  var idealDeathYears = localStorage.idealDeathYears || 79;
+  idealDeathInput.val(idealDeathYears);
+  idealDeathInput.on('input',function(e){
+    localStorage.idealDeathYears = $(this).val();
+  });
+}
+
 function loadDOB()
 {
   var dobDate = getDOB();

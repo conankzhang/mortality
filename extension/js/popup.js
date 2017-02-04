@@ -43,6 +43,7 @@ function setupSettings()
   loadSurvey();
   loadChapterPrecision();
   loadChapters();
+  loadTextFields();
   loadDOB();
   loadDOD();
 
