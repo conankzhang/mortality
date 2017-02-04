@@ -383,8 +383,7 @@
   App.fn.generateLifeProgress = function()
   {
     $('#circles').empty();
-    var monthBorn = getDOB().getMonth();
-    var chaptersArray = getChapters(monthBorn);
+    var chaptersArray = getChapters();
 
     this.documentCircle = document.querySelector('#circles');
 

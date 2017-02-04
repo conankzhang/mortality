@@ -21,7 +21,7 @@ function getDOD()
   }
 }
 
-function getChapters(monthBorn) {
+function getChapters() {
   var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
   if( savedChapterLengths === null )
   {
@@ -44,6 +44,7 @@ function getChapters(monthBorn) {
   var beginningChapter = 0;
   var firstChapter = savedChapterLengths[0];
   var educationStartOffset = 0;
+  var monthBorn = getDOB().getMonth();
   if(monthBorn == 11)
   {
    educationStartOffset = 8;
