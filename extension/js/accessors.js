@@ -21,29 +21,47 @@ function getDOD()
   }
 }
 
-function getChapters() {
-  var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
-  if( savedChapterLengths === null )
-  {
-    savedChapterLengths = [5,7,2,4,4,43,15,0];
-  }
-
-  for( var i=0; i<8; i++ ) {
-    savedChapterLengths[i] = savedChapterLengths[i]*12
-  }
-
-  var totalProgressUnits = localStorage.idealDeathYears;
+function getChapters()
+{
   var chapterPrecision = localStorage.chapterPrecision;
+  var totalProgressUnits = localStorage.idealDeathYears;
+  var multiplier = 1;
   if( chapterPrecision == "weeks" ) {
-    totalProgressUnits *= 52;
+    multiplier = 52;;
   }
   else if( chapterPrecision == "months" ) {
-    totalProgressUnits *= 12;
+    multiplier = 12;
+  }
+  totalProgressUnits *= multiplier;
+
+
+  var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
+  if( savedChapterYearLengths === null ) {
+    savedChapterYearLengths = [5,7,2,4,4,43,15];
+    localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
+  }
+  var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
+  if( savedChapterMonthLengths === null ) {
+    savedChapterMonthLengths = [0,0,0,0,0,0];
+    localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
+  }
+
+  savedChapterLengths = [savedChapterYearLengths[0]*multiplier];
+  for( var j=0; j<savedChapterMonthLengths.length; j++ ) {
+    var years = savedChapterYearLengths[j+1];
+    if( typeof years === 'string' ) {
+      years = parseInt(years);
+    }
+    var months = savedChapterMonthLengths[j];
+    if( typeof months === 'string' ) {
+      months = parseInt(months);
+    }
+    savedChapterLengths.push(Math.floor((years+(months/12))*multiplier));
   }
 
   var index = 0;
   var totalMonths = 0;
-  for( index; index<8; index++ ) {
+  for( index; index<savedChapterYearLengths; index++ ) {
     if((totalMonths+savedChapterLengths[index]) > totalProgressUnits) {
       savedChapterLengths[index] = (totalProgressUnits-totalMonths);
     }
