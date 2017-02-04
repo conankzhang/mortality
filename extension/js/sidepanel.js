@@ -881,6 +881,7 @@ function loadTextFields()
   idealDeathInput.val(idealDeathYears);
   idealDeathInput.on('input',function(e){
     localStorage.idealDeathYears = $(this).val();
+    updateProgressBecauseSettingsChanged();
   });
 }
 
