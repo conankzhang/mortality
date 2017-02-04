@@ -597,6 +597,7 @@ input:disabled {
 }
 
 #peopleTimerList .circleRadio .check::before {
+    position: absolute;
     display: inline-block;
     content: '';
     border-radius: 100%;
