@@ -383,21 +383,21 @@ function loadSegmentedControls()
   }
 
   chapterPrecisionSegmentedControl1.change( function () {
-    if( chapterLengthSegmentedControl1.is(":checked") ) {
+    if( $(this).is(":checked") ) {
       localStorage.setItem("chapterPrecision", "weeks");
       updateProgressBecauseSettingsChanged()
     }
   });
 
   chapterPrecisionSegmentedControl2.change( function () {
-    if( chapterPrecisionSegmentedControl2.is(":checked") ) {
+    if( $(this).is(":checked") ) {
       localStorage.setItem("chapterPrecision", "months");
       updateProgressBecauseSettingsChanged()
     }
   });
 
   chapterPrecisionSegmentedControl3.change( function () {
-    if( chapterPrecisionSegmentedControl3.is(":checked") ) {
+    if( $(this).is(":checked") ) {
       localStorage.setItem("chapterPrecision", "years");
       updateProgressBecauseSettingsChanged()
     }
@@ -738,27 +738,29 @@ function loadChapterPrecision()
   var chapterPrecisionYear = localStorage.getItem("chapterPrecisionYear");
   var chapterPrecisionYearTextfield = $("#fixedYearsInput");
   if (chapterPrecisionYear === null) {
-    localStorage.chapterPrecisionYear = "10";
-    chapterPrecisionYearTextfield.val("10");
+    localStorage.chapterPrecisionYear = 10;
+    chapterPrecisionYearTextfield.val(10);
   }
   else {
     chapterPrecisionYearTextfield.val(chapterPrecisionYear);
   }
   chapterPrecisionYearTextfield.on('input',function(e){
     localStorage.chapterPrecisionYear = chapterPrecisionYearTextfield.val();
+    updateProgressBecauseSettingsChanged();
   });
 
   var chapterPrecisionMonth = localStorage.getItem("chapterPrecisionMonth");
   var chapterPrecisionMonthTextfield = $("#fixedMonthsInput");
   if (chapterPrecisionMonth === null) {
-    localStorage.chapterPrecisionMonth = "0";
-    chapterPrecisionMonthTextfield.val("0");
+    localStorage.chapterPrecisionMonth = 0;
+    chapterPrecisionMonthTextfield.val(0);
   }
   else {
     chapterPrecisionMonthTextfield.val(chapterPrecisionMonth);
   }
   chapterPrecisionMonthTextfield.on('input',function(e){
     localStorage.chapterPrecisionMonth = chapterPrecisionMonthTextfield.val();
+    updateProgressBecauseSettingsChanged();
   });
 }
 
@@ -800,7 +802,7 @@ function loadChapters()
       monthNumber = e.currentTarget.id.slice(-1);
       savedChapterMonthLengths[monthNumber - 2] = e.currentTarget.value;
       localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
-    updateProgressBecauseSettingsChanged();
+      updateProgressBecauseSettingsChanged();
     });
 
   });

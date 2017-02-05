@@ -23,6 +23,7 @@ function getDOD()
 
 function getChapters()
 {
+  var savedChapterLengths;
   var chapterPrecision = localStorage.chapterPrecision;
   var totalProgressUnits = localStorage.idealDeathYears;
   var multiplier = 1;
@@ -35,28 +36,50 @@ function getChapters()
   totalProgressUnits *= multiplier;
 
 
-  var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
-  if( savedChapterYearLengths === null ) {
-    savedChapterYearLengths = [5,7,2,4,4,43,15];
-    localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
-  }
-  var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
-  if( savedChapterMonthLengths === null ) {
-    savedChapterMonthLengths = [0,0,0,0,0,0];
-    localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
-  }
-
-  savedChapterLengths = [savedChapterYearLengths[0]*multiplier];
-  for( var j=0; j<savedChapterMonthLengths.length; j++ ) {
-    var years = savedChapterYearLengths[j+1];
+  if( localStorage.fixedChapters == "YES" )
+  {
+    var years = localStorage.chapterPrecisionYear;
     if( typeof years === 'string' ) {
       years = parseInt(years);
     }
-    var months = savedChapterMonthLengths[j];
+    var months = localStorage.chapterPrecisionMonth;
     if( typeof months === 'string' ) {
       months = parseInt(months);
     }
-    savedChapterLengths.push(Math.floor((years+(months/12))*multiplier));
+    savedChapterLengths = [];
+    var iterations = Math.ceil(totalProgressUnits/years);
+    for( var i=0; i<iterations; i++ )
+    {
+      savedChapterLengths.push(Math.floor((years+(months/12))*multiplier));
+    }
+  }
+
+  else
+  {
+    var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
+    if( savedChapterYearLengths === null ) {
+      savedChapterYearLengths = [5,7,2,4,4,43,15];
+      localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
+    }
+    var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
+    if( savedChapterMonthLengths === null ) {
+      savedChapterMonthLengths = [0,0,0,0,0,0];
+      localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
+    }
+
+    savedChapterLengths = [savedChapterYearLengths[0]*multiplier];
+    for( var j=0; j<savedChapterMonthLengths.length; j++ )
+    {
+      var years = savedChapterYearLengths[j+1];
+      if( typeof years === 'string' ) {
+        years = parseInt(years);
+      }
+      var months = savedChapterMonthLengths[j];
+      if( typeof months === 'string' ) {
+        months = parseInt(months);
+      }
+      savedChapterLengths.push(Math.floor((years+(months/12))*multiplier));
+    }
   }
 
   var index = 0;
