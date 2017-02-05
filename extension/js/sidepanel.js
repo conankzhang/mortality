@@ -653,6 +653,7 @@ function loadDropdowns()
   selectClockValue.text(currentClockValue);
   selectClock.click(function() {
     localStorage.clockPrecision = clockPrecisionDropdown.val();
+    updateTimer();
   });
 
   selectPopulation = $( "#populationPrecisionContainer > div" );

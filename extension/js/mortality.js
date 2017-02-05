@@ -237,7 +237,14 @@
       clearInterval(self.timeSpentIntervalID);
       clearInterval(self.clockIntervalID);
       this.renderClock();
-      this.clockIntervalID = setInterval(this.renderClock.bind(this),secondMS);
+      var renderTime = minuteMS;
+      if( localStorage.clockPrecision == "sec" ) {
+        renderTime = secondMS;
+      }
+      else if( localStorage.clockPrecision == "ms" ) {
+        renderTime = 113;
+      }
+      this.clockIntervalID = setInterval(this.renderClock.bind(this),renderTime);
       return;
     }
     else
@@ -686,9 +693,28 @@
       }
     }
 
-    var hourString = zeroFill(hour.toString(), 2);
-    var minuteString = zeroFill(now.getMinutes().toString(), 2);
-    var secondString = zeroFill(now.getSeconds().toString(), 2);
+    var hourString = "";
+    var minuteString = "";
+    var secondString = "";
+    var msString = "";
+    if( localStorage.clockPrecision == "hour" ) {
+      hourString = zeroFill(hour.toString(), 2);
+    }
+    else if( localStorage.clockPrecision == "min" ) {
+      hourString = zeroFill(hour.toString(), 2);
+      minuteString = ":"+zeroFill(now.getMinutes().toString(), 2);
+    }
+    else if( localStorage.clockPrecision == "sec" ) {
+      hourString = zeroFill(hour.toString(), 2);
+      minuteString = ":"+zeroFill(now.getMinutes().toString(), 2);
+      secondString = ":"+zeroFill(now.getSeconds().toString(), 2);
+    }
+    else if( localStorage.clockPrecision == "ms" ) {
+      hourString = zeroFill(hour.toString(), 2);
+      minuteString = ":"+zeroFill(now.getMinutes().toString(), 2);
+      secondString = ":"+zeroFill(now.getSeconds().toString(), 2);
+      msString = ":"+zeroFill(Math.floor((now.getMilliseconds())/10).toString(), 2);
+    }
 
     var savedTheme = localStorage.getItem("colorTheme");
     if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
@@ -707,6 +733,7 @@
         hour: hourString,
         minute: minuteString,
         second: secondString,
+        ms: msString,
         ampm: ampmString
       }));
 
