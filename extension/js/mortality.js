@@ -234,23 +234,28 @@
 
     if( localStorage.showClock == "YES" )
     {
-      clearInterval(self.timeSpentIntervalID);
-      clearInterval(self.clockIntervalID);
+      var app = $('#app');
+      clearInterval(app.data("clockIntervalID"));
+      app.removeData("clockIntervalID");
+      clearInterval(app.data("timeSpentIntervalID"));
+      app.removeData("timeSpentIntervalID");
       this.renderClock();
-      var renderTime = minuteMS;
-      if( localStorage.clockPrecision == "sec" ) {
-        renderTime = secondMS;
-      }
-      else if( localStorage.clockPrecision == "ms" ) {
+      var renderTime = secondMS;
+      if( localStorage.clockPrecision == "ms" ) {
         renderTime = 113;
       }
-      this.clockIntervalID = setInterval(this.renderClock.bind(this),renderTime);
+
+      app.data("clockIntervalID", setInterval(this.renderClock.bind(this),renderTime));
+
       return;
     }
     else
     {
-      clearInterval(self.timeSpentIntervalID);
-      clearInterval(this.clockIntervalID);
+      var app = $('#app');
+      clearInterval(app.data("clockIntervalID"));
+      app.removeData("clockIntervalID");
+      clearInterval(app.data("timeSpentIntervalID"));
+      app.removeData("timeSpentIntervalID");
       var duration, startMoment, endMoment;
       if( localStorage.getItem("showCurrentTime") === null )
       {
@@ -318,7 +323,7 @@
           endMoment = currentMoment;
         }
 
-        this.timeSpentIntervalID = setInterval(this.renderAge.bind(this),interval);
+        app.data("timeSpentIntervalID", setInterval(this.renderAge.bind(this),interval));
       }
 
 
@@ -675,6 +680,7 @@
 
   App.fn.renderClock = function()
   {
+    console.log(this.clockIntervalID);
     var now = new Date();
     var ampmString = "AM";
     var hour = now.getHours();
