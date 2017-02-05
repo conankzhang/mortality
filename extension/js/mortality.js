@@ -236,8 +236,8 @@
     {
       clearInterval(self.timeSpentIntervalID);
       clearInterval(self.clockIntervalID);
-      this.renderTime();
-      this.clockIntervalID = setInterval(this.renderTime.bind(this),secondMS);
+      this.renderClock();
+      this.clockIntervalID = setInterval(this.renderClock.bind(this),secondMS);
       return;
     }
     else
@@ -666,7 +666,7 @@
   }
 
 
-  App.fn.renderTime = function()
+  App.fn.renderClock = function()
   {
     var now = new Date();
     var ampmString = "AM";
