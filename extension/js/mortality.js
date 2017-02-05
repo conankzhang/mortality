@@ -235,12 +235,14 @@
     if( localStorage.showClock == "YES" )
     {
       clearInterval(self.timeSpentIntervalID);
+      clearInterval(self.clockIntervalID);
       this.renderTime();
       this.clockIntervalID = setInterval(this.renderTime.bind(this),secondMS);
       return;
     }
     else
     {
+      clearInterval(self.timeSpentIntervalID);
       clearInterval(this.clockIntervalID);
       var duration, startMoment, endMoment;
       if( localStorage.getItem("showCurrentTime") === null )
@@ -669,13 +671,21 @@
     var now = new Date();
     var ampmString = "AM";
     var hour = now.getHours();
-    if( hour > 11 ) {
-      ampmString = "PM";
-      hour = hour % 12;
+    if( localStorage.twentyFour == "YES" )
+    {
+      ampmString = "";
     }
-    if( hour == 0 ) {
-      hour = 12;
+    else
+    {
+      if( hour > 11 ) {
+        ampmString = "PM";
+        hour = hour % 12;
+      }
+      if( hour == 0 ) {
+        hour = 12;
+      }
     }
+
     var hourString = zeroFill(hour.toString(), 2);
     var minuteString = zeroFill(now.getMinutes().toString(), 2);
     var secondString = zeroFill(now.getSeconds().toString(), 2);

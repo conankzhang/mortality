@@ -582,12 +582,13 @@ function loadCheckBoxes()
   });
 
   var twentyFourCheckbox = document.querySelector('input[id=twentyFourCheckbox]');
-  if (localStorage.getItem("twentyFour") == "YES") {
+  if (localStorage.twentyFour == "YES") {
     twentyFourCheckbox.checked = true;
   }
 
   twentyFourCheckbox.addEventListener('change', function () {
-    localStorage.setItem("twentyFour", twentyFourCheckbox.checked?"YES":"NO");
+    localStorage.twentyFour = twentyFourCheckbox.checked?"YES":"NO";
+    updateTimer();
   });
 }
 
