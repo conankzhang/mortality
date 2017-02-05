@@ -321,6 +321,7 @@ function loadSegmentedControls()
       swapPrecisionSelect("timer");
       localStorage.setItem("timerSetting", "spent");
       localStorage.showClock = "NO";
+      localStorage.hideTimer = "NO";
       updateTimer();
     }
   });
@@ -337,6 +338,7 @@ function loadSegmentedControls()
       swapPrecisionSelect("timer");
       localStorage.setItem("timerSetting", "left");
       localStorage.showClock = "NO";
+      localStorage.hideTimer = "NO";
       updateTimer();
     }
   });
@@ -349,11 +351,14 @@ function loadSegmentedControls()
       displayExtraSettingsContainer();
       if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
         localStorage.showClock = "YES";
+        localStorage.hideTimer = "NO";
       }
       else if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
+        localStorage.hideTimer = "NO";
         localStorage.showClock = "NO";
       }
       else if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
+        localStorage.hideTimer = "YES";
         localStorage.showClock = "NO";
       }
       updateTimer();
@@ -364,6 +369,7 @@ function loadSegmentedControls()
     if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
       displayExtraSettingsContainer();
       localStorage.showClock = "YES";
+      localStorage.hideTimer = "NO";
       updateTimer();
     }
   });
@@ -371,6 +377,7 @@ function loadSegmentedControls()
   extraTimerSettingsSegmentedControl2.change( function () {
     if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
       displayExtraSettingsContainer();
+      localStorage.hideTimer = "NO";
       localStorage.showClock = "NO";
       updateTimer();
     }
@@ -379,6 +386,7 @@ function loadSegmentedControls()
   extraTimerSettingsSegmentedControl3.change( function () {
     if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
       displayExtraSettingsContainer();
+      localStorage.hideTimer = "YES";
       localStorage.showClock = "NO";
       updateTimer();
     }

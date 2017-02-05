@@ -232,13 +232,18 @@
       blackFlag = "YES";
     }
 
-    if( localStorage.showClock == "YES" )
+    var app = $('#app');
+    clearInterval(app.data("clockIntervalID"));
+    app.removeData("clockIntervalID");
+    clearInterval(app.data("timeSpentIntervalID"));
+    app.removeData("timeSpentIntervalID");
+    if( localStorage.hideTimer == "YES" )
     {
-      var app = $('#app');
-      clearInterval(app.data("clockIntervalID"));
-      app.removeData("clockIntervalID");
-      clearInterval(app.data("timeSpentIntervalID"));
-      app.removeData("timeSpentIntervalID");
+      this.setAppElementHTML("<br>");
+      return;
+    }
+    else if( localStorage.showClock == "YES" )
+    {
       this.renderClock();
       var renderTime = secondMS;
       if( localStorage.clockPrecision == "ms" ) {
@@ -251,11 +256,6 @@
     }
     else
     {
-      var app = $('#app');
-      clearInterval(app.data("clockIntervalID"));
-      app.removeData("clockIntervalID");
-      clearInterval(app.data("timeSpentIntervalID"));
-      app.removeData("timeSpentIntervalID");
       var duration, startMoment, endMoment;
       if( localStorage.getItem("showCurrentTime") === null )
       {
