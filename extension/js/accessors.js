@@ -80,6 +80,12 @@ function getChapters()
   {
    educationStartOffset = (7-monthBorn);
   }
+  if( chapterPrecision == "weeks" ) {
+    educationStartOffset *= 4;
+  }
+  else if( chapterPrecision == "years" ) {
+    educationStartOffset /= 12;
+  }
   firstChapter += educationStartOffset;
   if( firstChapter > totalProgressUnits ) firstChapter = totalProgressUnits;
   var secondChapter = firstChapter + (savedChapterLengths[1]);
