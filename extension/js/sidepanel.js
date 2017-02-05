@@ -21,6 +21,9 @@ function openNav()
   $('.timer').animate({
     'font-size':'3vw'
   },300);
+  $('.clock').animate({
+    'font-size':'4vw'
+  },300);
   $('.timer-container').animate({
     'left':'75%'
   },500);
@@ -42,6 +45,9 @@ function closeNav()
   document.getElementById("main").style.marginLeft = "0";
   $('.timer').animate({
     'font-size':'6vw'
+  },300);
+  $('.clock').animate({
+    'font-size':'8vw'
   },300);
   $('.timer-container').animate({
     'left':'50%'
@@ -314,6 +320,8 @@ function loadSegmentedControls()
       $("#precisionLabel").text("Timer Precision");
       swapPrecisionSelect("timer");
       localStorage.setItem("timerSetting", "spent");
+      localStorage.showClock = "NO";
+      updateTimer();
     }
   });
 
@@ -328,6 +336,8 @@ function loadSegmentedControls()
       $("#precisionLabel").text("Timer Precision");
       swapPrecisionSelect("timer");
       localStorage.setItem("timerSetting", "left");
+      localStorage.showClock = "NO";
+      updateTimer();
     }
   });
 
@@ -337,19 +347,41 @@ function loadSegmentedControls()
       $("#extraTimerSettingsSegmentedControl").hide().fadeIn(500);
       $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
       displayExtraSettingsContainer();
+      if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
+        localStorage.showClock = "YES";
+      }
+      else if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
+        localStorage.showClock = "NO";
+      }
+      else if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
+        localStorage.showClock = "NO";
+      }
+      updateTimer();
     }
   });
 
   extraTimerSettingsSegmentedControl1.change( function () {
-    displayExtraSettingsContainer();
+    if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
+      displayExtraSettingsContainer();
+      localStorage.showClock = "YES";
+      updateTimer();
+    }
   });
 
   extraTimerSettingsSegmentedControl2.change( function () {
-    displayExtraSettingsContainer();
+    if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
+      displayExtraSettingsContainer();
+      localStorage.showClock = "NO";
+      updateTimer();
+    }
   });
 
   extraTimerSettingsSegmentedControl3.change( function () {
-    displayExtraSettingsContainer();
+    if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
+      displayExtraSettingsContainer();
+      localStorage.showClock = "NO";
+      updateTimer();
+    }
   });
 
   if( localStorage.getItem("timerSetting") == "left" ) {
@@ -611,11 +643,7 @@ function loadDropdowns()
   selectTimerValue.text(currentTimerValue);
   selectTimer.click(function() {
     localStorage.timerPrecision = timerPrecisionDropdown.val();
-      window.app.initializeTimer();
-      $('.timer').css('font-size','3vw');
-      $('.timer-container').css('left','75%');
-      $('.timer-labels').css('font-size','0.8vw');
-      $('.timer-labels').css('margin-left','-0.5vw');
+      updateTimer();
   });
 
   selectClock = $( "#clockPrecisionContainer > div" );
@@ -991,4 +1019,14 @@ function updateProgressBecauseSettingsChanged()
   }
   updateProgressIntervalsAndSize();
   updateProgressUnit();
+}
+
+function updateTimer()
+{
+  window.app.initializeTimer();
+  $('.timer').css('font-size','3vw');
+  $('.clock').css('font-size','4vw');
+  $('.timer-container').css('left','75%');
+  $('.timer-labels').css('font-size','0.8vw');
+  $('.timer-labels').css('margin-left','-0.5vw');
 }

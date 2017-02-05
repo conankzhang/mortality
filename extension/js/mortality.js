@@ -232,8 +232,16 @@
       blackFlag = "YES";
     }
 
-    if( localStorage.getItem("hideAge") === null )
+    if( localStorage.showClock == "YES" )
     {
+      clearInterval(self.timeSpentIntervalID);
+      this.renderTime();
+      this.clockIntervalID = setInterval(this.renderTime.bind(this),secondMS);
+      return;
+    }
+    else
+    {
+      clearInterval(this.clockIntervalID);
       var duration, startMoment, endMoment;
       if( localStorage.getItem("showCurrentTime") === null )
       {
@@ -301,14 +309,9 @@
           endMoment = currentMoment;
         }
 
-        setInterval(this.renderAge.bind(this),interval);
+        this.timeSpentIntervalID = setInterval(this.renderAge.bind(this),interval);
       }
-      else
-      {
-        this.renderTime();
-        setInterval(this.renderTime.bind(this),secondMS);
-        return;
-      }
+
 
       var savedPrecision = localStorage.getItem("timerPrecision");
       while(true)
@@ -696,6 +699,14 @@
         second: secondString,
         ampm: ampmString
       }));
+
+      if( $("#theSidePanel").width() > 50 ) {
+        $('.clock').css('font-size','4vw');
+        $('.timer-container').css('left','75%');
+        $('.timer-labels').css('font-size','0.8vw');
+        $('.timer-labels').css('margin-left','-0.5vw');
+      }
+
     }.bind(this));
   };
 
