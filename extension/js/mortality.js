@@ -259,8 +259,10 @@
     else if( localStorage.timerSetting == "population" )
     {
       this.renderPopulation();
-      var renderTime = secondMS;
-      renderTime = 250;
+      var renderTime = 1000;
+      if( localStorage.populationPrecision == "one" ) {
+        renderTime = 250;
+      }
 
       app.data("populationIntervalID", setInterval(this.renderPopulation.bind(this),renderTime));
 

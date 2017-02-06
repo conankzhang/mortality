@@ -640,7 +640,7 @@ function loadDropdowns()
   selectTimerValue.text(currentTimerValue);
   selectTimer.click(function() {
     localStorage.timerPrecision = timerPrecisionDropdown.val();
-      updateTimer();
+    updateTimer();
   });
 
   selectClock = $( "#clockPrecisionContainer > div" );
@@ -658,6 +658,7 @@ function loadDropdowns()
   selectPopulationValue.text(currentPopulationValue);
   selectPopulation.click(function() {
     localStorage.populationPrecision = populationPrecisionDropdown.val();
+    updateTimer();
   });
 
   selectTimeupMessage = $( "#timeupMessageContainer > div" );
