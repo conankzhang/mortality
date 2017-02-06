@@ -239,6 +239,8 @@
     app.removeData("timeSpentIntervalID");
     clearInterval(app.data("populationIntervalID"));
     app.removeData("populationIntervalID");
+    clearInterval(app.data("timeUpMessageIntervalID"));
+    app.removeData("timeUpMessageIntervalID");
     if( localStorage.timerSetting == "hide" )
     {
       this.setAppElementHTML("<br>");
@@ -287,9 +289,9 @@
         var currentMoment = moment();
         var deadlineMoment = moment(this.deathDate);
         var birthMoment = moment(this.dob);
-        if( localStorage.getItem("countdownEnabled") == "YES" )
+        if( localStorage.timerSetting == "left" )
         {
-          if( localStorage.getItem("countdownDaily") == "YES" && localStorage.getItem("specificTimeSet") == "YES" )
+          if( localStorage.getItem("dailyCountdown") == "YES" && localStorage.getItem("specificTimeSet") == "YES" )
           {
             deadlineMoment = moment();
             var timeInput = localStorage.deathTime;
@@ -324,7 +326,9 @@
               message: localStorage.timeupMessage
             }));
             interval = secondMS;
-            setInterval(this.renderTimeUp.bind(this),interval);
+            app.data("timeUpMessageIntervalID", setInterval(this.renderTimeUp.bind(this),interval));
+
+
             return;
           }
           startMoment = currentMoment;
@@ -533,7 +537,7 @@
     var currentMoment = moment();
     var deadlineMoment = this.deadlineMoment;
     var birthMoment = moment(this.dob);
-    if( localStorage.getItem("countdownEnabled") == "YES" )
+    if( localStorage.timerSetting == "left" )
     {
       duration = deadlineMoment - currentMoment;
       if( duration <= 0 )
