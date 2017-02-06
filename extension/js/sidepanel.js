@@ -524,7 +524,9 @@ function loadCheckBoxes()
     localStorage.setItem("dobTimeSet", dobTimeCheckbox.checked?"YES":"NO");
     if( !dobTimeCheckbox.checked ) {
       localStorage.dobMinutes = 0;
+      $("#dobTimeInput").val(getTimeStringFromMinutes(0));
       window.app.dobMinutes = 0;
+      updateTimer();
     }
   });
 
@@ -537,6 +539,11 @@ function loadCheckBoxes()
   dodTimeCheckbox.addEventListener('change', function () {
     showDODTimeSelectorIf(dodTimeCheckbox.checked);
     localStorage.setItem("dodTimeSet", dodTimeCheckbox.checked?"YES":"NO");
+    if( !dodTimeCheckbox.checked ) {
+      localStorage.deathTime = 0;
+      $("#dodTimeInput").val(getTimeStringFromMinutes(0));
+      updateTimer();
+    }
   });
 
   var takeSurveyCheckbox = document.querySelector('input[id=takeSurveyCheckbox]');
@@ -948,6 +955,7 @@ function loadDOB()
       window.app.dob = newDOBDate;
       $(this).data('val', $(this).val());
     }
+    updateTimer();
 
     updateProgressBecauseSettingsChanged()
   });
@@ -968,6 +976,7 @@ function loadDOB()
       localStorage.dobMinutes = newDOBTime;
       window.app.dobMinutes = newDOBTime;
     }
+    updateTimer();
   });
 }
 
