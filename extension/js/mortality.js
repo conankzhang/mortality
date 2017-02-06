@@ -121,8 +121,8 @@
         this.deathDate = getDOD();
         if (localStorage.getItem("specificTimeSet") == "YES")
         {
-          this.deathTime = localStorage.deathTime || 0;
-          this.deathDate.setMinutes(parseInt(this.deathTime));
+          this.dodMinutes = localStorage.dodMinutes || 0;
+          this.deathDate.setMinutes(parseInt(this.dodMinutes));
         }
         else
         {
@@ -294,7 +294,7 @@
         if( localStorage.getItem("dailyCountdown") == "YES" && localStorage.getItem("specificTimeSet") == "YES" )
         {
           deadlineMoment = moment();
-          var timeInput = localStorage.deathTime;
+          var timeInput = localStorage.dodMinutes;
           if( timeInput === null )
           {
             deadlineMoment.hour(0);

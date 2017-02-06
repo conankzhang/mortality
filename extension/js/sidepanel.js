@@ -540,7 +540,7 @@ function loadCheckBoxes()
     showDODTimeSelectorIf(dodTimeCheckbox.checked);
     localStorage.setItem("dodTimeSet", dodTimeCheckbox.checked?"YES":"NO");
     if( !dodTimeCheckbox.checked ) {
-      localStorage.deathTime = 0;
+      localStorage.dodMinutes = 0;
       $("#dodTimeInput").val(getTimeStringFromMinutes(0));
       updateTimer();
     }
