@@ -559,6 +559,7 @@ function loadCheckBoxes()
   dailyCountdownCheckbox.addEventListener('change', function () {
     disableDODDateIf(dailyCountdownCheckbox.checked);
     localStorage.setItem("dailyCountdown", dailyCountdownCheckbox.checked?"YES":"NO");
+    updateTimer();
   });
 
   var hideProgressCheckbox = document.querySelector('input[id=hideProgressCheckbox]');
