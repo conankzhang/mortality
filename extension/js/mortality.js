@@ -119,7 +119,7 @@
       if( localStorage.timerSetting == "left" )
       {
         this.deathDate = getDOD();
-        if (localStorage.getItem("specificTimeSet") == "YES")
+        if (localStorage.surveyDOD != "YES")
         {
           this.dodMinutes = localStorage.dodMinutes || 0;
           this.deathDate.setMinutes(parseInt(this.dodMinutes));
@@ -274,12 +274,12 @@
           }
 
           //http://apps.who.int/gho/data/view.main.YLLRATEREG6AMRV
-          if( localStorage.getItem("surveyHeartDisease") == "true" )
+          if( localStorage.getItem("surveyHeartDisease") == "YES" )
           {
             yearOffset -= (ageYears/2)*0.077;
           }
 
-          if( localStorage.getItem("surveyClumsiness") == "true" )
+          if( localStorage.getItem("surveyClumsiness") == "YES" )
           {
             yearOffset -= (ageYears/3)*0.055;
           }
@@ -291,7 +291,7 @@
         var deadlineMoment = moment(this.deathDate);
         var birthMoment = moment(this.dob);
 
-        if( localStorage.getItem("dailyCountdown") == "YES" && localStorage.getItem("specificTimeSet") == "YES" )
+        if( localStorage.getItem("dailyCountdown") == "YES" && localStorage.surveyDOD != "YES" )
         {
           deadlineMoment = moment();
           var timeInput = localStorage.dodMinutes;

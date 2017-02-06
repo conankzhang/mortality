@@ -555,6 +555,7 @@ function loadCheckBoxes()
   takeSurveyCheckbox.addEventListener('change', function () {
     showSurveyIf(takeSurveyCheckbox.checked);
     localStorage.setItem("surveyDOD", takeSurveyCheckbox.checked?"YES":"NO");
+    updateTimer();
   });
 
   var dailyCountdownCheckbox = document.querySelector('input[id=dailyCountdownCheckbox]');
@@ -685,6 +686,7 @@ function loadSurvey()
   }
   surveyGenderDropdown.change(function() {
     localStorage.surveyGender = surveyGenderDropdown.val();
+    updateTimer();
   });
 
   var surveyEthnicity = localStorage.getItem("surveyEthnicity");
@@ -694,6 +696,7 @@ function loadSurvey()
   }
   surveyEthnicityDropdown.change(function() {
     localStorage.surveyEthnicity = surveyEthnicityDropdown.val();
+    updateTimer();
   });
 
   var surveyDrinking = localStorage.getItem("surveyDrinking");
@@ -703,6 +706,7 @@ function loadSurvey()
   }
   surveyDrinkingDropdown.change(function() {
     localStorage.surveyDrinking = surveyDrinkingDropdown.val();
+    updateTimer();
   });
 
   var surveySmoking = localStorage.getItem("surveySmoking");
@@ -712,6 +716,7 @@ function loadSurvey()
   }
   surveySmokingDropdown.change(function() {
     localStorage.surveySmoking = surveySmokingDropdown.val();
+    updateTimer();
   });
 
   var surveyExercise = localStorage.getItem("surveyExercise");
@@ -721,6 +726,7 @@ function loadSurvey()
   }
   surveyExerciseDropdown.change(function() {
     localStorage.surveyExercise = surveyExerciseDropdown.val();
+    updateTimer();
   });
 
   var surveyHeightFeet = localStorage.getItem("surveyHeightFeet");
@@ -730,6 +736,7 @@ function loadSurvey()
   }
   surveyHeightFeetDropdown.change(function() {
     localStorage.surveyHeightFeet = surveyHeightFeetDropdown.val();
+    updateTimer();
   });
 
   var surveyHeightInches = localStorage.getItem("surveyHeightInches");
@@ -739,6 +746,7 @@ function loadSurvey()
   }
   surveyHeightInchesDropdown.change(function() {
     localStorage.surveyHeightInches = surveyHeightInchesDropdown.val();
+    updateTimer();
   });
 
   var surveyWeight = localStorage.getItem("surveyWeight");
@@ -748,6 +756,7 @@ function loadSurvey()
   }
   surveyWeightTextfield.on('input',function(e){
     localStorage.surveyWeight = surveyWeightTextfield.val();
+    updateTimer();
   });
 
   var surveyHeartCheckbox = document.querySelector('input[id=heartDisease-checkbox]');
@@ -756,6 +765,7 @@ function loadSurvey()
   }
   surveyHeartCheckbox.addEventListener('change', function () {
     localStorage.setItem("surveyHeartDisease", surveyHeartCheckbox.checked?"YES":"NO");
+    updateTimer();
   });
 
   var surveyClumsinessCheckbox = document.querySelector('input[id=clumsiness-checkbox]');
@@ -764,6 +774,7 @@ function loadSurvey()
   }
   surveyClumsinessCheckbox.addEventListener('change', function () {
     localStorage.setItem("surveyClumsiness", surveyClumsinessCheckbox.checked?"YES":"NO");
+    updateTimer();
   });
 }
 
