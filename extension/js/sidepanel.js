@@ -275,7 +275,7 @@ function displayExtraSettingsContainer()
     $("#precisionContainer").show();
     $("#precisionLabel").text("Clock Precision");
     swapPrecisionSelect("clock");
-    localStorage.setItem("timerSetting", "clock");
+    localStorage.timerSetting = "clock";
   }
 
   else if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
@@ -286,7 +286,7 @@ function displayExtraSettingsContainer()
     $("#precisionContainer").show();
     $("#precisionLabel").text("Population Precision");
     swapPrecisionSelect("population");
-    localStorage.setItem("timerSetting", "population");
+    localStorage.timerSetting = "population";
   }
 
   else if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
@@ -295,7 +295,7 @@ function displayExtraSettingsContainer()
     $("#clockTimerContainer").hide();
     $("#peopleTimerContainer").hide();
     $("#precisionContainer").hide();
-    localStorage.setItem("timerSetting", "hide");
+    localStorage.timerSetting = "hide";
   }
 }
 
@@ -319,9 +319,8 @@ function loadSegmentedControls()
       $("#precisionContainer").show();
       $("#precisionLabel").text("Timer Precision");
       swapPrecisionSelect("timer");
-      localStorage.setItem("timerSetting", "spent");
-      localStorage.showClock = "NO";
-      localStorage.hideTimer = "NO";
+      localStorage.timerSetting = "spent";
+      localStorage.
       updateTimer();
     }
   });
@@ -336,9 +335,7 @@ function loadSegmentedControls()
       $("#precisionContainer").show();
       $("#precisionLabel").text("Timer Precision");
       swapPrecisionSelect("timer");
-      localStorage.setItem("timerSetting", "left");
-      localStorage.showClock = "NO";
-      localStorage.hideTimer = "NO";
+      localStorage.timerSetting = "left";
       updateTimer();
     }
   });
@@ -350,16 +347,13 @@ function loadSegmentedControls()
       $("#extraTimerSettingsSegmentedControl").removeClass("borderless-segmented-control");
       displayExtraSettingsContainer();
       if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
-        localStorage.showClock = "YES";
-        localStorage.hideTimer = "NO";
+        localStorage.timerSetting = "clock";
       }
       else if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
-        localStorage.hideTimer = "NO";
-        localStorage.showClock = "NO";
+        localStorage.timerSetting = "population";
       }
       else if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
-        localStorage.hideTimer = "YES";
-        localStorage.showClock = "NO";
+        localStorage.timerSetting = "hide";
       }
       updateTimer();
     }
@@ -368,8 +362,6 @@ function loadSegmentedControls()
   extraTimerSettingsSegmentedControl1.change( function () {
     if( extraTimerSettingsSegmentedControl1.is(":checked") ) {
       displayExtraSettingsContainer();
-      localStorage.showClock = "YES";
-      localStorage.hideTimer = "NO";
       updateTimer();
     }
   });
@@ -377,8 +369,6 @@ function loadSegmentedControls()
   extraTimerSettingsSegmentedControl2.change( function () {
     if( extraTimerSettingsSegmentedControl2.is(":checked") ) {
       displayExtraSettingsContainer();
-      localStorage.hideTimer = "NO";
-      localStorage.showClock = "NO";
       updateTimer();
     }
   });
@@ -386,8 +376,6 @@ function loadSegmentedControls()
   extraTimerSettingsSegmentedControl3.change( function () {
     if( extraTimerSettingsSegmentedControl3.is(":checked") ) {
       displayExtraSettingsContainer();
-      localStorage.hideTimer = "YES";
-      localStorage.showClock = "NO";
       updateTimer();
     }
   });

@@ -237,20 +237,32 @@
     app.removeData("clockIntervalID");
     clearInterval(app.data("timeSpentIntervalID"));
     app.removeData("timeSpentIntervalID");
-    if( localStorage.hideTimer == "YES" )
+    clearInterval(app.data("populationIntervalID"));
+    app.removeData("populationIntervalID");
+    if( localStorage.timerSetting == "hide" )
     {
       this.setAppElementHTML("<br>");
       return;
     }
-    else if( localStorage.showClock == "YES" )
+    else if( localStorage.timerSetting == "clock" )
     {
-      this.renderPopulation();
+      this.renderClock();
       var renderTime = secondMS;
       if( localStorage.clockPrecision == "ms" ) {
         renderTime = 113;
       }
 
-      app.data("clockIntervalID", setInterval(this.renderPopulation.bind(this),renderTime));
+      app.data("clockIntervalID", setInterval(this.renderClock.bind(this),renderTime));
+
+      return;
+    }
+    else if( localStorage.timerSetting == "population" )
+    {
+      this.renderPopulation();
+      var renderTime = secondMS;
+      renderTime = 250;
+
+      app.data("populationIntervalID", setInterval(this.renderPopulation.bind(this),renderTime));
 
       return;
     }
