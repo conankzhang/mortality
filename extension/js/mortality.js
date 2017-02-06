@@ -294,7 +294,7 @@
         if( localStorage.getItem("dailyCountdown") == "YES" && localStorage.surveyDOD != "YES" )
         {
           deadlineMoment = moment();
-          var timeInput = localStorage.dodMinutes;
+          var timeInput = localStorage.getItem("dodMinutes");
           if( timeInput === null )
           {
             deadlineMoment.hour(0);
