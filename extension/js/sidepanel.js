@@ -320,7 +320,6 @@ function loadSegmentedControls()
       $("#precisionLabel").text("Timer Precision");
       swapPrecisionSelect("timer");
       localStorage.timerSetting = "spent";
-      localStorage.
       updateTimer();
     }
   });
