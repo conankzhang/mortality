@@ -748,18 +748,16 @@
     {
       var differenceToFirstYear = getPopulationDictionary()[yearBorn+1] - getPopulationDictionary()[yearBorn];
       var populationOlder = getPopulationDictionary()[yearBorn] + (differenceToFirstYear*percentageBirthYearPassed);
-
       var deaths = 0;
       while( yearBorn < currentYear ) {
         var yearPopulationDifference = getPopulationDictionary()[yearBorn+1] - getPopulationDictionary()[yearBorn];
         deaths = getBirthRateDictionary()[yearBorn] - yearPopulationDifference;
-        populationYounger -= deaths;
+        populationOlder -= deaths;
         yearBorn++;
       }
 
       populationOlder -= Math.round(deaths*percentageYearPassed);
       populationOlder = Math.ceil(populationOlder/precision)*precision;
-
       populationString = numberWithCommas(populationOlder);
     }
 
