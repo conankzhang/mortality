@@ -104,6 +104,8 @@
     else
     {
       var duration, startMoment, endMoment;
+      var currentMoment = moment();
+      var birthMoment = moment(this.dob);
 
       var interval = minuteMS;
       var savedPrecision = localStorage.getItem("timerPrecision");
@@ -287,9 +289,7 @@
           this.deathDate.setDate(this.deathDate.getDate() + Math.round(yearOffset*365));
         }
 
-        var currentMoment = moment();
         var deadlineMoment = moment(this.deathDate);
-        var birthMoment = moment(this.dob);
 
         if( localStorage.getItem("dailyCountdown") == "YES" && localStorage.surveyDOD != "YES" )
         {
