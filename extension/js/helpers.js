@@ -21,6 +21,10 @@ function getTimeStringFromMinutes(totalMinutes) {
   return zeroFill(hours,2)+":"+zeroFill(minutes,2)+":00";
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function zeroFill(number, width)
 {
   width -= number.toString().length;

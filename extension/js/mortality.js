@@ -680,17 +680,31 @@
 
   App.fn.renderPopulation = function()
   {
-    var yearBorn = getDOB().getFullYear();
+    var dob = getDOB();
+    var yearBorn = dob.getFullYear();
     var currentYear = new Date().getFullYear();
     // var populationAtBirth = getPopulationDictionary()[yearBorn];
 
     var populationYounger = 0;
+    var startBirthYear = new Date(yearBorn, 0, 1),
+        endBirthYear = new Date(yearBorn+1, 0, 1);
+    var percentageBirthYearPassed = (dob - startBirthYear) / (endBirthYear - startBirthYear);
+
+    populationYounger += Math.round(getBirthRateDictionary()[yearBorn] * percentageBirthYearPassed);
+    yearBorn++;
+
     while( yearBorn < currentYear ) {
       populationYounger += getBirthRateDictionary()[yearBorn];
       yearBorn++;
     }
 
-    var ampmString = populationYounger;
+    var start = new Date(currentYear, 0, 1),
+        end = new Date(currentYear+1, 0, 1),
+        today = new Date();
+    var percentageYearPassed = (today - start) / (end - start);
+
+    populationYounger += Math.round(getBirthRateDictionary()[currentYear] * percentageYearPassed);
+    var ampmString = numberWithCommas(populationYounger);
 
     var savedTheme = localStorage.getItem("colorTheme");
     if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
