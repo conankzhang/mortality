@@ -694,31 +694,6 @@
 
   App.fn.renderPopulation = function()
   {
-    var dob = getDOB();
-    var yearBorn = dob.getFullYear();
-    var currentYear = new Date().getFullYear();
-    // var populationAtBirth = getPopulationDictionary()[yearBorn];
-
-    var populationYounger = 0;
-    var startBirthYear = new Date(yearBorn, 0, 1),
-        endBirthYear = new Date(yearBorn+1, 0, 1);
-    var percentageBirthYearPassed = (dob - startBirthYear) / (endBirthYear - startBirthYear);
-
-    populationYounger += Math.round(getBirthRateDictionary()[yearBorn] * percentageBirthYearPassed);
-    yearBorn++;
-
-    while( yearBorn < currentYear ) {
-      populationYounger += getBirthRateDictionary()[yearBorn];
-      yearBorn++;
-    }
-
-    var start = new Date(currentYear, 0, 1),
-        end = new Date(currentYear+1, 0, 1),
-        today = new Date();
-    var percentageYearPassed = (today - start) / (end - start);
-
-    populationYounger += Math.round(getBirthRateDictionary()[currentYear] * percentageYearPassed);
-
     var precision = 1;
     if( localStorage.populationPrecision == "ten" ) {
       precision = 10;
@@ -738,9 +713,55 @@
     else if( localStorage.populationPrecision == "milo" ) {
       precision = 1000000;
     }
-    populationYounger = Math.ceil(populationYounger/precision)*precision
 
-    var ampmString = numberWithCommas(populationYounger);
+    var dob = getDOB();
+    var yearBorn = dob.getFullYear();
+    var currentYear = new Date().getFullYear();
+
+    var startBirthYear = new Date(yearBorn, 0, 1),
+        endBirthYear = new Date(yearBorn+1, 0, 1);
+    var percentageBirthYearPassed = (dob - startBirthYear) / (endBirthYear - startBirthYear);
+
+    var start = new Date(currentYear, 0, 1),
+        end = new Date(currentYear+1, 0, 1),
+        today = new Date();
+    var percentageYearPassed = (today - start) / (end - start);
+
+    var populationString;
+    if( localStorage.youngerOption == "YES" )
+    {
+      var populationYounger = 0;
+      populationYounger += Math.round(getBirthRateDictionary()[yearBorn] * percentageBirthYearPassed);
+      yearBorn++;
+
+      while( yearBorn < currentYear ) {
+        populationYounger += getBirthRateDictionary()[yearBorn];
+        yearBorn++;
+      }
+
+      populationYounger += Math.round(getBirthRateDictionary()[currentYear] * percentageYearPassed);
+      populationYounger = Math.ceil(populationYounger/precision)*precision;
+
+      populationString = numberWithCommas(populationYounger);
+    }
+    else
+    {
+      var differenceToFirstYear = getPopulationDictionary()[yearBorn+1] - getPopulationDictionary()[yearBorn];
+      var populationOlder = getPopulationDictionary()[yearBorn] + (differenceToFirstYear*percentageBirthYearPassed);
+
+      var deaths = 0;
+      while( yearBorn < currentYear ) {
+        var yearPopulationDifference = getPopulationDictionary()[yearBorn+1] - getPopulationDictionary()[yearBorn];
+        deaths = getBirthRateDictionary()[yearBorn] - yearPopulationDifference;
+        populationYounger -= deaths;
+        yearBorn++;
+      }
+
+      populationOlder -= Math.round(deaths*percentageYearPassed);
+      populationOlder = Math.ceil(populationOlder/precision)*precision;
+
+      populationString = numberWithCommas(populationOlder);
+    }
 
     var savedTheme = localStorage.getItem("colorTheme");
     if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
@@ -756,7 +777,7 @@
       {
         white: whiteFlag,
         black: blackFlag,
-        ampm: ampmString
+        ampm: populationString
       }));
 
       if( $("#theSidePanel").width() > 50 ) {
