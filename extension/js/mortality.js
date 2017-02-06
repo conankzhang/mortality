@@ -244,13 +244,13 @@
     }
     else if( localStorage.showClock == "YES" )
     {
-      this.renderClock();
+      this.renderPopulation();
       var renderTime = secondMS;
       if( localStorage.clockPrecision == "ms" ) {
         renderTime = 113;
       }
 
-      app.data("clockIntervalID", setInterval(this.renderClock.bind(this),renderTime));
+      app.data("clockIntervalID", setInterval(this.renderPopulation.bind(this),renderTime));
 
       return;
     }
@@ -678,9 +678,50 @@
   }
 
 
+  App.fn.renderPopulation = function()
+  {
+    var yearBorn = getDOB().getFullYear();
+    var currentYear = new Date().getFullYear();
+    // var populationAtBirth = getPopulationDictionary()[yearBorn];
+
+    var populationYounger = 0;
+    while( yearBorn < currentYear ) {
+      populationYounger += getBirthRateDictionary()[yearBorn];
+      yearBorn++;
+    }
+
+    var ampmString = populationYounger;
+
+    var savedTheme = localStorage.getItem("colorTheme");
+    if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
+      var whiteFlag = "YES";
+    }
+    else {
+      var blackFlag = "YES";
+    }
+
+    requestAnimationFrame(function()
+    {
+      this.setAppElementHTML(this.getTemplateScript('clock')(
+      {
+        white: whiteFlag,
+        black: blackFlag,
+        ampm: ampmString
+      }));
+
+      if( $("#theSidePanel").width() > 50 ) {
+        $('.clock').css('font-size','4vw');
+        $('.timer-container').css('left','75%');
+        $('.timer-labels').css('font-size','0.8vw');
+        $('.timer-labels').css('margin-left','-0.5vw');
+      }
+
+    }.bind(this));
+  };
+
+
   App.fn.renderClock = function()
   {
-    console.log(this.clockIntervalID);
     var now = new Date();
     var ampmString = "AM";
     var hour = now.getHours();
