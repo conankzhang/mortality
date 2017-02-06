@@ -28,180 +28,11 @@
   App.fn.load = function()
   {
     this.dob = getDOB();
-    this.deathDate = getDOD();
     if( this.dob.dst() )
     {
       this.dob.setHours(this.dob.getHours()+1);
     }
     this.dobMinutes = localStorage.dobMinutes || 0;
-
-    if (localStorage.getItem("specificTimeSet") == "YES")
-    {
-      this.deathTime = localStorage.deathTime || 0;
-      this.deathDate.setMinutes(parseInt(this.deathTime));
-    }
-    else
-    {
-      this.deathDate = new Date(this.dob.getTime());
-
-      var ageDiffMS = Date.now() - this.dob.getTime();
-      var ageDate = new Date(ageDiffMS);
-      var ageYears = Math.abs(ageDate.getUTCFullYear() - 1970);
-
-      //https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy
-      var yearOffset = 79.3;
-      var surveyGender = localStorage.getItem("surveyGender");
-      if( surveyGender == "male" )
-      {
-        yearOffset -= 2.4;
-      }
-      else if( surveyGender == "female" )
-      {
-        yearOffset += 2.3;
-      }
-
-      //http://kff.org/other/state-indicator/life-expectancy-by-re/?currentTimeframe=0&selectedRows=%7B%22wrapups%22:%7B%22united-states%22:%7B%7D%7D%7D&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D
-      var surveyEthnicity = localStorage.getItem("surveyEthnicity");
-      if( surveyEthnicity == "white" )
-      {
-        yearOffset -= 0.4;
-      }
-      else if( surveyEthnicity == "black" )
-      {
-        yearOffset -= 4.7;
-      }
-      else if( surveyEthnicity == "latino" )
-      {
-        yearOffset += 3.5;
-      }
-      else if( surveyEthnicity == "asian" )
-      {
-        yearOffset += 7.2;
-      }
-      else if( surveyEthnicity == "native")
-      {
-        yearOffset -= 2.4;
-      }
-
-      //https://www.myabaris.com/tools/life-expectancy-calculator-how-long-will-i-live/results?id=eyJnZW5kZXIiOiJNQUxFIiwicmFjZSI6IldISVRFIiwiaGVpZ2h0Ijo1LjU4MzMzLCJjdXJyZW50X2FnZSI6NjAsIndlaWdodCI6MTUwLCJlZHVjYXRpb24iOiJfOF9UT18xMSIsIm1hcml0YWxfc3RhdHVzIjoiTUFSUklFRCIsImluY29tZSI6IjQwTUlOVVMiLCJpbmNvbWVTdGF0dXMiOiJXT1JLSU5HIiwiZXhlcmNpc2UiOiJfMV9UT18yX1BFUl9XRUVLIiwiaGVhbHRoIjoiR09PRCIsImRpYWJldGVzIjpmYWxzZSwiYWxjb2hvbCI6Il9MVF8xX1BFUl9EQVkiLCJzbW9raW5nIjoiTk9OX1NNT0tFUiIsInVzX3VuaXRzIjp0cnVlLCJvcHRJbiI6ZmFsc2UsInNtb2tpbmdTdGF0dXMiOiJORVZFUl9TTU9LRUQiLCJzbW9raW5nUXVpdCI6bnVsbCwic21va2luZ0Ftb3VudCI6bnVsbCwiaGVpZ2h0X3R5cGUiOiJJTVBFUklBTCIsIndlaWdodF90eXBlIjoiSU1QRVJJQUwifQ&lc_r=y
-      var surveyDrinking = localStorage.getItem("surveyDrinking");
-      if( surveyDrinking == "monthly" )
-      {
-        yearOffset += 1.6;
-      }
-      else if( surveyDrinking == "weekly" )
-      {
-        yearOffset += 1.9;
-      }
-      else if( surveyDrinking == "daily" )
-      {
-        yearOffset += 1.2;
-      }
-      else if( surveyDrinking == "never" )
-      {
-        yearOffset += 0;
-      }
-
-      var surveySmoking = localStorage.getItem("surveySmoking");
-      if( surveySmoking == "drinking" )
-      {
-        surveySmoking = surveyDrinking;
-      }
-      if( surveySmoking == "monthly" )
-      {
-        yearOffset -= 5.6;
-      }
-      else if( surveySmoking == "weekly" )
-      {
-        yearOffset -= 7.7;
-      }
-      else if( surveySmoking == "daily" )
-      {
-        yearOffset -= 9.8;
-      }
-      else if( surveySmoking == "never" )
-      {
-        yearOffset += 0;
-      }
-      else if( surveySmoking == "marijuana" )
-      {
-        //http://www.marijuanadetoxguide.com/life-expectancy-of-smokers-how-soon-before-weed-kills-you/
-        yearOffset += 2;
-      }
-
-      //https://www.myabaris.com/tools/life-expectancy-calculator-how-long-will-i-live
-      var surveyExercise = localStorage.getItem("surveyExercise");
-      if( surveyExercise == "never" )
-      {
-        yearOffset += 0;
-      }
-      else if( surveyExercise == "rarely" )
-      {
-        yearOffset += 1.1;
-      }
-      else if( surveyExercise == "onetwo" )
-      {
-        yearOffset += 2.5;
-      }
-      else if( surveyExercise == "threefour" )
-      {
-        yearOffset += 3.0;
-      }
-      else if( surveyExercise == "fiveplus" )
-      {
-        yearOffset += 3.0;
-      }
-
-      //https://www.ncbi.nlm.nih.gov/books/NBK62367/
-      var surveyHeightFeet = parseInt(localStorage.getItem("surveyHeightFeet"));
-      var surveyHeightInches = parseInt(localStorage.getItem("surveyHeightInches"));
-      var surveyWeight = parseInt(localStorage.getItem("surveyWeight"));
-      surveyHeightInches += surveyHeightFeet*12;
-      var surveyWeightKG = surveyWeight*0.45;
-      var surveyHeightCMSquared = (surveyHeightInches*0.025)*(surveyHeightInches*0.025);
-      var BMI = surveyWeightKG/surveyHeightCMSquared;
-      if( BMI < 18.5 )
-      {
-        yearOffset -= (((18.5 - BMI)/10)*1.5);
-      }
-      else if( BMI >= 18.5 && BMI <= 25 )
-      {
-        yearOffset += 0;
-      }
-      else if( BMI > 25 && BMI <= 30 )
-      {
-        yearOffset -= ((((BMI+5)-30)/5)*0.5);
-      }
-      else if( BMI > 30 && BMI <= 35 )
-      {
-        yearOffset -= ((((BMI+5)-35)/5)*1);
-      }
-      else if( BMI > 35 && BMI <= 40 )
-      {
-        yearOffset -= ((((BMI+5)-40)/5)*3);
-      }
-      else if( BMI > 40 && BMI <= 55 )
-      {
-        yearOffset -= ((((BMI+5)-55)/15)*7);
-      }
-      else if( BMI > 55 )
-      {
-        yearOffset -= 14;
-      }
-
-      //http://apps.who.int/gho/data/view.main.YLLRATEREG6AMRV
-      if( localStorage.getItem("surveyHeartDisease") == "true" )
-      {
-        yearOffset -= (ageYears/2)*0.077;
-      }
-
-      if( localStorage.getItem("surveyClumsiness") == "true" )
-      {
-        yearOffset -= (ageYears/3)*0.055;
-      }
-
-      this.deathDate.setDate(this.deathDate.getDate() + Math.round(yearOffset*365));
-    }
 
     this.generateLifeProgress();
 
@@ -273,76 +104,245 @@
     else
     {
       var duration, startMoment, endMoment;
-      if( localStorage.getItem("showCurrentTime") === null )
+
+      var interval = minuteMS;
+      var savedPrecision = localStorage.getItem("timerPrecision");
+      if( savedPrecision == "sec" )
       {
-        var interval = minuteMS;
-        var savedPrecision = localStorage.getItem("timerPrecision");
-        if( savedPrecision == "sec" )
+        interval = secondMS;
+      }
+      else if( savedPrecision == "ms" || savedPrecision === null )
+      {
+        interval = 113;
+      }
+
+      if( localStorage.timerSetting == "left" )
+      {
+        this.deathDate = getDOD();
+        if (localStorage.getItem("specificTimeSet") == "YES")
         {
-          interval = secondMS;
+          this.deathTime = localStorage.deathTime || 0;
+          this.deathDate.setMinutes(parseInt(this.deathTime));
         }
-        else if( savedPrecision == "ms" || savedPrecision === null )
+        else
         {
-          interval = 113;
+          this.deathDate = new Date(this.dob.getTime());
+
+          var ageDiffMS = Date.now() - this.dob.getTime();
+          var ageDate = new Date(ageDiffMS);
+          var ageYears = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+          //https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy
+          var yearOffset = 79.3;
+          var surveyGender = localStorage.getItem("surveyGender");
+          if( surveyGender == "male" )
+          {
+            yearOffset -= 2.4;
+          }
+          else if( surveyGender == "female" )
+          {
+            yearOffset += 2.3;
+          }
+
+          //http://kff.org/other/state-indicator/life-expectancy-by-re/?currentTimeframe=0&selectedRows=%7B%22wrapups%22:%7B%22united-states%22:%7B%7D%7D%7D&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D
+          var surveyEthnicity = localStorage.getItem("surveyEthnicity");
+          if( surveyEthnicity == "white" )
+          {
+            yearOffset -= 0.4;
+          }
+          else if( surveyEthnicity == "black" )
+          {
+            yearOffset -= 4.7;
+          }
+          else if( surveyEthnicity == "latino" )
+          {
+            yearOffset += 3.5;
+          }
+          else if( surveyEthnicity == "asian" )
+          {
+            yearOffset += 7.2;
+          }
+          else if( surveyEthnicity == "native")
+          {
+            yearOffset -= 2.4;
+          }
+
+          //https://www.myabaris.com/tools/life-expectancy-calculator-how-long-will-i-live/results?id=eyJnZW5kZXIiOiJNQUxFIiwicmFjZSI6IldISVRFIiwiaGVpZ2h0Ijo1LjU4MzMzLCJjdXJyZW50X2FnZSI6NjAsIndlaWdodCI6MTUwLCJlZHVjYXRpb24iOiJfOF9UT18xMSIsIm1hcml0YWxfc3RhdHVzIjoiTUFSUklFRCIsImluY29tZSI6IjQwTUlOVVMiLCJpbmNvbWVTdGF0dXMiOiJXT1JLSU5HIiwiZXhlcmNpc2UiOiJfMV9UT18yX1BFUl9XRUVLIiwiaGVhbHRoIjoiR09PRCIsImRpYWJldGVzIjpmYWxzZSwiYWxjb2hvbCI6Il9MVF8xX1BFUl9EQVkiLCJzbW9raW5nIjoiTk9OX1NNT0tFUiIsInVzX3VuaXRzIjp0cnVlLCJvcHRJbiI6ZmFsc2UsInNtb2tpbmdTdGF0dXMiOiJORVZFUl9TTU9LRUQiLCJzbW9raW5nUXVpdCI6bnVsbCwic21va2luZ0Ftb3VudCI6bnVsbCwiaGVpZ2h0X3R5cGUiOiJJTVBFUklBTCIsIndlaWdodF90eXBlIjoiSU1QRVJJQUwifQ&lc_r=y
+          var surveyDrinking = localStorage.getItem("surveyDrinking");
+          if( surveyDrinking == "monthly" )
+          {
+            yearOffset += 1.6;
+          }
+          else if( surveyDrinking == "weekly" )
+          {
+            yearOffset += 1.9;
+          }
+          else if( surveyDrinking == "daily" )
+          {
+            yearOffset += 1.2;
+          }
+          else if( surveyDrinking == "never" )
+          {
+            yearOffset += 0;
+          }
+
+          var surveySmoking = localStorage.getItem("surveySmoking");
+          if( surveySmoking == "drinking" )
+          {
+            surveySmoking = surveyDrinking;
+          }
+          if( surveySmoking == "monthly" )
+          {
+            yearOffset -= 5.6;
+          }
+          else if( surveySmoking == "weekly" )
+          {
+            yearOffset -= 7.7;
+          }
+          else if( surveySmoking == "daily" )
+          {
+            yearOffset -= 9.8;
+          }
+          else if( surveySmoking == "never" )
+          {
+            yearOffset += 0;
+          }
+          else if( surveySmoking == "marijuana" )
+          {
+            //http://www.marijuanadetoxguide.com/life-expectancy-of-smokers-how-soon-before-weed-kills-you/
+            yearOffset += 2;
+          }
+
+          //https://www.myabaris.com/tools/life-expectancy-calculator-how-long-will-i-live
+          var surveyExercise = localStorage.getItem("surveyExercise");
+          if( surveyExercise == "never" )
+          {
+            yearOffset += 0;
+          }
+          else if( surveyExercise == "rarely" )
+          {
+            yearOffset += 1.1;
+          }
+          else if( surveyExercise == "onetwo" )
+          {
+            yearOffset += 2.5;
+          }
+          else if( surveyExercise == "threefour" )
+          {
+            yearOffset += 3.0;
+          }
+          else if( surveyExercise == "fiveplus" )
+          {
+            yearOffset += 3.0;
+          }
+
+          //https://www.ncbi.nlm.nih.gov/books/NBK62367/
+          var surveyHeightFeet = parseInt(localStorage.getItem("surveyHeightFeet"));
+          var surveyHeightInches = parseInt(localStorage.getItem("surveyHeightInches"));
+          var surveyWeight = parseInt(localStorage.getItem("surveyWeight"));
+          surveyHeightInches += surveyHeightFeet*12;
+          var surveyWeightKG = surveyWeight*0.45;
+          var surveyHeightCMSquared = (surveyHeightInches*0.025)*(surveyHeightInches*0.025);
+          var BMI = surveyWeightKG/surveyHeightCMSquared;
+          if( BMI < 18.5 )
+          {
+            yearOffset -= (((18.5 - BMI)/10)*1.5);
+          }
+          else if( BMI >= 18.5 && BMI <= 25 )
+          {
+            yearOffset += 0;
+          }
+          else if( BMI > 25 && BMI <= 30 )
+          {
+            yearOffset -= ((((BMI+5)-30)/5)*0.5);
+          }
+          else if( BMI > 30 && BMI <= 35 )
+          {
+            yearOffset -= ((((BMI+5)-35)/5)*1);
+          }
+          else if( BMI > 35 && BMI <= 40 )
+          {
+            yearOffset -= ((((BMI+5)-40)/5)*3);
+          }
+          else if( BMI > 40 && BMI <= 55 )
+          {
+            yearOffset -= ((((BMI+5)-55)/15)*7);
+          }
+          else if( BMI > 55 )
+          {
+            yearOffset -= 14;
+          }
+
+          //http://apps.who.int/gho/data/view.main.YLLRATEREG6AMRV
+          if( localStorage.getItem("surveyHeartDisease") == "true" )
+          {
+            yearOffset -= (ageYears/2)*0.077;
+          }
+
+          if( localStorage.getItem("surveyClumsiness") == "true" )
+          {
+            yearOffset -= (ageYears/3)*0.055;
+          }
+
+          this.deathDate.setDate(this.deathDate.getDate() + Math.round(yearOffset*365));
         }
 
         var currentMoment = moment();
         var deadlineMoment = moment(this.deathDate);
         var birthMoment = moment(this.dob);
-        if( localStorage.timerSetting == "left" )
+
+        if( localStorage.getItem("dailyCountdown") == "YES" && localStorage.getItem("specificTimeSet") == "YES" )
         {
-          if( localStorage.getItem("dailyCountdown") == "YES" && localStorage.getItem("specificTimeSet") == "YES" )
+          deadlineMoment = moment();
+          var timeInput = localStorage.deathTime;
+          if( timeInput === null )
           {
-            deadlineMoment = moment();
-            var timeInput = localStorage.deathTime;
-            if( timeInput === null )
+            deadlineMoment.hour(0);
+            deadlineMoment.minute(0);
+            deadlineMoment.second(0);
+            deadlineMoment.day(deadlineMoment.day()+1);
+          }
+          else
+          {
+            var hours = Math.floor(timeInput/60);
+            var minutes = timeInput % 60;
+            deadlineMoment.hour(hours);
+            deadlineMoment.minute(minutes);
+            deadlineMoment.second(0);
+            if( timeInput == 0 )
             {
-              deadlineMoment.hour(0);
-              deadlineMoment.minute(0);
-              deadlineMoment.second(0);
               deadlineMoment.day(deadlineMoment.day()+1);
             }
-            else
-            {
-              var hours = Math.floor(timeInput/60);
-              var minutes = timeInput % 60;
-              deadlineMoment.hour(hours);
-              deadlineMoment.minute(minutes);
-              deadlineMoment.second(0);
-              if( timeInput == 0 )
-              {
-                deadlineMoment.day(deadlineMoment.day()+1);
-              }
-            }
           }
-
-          this.deadlineMoment = deadlineMoment;
-          duration = deadlineMoment - currentMoment;
-          if( duration <= 0 )
-          {
-            this.setAppElementHTML(this.getTemplateScript('timeup')({
-              white: whiteFlag,
-              black: blackFlag,
-              message: localStorage.timeupMessage
-            }));
-            interval = secondMS;
-            app.data("timeUpMessageIntervalID", setInterval(this.renderTimeUp.bind(this),interval));
-
-
-            return;
-          }
-          startMoment = currentMoment;
-          endMoment = deadlineMoment;
         }
-        else
+
+        this.deadlineMoment = deadlineMoment;
+        duration = deadlineMoment - currentMoment;
+        if( duration <= 0 )
         {
-          duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
-          startMoment = birthMoment;
-          endMoment = currentMoment;
-        }
+          this.setAppElementHTML(this.getTemplateScript('timeup')({
+            white: whiteFlag,
+            black: blackFlag,
+            message: localStorage.timeupMessage
+          }));
+          interval = secondMS;
+          app.data("timeUpMessageIntervalID", setInterval(this.renderTimeUp.bind(this),interval));
 
-        app.data("timeSpentIntervalID", setInterval(this.renderAge.bind(this),interval));
+
+          return;
+        }
+        startMoment = currentMoment;
+        endMoment = deadlineMoment;
       }
+      else
+      {
+        duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+        startMoment = birthMoment;
+        endMoment = currentMoment;
+      }
+
+      app.data("timeSpentIntervalID", setInterval(this.renderAge.bind(this),interval));
+
 
 
       var savedPrecision = localStorage.getItem("timerPrecision");

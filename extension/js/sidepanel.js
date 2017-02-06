@@ -996,6 +996,7 @@ function loadDOD()
       var dodDateFromInput = dodDateInputDOM.valueAsDate;
       localStorage.setItem("dod", dodDateFromInput.getTime()+(dodDateFromInput.getTimezoneOffset() * 60000));
     }
+    updateTimer();
   });
 
   // window.app.dobMinutes = localStorage.dobMinutes || 0;
@@ -1012,6 +1013,7 @@ function loadDOD()
       var timeArray = dodTimeInputDOM.value.split(":");
       localStorage.dodMinutes = timeArray[0]*60 + timeArray[1]*1;
     }
+    updateTimer();
   });
 }
 
