@@ -674,6 +674,7 @@ function loadDropdowns()
   selectTimeupMessageValue.text(timeupMessage);
   selectTimeupMessage.click(function() {
     localStorage.timeupMessage = timeupMessageDropdown.val();
+    updateTimer();
   });
 }
 
