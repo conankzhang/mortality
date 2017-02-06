@@ -488,39 +488,6 @@
     this.documentCircle.appendChild(circle);
   };
 
-  App.fn.saveDeath = function(deathDate)
-  {
-    var deathInput = document.getElementById('countdownDate-input');
-
-    if( !deathInput.valueAsDate ) return;
-
-    this.deathDate = deathInput.valueAsDate;
-
-    localStorage.setItem("deathDate", this.deathDate.getTime()+(this.deathDate.getTimezoneOffset() * minuteMS));
-
-    var deathTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
-    if( deathTimeCheckbox )
-    {
-      var deathTimeChecked = deathTimeCheckbox.checked;
-      if( deathTimeChecked )
-      {
-        this.deathTime = localStorage.deathTime;
-      }
-      else
-      {
-        this.deathTime = 0;
-        localStorage.removeItem("deathTimeSet");
-        localStorage.removeItem("deathTime");
-      }
-    }
-    else
-    {
-      this.deathTime = 0;
-      localStorage.removeItem("deathTimeSet");
-      localStorage.removeItem("deathTime");
-    }
-  };
-
   App.fn.renderTimeUp = function()
   {
     var timeup = document.getElementById('white-timeup');

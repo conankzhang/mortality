@@ -25,7 +25,6 @@ function setupCountdown()
     var timeInput = document.getElementById("countdownTime-input").value;
     var timeArray = timeInput.split(":");
     localStorage.deathTime = timeArray[0]*60 + timeArray[1]*1;
-    window.app.saveDeath();
 }
 
 function setupThemes()
