@@ -718,6 +718,28 @@
     var percentageYearPassed = (today - start) / (end - start);
 
     populationYounger += Math.round(getBirthRateDictionary()[currentYear] * percentageYearPassed);
+
+    var precision = 1;
+    if( localStorage.populationPrecision == "ten" ) {
+      precision = 10;
+    }
+    else if( localStorage.populationPrecision == "hund" ) {
+      precision = 100;
+    }
+    else if( localStorage.populationPrecision == "thou" ) {
+      precision = 1000;
+    }
+    else if( localStorage.populationPrecision == "tenthou" ) {
+      precision = 10000;
+    }
+    else if( localStorage.populationPrecision == "hundthou" ) {
+      precision = 100000;
+    }
+    else if( localStorage.populationPrecision == "milo" ) {
+      precision = 1000000;
+    }
+    populationYounger = Math.ceil(populationYounger/precision)*precision
+
     var ampmString = numberWithCommas(populationYounger);
 
     var savedTheme = localStorage.getItem("colorTheme");
