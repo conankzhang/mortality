@@ -449,6 +449,7 @@ function loadSegmentedControls()
       $("#chapterLengthsFixedContainer").fadeOut(1, function() {
         $("#chapterLengthsSpecifyContainer").fadeIn(1);
         localStorage.setItem("fixedChapters", "NO");
+        updateProgressBecauseSettingsChanged();
       });
     }
   });
@@ -458,6 +459,7 @@ function loadSegmentedControls()
       $("#chapterLengthsSpecifyContainer").fadeOut(1);
       $("#chapterLengthsFixedContainer").fadeIn(1);
       localStorage.setItem("fixedChapters", "YES");
+      updateProgressBecauseSettingsChanged();
     }
   });
 
