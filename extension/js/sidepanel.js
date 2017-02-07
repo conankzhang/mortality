@@ -1016,15 +1016,26 @@ function loadDOD()
   var dodDateInput = $("#dodInput");
   dodDateInput.val(dodDate.yyyymmdd());
 
+  $('#dodInput').on('focusin', function(){
+    $(this).data('val', $(this).val());
+  });
+
   dodDateInput.on('input',function(e){
     var dodDateInputDOM = document.getElementById("dodInput");
     if( !dodDateInputDOM.valueAsDate) {
-      var newDate = new Date();
-      localStorage.dod = newDate.getTime();
+      var prev = $(this).data('val');
+      if( prev ) {
+        $(this).val(prev);
+      }
+      else {
+        var newDate = new Date();
+        localStorage.dod = newDate.getTime();
+      }
     }
     else {
       var dodDateFromInput = dodDateInputDOM.valueAsDate;
       localStorage.setItem("dod", dodDateFromInput.getTime()+(dodDateFromInput.getTimezoneOffset() * 60000));
+      $(this).data('val', $(this).val());
     }
     updateTimer();
   });
