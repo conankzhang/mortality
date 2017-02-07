@@ -15,6 +15,7 @@
 
 function openNav()
 {
+  $('#main').data('sidePanelOpened', true);
   var newWidth = $(window).width()*0.50 - 40;
   document.getElementById("theSidePanel").style.width = "50vw";
   document.getElementById("main").style.marginLeft = "50vw";
@@ -41,31 +42,36 @@ function openNav()
 
 function closeNav()
 {
-  updateTimer();
+  if( $('#main').data('sidePanelOpened') )
+  {
+    updateTimer();
 
-  var newWidth = $(window).width() - 40;
-  document.getElementById("theSidePanel").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-  $('.timer').animate({
-    'font-size':'6vw'
-  },300);
-  $('.clock').animate({
-    'font-size':'8vw'
-  },300);
-  $('.timer-container').animate({
-    'left':'50%'
-  },400);
+    var newWidth = $(window).width() - 40;
+    document.getElementById("theSidePanel").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    $('.timer').animate({
+      'font-size':'6vw'
+    },300);
+    $('.clock').animate({
+      'font-size':'8vw'
+    },300);
+    $('.timer-container').animate({
+      'left':'50%'
+    },400);
 
-  $('.timer-labels').animate({
-    'font-size':'1.5vw'
-  },300);
-  $('.timer-labels').animate({
-    'margin-left':'-1vw'
-  },500);
-  $('.timer-labels').css('-webkit-text-stroke-width', '0.07vw');
-  updateProgressIntervalsAndSize(newWidth);
-  updateProgressUnit();
-  document.getElementById("updateBadge").style.display = "none";
+    $('.timer-labels').animate({
+      'font-size':'1.5vw'
+    },300);
+    $('.timer-labels').animate({
+      'margin-left':'-1vw'
+    },500);
+    $('.timer-labels').css('-webkit-text-stroke-width', '0.07vw');
+    updateProgressIntervalsAndSize(newWidth);
+    updateProgressUnit();
+    document.getElementById("updateBadge").style.display = "none";
+
+    $('#main').data('sidePanelOpened', false);
+  }
 }
 
 $('#main').click(function()
