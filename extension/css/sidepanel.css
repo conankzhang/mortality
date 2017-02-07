@@ -103,10 +103,10 @@
     position: absolute;
     top: 0;
     right: 153px;
-    font-size: 12;
+    font-size: 12px;
     color: #4CAF50;
     height: 25px;
-    width: 92px;
+    width: 94px;
     margin-top:12px;
     margin-bottom:13px;
     border-radius: 10px;
@@ -119,10 +119,10 @@
     position: absolute;
     top: 0;
     right: 60px;
-    font-size: 12;
+    font-size: 12px;
     color: #4CAF50;
     height: 25px;
-    width: 82px;
+    width: 84px;
     margin-top:12px;
     margin-bottom:13px;
     border-radius: 10px;
