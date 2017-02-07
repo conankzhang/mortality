@@ -14,7 +14,11 @@ function getDOD()
 {
   var savedDOD = localStorage.getItem("dod");
   if( savedDOD === null) {
-    return new Date();
+    var d = new Date();
+    var year = d.getFullYear();
+    var month = d.getMonth();
+    var day = d.getDate();
+    return new Date(year + 1, month, day)
   }
   else {
     return new Date(parseInt(savedDOD));
