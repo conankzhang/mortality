@@ -28,7 +28,7 @@ function openNav()
   $('.clock').css('-webkit-text-stroke-width', '0.1vw');
   $('.timer-container').animate({
     'left':'75%'
-  },500);
+  },400);
 
   $('.timer-labels').animate({
     'font-size':'1.1vw'
