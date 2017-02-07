@@ -827,7 +827,7 @@
       }));
 
       if( $("#theSidePanel").width() > 50 ) {
-        $('.clock').css('font-size','4vw');
+        $('.clock').css('font-size','5vw');
         $('.clock').css('-webkit-text-stroke-width', '0.1vw');
         $('.timer-container').css('left','75%');
         $('.timer-labels').css('font-size','0.8vw');
