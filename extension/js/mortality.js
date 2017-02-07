@@ -346,15 +346,20 @@
 
 
       var savedPrecision = localStorage.getItem("timerPrecision");
+
+      //Initial state before the timer for renderer kicks
       while(true)
       {
         var years = endMoment.diff(startMoment, 'years');
+        startMoment.add(years, 'years');
+        if( years < 0 ) years = 0;
         var yearString = zeroFill(years.toString(), 2);
         if (savedPrecision == "year") {
           break;
         }
-        startMoment.add(years, 'years');
+
         var months = endMoment.diff(startMoment, 'months');
+        if( months < 0 ) months = 0;
         var monthString = zeroFill(months.toString(), 2);
         if (savedPrecision == "month") {
           break;
@@ -371,6 +376,7 @@
             startMoment.month(startMoment.month()+1);
           }
         }
+        if( days < 0 ) days = 0;
         var dayString = zeroFill(days.toString(), 2);
         if (savedPrecision == "day") {
           break;
@@ -378,24 +384,28 @@
 
         duration = (duration % dayMS);
         var hours = Math.floor(duration / hourMS);
+        if( hours < 0 ) hours = 0;
         var hourString = zeroFill(hours.toString(), 2);
         if (savedPrecision == "hour") {
           break;
         }
         duration = (duration % hourMS);
         var minutes = Math.floor(duration / minuteMS);
+        if( minutes < 0 ) minutes = 0;
         var minuteString = zeroFill(minutes.toString(), 2);
         if (savedPrecision == "min") {
           break;
         }
         duration = (duration % minuteMS);
         var seconds = Math.floor(duration / secondMS);
+        if( seconds < 0 ) seconds = 0;
         var secondString = zeroFill(seconds.toString(), 2);
         if (savedPrecision == "sec") {
           break;
         }
         duration = (duration % secondMS);
         var milliseconds = Math.floor(duration / 10);
+        if( milliseconds < 0 ) milliseconds = 0;
         var msString = zeroFill(milliseconds.toString(), 2);
         break;
       }
@@ -526,12 +536,15 @@
     while(true)
     {
       var years = endMoment.diff(startMoment, 'years');
+      startMoment.add(years, 'years');
+      if( years < 0 ) years = 0;
       var yearString = zeroFill(years.toString(), 2);
       if (savedPrecision == "year") {
         break;
       }
-      startMoment.add(years, 'years');
+
       var months = endMoment.diff(startMoment, 'months');
+      if( months < 0 ) months = 0;
       var monthString = zeroFill(months.toString(), 2);
       if (savedPrecision == "month") {
         break;
@@ -548,6 +561,7 @@
           startMoment.month(startMoment.month()+1);
         }
       }
+      if( days < 0 ) days = 0;
       var dayString = zeroFill(days.toString(), 2);
       if (savedPrecision == "day") {
         break;
@@ -555,24 +569,28 @@
 
       duration = (duration % dayMS);
       var hours = Math.floor(duration / hourMS);
+      if( hours < 0 ) hours = 0;
       var hourString = zeroFill(hours.toString(), 2);
       if (savedPrecision == "hour") {
         break;
       }
       duration = (duration % hourMS);
       var minutes = Math.floor(duration / minuteMS);
+      if( minutes < 0 ) minutes = 0;
       var minuteString = zeroFill(minutes.toString(), 2);
       if (savedPrecision == "min") {
         break;
       }
       duration = (duration % minuteMS);
       var seconds = Math.floor(duration / secondMS);
+      if( seconds < 0 ) seconds = 0;
       var secondString = zeroFill(seconds.toString(), 2);
       if (savedPrecision == "sec") {
         break;
       }
       duration = (duration % secondMS);
       var milliseconds = Math.floor(duration / 10);
+      if( milliseconds < 0 ) milliseconds = 0;
       var msString = zeroFill(milliseconds.toString(), 2);
       break;
     }
