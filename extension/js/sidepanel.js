@@ -950,9 +950,26 @@ function loadTextFields()
     localStorage.idealDeathYears = 79;
   }
   idealDeathInput.val(idealDeathYears);
+
+  $('#idealDeathInput').on('focusin', function(){
+    $(this).data('val', $(this).val());
+  });
+
   idealDeathInput.on('input',function(e){
-    localStorage.idealDeathYears = $(this).val();
-    updateProgressBecauseSettingsChanged();
+    var idealDeath = $(this).val();
+    if( idealDeath > 200 )
+    {
+      var prev = $(this).data('val');
+      if( prev ) {
+        $(this).val(prev);
+      }
+    }
+    else
+    {
+      localStorage.idealDeathYears = idealDeath;
+      updateProgressBecauseSettingsChanged();
+      $(this).data('val', $(this).val());
+    }
   });
 }
 
