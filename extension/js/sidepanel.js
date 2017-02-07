@@ -19,21 +19,24 @@ function openNav()
   document.getElementById("theSidePanel").style.width = "50vw";
   document.getElementById("main").style.marginLeft = "50vw";
   $('.timer').animate({
-    'font-size':'3vw'
-  },300);
-  $('.clock').animate({
     'font-size':'4vw'
   },300);
+  $('.clock').animate({
+    'font-size':'5vw'
+  },300);
+  $('.timer').css('-webkit-text-stroke-width', '0.1vw');
+  $('.clock').css('-webkit-text-stroke-width', '0.1vw');
   $('.timer-container').animate({
     'left':'75%'
   },500);
 
   $('.timer-labels').animate({
-    'font-size':'0.8vw'
+    'font-size':'1.1vw'
   },300);
   $('.timer-labels').animate({
     'margin-left':'-0.5vw'
   },500);
+  $('.timer-labels').css('-webkit-text-stroke-width', '0.03vw');
   updateProgressIntervalsAndSize(newWidth);
   updateProgressUnit();
 }
@@ -49,6 +52,8 @@ function closeNav()
   $('.clock').animate({
     'font-size':'8vw'
   },300);
+  $('.timer').css('-webkit-text-stroke-width', '0.2vw');
+  $('.clock').css('-webkit-text-stroke-width', '0.2vw');
   $('.timer-container').animate({
     'left':'50%'
   },500);
@@ -59,6 +64,7 @@ function closeNav()
   $('.timer-labels').animate({
     'margin-left':'-1vw'
   },500);
+  $('.timer-labels').css('-webkit-text-stroke-width', '0.07vw');
   updateProgressIntervalsAndSize(newWidth);
   updateProgressUnit();
   document.getElementById("updateBadge").style.display = "none";
@@ -1048,9 +1054,12 @@ function updateProgressBecauseSettingsChanged()
 function updateTimer()
 {
   window.app.initializeTimer();
-  $('.timer').css('font-size','3vw');
-  $('.clock').css('font-size','4vw');
+  $('.timer').css('font-size','4vw');
+  $('.clock').css('font-size','5vw');
+  $('.timer').css('-webkit-text-stroke-width', '0.1vw');
+  $('.clock').css('-webkit-text-stroke-width', '0.1vw');
   $('.timer-container').css('left','75%');
-  $('.timer-labels').css('font-size','0.8vw');
+  $('.timer-labels').css('font-size','1.1vw');
   $('.timer-labels').css('margin-left','-0.5vw');
+  $('.timer-labels').css('-webkit-text-stroke-width', '0.03vw');
 }
