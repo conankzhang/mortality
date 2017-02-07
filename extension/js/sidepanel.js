@@ -41,15 +41,7 @@ function openNav()
 
 function closeNav()
 {
-  var app = $('#app');
-  clearInterval(app.data("clockIntervalID"));
-  app.removeData("clockIntervalID");
-  clearInterval(app.data("timeSpentIntervalID"));
-  app.removeData("timeSpentIntervalID");
-  clearInterval(app.data("populationIntervalID"));
-  app.removeData("populationIntervalID");
-  clearInterval(app.data("timeUpMessageIntervalID"));
-  app.removeData("timeUpMessageIntervalID");
+  updateTimer();
 
   var newWidth = $(window).width() - 40;
   document.getElementById("theSidePanel").style.width = "0";
