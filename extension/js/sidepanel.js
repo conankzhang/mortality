@@ -24,8 +24,6 @@ function openNav()
   $('.clock').animate({
     'font-size':'5vw'
   },300);
-  $('.timer').css('-webkit-text-stroke-width', '0.1vw');
-  $('.clock').css('-webkit-text-stroke-width', '0.1vw');
   $('.timer-container').animate({
     'left':'75%'
   },400);
@@ -62,8 +60,6 @@ function closeNav()
   $('.clock').animate({
     'font-size':'8vw'
   },300);
-  $('.timer').css('-webkit-text-stroke-width', '0.2vw');
-  $('.clock').css('-webkit-text-stroke-width', '0.2vw');
   $('.timer-container').animate({
     'left':'50%'
   },400);
@@ -1094,8 +1090,6 @@ function updateTimer()
   window.app.initializeTimer();
   $('.timer').css('font-size','4vw');
   $('.clock').css('font-size','5vw');
-  $('.timer').css('-webkit-text-stroke-width', '0.1vw');
-  $('.clock').css('-webkit-text-stroke-width', '0.1vw');
   $('.timer-container').css('left','75%');
   $('.timer-labels').css('font-size','1.1vw');
   $('.timer-labels').css('margin-left','-0.5vw');

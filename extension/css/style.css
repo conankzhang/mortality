@@ -1,4 +1,10 @@
-
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('Roboto.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
@@ -36,7 +42,7 @@ body {
 }
 
 body, input {
-  font-family: 'Avenir', 'NUNITO', 'Museo Sans', 'Muli', 'helvetica neue', helvetica, arial, sans-serif;
+  font-family: 'Roboto', 'Avenir', 'NUNITO', 'Museo Sans', 'Muli', 'helvetica neue', helvetica, arial, sans-serif;
 }
 
 a, button {
@@ -81,11 +87,10 @@ ul {
   position: relative;
   margin-bottom: .4vw;
   font-size: 6vw;
-  font-weight: bolder;
   line-height: 1;
   cursor: default;
   white-space: nowrap;
-  -webkit-text-stroke-width: 0.2vw;
+  -webkit-text-stroke-width: 0.1vw;
 }
 
 .clock {
@@ -108,10 +113,9 @@ ul {
   margin-left:-1vw;
   margin-right:.5vw;
   font-size: 1.5vw;
-  font-weight: bold;
   line-height: 1;
   cursor: default;
-  -webkit-text-stroke-width: 0.07vw;
+  -webkit-text-stroke-width: 0.05vw;
 }
 
 #white-timer-age, #white-timer-clock, #white-timeup {
