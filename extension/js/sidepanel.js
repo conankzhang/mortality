@@ -43,6 +43,16 @@ function openNav()
 
 function closeNav()
 {
+  var app = $('#app');
+  clearInterval(app.data("clockIntervalID"));
+  app.removeData("clockIntervalID");
+  clearInterval(app.data("timeSpentIntervalID"));
+  app.removeData("timeSpentIntervalID");
+  clearInterval(app.data("populationIntervalID"));
+  app.removeData("populationIntervalID");
+  clearInterval(app.data("timeUpMessageIntervalID"));
+  app.removeData("timeUpMessageIntervalID");
+
   var newWidth = $(window).width() - 40;
   document.getElementById("theSidePanel").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
