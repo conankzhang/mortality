@@ -66,7 +66,7 @@ function closeNav()
   $('.clock').css('-webkit-text-stroke-width', '0.2vw');
   $('.timer-container').animate({
     'left':'50%'
-  },500);
+  },400);
 
   $('.timer-labels').animate({
     'font-size':'1.5vw'
