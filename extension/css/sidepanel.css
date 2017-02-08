@@ -412,6 +412,16 @@
     background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
 }
 
+#settingsContainerHR {
+    position: relative;
+    width: 300px;
+    margin-top: 15px;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+}
+
 .segmented-control {
     display:block;
     margin: 0 auto;
@@ -784,7 +794,7 @@ input:disabled {
 
 #progressSettingsContainer {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 18px;
     position: relative;
 }
 
