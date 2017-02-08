@@ -459,6 +459,10 @@ input[type=radio]:checked ~ .check::before{
     height:10px;
 }
 
+#timerSettingsSegmentedControl {
+    margin-top:0px;
+}
+
 #timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3):before,
 #timerSettingsSegmentedControl > input:nth-child(3):checked ~ label:first-of-type:nth-last-of-type(3) ~ label:before {
   color: #01579B;
