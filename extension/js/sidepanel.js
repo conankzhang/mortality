@@ -209,9 +209,6 @@ function setButtonPressed(button)
     themeButton.className = "UnpressedButton";
     donateButton.className = "PressedButton";
     settingsButton.className = "UnpressedButton";
-
-
-    setupThemes();
   }
   else
   {
