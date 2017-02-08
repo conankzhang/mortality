@@ -15,6 +15,16 @@ Date.prototype.dst = function() {
   return this.getTimezoneOffset() < this.stdTimezoneOffset();
 };
 
+String.prototype.format = function() {
+    var s = this,
+        i = arguments.length;
+
+    while (i--) {
+        s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+    }
+    return s;
+};
+
 function getTimeStringFromMinutes(totalMinutes) {
   var hours = Math.floor(totalMinutes/60);
   var minutes = totalMinutes%60;

@@ -10,16 +10,6 @@ $('#inline-popup').magnificPopup({
   midClick: true
 });
 
-String.prototype.format = function() {
-    var s = this,
-        i = arguments.length;
-
-    while (i--) {
-        s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
-    }
-    return s;
-};
-
 function setupCountdown()
 {
     var timeInput = document.getElementById("countdownTime-input").value;
