@@ -88,6 +88,52 @@
     content: '';
 }
 
+@media(max-width:1220px) {
+
+#aboutButton.PressedButton span:after {
+    content: '';
+}
+
+#updatesButton.PressedButton span:after {
+    content: '';
+}
+
+#themeButton.PressedButton span:after {
+    content: '';
+}
+
+#donateButton.PressedButton span:after {
+    content: '';
+}
+
+#settingsButton.PressedButton span:after {
+    content: '';
+}
+
+#aboutButton:hover span:after {
+    content: '';
+}
+
+#updatesButton:hover span:after {
+    content: '';
+}
+
+#themeButton:hover span:after {
+    content: '';
+}
+
+#donateButton:hover span:after {
+    content: '';
+}
+
+#settingsButton:hover span:after {
+    content: '';
+}
+
+}
+
+@media(min-width:1221px) {
+
 #aboutButton.PressedButton span:after {
     content: 'About';
 }
@@ -128,6 +174,8 @@
     content: 'Settings';
 }
 
+}
+
 .UnpressedButton:hover path{
     fill: #00B0FF;;
 }
@@ -158,6 +206,19 @@
     margin-left: 1px;
 }
 
+
+
+@media(max-width:970px) {
+.sidePanel #feedback-button {
+    display: none;
+}
+
+.sidePanel #contact-button {
+    display: none;
+}
+}
+
+@media(min-width:971px) {
 .sidePanel #feedback-button {
     cursor: pointer;
     position: absolute;
@@ -188,6 +249,7 @@
     border-radius: 10px;
     border: 2px solid #4CAF50;
     background-color: none;
+}
 }
 
 .sidePanel .right-navButtons:hover {
