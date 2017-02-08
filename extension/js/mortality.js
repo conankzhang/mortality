@@ -896,18 +896,19 @@ function updateProgressIntervalsAndSize(newWidth)
   var height = $(window).height() - 100;
 
   var totalProgressUnits = localStorage.idealDeathYears;
+  if( !totalProgressUnits ) totalProgressUnits = 79;
   var chapterPrecision = localStorage.chapterPrecision;
   var margin = 0;
   if( chapterPrecision == "weeks" ) {
     totalProgressUnits *= 52;
     margin = 0.5;
   }
-  else if( chapterPrecision == "months" ) {
-    totalProgressUnits *= 12;
-    margin = 2.0;
-  }
   else if( chapterPrecision == "years" ) {
     margin = 3.0;
+  }
+  else {
+    totalProgressUnits *= 12;
+    margin = 2.0;
   }
   $('.circle').css('margin','{0}px'.format(margin));
   $('.pie').css('margin','{0}px'.format(margin));
@@ -973,11 +974,11 @@ function updateProgressUnit()
     }
     theta = ((offsetDays%7)/7)*360;
   }
-  else if( chapterPrecision == "months" ) {
-    theta = ((days%31)/31.0)*360;
-  }
   else if( chapterPrecision == "years" ) {
     theta = (fullDaysDiff/365)*360;
+  }
+  else {
+    theta = ((days%31)/31.0)*360;
   }
 
 

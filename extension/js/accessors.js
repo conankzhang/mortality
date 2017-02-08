@@ -32,9 +32,12 @@ function getChapters()
   var totalProgressUnits = localStorage.idealDeathYears;
   var multiplier = 1;
   if( chapterPrecision == "weeks" ) {
-    multiplier = 52;;
+    multiplier = 52;
   }
-  else if( chapterPrecision == "months" ) {
+  else if( chapterPrecision == "years" ) {
+    multiplier = 1;
+  }
+  else {
     multiplier = 12;
   }
   totalProgressUnits *= multiplier;
