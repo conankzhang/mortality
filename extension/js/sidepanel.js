@@ -522,11 +522,11 @@ function loadRadioButtons()
 
   var circleOption = document.querySelector('input[id=circleOption]');
   var squareOption = document.querySelector('input[id=squareOption]');
-  if (localStorage.getItem("shape") == "circle") {
-    circleOption.checked = true;
+  if (localStorage.getItem("shape") == "square") {
+    squareOption.checked = true;
   }
   else {
-    squareOption.checked = true;
+    circleOption.checked = true;
   }
 
   circleOption.addEventListener('change', function () {
