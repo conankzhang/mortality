@@ -876,7 +876,7 @@ function loadChapterPrecision()
 
   chapterPrecisionMonthTextfield.on('input',function(e){
     var fixedMonth = $(this).val();
-    if( fixedMonth <= 0 || fixedMonth >= 12 ) {
+    if( fixedMonth < 0 || fixedMonth >= 12 ) {
       var prev = $(this).data('val');
       if( prev ) {
         $(this).val(prev);
