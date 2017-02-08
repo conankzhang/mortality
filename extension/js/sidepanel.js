@@ -1,17 +1,3 @@
-//DELETE MAYBE?
-
-  // var birthDate = getDOB();
-  // if(birthDate.dst())
-  // {
-  //   birthDate.setHours(birthDate.getHours()+1);
-  // }
-  // var birthMinutes = localStorage.dobMinutes || 0;
-
-  // var yearMS = 31556952000;
-  // var minuteMS = 60000;
-  // var deathDate = 80*yearMS + (birthDate - (parseInt(birthMinutes)*minuteMS));
-
-  // localStorage.setItem("surveyDeathDate", deathDate);
 
 function openNav()
 {
