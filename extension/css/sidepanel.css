@@ -53,7 +53,6 @@
 }
 
 .navBar li a {
-    display: block;
     padding-left: 10px;
     color: rgb(29, 29, 29);
     cursor: pointer;
@@ -67,6 +66,66 @@
 
 .UnpressedButton span{
     color: rgb(34, 47, 81);
+}
+
+#aboutButton.UnpressedButton span:after {
+    content: '';
+}
+
+#updatesButton.UnpressedButton span:after {
+    content: '';
+}
+
+#themeButton.UnpressedButton span:after {
+    content: '';
+}
+
+#donateButton.UnpressedButton span:after {
+    content: '';
+}
+
+#settingsButton.UnpressedButton span:after {
+    content: '';
+}
+
+#aboutButton.PressedButton span:after {
+    content: 'About';
+}
+
+#updatesButton.PressedButton span:after {
+    content: 'Updates';
+}
+
+#themeButton.PressedButton span:after {
+    content: 'Theme';
+}
+
+#donateButton.PressedButton span:after {
+    content: 'Donate';
+}
+
+#settingsButton.PressedButton span:after {
+    content: 'Settings';
+}
+
+#aboutButton:hover span:after {
+    content: 'About';
+}
+
+#updatesButton:hover span:after {
+    content: 'Updates';
+}
+
+#themeButton:hover span:after {
+    content: 'Theme';
+}
+
+#donateButton:hover span:after {
+    content: 'Donate';
+}
+
+#settingsButton:hover span:after {
+    content: 'Settings';
 }
 
 .UnpressedButton:hover path{
@@ -92,6 +151,7 @@
 .PressedButton:hover span {
     color: #00B0FF;
 }
+
 
 .navBar li span {
     line-height: 55px;
