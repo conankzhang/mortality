@@ -199,6 +199,18 @@ function setButtonPressed(button)
     if (theme != null) {
       document.getElementById("theme-dropdown").value = theme;
     }
+
+//     function saveTheme()
+// {
+//   var savedTheme = localStorage.getItem("colorTheme");
+//   var selectedTheme = document.getElementById("theme-dropdown").value;
+
+//   if (savedTheme != selectedTheme)
+//   {
+//     localStorage.setItem("colorTheme", selectedTheme);
+//   }
+// }
+
   }
   else if (button == 3)
   {

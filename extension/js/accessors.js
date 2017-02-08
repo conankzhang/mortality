@@ -140,21 +140,6 @@ function getChapters()
     ,[seventhChapter, eighthChapter]];
 }
 
-function saveChapterLengths()
-{
-  var chapterLengths = [
-    $("#first-chapter-input").val(),
-    $("#second-chapter-input").val(),
-    $("#third-chapter-input").val(),
-    $("#fourth-chapter-input").val(),
-    $("#fifth-chapter-input").val(),
-    $("#sixth-chapter-input").val(),
-    $("#seventh-chapter-input").val(),
-    $("#eighth-chapter-input").val()
-  ];
-  localStorage.setItem("chapterLengths", JSON.stringify(chapterLengths));
-}
-
 
 function getColorTheme()
 {
@@ -211,33 +196,6 @@ function getColorTheme()
         return themes.def;
     }
   }
-}
-
-function saveTheme()
-{
-  var savedTheme = localStorage.getItem("colorTheme");
-  var selectedTheme = document.getElementById("theme-dropdown").value;
-
-  if (savedTheme != selectedTheme)
-  {
-    localStorage.setItem("colorTheme", selectedTheme);
-  }
-}
-
-function savePrecision()
-{
-  var selectedPrecision = document.getElementById("precisionDropdown").value;
-  localStorage.setItem("precision", selectedPrecision);
-}
-
-function loadSurveyAnswers()
-{
-
-}
-
-function saveSurveyAnswers()
-{
-
 }
 
 function getPopulationDictionary()
