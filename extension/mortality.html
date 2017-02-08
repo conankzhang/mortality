@@ -17,6 +17,7 @@
 <body>
 
 <div id="theSidePanel" class="sidePanel sidePanelClosed">
+  <div id="fadedForeground"></div>
   <ul class="navBar">
     <li><a id="aboutButton" class="UnpressedButton">
       <img class="svg" src="assets/Info.svg">
@@ -266,7 +267,8 @@
     <div id="timerSettingsGap"></div>
     <div id="timerTypeSettingsContainer">
       <div id="spentTimerContainer">
-        <div id="dobDateContainer">
+      <div id="onboardingText"><div>Oh, Hello there.</div><div>Input your Birth Date to get started.</div></div>
+        <div id="dobDateContainer" class="notRed">
           <label id="dobLabel" for="dobInput">When were you born?</label>
           <input id="dobInput" class="InputTextfield" type="date">
         </div>

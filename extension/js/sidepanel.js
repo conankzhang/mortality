@@ -92,6 +92,16 @@ $('#menu-button').click(function(e)
   if(localStorage.getItem("dob")===null)
   {
     setButtonPressed(4);
+    $(document).ready(function () {
+    $('#theSidePanel').prop("pointer-events","none");
+    $(":input").not("[id=dobInput]")
+        .prop("disabled", true);
+    });
+    $("#onboardingText").css("display","block");
+    $("#fadedForeground").css("display","block");
+    $("#dobDateContainer").toggleClass('notRed red');
+    $("#dobLabel").css("color","#D50000");
+    $('#main').data('sidePanelOpened', false);
   }
   //UPDATE WHEN REVVING VERSIONS
   else if(localStorage.getItem("version")=="4.1.0")
@@ -1009,6 +1019,18 @@ function loadDOB()
       }
     }
     else {
+      if( !$('#main').data('sidePanelOpened') ) {
+        $(document).ready(function () {
+        $('#theSidePanel').prop("pointer-events","all");
+        $(":input").not("[id=dobInput]")
+            .prop("disabled", false);
+        });
+        $('#fadedForeground').css("display","none");
+        $('#onboardingText').css("display","none");
+        $("#dobDateContainer").toggleClass('red notRed');
+        $("#dobLabel").css("color","black");
+        $('#main').data('sidePanelOpened', true);
+      }
       var dobDateFromInput = dobDateInputDOM.valueAsDate;
       var newDOBDate = dobDateFromInput.getTime()+(dobDateFromInput.getTimezoneOffset() * 60000);
       localStorage.dob = newDOBDate;
