@@ -195,7 +195,10 @@ function setButtonPressed(button)
     donateButton.className = "UnpressedButton";
     settingsButton.className = "UnpressedButton";
 
-    setupThemes();
+    var theme = localStorage.getItem("colorTheme");
+    if (theme != null) {
+      document.getElementById("theme-dropdown").value = theme;
+    }
   }
   else if (button == 3)
   {
@@ -215,7 +218,17 @@ function setButtonPressed(button)
     donateButton.className = "UnpressedButton";
     settingsButton.className = "PressedButton";
 
-    setupSettings();
+    convertIMG2SVG();
+    loadCheckBoxes();
+    loadRadioButtons();
+    loadDropdowns();
+    loadSegmentedControls();
+    loadSurvey();
+    loadChapterPrecision();
+    loadChapters();
+    loadTextFields();
+    loadDOB();
+    loadDOD();
   }
 }
 
