@@ -91,7 +91,7 @@ $('#menu-button').click(function(e)
 
   if(localStorage.getItem("dob")===null)
   {
-    setButtonPressed(3);
+    setButtonPressed(4);
   }
   //UPDATE WHEN REVVING VERSIONS
   else if(localStorage.getItem("version")=="4.1.0")
@@ -139,9 +139,14 @@ $("#themeButton").click(function()
   unlessDOBMissingGoToButtonNumber(2);
 });
 
-$("#settingsButton").click(function()
+$("#donateButton").click(function()
 {
   unlessDOBMissingGoToButtonNumber(3);
+});
+
+$("#settingsButton").click(function()
+{
+  unlessDOBMissingGoToButtonNumber(4);
 });
 
 function unlessDOBMissingGoToButtonNumber(button)
@@ -150,7 +155,7 @@ function unlessDOBMissingGoToButtonNumber(button)
 
   if(localStorage.getItem("dob")===null)
   {
-    setButtonPressed(3);
+    setButtonPressed(4);
   }
   else
   {
@@ -163,6 +168,7 @@ function setButtonPressed(button)
   var aboutButton = document.querySelector("#aboutButton");
   var updatesButton = document.querySelector("#updatesButton");
   var themeButton = document.querySelector('#themeButton');
+  var donateButton = document.querySelector("#donateButton");
   var settingsButton = document.querySelector("#settingsButton");
   var sidepanelBody = document.querySelector('#sidepanelBody');
 
@@ -172,6 +178,7 @@ function setButtonPressed(button)
     aboutButton.className = "PressedButton";
     updatesButton.className = "UnpressedButton";
     themeButton.className = "UnpressedButton";
+    donateButton.className = "UnpressedButton";
     settingsButton.className = "UnpressedButton";
   }
   else if (button == 1)
@@ -180,6 +187,7 @@ function setButtonPressed(button)
     aboutButton.className = "UnpressedButton";
     updatesButton.className = "PressedButton";
     themeButton.className = "UnpressedButton";
+    donateButton.className = "UnpressedButton";
     settingsButton.className = "UnpressedButton";
   }
   else if (button == 2)
@@ -188,7 +196,20 @@ function setButtonPressed(button)
     aboutButton.className = "UnpressedButton";
     updatesButton.className = "UnpressedButton";
     themeButton.className = "PressedButton";
+    donateButton.className = "UnpressedButton";
     settingsButton.className = "UnpressedButton";
+
+    setupThemes();
+  }
+  else if (button == 3)
+  {
+    sidepanelBody.innerHTML = window.app.getTemplateScript('donate')();
+    aboutButton.className = "UnpressedButton";
+    updatesButton.className = "UnpressedButton";
+    themeButton.className = "UnpressedButton";
+    donateButton.className = "PressedButton";
+    settingsButton.className = "UnpressedButton";
+
 
     setupThemes();
   }
@@ -198,6 +219,7 @@ function setButtonPressed(button)
     aboutButton.className = "UnpressedButton";
     updatesButton.className = "UnpressedButton";
     themeButton.className = "UnpressedButton";
+    donateButton.className = "UnpressedButton";
     settingsButton.className = "PressedButton";
 
     setupSettings();
