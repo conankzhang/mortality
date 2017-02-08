@@ -363,6 +363,10 @@
     cursor: text;
 }
 
+#escLink {
+    color: #0091EA;
+}
+
 /*
 ===== Updates Body =====
 */
