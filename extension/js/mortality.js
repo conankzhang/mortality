@@ -767,7 +767,7 @@
         ampm: populationString
       }));
 
-      if( $("#theSidePanel").width() > 50 ) {
+      if( $('#main').data('sidePanelOpened') ) {
         $('.clock').css('font-size','5vw');
         $('.timer-container').css('left','75%');
         $('.timer-labels').css('font-size','1.1vw');
@@ -843,7 +843,7 @@
         ampm: ampmString
       }));
 
-      if( $("#theSidePanel").width() > 50 ) {
+      if( $('#main').data('sidePanelOpened') ) {
         $('.clock').css('font-size','5vw');
         $('.timer-container').css('left','75%');
         $('.timer-labels').css('font-size','0.8vw');
@@ -885,7 +885,7 @@
 function updateProgressIntervalsAndSize(newWidth)
 {
   var width = $(window).width();
-  if( $("#theSidePanel").width() > 50 ) {
+  if( $('#main').data('sidePanelOpened') ) {
     width *= 0.50;
   }
   width -= 40;
