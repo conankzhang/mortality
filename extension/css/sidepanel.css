@@ -325,24 +325,41 @@
     background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
 }
 
+#aboutContainer {
+    max-height: 100%;
+    overflow: auto;
+    height: -webkit-calc(100vh - 4vw - 280px);
+}
+
 #aboutContent {
     position: relative;
     cursor: default;
 }
 
+#uninstallHeader {
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#uninstallText {
+    text-align: right;
+}
+
 #link-label {
     position: absolute;
     text-align: right;
-    right: 4vw;
-    bottom: 2.5vw;
+    right: 2vw;
+    bottom: 2.8vw;
     cursor:default;
 }
 
 #link-input {
     position: absolute;
-    right: 3.7vw;
+    right: 1.9vw;
     bottom: 0.6vw;
-    width: 120px;
+    width: 170px;
+    font-size: 18px;
     cursor: text;
 }
 
