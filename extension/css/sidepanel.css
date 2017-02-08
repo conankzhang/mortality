@@ -337,7 +337,7 @@
 #aboutContainer {
     max-height: 100%;
     overflow: auto;
-    height: -webkit-calc(100vh - 4vw - 280px);
+    height: -webkit-calc(100vh - 4vw - 300px);
 }
 
 #aboutContent {
