@@ -952,20 +952,22 @@ function loadChapters()
   for( i=1; i<numberOfChapters; i++ )
   {
     chapterNum = parseInt(i+1);
+    var chapterYearString = zeroFill(chapterNum,2);
     var chapterNumString = getOrdinal(chapterNum);
-    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11"></div>'.format(zeroFill(chapterNumString,2), chapterNum))
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11"></div>'.format(zeroFill(chapterNumString,2), chapterYearString))
   }
 
   $('#addChapterButton').on( "click", function() {
     var chapterValue = localStorage.getItem("chapterNum");
     chapterNum = parseInt(chapterValue);
     var chapterNumOffset = chapterNum + 1;
+    var chapterNumOffsetString = zeroFill(chapterNumOffset.toString(),2);
     var chapterNumString = getOrdinal(chapterNum+1);
-    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100" value="0"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11" value="0"></div>'.format(zeroFill(chapterNumString,2), chapterNumOffset))
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100" value="0"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11" value="0"></div>'.format(zeroFill(chapterNumString,2), chapterNumOffsetString))
     chapterNum+=1;
     localStorage.setItem("chapterNum", chapterNum);
 
-    var newChapterYearsInput = $('#chapterYear{0}'.format(chapterNumOffset));
+    var newChapterYearsInput = $('#chapterYear{0}'.format(chapterNumOffsetString));
     newChapterYearsInput.on('input',function(e){
       var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
       yearNumber = e.currentTarget.id.slice(-2);
@@ -974,7 +976,7 @@ function loadChapters()
     updateProgressBecauseSettingsChanged();
     });
 
-    var newChapterMonthsInput = $('#chapterMonth{0}'.format(chapterNumOffset));
+    var newChapterMonthsInput = $('#chapterMonth{0}'.format(chapterNumOffsetString));
     newChapterMonthsInput.on('input',function(e){
       var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
       monthNumber = e.currentTarget.id.slice(-2);
@@ -1021,20 +1023,22 @@ function loadChapters()
   for( j=1; j<numberOfChapters; j++ )
   {
     var chapterNum = parseInt(j+1);
+    var chapterNumString = zeroFill(chapterNum.toString(),2);
     yearValue = savedChapterYearLengths[j];
     if( typeof yearValue === 'undefined' || !yearValue ) {
       yearValue = 0;
     }
-    $('#chapterYear{0}'.format(chapterNum)).val(yearValue);
+    $('#chapterYear{0}'.format(chapterNumString)).val(yearValue);
   }
   for( k=1; k<numberOfChapters; k++ )
   {
     var chapterNum = parseInt(k+1);
+    var chapterNumString = zeroFill(chapterNum.toString(),2);
     monthValue = savedChapterMonthLengths[k-1];
     if( typeof monthValue === 'undefined' || !monthValue ) {
       monthValue = 0;
     }
-    $('#chapterMonth{0}'.format(chapterNum)).val(monthValue);
+    $('#chapterMonth{0}'.format(chapterNumString)).val(monthValue);
   }
 
   var chapterYearInputs = $('.yearsInput');
