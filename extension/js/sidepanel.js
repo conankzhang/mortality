@@ -1130,7 +1130,7 @@ function loadDOB()
       var dobDateFromInput = dobDateInputDOM.valueAsDate;
       var newDOBDate = dobDateFromInput.getTime()+(dobDateFromInput.getTimezoneOffset() * 60000);
       localStorage.dob = newDOBDate;
-      window.app.dob = newDOBDate;
+      window.app.dob = new Date(newDOBDate);
       $(this).data('val', $(this).val());
     }
     updateTimer();
