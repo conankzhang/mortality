@@ -953,7 +953,7 @@ function loadChapters()
   {
     chapterNum = parseInt(i+1);
     var chapterNumString = getOrdinal(chapterNum);
-    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11"></div>'.format(chapterNumString, chapterNum))
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11"></div>'.format(zeroFill(chapterNumString,2), chapterNum))
   }
 
   $('#addChapterButton').on( "click", function() {
@@ -961,14 +961,14 @@ function loadChapters()
     chapterNum = parseInt(chapterValue);
     var chapterNumOffset = chapterNum + 1;
     var chapterNumString = getOrdinal(chapterNum+1);
-    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100" value="0"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11" value="0"></div>'.format(chapterNumString, chapterNumOffset))
+    $('#chapterLengthStackView').append('<div class="chapter"><div class="chapterNum">{0}</div><input type="number" id="chapterYear{1}" class="yearsInput" min="0" max="100" value="0"><input type="number" id="chapterMonth{1}" class="monthsInput" min="0" max="11" value="0"></div>'.format(zeroFill(chapterNumString,2), chapterNumOffset))
     chapterNum+=1;
     localStorage.setItem("chapterNum", chapterNum);
 
     var newChapterYearsInput = $('#chapterYear{0}'.format(chapterNumOffset));
     newChapterYearsInput.on('input',function(e){
       var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
-      yearNumber = e.currentTarget.id.slice(-1);
+      yearNumber = e.currentTarget.id.slice(-2);
       savedChapterYearLengths[yearNumber - 1] = e.currentTarget.value;
       localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
     updateProgressBecauseSettingsChanged();
@@ -977,7 +977,7 @@ function loadChapters()
     var newChapterMonthsInput = $('#chapterMonth{0}'.format(chapterNumOffset));
     newChapterMonthsInput.on('input',function(e){
       var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
-      monthNumber = e.currentTarget.id.slice(-1);
+      monthNumber = e.currentTarget.id.slice(-2);
       savedChapterMonthLengths[monthNumber - 2] = e.currentTarget.value;
       localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
       updateProgressBecauseSettingsChanged();
@@ -1000,7 +1000,7 @@ function loadChapters()
     localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
 
     var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
-    savedChapterMonthLengths[chapterNum-1] = 0;
+    savedChapterMonthLengths[chapterNum-2] = 0;
     localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
     updateProgressBecauseSettingsChanged();
   });
@@ -1040,7 +1040,7 @@ function loadChapters()
   var chapterYearInputs = $('.yearsInput');
   chapterYearInputs.on('input',function(e){
     var savedChapterYearLengths = JSON.parse(localStorage.getItem("chapterYearLengths"));
-    yearNumber = e.currentTarget.id.slice(-1);
+    yearNumber = e.currentTarget.id.slice(-2);
     savedChapterYearLengths[yearNumber - 1] = e.currentTarget.value;
     localStorage.setItem("chapterYearLengths", JSON.stringify(savedChapterYearLengths));
     updateProgressBecauseSettingsChanged();
@@ -1049,7 +1049,7 @@ function loadChapters()
   var chapterMonthInputs = $('.monthsInput');
   chapterMonthInputs.on('input',function(e){
     var savedChapterMonthLengths = JSON.parse(localStorage.getItem("chapterMonthLengths"));
-    monthNumber = e.currentTarget.id.slice(-1);
+    monthNumber = e.currentTarget.id.slice(-2);
     savedChapterMonthLengths[monthNumber - 2] = e.currentTarget.value;
     localStorage.setItem("chapterMonthLengths", JSON.stringify(savedChapterMonthLengths));
     updateProgressBecauseSettingsChanged();
