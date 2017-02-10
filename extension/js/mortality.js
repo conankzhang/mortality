@@ -9,21 +9,23 @@
   {
     this.appElement = appElement;
     this.load();
-
-    /* #VERSIONING ===================================================*/
-    if(localStorage.getItem("version") != "5.0.0") {
-      document.getElementById("updateBadge").style.display = "block";
-    }
-    else
-    {
-      document.getElementById("updateBadge").style.display = "none";
-    }
-    /*================================================================*/
-
     this.initializeTimer();
   };
 
   App.fn = App.prototype;
+
+  App.fn.versionCheck = function()
+  {
+    if(localStorage.getItem("version") != "5.0.0") {
+      document.getElementById("updateBadge").style.display = "block";
+      $("#update-bubble").show();
+    }
+    else
+    {
+      document.getElementById("updateBadge").style.display = "none";
+      $("#update-bubble").hide();
+    }
+  }
 
   App.fn.load = function()
   {
@@ -42,6 +44,8 @@
     {
       $('#circles').css('opacity',0);
     }
+
+    this.versionCheck();
   };
 
   App.fn.initializeTimer = function()

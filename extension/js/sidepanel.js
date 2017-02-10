@@ -54,7 +54,7 @@ function closeNav()
     $('.timer-labels').css('-webkit-text-stroke-width', '0.07vw');
     updateProgressIntervalsAndSize(newWidth);
     updateProgressUnit();
-    document.getElementById("updateBadge").style.display = "none";
+    window.app.versionCheck();
 
     $('#main').data('sidePanelOpened', false);
   }
@@ -103,6 +103,7 @@ $('#menu-button').click(function(e)
   {
     setButtonPressed(1);
     localStorage.setItem("version", "5.0.0");
+    $("#update-bubble").hide();
   }
 
   // if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
