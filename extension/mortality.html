@@ -577,46 +577,48 @@
     </div>
     <hr class="segmentedControlLabelHR">
 
-    <div id="chapterPrecisionSegmentedControl" class="segmented-control">
-      <input type="radio" name="sc-4-1" id="sc-4-1-1" checked="">
-      <input type="radio" name="sc-4-1" id="sc-4-1-2">
-      <input type="radio" name="sc-4-1" id="sc-4-1-3">
-      <label for="sc-4-1-1" data-value="Weeks">Weeks</label>
-      <label for="sc-4-1-2" data-value="Months">Months</label>
-      <label for="sc-4-1-3" data-value="Years">Years</label>
-    </div>
-
-    <div id="chapterSegmentsLabel">Chapter Lengths</div>
-    <hr class="segmentedControlLabelHR">
-    <div id="chapterLengthSegmentedControl" class="segmented-control">
-      <input type="radio" name="sc-2-1" id="sc-2-1-1" checked="">
-      <input type="radio" name="sc-2-1" id="sc-2-1-2">
-      <label for="sc-2-1-1" data-value="Specify">Specify</label>
-      <label for="sc-2-1-2" data-value="Fixed">Fixed</label>
-    </div>
-
-    <div id="chapterLengthsSpecifyContainer">
-      <div id="chapterLengthsLabelContainer">
-        <div id="chapterLengthsYearsLabel">Years:</div>
-        <div id="chapterLengthsMonthsLabel">Months:</div>
+    <div id="chapterSettingsContainer">
+      <div id="chapterPrecisionSegmentedControl" class="segmented-control">
+        <input type="radio" name="sc-4-1" id="sc-4-1-1" checked="">
+        <input type="radio" name="sc-4-1" id="sc-4-1-2">
+        <input type="radio" name="sc-4-1" id="sc-4-1-3">
+        <label for="sc-4-1-1" data-value="Weeks">Weeks</label>
+        <label for="sc-4-1-2" data-value="Months">Months</label>
+        <label for="sc-4-1-3" data-value="Years">Years</label>
       </div>
-      <div id="chapterLengthStackView">
-        <div class="chapter">
-          <div id="firstChapterNum" class="chapterNum">1st</div>
-          <input id="firstChapterYearsInput" type="number" class="yearsInput" min="0" max="100">
-          <div id="schoolAgeLabel">AGE You Started School</div>
+
+      <div id="chapterSegmentsLabel">Chapter Lengths</div>
+      <hr class="segmentedControlLabelHR">
+      <div id="chapterLengthSegmentedControl" class="segmented-control">
+        <input type="radio" name="sc-2-1" id="sc-2-1-1" checked="">
+        <input type="radio" name="sc-2-1" id="sc-2-1-2">
+        <label for="sc-2-1-1" data-value="Specify">Specify</label>
+        <label for="sc-2-1-2" data-value="Fixed">Fixed</label>
+      </div>
+
+      <div id="chapterLengthsSpecifyContainer">
+        <div id="chapterLengthsLabelContainer">
+          <div id="chapterLengthsYearsLabel">Years:</div>
+          <div id="chapterLengthsMonthsLabel">Months:</div>
+        </div>
+        <div id="chapterLengthStackView">
+          <div class="chapter">
+            <div id="firstChapterNum" class="chapterNum">1st</div>
+            <input id="firstChapterYearsInput" type="number" class="yearsInput" min="0" max="100">
+            <div id="schoolAgeLabel">AGE You Started School</div>
+          </div>
+        </div>
+        <div id="modifyChaptersContainer">
+          <div id="addChapterButton"><img class="svg" src="assets/Add.svg"></div>
+          <div id="removeChapterButton"><img class="svg" src="assets/Remove.svg"></div>
         </div>
       </div>
-      <div id="modifyChaptersContainer">
-        <div id="addChapterButton"><img class="svg" src="assets/Add.svg"></div>
-        <div id="removeChapterButton"><img class="svg" src="assets/Remove.svg"></div>
+      <div id="chapterLengthsFixedContainer">
+          <div id="chapterLengthsFixedYearsLabel">Years:</div>
+          <input type="number" id="fixedYearsInput" min="0" max="100">
+          <div id="chapterLengthsFixedMonthsLabel">Months:</div>
+          <input type="number" id="fixedMonthsInput" min="0" max="11">
       </div>
-    </div>
-    <div id="chapterLengthsFixedContainer">
-        <div id="chapterLengthsFixedYearsLabel">Years:</div>
-        <input type="number" id="fixedYearsInput" min="0" max="100">
-        <div id="chapterLengthsFixedMonthsLabel">Months:</div>
-        <input type="number" id="fixedMonthsInput" min="0" max="11">
     </div>
   </div>
 </script>

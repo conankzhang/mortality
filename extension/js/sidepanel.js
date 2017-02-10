@@ -866,11 +866,13 @@ function loadChapterPrecision()
     {
       reverseRotate(180);
       $("#chapterPrecisionContainer").data('rotated',false);
+      $('#chapterSettingsContainer').slideUp(300);
     }
     else
     {
       rotate(0);
       $("#chapterPrecisionContainer").data('rotated',true);
+      $('#chapterSettingsContainer').slideDown(300);
     }
   });
 

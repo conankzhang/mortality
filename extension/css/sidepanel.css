@@ -949,6 +949,9 @@ input:disabled {
     font-size: 12px;
 }
 
+#chapterSettingsContainer {
+    display: none;
+}
 /*
 ===== Chapter Length Settings =====
 */
