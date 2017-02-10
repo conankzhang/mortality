@@ -42,7 +42,7 @@ body {
 }
 
 body, input {
-  font-family: 'Roboto', 'Avenir', 'NUNITO', 'Museo Sans', 'Muli', 'helvetica neue', helvetica, arial, sans-serif;
+  font-family: 'Avenir', 'NUNITO', 'Museo Sans', 'Muli', 'helvetica neue', helvetica, arial, sans-serif;
 }
 
 a, button {
@@ -144,6 +144,7 @@ ul {
   cursor: default;
   white-space: nowrap;
   -webkit-text-stroke-width: 0.1vw;
+  font-family: 'Roboto';
 }
 
 .clock {
@@ -166,6 +167,7 @@ ul {
   margin-left:-1vw;
   margin-right:.5vw;
   font-size: 1.5vw;
+  font-weight: bold;
   line-height: 1;
   cursor: default;
   -webkit-text-stroke-width: 0.05vw;
