@@ -933,7 +933,9 @@ input:disabled {
 
 #chapterSettingsLabelContainer {
     height: 30px;
+    width: 200px;
     cursor: pointer;
+    margin: 0 auto;
 }
 
 #chapterSettingsLabelContainer svg {
