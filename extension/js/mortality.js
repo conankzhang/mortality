@@ -11,7 +11,7 @@
     this.load();
 
     /* #VERSIONING ===================================================*/
-    if(localStorage.getItem("version") != "4.1.0") {
+    if(localStorage.getItem("version") != "5.0.0") {
       document.getElementById("updateBadge").style.display = "block";
     }
     else
