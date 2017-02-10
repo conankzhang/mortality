@@ -1065,8 +1065,9 @@ function loadDOB()
         $(":input").not("[id=dobInput]")
             .prop("disabled", false);
         });
-        $('#fadedForeground').css("display","none");
-        $('#onboardingText').css("display","none");
+
+        $("#onboardingText").fadeOut(400);
+        $("#fadedForeground").fadeOut(400);
         $("#dobDateContainer").toggleClass('red notRed');
         $("#dobLabel").css("color","black");
         $('#main').data('sidePanelOpened', true);
