@@ -545,39 +545,42 @@
       </div>
     </div>
 
-    <hr id="settingsContainerHR">
-    <div id="progressSettingsContainer">
-      <div id="hideProgressContainer">
-        <input id="hideProgressCheckbox" class="magic-checkbox" type="checkbox">
-        <label for="hideProgressCheckbox">Hide Progress</label>
-      </div>
-      <div id="shapePickerContainer">
-        <div id="shapePickerLabel">Shape:</div>
-        <ul id="shapePickerList" class="mortalityRadioUL">
-          <li class="circleRadio">
-            <input type="radio" id="circleOption" name="shapeSelector">
-            <label for="circleOption"></label>
+    <hr class="settingsContainerHR">
 
-            <div class="check"></div>
-          </li>
-
-          <li class="squareRadio">
-            <input type="radio" id="squareOption" name="shapeSelector">
-            <label for="squareOption"></label>
-
-            <div class="check"></div>
-          </li>
-        </ul>
-      </div>
-    </div>
 
     <div id="chapterPrecisionContainer">
       <div id="chapterPrecisionLabel">Chapter Settings</div>
       <span id="openCloseChevron"><img class="svg" src="assets/ChevronCircleUp.svg"></span>
     </div>
-    <hr class="segmentedControlLabelHR">
+    <hr id="chapterSettingsHR" class="settingsContainerHR">
 
     <div id="chapterSettingsContainer">
+
+      <div id="progressSettingsContainer">
+        <div id="hideProgressContainer">
+          <input id="hideProgressCheckbox" class="magic-checkbox" type="checkbox">
+          <label for="hideProgressCheckbox">Hide Progress</label>
+        </div>
+        <div id="shapePickerContainer">
+          <div id="shapePickerLabel">Shape:</div>
+          <ul id="shapePickerList" class="mortalityRadioUL">
+            <li class="circleRadio">
+              <input type="radio" id="circleOption" name="shapeSelector">
+              <label for="circleOption"></label>
+
+              <div class="check"></div>
+            </li>
+
+            <li class="squareRadio">
+              <input type="radio" id="squareOption" name="shapeSelector">
+              <label for="squareOption"></label>
+
+              <div class="check"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div id="chapterPrecisionSegmentedControl" class="segmented-control">
         <input type="radio" name="sc-4-1" id="sc-4-1-1" checked="">
         <input type="radio" name="sc-4-1" id="sc-4-1-2">

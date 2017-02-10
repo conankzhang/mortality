@@ -421,7 +421,11 @@
     background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
 }
 
-#settingsContainerHR {
+#chapterSettingsHR {
+    margin-bottom: 20px;
+}
+
+.settingsContainerHR {
     position: relative;
     width: 300px;
     margin-top: 15px;
@@ -830,7 +834,7 @@ input:disabled {
 
 #progressSettingsContainer {
     text-align: center;
-    margin-top: 18px;
+    margin-bottom: 12px;
     position: relative;
 }
 
@@ -928,7 +932,6 @@ input:disabled {
 */
 
 #chapterPrecisionContainer {
-    margin-top: 15px;
     height: 30px;
     cursor: pointer;
 }
