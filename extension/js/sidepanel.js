@@ -195,22 +195,30 @@ function setButtonPressed(button)
     donateButton.className = "UnpressedButton";
     settingsButton.className = "UnpressedButton";
 
+
     var theme = localStorage.getItem("colorTheme");
-    if (theme != null) {
-      document.getElementById("theme-dropdown").value = theme;
+    themeSelectDropdown = $('#themeSelectDropdown');
+    if( theme != null ) {
+      themeSelectDropdown.val(theme);
+    }
+    else {
+      theme = "default";
+      localStorage.colorTheme = "default";
+      themeSelectDropdown.val("default");
     }
 
-//     function saveTheme()
-// {
-//   var savedTheme = localStorage.getItem("colorTheme");
-//   var selectedTheme = document.getElementById("theme-dropdown").value;
+    [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+      new SelectFx(el);
+    } );
 
-//   if (savedTheme != selectedTheme)
-//   {
-//     localStorage.setItem("colorTheme", selectedTheme);
-//   }
-// }
-
+    var selectTheme = $( "#themeSelectContainer > div" );
+    var selectThemeValue = $( "#themeSelectContainer > div > span" );
+    var currentSelectTheme = $("#themeSelectContainer option[value='" + theme + "']").text();
+    selectThemeValue.text(currentSelectTheme);
+    selectTheme.click(function() {
+      localStorage.colorTheme = themeSelectDropdown.val();
+      updateProgressBecauseSettingsChanged();
+    });
   }
   else if (button == 3)
   {
@@ -650,7 +658,7 @@ function loadCheckBoxes()
 
 function loadDropdowns()
 {
-  timerPrecision = localStorage.timerPrecision;
+  timerPrecision = localStorage.getItem("timerPrecision");
   timerPrecisionDropdown = $('#timerPrecisionDropdown');
   if( timerPrecision != null ) {
     timerPrecisionDropdown.val(timerPrecision);
@@ -660,7 +668,7 @@ function loadDropdowns()
     localStorage.timerPrecision = "ms";
   }
 
-  clockPrecision = localStorage.clockPrecision;
+  clockPrecision = localStorage.getItem("clockPrecision");
   clockPrecisionDropdown = $('#clockPrecisionDropdown');
   if( clockPrecision != null ) {
     clockPrecisionDropdown.val(clockPrecision);
@@ -670,7 +678,7 @@ function loadDropdowns()
     localStorage.clockPrecision = "min";
   }
 
-  populationPrecision = localStorage.populationPrecision;
+  populationPrecision = localStorage.getItem("populationPrecision");
   populationPrecisionDropdown = $('#populationPrecisionDropdown');
   if( populationPrecision != null ) {
     populationPrecisionDropdown.val(populationPrecision);
@@ -680,7 +688,7 @@ function loadDropdowns()
     localStorage.populationPrecision = "one";
   }
 
-  timeupMessage = localStorage.timeupMessage;
+  timeupMessage = localStorage.getItem("timeupMessage");
   timeupMessageDropdown = $('#timeupMessageDropdown');
   if( timeupMessage != null ) {
     timeupMessageDropdown.val(timeupMessage);
