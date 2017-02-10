@@ -947,6 +947,22 @@ input:disabled {
     display: inline-block;
 }
 
+#chapterSettingsLabelContainer:hover {
+    color: #00B0FF;
+}
+
+#chapterSettingsLabelContainer:hover path {
+    fill: #00B0FF;
+}
+
+#chapterSettingsLabelContainer:active {
+    color: #0091EA;
+}
+
+#chapterSettingsLabelContainer:active path {
+    fill: #0091EA;
+}
+
 #chapterPrecisionSegmentedControl {
     width: 300px;
     font-size: 12px;
