@@ -831,8 +831,49 @@ function loadSurvey()
   });
 }
 
+function rotate(currentDegree)
+{
+  if( currentDegree <= 180 )
+  {
+    $("#openCloseChevron svg").css({ WebkitTransform: 'rotate(' + currentDegree + 'deg)'});
+    $("#openCloseChevron svg").css({ '-moz-transform': 'rotate(' + currentDegree + 'deg)'});
+
+    setTimeout(function() {
+        currentDegree+=5; rotate(currentDegree);
+    },3);
+  }
+}
+
+function reverseRotate(currentDegree)
+{
+  if( currentDegree >= 0 )
+  {
+    $("#openCloseChevron svg").css({ WebkitTransform: 'rotate(' + currentDegree + 'deg)'});
+    $("#openCloseChevron svg").css({ '-moz-transform': 'rotate(' + currentDegree + 'deg)'});
+
+    setTimeout(function() {
+        currentDegree-=5; reverseRotate(currentDegree);
+    },3);
+  }
+}
+
 function loadChapterPrecision()
 {
+
+  var chapterPrecisionContainer = $('#chapterPrecisionContainer');
+  chapterPrecisionContainer.click(function() {
+    if( $("#chapterPrecisionContainer").data('rotated') )
+    {
+      reverseRotate(180);
+      $("#chapterPrecisionContainer").data('rotated',false);
+    }
+    else
+    {
+      rotate(0);
+      $("#chapterPrecisionContainer").data('rotated',true);
+    }
+  });
+
   var chapterPrecisionYear = localStorage.getItem("chapterPrecisionYear");
   var chapterPrecisionYearTextfield = $("#fixedYearsInput");
   if (chapterPrecisionYear === null) {
