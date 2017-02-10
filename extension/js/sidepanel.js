@@ -860,18 +860,18 @@ function reverseRotate(currentDegree)
 function loadChapterPrecision()
 {
 
-  var chapterPrecisionContainer = $('#chapterPrecisionContainer');
+  var chapterPrecisionContainer = $('#chapterSettingsLabelContainer');
   chapterPrecisionContainer.click(function() {
-    if( $("#chapterPrecisionContainer").data('rotated') )
+    if( $("#chapterSettingsLabelContainer").data('rotated') )
     {
       reverseRotate(180);
-      $("#chapterPrecisionContainer").data('rotated',false);
+      $("#chapterSettingsLabelContainer").data('rotated',false);
       $('#chapterSettingsContainer').slideUp(300);
     }
     else
     {
       rotate(0);
-      $("#chapterPrecisionContainer").data('rotated',true);
+      $("#chapterSettingsLabelContainer").data('rotated',true);
       $('#chapterSettingsContainer').slideDown(300);
     }
   });

@@ -931,20 +931,20 @@ input:disabled {
 ===== Chapter Precision Settings =====
 */
 
-#chapterPrecisionContainer {
+#chapterSettingsLabelContainer {
     height: 30px;
     cursor: pointer;
 }
 
-#chapterPrecisionLabel {
-    display: inline-block;
-}
-
-#chapterPrecisionContainer svg {
+#chapterSettingsLabelContainer svg {
     height:22px;
     width:22px;
     padding-top:9px;
     padding-bottom:9px;
+}
+
+#chapterSettingsLabel {
+    display: inline-block;
 }
 
 #chapterPrecisionSegmentedControl {
