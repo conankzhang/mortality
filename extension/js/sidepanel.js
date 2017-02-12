@@ -21,7 +21,6 @@ function openNav()
   $('.timer-labels').animate({
     'margin-left':'-0.5vw'
   },500);
-  $('.timer-labels').css('-webkit-text-stroke-width', '0.03vw');
   updateProgressIntervalsAndSize(newWidth);
   updateProgressUnit();
 }
@@ -51,7 +50,6 @@ function closeNav()
     $('.timer-labels').animate({
       'margin-left':'-1vw'
     },500);
-    $('.timer-labels').css('-webkit-text-stroke-width', '0.07vw');
     updateProgressIntervalsAndSize(newWidth);
     updateProgressUnit();
     window.app.versionCheck();
@@ -1237,5 +1235,4 @@ function updateTimer()
   $('.timer-container').css('left','75%');
   $('.timer-labels').css('font-size','1.1vw');
   $('.timer-labels').css('margin-left','-0.5vw');
-  $('.timer-labels').css('-webkit-text-stroke-width', '0.03vw');
 }

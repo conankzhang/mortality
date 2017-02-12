@@ -776,7 +776,6 @@
         $('.timer-container').css('left','75%');
         $('.timer-labels').css('font-size','1.1vw');
         $('.timer-labels').css('margin-left','-0.5vw');
-        $('.timer-labels').css('-webkit-text-stroke-width', '0.03vw');
       }
 
     }.bind(this));
@@ -852,7 +851,6 @@
         $('.timer-container').css('left','75%');
         $('.timer-labels').css('font-size','0.8vw');
         $('.timer-labels').css('margin-left','-0.5vw');
-        $('.timer-labels').css('-webkit-text-stroke-width', '0.03vw');
       }
 
     }.bind(this));
