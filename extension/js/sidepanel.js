@@ -1071,9 +1071,9 @@ function loadChapters()
 function loadTextFields()
 {
   var idealDeathInput = $('#idealDeathInput');
-  var idealDeathYears = localStorage.idealDeathYears || 79;
+  var idealDeathYears = localStorage.idealDeathYears || 78;
   if( !localStorage.idealDeathYears ) {
-    localStorage.idealDeathYears = 79;
+    localStorage.idealDeathYears = 78;
   }
   idealDeathInput.val(idealDeathYears);
 
