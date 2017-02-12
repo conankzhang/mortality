@@ -217,6 +217,7 @@ function setButtonPressed(button)
     selectTheme.click(function() {
       localStorage.colorTheme = themeSelectDropdown.val();
       updateProgressBecauseSettingsChanged();
+      updateTimer();
     });
   }
   else if (button == 3)
