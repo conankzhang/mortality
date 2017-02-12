@@ -35,7 +35,7 @@ function closeNav()
     document.getElementById("theSidePanel").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
     $('.timer').animate({
-      'font-size':'6vw'
+      'font-size':'7vw'
     },300);
     $('.clock').animate({
       'font-size':'8vw'
@@ -45,7 +45,7 @@ function closeNav()
     },400);
 
     $('.timer-labels').animate({
-      'font-size':'1.5vw'
+      'font-size':'1.6vw'
     },300);
     $('.timer-labels').animate({
       'margin-left':'-1vw'
