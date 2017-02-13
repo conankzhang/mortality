@@ -828,6 +828,12 @@ input:disabled {
     display: none;
 }
 
+#largeFontCheckboxContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 108px;
+}
+
 /*
 ===== Progress Settings =====
 */
