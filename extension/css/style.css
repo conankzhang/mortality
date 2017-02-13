@@ -139,7 +139,7 @@ ul {
   -webkit-user-select: none;
   position: relative;
   margin-bottom: .4vw;
-  font-size: 7vw;
+  font-size: 6vw;
   line-height: 1;
   cursor: default;
   white-space: nowrap;
@@ -148,7 +148,7 @@ ul {
 
 .clock {
   margin-top:-.5vw;
-  font-size: 8vw;
+  font-size: 7vw;
 }
 
 .timer-label {
@@ -165,7 +165,7 @@ ul {
   margin: 0;
   margin-left:-1vw;
   margin-right:.5vw;
-  font-size: 1.6vw;
+  font-size: 1.5vw;
   font-weight: bold;
   line-height: 1;
   cursor: default;

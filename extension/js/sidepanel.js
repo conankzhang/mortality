@@ -34,19 +34,41 @@ function closeNav()
     var newWidth = $(window).width() - 40;
     document.getElementById("theSidePanel").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
-    $('.timer').animate({
-      'font-size':'7vw'
-    },300);
-    $('.clock').animate({
-      'font-size':'8vw'
-    },300);
+
+
     $('.timer-container').animate({
       'left':'50%'
     },400);
 
-    $('.timer-labels').animate({
-      'font-size':'1.6vw'
-    },300);
+    if( localStorage.largeFont ) {
+      $('.clock').animate({
+        'font-size':'7vw'
+      },300);
+      $('.timer').animate({
+        'font-size':'6vw'
+      },300);
+      $('.timeup').animate({
+        'font-size':'6vw'
+      },300);
+      $('.timer-labels').animate({
+        'font-size':'1.5vw'
+      },300);
+    }
+    else {
+      $('.clock').animate({
+        'font-size':'8vw'
+      },300);
+      $('.timer').animate({
+        'font-size':'7vw'
+      },300);
+      $('.timeup').animate({
+        'font-size':'7vw'
+      },300);
+      $('.timer-labels').animate({
+        'font-size':'1.6vw'
+      },300);
+    }
+
     $('.timer-labels').animate({
       'margin-left':'-1vw'
     },500);
