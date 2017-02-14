@@ -5,19 +5,40 @@ function openNav()
   var newWidth = $(window).width()*0.50 - 40;
   document.getElementById("theSidePanel").style.width = "50vw";
   document.getElementById("main").style.marginLeft = "50vw";
-  $('.timer').animate({
-    'font-size':'4vw'
-  },300);
-  $('.clock').animate({
-    'font-size':'5vw'
-  },300);
+
   $('.timer-container').animate({
     'left':'75%'
   },400);
 
-  $('.timer-labels').animate({
-    'font-size':'1.1vw'
-  },300);
+  if( localStorage.largeFont == "YES" ) {
+    $('.clock').animate({
+      'font-size':'5.5vw'
+    },300);
+    $('.timer').animate({
+      'font-size':'4.5vw'
+    },300);
+    $('.timeup').animate({
+      'font-size':'4.5vw'
+    },300);
+    $('.timer-labels').animate({
+      'font-size':'1.2vw'
+    },300);
+  }
+  else {
+    $('.clock').animate({
+      'font-size':'5vw'
+    },300);
+    $('.timer').animate({
+      'font-size':'4vw'
+    },300);
+    $('.timeup').animate({
+      'font-size':'4vw'
+    },300);
+    $('.timer-labels').animate({
+      'font-size':'1.1vw'
+    },300);
+  }
+
   $('.timer-labels').animate({
     'margin-left':'-0.5vw'
   },500);
@@ -35,15 +56,12 @@ function closeNav()
     document.getElementById("theSidePanel").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
 
-
     $('.timer-container').animate({
       'left':'50%'
     },400);
 
     if( localStorage.largeFont == "YES" ) {
-      $('.clock').animate({
-        'font-size':'8vw'
-      },300);
+      $('#largeFontClockCSS').text('.clock {font-size:8vw;}');
       $('.timer').animate({
         'font-size':'7vw'
       },300);
@@ -55,9 +73,7 @@ function closeNav()
       },300);
     }
     else {
-      $('.clock').animate({
-        'font-size':'7vw'
-      },300);
+      $('#largeFontClockCSS').text('.clock {font-size:7vw;}');
       $('.timer').animate({
         'font-size':'6vw'
       },300);
@@ -684,6 +700,7 @@ function loadCheckBoxes()
 
   largeFontCheckbox.addEventListener('change', function () {
     localStorage.largeFont = largeFontCheckbox.checked?"YES":"NO";
+    updateTimer();
   });
 }
 
@@ -1262,9 +1279,20 @@ function updateProgressBecauseSettingsChanged()
 function updateTimer()
 {
   window.app.initializeTimer();
-  $('.timer').css('font-size','4vw');
-  $('.clock').css('font-size','5vw');
+  if( localStorage.largeFont == "YES" )
+  {
+    $('.timer').css('font-size','4.5vw');
+    $('.clock').css('font-size','5.5vw');
+    $('.timeup').css('font-size','5.5vw');
+    $('.timer-labels').css('font-size','1.2vw');
+  }
+  else {
+    $('.timer').css('font-size','4vw');
+    $('.clock').css('font-size','5vw');
+    $('.timeup').css('font-size','5vw');
+    $('.timer-labels').css('font-size','1.1vw');
+  }
+
   $('.timer-container').css('left','75%');
-  $('.timer-labels').css('font-size','1.1vw');
   $('.timer-labels').css('margin-left','-0.5vw');
 }

@@ -45,12 +45,14 @@
       $('#circles').css('opacity',0);
     }
 
+    $('head').append('<style id="largeFontClockCSS" type="text/css">.clock {font-size:7vw;}</style>');
     $(document).ready(function () {
       if( localStorage.largeFont == "YES" )
       {
         $(".timer-labels").css('font-size',"1.6vw");
         $(".timer, .timeup").css('font-size',"7vw");
         $(".clock").css('font-size',"8vw");
+        $('#largeFontClockCSS').text('.clock {font-size:8vw;}');
       }
     });
 
@@ -781,10 +783,15 @@
       }));
 
       if( $('#main').data('sidePanelOpened') ) {
-        $('.clock').css('font-size','5vw');
+        if( localStorage.largeFont == "YES" )
+        {
+          $('.clock').css('font-size','5.5vw');
+        }
+        else
+        {
+          $('.clock').css('font-size','5vw');
+        }
         $('.timer-container').css('left','75%');
-        $('.timer-labels').css('font-size','1.1vw');
-        $('.timer-labels').css('margin-left','-0.5vw');
       }
 
     }.bind(this));
@@ -856,10 +863,15 @@
       }));
 
       if( $('#main').data('sidePanelOpened') ) {
-        $('.clock').css('font-size','5vw');
+        if( localStorage.largeFont == "YES" )
+        {
+          $('.clock').css('font-size','5.5vw');
+        }
+        else
+        {
+          $('.clock').css('font-size','5vw');
+        }
         $('.timer-container').css('left','75%');
-        $('.timer-labels').css('font-size','0.8vw');
-        $('.timer-labels').css('margin-left','-0.5vw');
       }
 
     }.bind(this));
