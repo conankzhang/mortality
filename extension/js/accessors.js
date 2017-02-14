@@ -116,7 +116,7 @@ function getChapters()
   else if( chapterPrecision == "years" ) {
     educationStartOffset /= 12;
   }
-  firstChapter += educationStartOffset;
+  firstChapter = Math.ceil(firstChapter + educationStartOffset);
   if( firstChapter > totalProgressUnits ) firstChapter = totalProgressUnits;
   var secondChapter = firstChapter + (savedChapterLengths[1]);
   if( secondChapter > totalProgressUnits ) secondChapter = totalProgressUnits;
