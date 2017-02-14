@@ -16,7 +16,7 @@
 
   App.fn.versionCheck = function()
   {
-    if(localStorage.getItem("version") != "5.0.3") {
+    if(localStorage.getItem("version") != "5.0.4") {
       document.getElementById("updateBadge").style.display = "block";
       $("#update-bubble").show();
     }
