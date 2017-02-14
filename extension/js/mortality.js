@@ -45,12 +45,14 @@
       $('#circles').css('opacity',0);
     }
 
-    if( localStorage.largeFont == "YES" )
-    {
-      $(".timer-labels").css('font-size',"1.6vw");
-      $(".timer, .timeup").css('font-size',"7vw");
-      $(".clock").css('font-size',"8vw");
-    }
+    $(document).ready(function () {
+      if( localStorage.largeFont == "YES" )
+      {
+        $(".timer-labels").css('font-size',"1.6vw");
+        $(".timer, .timeup").css('font-size',"7vw");
+        $(".clock").css('font-size',"8vw");
+      }
+    });
 
     this.versionCheck();
   };

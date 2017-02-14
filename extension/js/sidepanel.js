@@ -40,21 +40,7 @@ function closeNav()
       'left':'50%'
     },400);
 
-    if( localStorage.largeFont ) {
-      $('.clock').animate({
-        'font-size':'7vw'
-      },300);
-      $('.timer').animate({
-        'font-size':'6vw'
-      },300);
-      $('.timeup').animate({
-        'font-size':'6vw'
-      },300);
-      $('.timer-labels').animate({
-        'font-size':'1.5vw'
-      },300);
-    }
-    else {
+    if( localStorage.largeFont == "YES" ) {
       $('.clock').animate({
         'font-size':'8vw'
       },300);
@@ -66,6 +52,20 @@ function closeNav()
       },300);
       $('.timer-labels').animate({
         'font-size':'1.6vw'
+      },300);
+    }
+    else {
+      $('.clock').animate({
+        'font-size':'7vw'
+      },300);
+      $('.timer').animate({
+        'font-size':'6vw'
+      },300);
+      $('.timeup').animate({
+        'font-size':'6vw'
+      },300);
+      $('.timer-labels').animate({
+        'font-size':'1.5vw'
       },300);
     }
 
@@ -675,6 +675,15 @@ function loadCheckBoxes()
   twentyFourCheckbox.addEventListener('change', function () {
     localStorage.twentyFour = twentyFourCheckbox.checked?"YES":"NO";
     updateTimer();
+  });
+
+  var largeFontCheckbox = document.querySelector('input[id=largeFontCheckbox]');
+  if (localStorage.largeFont == "YES") {
+    largeFontCheckbox.checked = true;
+  }
+
+  largeFontCheckbox.addEventListener('change', function () {
+    localStorage.largeFont = largeFontCheckbox.checked?"YES":"NO";
   });
 }
 
