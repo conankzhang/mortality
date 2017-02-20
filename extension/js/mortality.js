@@ -535,6 +535,9 @@
 
     var startMoment = moment(getDOB());
     var endMoment = moment();
+    if( localStorage.getItem("chapterPrecision") === null ){
+      localStorage.setItem("chapterPrecision", "months");
+    }
     var chapterPrecision = localStorage.chapterPrecision;
     var numberMonths = endMoment.diff(startMoment, chapterPrecision)+1;
 
