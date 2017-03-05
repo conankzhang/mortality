@@ -1225,6 +1225,12 @@ input:disabled {
 ===== Misc Settings =====
 */
 
+#fullscreenCheckboxContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 265px;
+}
+
 #hideUpdatesCheckboxContainer {
     margin: 0 auto;
     margin-top: 15px;

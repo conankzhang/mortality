@@ -703,6 +703,15 @@ function loadCheckBoxes()
     updateTimer();
   });
 
+  var fullscreenCheckbox = document.querySelector('input[id=fullscreenCheckbox]');
+  if (localStorage.fullscreen == "YES") {
+    fullscreenCheckbox.checked = true;
+  }
+
+  fullscreenCheckbox.addEventListener('change', function () {
+    localStorage.fullscreen = fullscreenCheckbox.checked?"YES":"NO";
+  });
+
   var hideUpdatesCheckbox = document.querySelector('input[id=hideUpdatesCheckbox]');
   if (localStorage.hideUpdates == "YES") {
     hideUpdatesCheckbox.checked = true;
