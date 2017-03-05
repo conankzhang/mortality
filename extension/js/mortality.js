@@ -18,7 +18,10 @@
   {
     if(localStorage.getItem("version") != "5.0.4") {
       document.getElementById("updateBadge").style.display = "block";
-      $("#update-bubble").show();
+      if( localStorage.hideUpdates != "YES" )
+      {
+        $("#update-bubble").show();
+      }
     }
     else
     {

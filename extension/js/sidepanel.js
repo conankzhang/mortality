@@ -702,6 +702,15 @@ function loadCheckBoxes()
     localStorage.largeFont = largeFontCheckbox.checked?"YES":"NO";
     updateTimer();
   });
+
+  var hideUpdatesCheckbox = document.querySelector('input[id=hideUpdatesCheckbox]');
+  if (localStorage.hideUpdates == "YES") {
+    hideUpdatesCheckbox.checked = true;
+  }
+
+  hideUpdatesCheckbox.addEventListener('change', function () {
+    localStorage.hideUpdates = hideUpdatesCheckbox.checked?"YES":"NO";
+  });
 }
 
 function loadDropdowns()
