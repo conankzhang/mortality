@@ -116,11 +116,6 @@ function getChapters()
   else if( chapterPrecision == "years" ) {
     educationStartOffset /= 12;
   }
-
-  if (localStorage.fixedChapters == "YES") {
-    educationStartOffset = 0;
-  }
-
   firstChapter = Math.ceil(firstChapter + educationStartOffset);
   if( firstChapter > totalProgressUnits ) firstChapter = totalProgressUnits;
   var secondChapter = firstChapter + (savedChapterLengths[1]);
