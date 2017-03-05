@@ -52,6 +52,7 @@
     $(document).ready(function () {
       if( localStorage.largeFont == "YES" )
       {
+        $("#timerTitle").css('font-size',"4.5vw");
         $(".timer-labels").css('font-size',"1.6vw");
         $(".timer, .timeup").css('font-size',"7vw");
         $(".clock").css('font-size',"8vw");

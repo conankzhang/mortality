@@ -10,7 +10,12 @@ function openNav()
     'left':'75%'
   },400);
 
+  $('#timerTitle').animate({
+    'left':'75vw'
+  },400);
+
   if( localStorage.largeFont == "YES" ) {
+    $('#timerTitle').css('font-size','3.5vw');
     $('.clock').animate({
       'font-size':'5.5vw'
     },300);
@@ -25,6 +30,7 @@ function openNav()
     },300);
   }
   else {
+    $('#timerTitle').css('font-size','3vw');
     $('.clock').animate({
       'font-size':'5vw'
     },300);
@@ -60,8 +66,13 @@ function closeNav()
       'left':'50%'
     },400);
 
+    $('#timerTitle').animate({
+      'left':'50vw'
+    },400);
+
     if( localStorage.largeFont == "YES" ) {
       $('#largeFontClockCSS').text('.clock {font-size:8vw;}');
+      $('#timerTitle').css('font-size','4.5vw');
       $('.timer').animate({
         'font-size':'7vw'
       },300);
@@ -74,6 +85,7 @@ function closeNav()
     }
     else {
       $('#largeFontClockCSS').text('.clock {font-size:7vw;}');
+      $('#timerTitle').css('font-size','4vw');
       $('.timer').animate({
         'font-size':'6vw'
       },300);
@@ -1300,12 +1312,14 @@ function updateTimer()
   window.app.initializeTimer();
   if( localStorage.largeFont == "YES" )
   {
+    $('#timerTitle').css('font-size','3.5vw');
     $('.timer').css('font-size','4.5vw');
     $('.clock').css('font-size','5.5vw');
     $('.timeup').css('font-size','5.5vw');
     $('.timer-labels').css('font-size','1.2vw');
   }
   else {
+    $('#timerTitle').css('font-size','3vw');
     $('.timer').css('font-size','4vw');
     $('.clock').css('font-size','5vw');
     $('.timeup').css('font-size','5vw');
@@ -1313,5 +1327,6 @@ function updateTimer()
   }
 
   $('.timer-container').css('left','75%');
+  $('#timerTitle').css('left','75vw');
   $('.timer-labels').css('margin-left','-0.5vw');
 }
