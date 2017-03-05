@@ -1220,3 +1220,13 @@ input:disabled {
   -webkit-appearance: none;
   margin: 0;
 }
+
+/*
+===== Misc Settings =====
+*/
+
+#hideUpdatesCheckboxContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 265px;
+}
