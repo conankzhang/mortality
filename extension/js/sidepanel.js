@@ -710,6 +710,7 @@ function loadCheckBoxes()
 
   fullscreenCheckbox.addEventListener('change', function () {
     localStorage.fullscreen = fullscreenCheckbox.checked?"YES":"NO";
+    updateProgressBecauseSettingsChanged();
   });
 
   var hideUpdatesCheckbox = document.querySelector('input[id=hideUpdatesCheckbox]');

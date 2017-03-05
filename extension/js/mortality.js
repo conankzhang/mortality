@@ -918,12 +918,20 @@ function updateProgressIntervalsAndSize(newWidth)
   if( $('#main').data('sidePanelOpened') ) {
     width *= 0.50;
   }
-  width -= 40;
+  if( localStorage.fullscreen != "YES" )
+  {
+    width -= 40;
+  }
 
   if( newWidth > 0 ) {
     width = newWidth;
   }
-  var height = $(window).height() - 100;
+  var heightPadding = 0;
+  if( localStorage.fullscreen != "YES" )
+  {
+    heightPadding = 100;
+  }
+  var height = $(window).height() - heightPadding;
 
   var totalProgressUnits = localStorage.idealDeathYears;
   if( !totalProgressUnits ) totalProgressUnits = 78;
