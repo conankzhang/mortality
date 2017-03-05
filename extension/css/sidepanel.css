@@ -627,7 +627,7 @@ input[type=radio]:checked ~ .check::before{
 }
 
 #specifyDeathCheckboxContainer label {
-    width: 191px;
+    width: 198px;
     margin: 0 auto;
     margin-bottom: 15px;
 }
@@ -660,7 +660,7 @@ input:disabled {
 }
 
 #dailyCountdownCheckboxContainer {
-    width: 235px;
+    width: 237px;
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 20px;
@@ -751,7 +751,7 @@ input:disabled {
 }
 
 #twentyFourCheckboxContainer label {
-    width: 94px;
+    width: 96px;
     margin: 0 auto;
 }
 
