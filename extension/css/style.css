@@ -127,6 +127,17 @@ ul {
 /*  Timer Classes  */
 /*******************/
 
+#timerTitle {
+
+  top: -webkit-calc(50vh - 6vw - 20px);
+  left: 50vw;
+  transform: translate(-50%, -35%);
+  font-size: 4vw;
+  position: fixed;
+  text-shadow: black 0 0 10px;
+  font-family: 'Roboto';
+}
+
 .timer-container {
   position: fixed;
   top: 50%;
