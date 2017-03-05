@@ -126,7 +126,7 @@ $('#menu-button').click(function(e)
     $('#main').data('sidePanelOpened', false);
   }
   //UPDATE WHEN REVVING VERSIONS
-  else if(localStorage.getItem("version")=="5.0.4")
+  else if(localStorage.getItem("version")=="5.0.5")
   {
     var lastOptionView = localStorage.getItem("lastOptionView");
     if( lastOptionView === null )
@@ -138,7 +138,7 @@ $('#menu-button').click(function(e)
   else
   {
     setButtonPressed(1);
-    localStorage.setItem("version", "5.0.4");
+    localStorage.setItem("version", "5.0.5");
     $("#update-bubble").hide();
   }
 
