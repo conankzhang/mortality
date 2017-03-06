@@ -1176,6 +1176,22 @@ function loadTextFields()
       $(this).data('val', $(this).val());
     }
   });
+
+  var timerTitleInput = $("#timerTitleInput");
+  var timerTitleInput2 = $("#timerTitleInput2");
+  var timerTitle = localStorage.timerTitle || "";
+  timerTitleInput.val(timerTitle);
+  timerTitleInput2.val(timerTitle);
+
+  timerTitleInput.on('input',function(e){
+    localStorage.timerTitle = $(this).val();
+    timerTitleInput2.val($(this).val());
+  });
+
+  timerTitleInput12.on('input',function(e){
+    localStorage.timerTitle = $(this).val();
+    timerTitleInput.val($(this).val());
+  });
 }
 
 function loadDOB()
