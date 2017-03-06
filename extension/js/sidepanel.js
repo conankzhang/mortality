@@ -1189,7 +1189,7 @@ function loadTextFields()
     updateTimer();
   });
 
-  timerTitleInput12.on('input',function(e){
+  timerTitleInput2.on('input',function(e){
     localStorage.timerTitle = $(this).val();
     timerTitleInput.val($(this).val());
     updateTimer();
