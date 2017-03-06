@@ -129,7 +129,7 @@ ul {
 
 #timerTitle {
 
-  top: -webkit-calc(50vh - 6vw - 20px);
+  top: -webkit-calc(50vh - 6vw - 30px);
   left: 50vw;
   transform: translate(-50%, -35%);
   font-size: 4vw;
