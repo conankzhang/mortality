@@ -1186,11 +1186,13 @@ function loadTextFields()
   timerTitleInput.on('input',function(e){
     localStorage.timerTitle = $(this).val();
     timerTitleInput2.val($(this).val());
+    updateTimer();
   });
 
   timerTitleInput12.on('input',function(e){
     localStorage.timerTitle = $(this).val();
     timerTitleInput.val($(this).val());
+    updateTimer();
   });
 }
 

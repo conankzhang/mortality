@@ -433,10 +433,12 @@
         break;
       }
 
+      var timerTitle = localStorage.timerTitle;
       this.setAppElementHTML(this.getTemplateScript('age')(
       {
         white: whiteFlag,
         black: blackFlag,
+        title: timerTitle,
         year: yearString,
         month: monthString,
         day: dayString,
