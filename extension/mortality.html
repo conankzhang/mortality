@@ -94,7 +94,8 @@
 </script>
 
 <script id="age-template" type="text/x-handlebars-template">
-  <div id="timerTitle">{{title}}</div>
+  {{#if white}}<div class="timerTitleWhite" id="timerTitle">{{title}}</div>{{/if}}
+  {{#if black}}<div class="timerTitleBlack" id="timerTitle">{{title}}</div>{{/if}}
 	<div class="timer-container">
     {{#if white}}<span id="white-timer-age" class="timer" >{{/if}}
     {{#if black}}<span id="black-timer-age" class="timer" >{{/if}}
