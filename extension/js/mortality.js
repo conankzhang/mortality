@@ -373,7 +373,8 @@
 
 
       var savedPrecision = localStorage.getItem("timerPrecision");
-
+      var largestPrecision = localStorage.largestPrecision;
+      var originalStartMoment = startMoment.clone();
       //Initial state before the timer for renderer kicks
       while(true)
       {
@@ -387,6 +388,12 @@
 
         var months = endMoment.diff(startMoment, 'months');
         if( months < 0 ) months = 0;
+        if( largestPrecision == "month" )
+        {
+          yearString = undefined;
+          months += years*12;
+        }
+
         var monthString = zeroFill(months.toString(), 2);
         if (savedPrecision == "month") {
           break;
@@ -404,6 +411,12 @@
           }
         }
         if( days < 0 ) days = 0;
+        if( largestPrecision == "day" )
+        {
+          yearString = undefined;
+          monthString = undefined;
+          days = endMoment.diff(originalStartMoment, 'days');
+        }
         var dayString = zeroFill(days.toString(), 2);
         if (savedPrecision == "day") {
           break;
@@ -412,6 +425,13 @@
         duration = (duration % dayMS);
         var hours = Math.floor(duration / hourMS);
         if( hours < 0 ) hours = 0;
+        if( largestPrecision == "hour" )
+        {
+          yearString = undefined;
+          monthString = undefined;
+          dayString = undefined;
+          hours = endMoment.diff(originalStartMoment, 'hours');
+        }
         var hourString = zeroFill(hours.toString(), 2);
         if (savedPrecision == "hour") {
           break;
@@ -419,6 +439,14 @@
         duration = (duration % hourMS);
         var minutes = Math.floor(duration / minuteMS);
         if( minutes < 0 ) minutes = 0;
+        if( largestPrecision == "min" )
+        {
+          yearString = undefined;
+          monthString = undefined;
+          dayString = undefined;
+          hourString = undefined;
+          minutes = endMoment.diff(originalStartMoment, 'minutes');
+        }
         var minuteString = zeroFill(minutes.toString(), 2);
         if (savedPrecision == "min") {
           break;
@@ -426,6 +454,15 @@
         duration = (duration % minuteMS);
         var seconds = Math.floor(duration / secondMS);
         if( seconds < 0 ) seconds = 0;
+        if( largestPrecision == "sec" )
+        {
+          yearString = undefined;
+          monthString = undefined;
+          dayString = undefined;
+          hourString = undefined;
+          minuteString = undefined;
+          seconds = endMoment.diff(originalStartMoment, 'seconds');
+        }
         var secondString = zeroFill(seconds.toString(), 2);
         if (savedPrecision == "sec") {
           break;
@@ -562,6 +599,9 @@
     }
 
     var savedPrecision = localStorage.getItem("timerPrecision");
+    var largestPrecision = localStorage.largestPrecision;
+    var originalStartMoment = startMoment.clone();
+
     while(true)
     {
       var years = endMoment.diff(startMoment, 'years');
@@ -574,6 +614,11 @@
 
       var months = endMoment.diff(startMoment, 'months');
       if( months < 0 ) months = 0;
+      if( largestPrecision == "month" )
+      {
+        yearString = undefined;
+        months += years*12;
+      }
       var monthString = zeroFill(months.toString(), 2);
       if (savedPrecision == "month") {
         break;
@@ -591,6 +636,12 @@
         }
       }
       if( days < 0 ) days = 0;
+      if( largestPrecision == "day" )
+      {
+        yearString = undefined;
+        monthString = undefined;
+        days = endMoment.diff(originalStartMoment, 'days');
+      }
       var dayString = zeroFill(days.toString(), 2);
       if (savedPrecision == "day") {
         break;
@@ -599,6 +650,13 @@
       duration = (duration % dayMS);
       var hours = Math.floor(duration / hourMS);
       if( hours < 0 ) hours = 0;
+      if( largestPrecision == "hour" )
+      {
+        yearString = undefined;
+        monthString = undefined;
+        dayString = undefined;
+        hours = endMoment.diff(originalStartMoment, 'hours');
+      }
       var hourString = zeroFill(hours.toString(), 2);
       if (savedPrecision == "hour") {
         break;
@@ -606,6 +664,14 @@
       duration = (duration % hourMS);
       var minutes = Math.floor(duration / minuteMS);
       if( minutes < 0 ) minutes = 0;
+      if( largestPrecision == "min" )
+      {
+        yearString = undefined;
+        monthString = undefined;
+        dayString = undefined;
+        hourString = undefined;
+        minutes = endMoment.diff(originalStartMoment, 'minutes');
+      }
       var minuteString = zeroFill(minutes.toString(), 2);
       if (savedPrecision == "min") {
         break;
@@ -613,6 +679,15 @@
       duration = (duration % minuteMS);
       var seconds = Math.floor(duration / secondMS);
       if( seconds < 0 ) seconds = 0;
+      if( largestPrecision == "sec" )
+      {
+        yearString = undefined;
+        monthString = undefined;
+        dayString = undefined;
+        hourString = undefined;
+        minuteString = undefined;
+        seconds = endMoment.diff(originalStartMoment, 'seconds');
+      }
       var secondString = zeroFill(seconds.toString(), 2);
       if (savedPrecision == "sec") {
         break;
