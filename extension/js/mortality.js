@@ -228,6 +228,10 @@
           {
             yearOffset -= 9.8;
           }
+          else if( surveySmoking == "alcoholic" )
+          {
+            yearOffset -= 13;
+          }
           else if( surveySmoking == "never" )
           {
             yearOffset += 0;
