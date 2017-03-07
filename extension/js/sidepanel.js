@@ -747,6 +747,16 @@ function loadDropdowns()
     localStorage.timerPrecision = "ms";
   }
 
+  largestPrecision = localStorage.getItem("largestPrecision");
+  largestPrecisionDropdown = $('#largestPrecisionDropdown');
+  if( largestPrecision != null ) {
+    largestPrecisionDropdown.val(largestPrecision);
+  }
+  else {
+    largestPrecision = "year";
+    localStorage.largestPrecision = "year";
+  }
+
   clockPrecision = localStorage.getItem("clockPrecision");
   clockPrecisionDropdown = $('#clockPrecisionDropdown');
   if( clockPrecision != null ) {
@@ -781,8 +791,17 @@ function loadDropdowns()
     new SelectFx(el);
   } );
 
-  selectTimer = $( "#timerPrecisionContainer > div" );
-  selectTimerValue = $( "#timerPrecisionContainer > div > span" );
+  selectLargestTimer = $( "#largestPrecisionContainer > div" );
+  selectLargestTimerValue = $( "#largestPrecisionContainer > div > span" );
+  currentLargestTimerValue = $("#largestPrecisionDropdown option[value='" + largestPrecision + "']").text();
+  selectLargestTimerValue.text(currentLargestTimerValue);
+  selectLargestTimer.click(function() {
+    localStorage.largestPrecision = largestPrecisionDropdown.val();
+    updateTimer();
+  });
+
+  selectTimer = $( "#smallestPrecisionContainer > div" );
+  selectTimerValue = $( "#smallestPrecisionContainer > div > span" );
   currentTimerValue = $("#timerPrecisionDropdown option[value='" + timerPrecision + "']").text();
   selectTimerValue.text(currentTimerValue);
   selectTimer.click(function() {

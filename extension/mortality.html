@@ -584,16 +584,29 @@
     </div>
     <div id="precisionContainer">
       <div id="timerPrecisionContainer">
-        <label id="precisionLabel" for="timerPrecisionDropdown">Timer Precision</label>
-        <select id="timerPrecisionDropdown" class="cs-select cs-skin-elastic">
-          <option value="ms">Milliseconds</option>
-          <option value="sec">Seconds</option>
-          <option value="min">Minutes</option>
-          <option value="hour">Hours</option>
-          <option value="day">Days</option>
-          <option value="month">Months</option>
-          <option value="year">Years</option>
-        </select>
+        <div id="largestPrecisionContainer">
+          <label id="largestPrecisionLabel" for="largestPrecisionDropdown">Largest Precision</label>
+          <select id="largestPrecisionDropdown" class="cs-select cs-skin-elastic">
+            <option value="year">Years</option>
+            <option value="month">Months</option>
+            <option value="day">Days</option>
+            <option value="hour">Hours</option>
+            <option value="min">Minutes</option>
+            <option value="sec">Seconds</option>
+          </select>
+        </div>
+        <div id="smallestPrecisionContainer">
+          <label id="precisionLabel" for="timerPrecisionDropdown">Smallest Precision</label>
+          <select id="timerPrecisionDropdown" class="cs-select cs-skin-elastic">
+            <option value="ms">Milliseconds</option>
+            <option value="sec">Seconds</option>
+            <option value="min">Minutes</option>
+            <option value="hour">Hours</option>
+            <option value="day">Days</option>
+            <option value="month">Months</option>
+            <option value="year">Years</option>
+          </select>
+        </div>
       </div>
       <div id="clockPrecisionContainer">
         <label id="precisionLabel" for="clockPrecisionDropdown">Clock Precision</label>
