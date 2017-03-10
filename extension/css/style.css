@@ -161,14 +161,11 @@ ul {
 
 .timer-label {
   -webkit-user-select: none;
-  display:flex;
   text-align: center;
   flex-basis: 20px;
   flex-grow: 1;
   position: relative;
-  margin: 0;
-  margin-left:-1vw;
-  margin-right:.5vw;
+  margin: 0 auto;
   font-size: 1.5vw;
   font-weight: bold;
   line-height: 1;

@@ -96,13 +96,13 @@
 <script id="age-template" type="text/x-handlebars-template">
   {{#if white}}<div class="timerTitleWhite" id="timerTitle">{{title}}</div>{{/if}}
   {{#if black}}<div class="timerTitleBlack" id="timerTitle">{{title}}</div>{{/if}}
-	
+
   {{#if white}}<div class="timerContainer blackText">{{/if}}
   {{#if black}}<div class="timerContainer whiteText">{{/if}}
     {{#if year}}
     <div id="yearContainer">
       <div id='year-number' class="timer-value timer">{{year}}</div>
-      <div class='timer-label'>YEARS</div>  
+      <div class='timer-label'>YEARS</div>
     </div>
     {{/if}}
     {{#if month}}
@@ -113,31 +113,31 @@
     {{/if}}
     {{#if day}}
     <div id="dayContainer">
-      <div id='day-number' class="timer-value timer timer">{{day}}</div>
+      <div id='day-number' class="timer-value timer">{{day}}</div>
       <div class='timer-label'>DAYS</div>
     </div>
     {{/if}}
     {{#if hour}}
     <div id="hourContainer">
-      <div id='hour-number' class="timer-value">{{hour}}</div>
+      <div id='hour-number' class="timer-value timer">{{hour}}</div>
       <div class='timer-label'>HOURS</div>
     </div>
     {{/if}}
     {{#if minute}}
     <div id="minContainer">
-      <div id='minute-number' class="timer-value">{{minute}}</div>
+      <div id='minute-number' class="timer-value timer">{{minute}}</div>
       <div class='timer-label'>MINUTES</div>
     </div>
     {{/if}}
     {{#if second}}
     <div id="secContainer">
-      <div id='second-number' class="timer-value">{{second}}</div>
+      <div id='second-number' class="timer-value timer">{{second}}</div>
       <div class='timer-label' id='seconds-label'>SECONDS</div>
     </div>
     {{/if}}
     {{#if ms}}
     <div id="msContainer">
-      <div id='milli-number' class="timer-value">{{ms}}</div>
+      <div id='milli-number' class="timer-value timer">{{ms}}</div>
       <div class='timer-label'>MS</div>
     </div>
     {{/if}}
