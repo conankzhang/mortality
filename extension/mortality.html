@@ -100,43 +100,43 @@
   {{#if white}}<div class="timerContainer blackText">{{/if}}
   {{#if black}}<div class="timerContainer whiteText">{{/if}}
     {{#if year}}
-    <div id="yearContainer">
+    <div id="yearContainer" class="timerUnitContainer">
       <div id='year-number' class="timer-value timer">{{year}}</div>
       <div class='timer-label'>YEARS</div>
     </div>
     {{/if}}
     {{#if month}}
-    <div id="monthContainer">
+    <div id="monthContainer" class="timerUnitContainer">
       <div id='month-number' class="timer-value timer">{{month}}</div>
       <div class='timer-label'>MONTHS</div>
     </div>
     {{/if}}
     {{#if day}}
-    <div id="dayContainer">
+    <div id="dayContainer" class="timerUnitContainer">
       <div id='day-number' class="timer-value timer">{{day}}</div>
       <div class='timer-label'>DAYS</div>
     </div>
     {{/if}}
     {{#if hour}}
-    <div id="hourContainer">
+    <div id="hourContainer" class="timerUnitContainer">
       <div id='hour-number' class="timer-value timer">{{hour}}</div>
       <div class='timer-label'>HOURS</div>
     </div>
     {{/if}}
     {{#if minute}}
-    <div id="minContainer">
+    <div id="minContainer" class="timerUnitContainer">
       <div id='minute-number' class="timer-value timer">{{minute}}</div>
       <div class='timer-label'>MINUTES</div>
     </div>
     {{/if}}
     {{#if second}}
-    <div id="secContainer">
+    <div id="secContainer" class="timerUnitContainer">
       <div id='second-number' class="timer-value timer">{{second}}</div>
       <div class='timer-label' id='seconds-label'>SECONDS</div>
     </div>
     {{/if}}
     {{#if ms}}
-    <div id="msContainer">
+    <div id="msContainer" class="timerUnitContainer">
       <div id='milli-number' class="timer-value timer">{{ms}}</div>
       <div class='timer-label'>MS</div>
     </div>

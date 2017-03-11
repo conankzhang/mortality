@@ -138,9 +138,18 @@ ul {
 
 .timerContainer {
   position: fixed;
+  white-space: nowrap;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.timerUnitContainer {
+  display: inline-block;
+}
+
+.timerUnitContainer + .timerUnitContainer {
+  margin-left: 1.5vw;
 }
 
 .timer, .clock, .timeup {
