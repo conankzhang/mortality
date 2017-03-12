@@ -380,34 +380,35 @@
       {
         if( savedPrecision == "decimal" )
         {
+          var decimalDigits = 3;
           if( largestPrecision == "year" ) {
             var years = endMoment.diff(originalStartMoment, 'years', true);
-            years = years.toFixed(3);
+            years = years.toFixed(decimalDigits);
             var yearString = zeroFill(years.toString(), 2);
           }
           else if( largestPrecision == "month" ) {
             var months = endMoment.diff(originalStartMoment, 'months', true);
-            months = months.toFixed(3);
+            months = months.toFixed(decimalDigits);
             var monthString = zeroFill(months.toString(), 2);
           }
           else if( largestPrecision == "day" ) {
             var days = endMoment.diff(originalStartMoment, 'days', true);
-            days = days.toFixed(3);
+            days = days.toFixed(decimalDigits);
             var dayString = zeroFill(days.toString(), 2);
           }
           else if( largestPrecision == "hour" ) {
             var hours = endMoment.diff(originalStartMoment, 'hours', true);
-            hours = hours.toFixed(3);
+            hours = hours.toFixed(decimalDigits);
             var hourString = zeroFill(hours.toString(), 2);
           }
           else if( largestPrecision == "min" ) {
             var minutes = endMoment.diff(originalStartMoment, 'minutes', true);
-            minutes = minutes.toFixed(3);
+            minutes = minutes.toFixed(decimalDigits);
             var minuteString = zeroFill(minutes.toString(), 2);
           }
           else if( largestPrecision == "sec" ) {
             var seconds = endMoment.diff(originalStartMoment, 'seconds', true);
-            seconds = seconds.toFixed(3);
+            seconds = seconds.toFixed(decimalDigits);
             var secondString = zeroFill(seconds.toString(), 2);
           }
           break;
@@ -641,34 +642,35 @@
     {
       if( savedPrecision == "decimal" )
       {
+        var decimalDigits = 3;
         if( largestPrecision == "year" ) {
           var years = endMoment.diff(originalStartMoment, 'years', true);
-          years = years.toFixed(3);
+          years = years.toFixed(decimalDigits);
           var yearString = zeroFill(years.toString(), 2);
         }
         else if( largestPrecision == "month" ) {
           var months = endMoment.diff(originalStartMoment, 'months', true);
-          months = months.toFixed(3);
+          months = months.toFixed(decimalDigits);
           var monthString = zeroFill(months.toString(), 2);
         }
         else if( largestPrecision == "day" ) {
           var days = endMoment.diff(originalStartMoment, 'days', true);
-          days = days.toFixed(3);
+          days = days.toFixed(decimalDigits);
           var dayString = zeroFill(days.toString(), 2);
         }
         else if( largestPrecision == "hour" ) {
           var hours = endMoment.diff(originalStartMoment, 'hours', true);
-          hours = hours.toFixed(3);
+          hours = hours.toFixed(decimalDigits);
           var hourString = zeroFill(hours.toString(), 2);
         }
         else if( largestPrecision == "min" ) {
           var minutes = endMoment.diff(originalStartMoment, 'minutes', true);
-          minutes = minutes.toFixed(3);
+          minutes = minutes.toFixed(decimalDigits);
           var minuteString = zeroFill(minutes.toString(), 2);
         }
         else if( largestPrecision == "sec" ) {
           var seconds = endMoment.diff(originalStartMoment, 'seconds', true);
-          seconds = seconds.toFixed(3);
+          seconds = seconds.toFixed(decimalDigits);
           var secondString = zeroFill(seconds.toString(), 2);
         }
         break;
