@@ -132,7 +132,7 @@
       {
         interval = secondMS;
       }
-      else if( savedPrecision == "ms" || savedPrecision === null )
+      else if( savedPrecision == "ms" || savedPrecision == "decimal" || savedPrecision === null )
       {
         interval = 113;
       }
@@ -638,6 +638,41 @@
 
     while(true)
     {
+      if( savedPrecision == "decimal" )
+      {
+        if( largestPrecision == "year" ) {
+          var years = endMoment.diff(originalStartMoment, 'years', true);
+          years = years.toFixed(3);
+          var yearString = zeroFill(years.toString(), 2);
+        }
+        else if( largestPrecision == "month" ) {
+          var months = endMoment.diff(originalStartMoment, 'months', true);
+          months = months.toFixed(3);
+          var monthString = zeroFill(months.toString(), 2);
+        }
+        else if( largestPrecision == "day" ) {
+          var days = endMoment.diff(originalStartMoment, 'days', true);
+          days = days.toFixed(3);
+          var dayString = zeroFill(days.toString(), 2);
+        }
+        else if( largestPrecision == "hour" ) {
+          var hours = endMoment.diff(originalStartMoment, 'hours', true);
+          hours = hours.toFixed(3);
+          var hourString = zeroFill(hours.toString(), 2);
+        }
+        else if( largestPrecision == "min" ) {
+          var minutes = endMoment.diff(originalStartMoment, 'minutes', true);
+          minutes = minutes.toFixed(3);
+          var minuteString = zeroFill(minutes.toString(), 2);
+        }
+        else if( largestPrecision == "sec" ) {
+          var seconds = endMoment.diff(originalStartMoment, 'seconds', true);
+          seconds = seconds.toFixed(3);
+          var secondString = zeroFill(seconds.toString(), 2);
+        }
+        break;
+      }
+
       var years = endMoment.diff(startMoment, 'years');
       startMoment.add(years, 'years');
       if( years < 0 ) years = 0;
@@ -732,7 +767,13 @@
       var msString = zeroFill(milliseconds.toString(), 2);
       break;
     }
+
     var notBubbled = true;
+
+    if( savedPrecision == "decimal" )
+    {
+      notBubbled = false;
+    }
 
     var year = document.getElementById('year-number');
     if(year) {
