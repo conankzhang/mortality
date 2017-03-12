@@ -53,7 +53,7 @@
       if( localStorage.largeFont == "YES" )
       {
         $("#timerTitle").css('font-size',"4.5vw");
-        $(".timer-labels").css('font-size',"1.6vw");
+        $(".timer-label").css('font-size',"1.6vw");
         $(".timer, .timeup").css('font-size',"7vw");
         $(".clock").css('font-size',"8vw");
         $('#largeFontClockCSS').text('.clock {font-size:8vw;}');
@@ -880,7 +880,7 @@
         {
           $('.clock').css('font-size','5vw');
         }
-        $('.timer-container').css('left','75%');
+        $('.timerContainer').css('left','75%');
       }
 
     }.bind(this));
@@ -960,7 +960,7 @@
         {
           $('.clock').css('font-size','5vw');
         }
-        $('.timer-container').css('left','75%');
+        $('.timerContainer').css('left','75%');
       }
 
     }.bind(this));
