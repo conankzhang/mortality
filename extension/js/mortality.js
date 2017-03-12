@@ -53,7 +53,7 @@
       if( localStorage.largeFont == "YES" )
       {
         $("#timerTitle").css('font-size',"4.5vw");
-        $(".timer-labels").css('font-size',"1.6vw");
+        $(".timer-label").css('font-size',"1.6vw");
         $(".timer, .timeup").css('font-size',"7vw");
         $(".clock").css('font-size',"8vw");
         $('#largeFontClockCSS').text('.clock {font-size:8vw;}');
@@ -331,10 +331,10 @@
           }
           else
           {
-            var hours = Math.floor(timeInput/60);
-            var minutes = timeInput % 60;
-            deadlineMoment.hour(hours);
-            deadlineMoment.minute(minutes);
+            var deadlineHours = Math.floor(timeInput/60);
+            var deadlineMinutes = timeInput % 60;
+            deadlineMoment.hour(deadlineHours);
+            deadlineMoment.minute(deadlineMinutes);
             deadlineMoment.second(0);
             if( timeInput == 0 )
             {
@@ -378,6 +378,40 @@
       //Initial state before the timer for renderer kicks
       while(true)
       {
+        if( savedPrecision == "decimal" )
+        {
+          if( largestPrecision == "year" ) {
+            var years = endMoment.diff(originalStartMoment, 'years', true);
+            years = years.toFixed(3);
+            var yearString = zeroFill(years.toString(), 2);
+          }
+          else if( largestPrecision == "month" ) {
+            var months = endMoment.diff(originalStartMoment, 'months', true);
+            months = months.toFixed(3);
+            var monthString = zeroFill(months.toString(), 2);
+          }
+          else if( largestPrecision == "day" ) {
+            var days = endMoment.diff(originalStartMoment, 'days', true);
+            days = days.toFixed(3);
+            var dayString = zeroFill(days.toString(), 2);
+          }
+          else if( largestPrecision == "hour" ) {
+            var hours = endMoment.diff(originalStartMoment, 'hours', true);
+            hours = hours.toFixed(3);
+            var hourString = zeroFill(hours.toString(), 2);
+          }
+          else if( largestPrecision == "min" ) {
+            var minutes = endMoment.diff(originalStartMoment, 'minutes', true);
+            minutes = minutes.toFixed(3);
+            var minuteString = zeroFill(minutes.toString(), 2);
+          }
+          else if( largestPrecision == "sec" ) {
+            var seconds = endMoment.diff(originalStartMoment, 'seconds', true);
+            seconds = seconds.toFixed(3);
+            var secondString = zeroFill(seconds.toString(), 2);
+          }
+          break;
+        }
         var years = endMoment.diff(startMoment, 'years');
         startMoment.add(years, 'years');
         if( years < 0 ) years = 0;
@@ -880,7 +914,7 @@
         {
           $('.clock').css('font-size','5vw');
         }
-        $('.timer-container').css('left','75%');
+        $('.timerContainer').css('left','75%');
       }
 
     }.bind(this));
@@ -960,7 +994,7 @@
         {
           $('.clock').css('font-size','5vw');
         }
-        $('.timer-container').css('left','75%');
+        $('.timerContainer').css('left','75%');
       }
 
     }.bind(this));

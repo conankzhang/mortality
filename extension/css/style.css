@@ -136,11 +136,20 @@ ul {
   font-family: 'Roboto';
 }
 
-.timer-container {
+.timerContainer {
   position: fixed;
+  white-space: nowrap;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.timerUnitContainer {
+  display: inline-block;
+}
+
+.timerUnitContainer + .timerUnitContainer {
+  margin-left: 1.5vw;
 }
 
 .timer, .clock, .timeup {
@@ -164,34 +173,27 @@ ul {
   text-align: center;
   flex-basis: 20px;
   flex-grow: 1;
-}
-
-.timer-labels {
-  -webkit-user-select: none;
-  display:flex;
   position: relative;
-  margin: 0;
-  margin-left:-1vw;
-  margin-right:.5vw;
+  margin: 0 auto;
   font-size: 1.5vw;
   font-weight: bold;
   line-height: 1;
   cursor: default;
 }
 
-#white-timer-age, #white-timer-clock, #white-timeup {
+#white-timer-clock, #white-timeup {
   text-shadow: white 0 0 10px;
 }
 
-#black-timer-age, #black-timer-clock, #black-timeup {
+#black-timer-clock, #black-timeup {
   text-shadow: black 0 0 10px;
 }
 
-#white-timer-labels {
+.blackText {
   text-shadow: white 0 0 10px;
 }
 
-#black-timer-labels {
+.whiteText {
   text-shadow: black 0 0 10px;
 }
 

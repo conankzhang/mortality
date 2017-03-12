@@ -6,7 +6,7 @@ function openNav()
   document.getElementById("theSidePanel").style.width = "50vw";
   document.getElementById("main").style.marginLeft = "50vw";
 
-  $('.timer-container').animate({
+  $('.timerContainer').animate({
     'left':'75%'
   },400);
 
@@ -25,7 +25,7 @@ function openNav()
     $('.timeup').animate({
       'font-size':'4.5vw'
     },300);
-    $('.timer-labels').animate({
+    $('.timer-label').animate({
       'font-size':'1.2vw'
     },300);
   }
@@ -40,14 +40,11 @@ function openNav()
     $('.timeup').animate({
       'font-size':'4vw'
     },300);
-    $('.timer-labels').animate({
+    $('.timer-label').animate({
       'font-size':'1.1vw'
     },300);
   }
 
-  $('.timer-labels').animate({
-    'margin-left':'-0.5vw'
-  },500);
   updateProgressIntervalsAndSize(newWidth);
   updateProgressUnit();
 }
@@ -62,7 +59,7 @@ function closeNav()
     document.getElementById("theSidePanel").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
 
-    $('.timer-container').animate({
+    $('.timerContainer').animate({
       'left':'50%'
     },400);
 
@@ -79,7 +76,7 @@ function closeNav()
       $('.timeup').animate({
         'font-size':'7vw'
       },300);
-      $('.timer-labels').animate({
+      $('.timer-label').animate({
         'font-size':'1.6vw'
       },300);
     }
@@ -92,14 +89,11 @@ function closeNav()
       $('.timeup').animate({
         'font-size':'6vw'
       },300);
-      $('.timer-labels').animate({
+      $('.timer-label').animate({
         'font-size':'1.5vw'
       },300);
     }
 
-    $('.timer-labels').animate({
-      'margin-left':'-1vw'
-    },500);
     updateProgressIntervalsAndSize(newWidth);
     updateProgressUnit();
     window.app.versionCheck();
@@ -1353,17 +1347,16 @@ function updateTimer()
     $('.timer').css('font-size','4.5vw');
     $('.clock').css('font-size','5.5vw');
     $('.timeup').css('font-size','5.5vw');
-    $('.timer-labels').css('font-size','1.2vw');
+    $('.timer-label').css('font-size','1.2vw');
   }
   else {
     $('#timerTitle').css('font-size','3vw');
     $('.timer').css('font-size','4vw');
     $('.clock').css('font-size','5vw');
     $('.timeup').css('font-size','5vw');
-    $('.timer-labels').css('font-size','1.1vw');
+    $('.timer-label').css('font-size','1.1vw');
   }
 
-  $('.timer-container').css('left','75%');
+  $('.timerContainer').css('left','75%');
   $('#timerTitle').css('left','75vw');
-  $('.timer-labels').css('margin-left','-0.5vw');
 }
