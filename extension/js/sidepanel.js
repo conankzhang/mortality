@@ -250,10 +250,6 @@ function setButtonPressed(button)
       themeSelectDropdown.val("default");
     }
 
-    [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
-      new SelectFx(el);
-    } );
-
     var selectTheme = $( "#themeSelectContainer > div" );
     var selectThemeValue = $( "#themeSelectContainer > div > span" );
     var currentSelectTheme = $("#themeSelectContainer option[value='" + theme + "']").text();
