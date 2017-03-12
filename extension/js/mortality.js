@@ -125,7 +125,7 @@
       var duration, startMoment, endMoment;
       var currentMoment = moment();
       var birthMoment = moment(this.dob);
-
+      birthMoment.add(parseInt(this.dobMinutes),"minutes");
       var interval = minuteMS;
       var savedPrecision = localStorage.getItem("timerPrecision");
       if( savedPrecision == "sec" )
@@ -363,7 +363,7 @@
       }
       else
       {
-        duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+        duration  = currentMoment - birthMoment;
         startMoment = birthMoment;
         endMoment = currentMoment;
       }
@@ -614,6 +614,7 @@
     var currentMoment = moment();
     var deadlineMoment = this.deadlineMoment;
     var birthMoment = moment(this.dob);
+    birthMoment.add(parseInt(this.dobMinutes),"minutes");
     if( localStorage.timerSetting == "left" )
     {
       duration = deadlineMoment - currentMoment;
@@ -627,7 +628,7 @@
     }
     else
     {
-      duration  = currentMoment - birthMoment - (parseInt(this.dobMinutes)*minuteMS);
+      duration  = currentMoment - birthMoment;
       startMoment = birthMoment;
       endMoment = currentMoment;
     }
