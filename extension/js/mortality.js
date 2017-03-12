@@ -331,10 +331,10 @@
           }
           else
           {
-            var hours = Math.floor(timeInput/60);
-            var minutes = timeInput % 60;
-            deadlineMoment.hour(hours);
-            deadlineMoment.minute(minutes);
+            var deadlineHours = Math.floor(timeInput/60);
+            var deadlineMinutes = timeInput % 60;
+            deadlineMoment.hour(deadlineHours);
+            deadlineMoment.minute(deadlineMinutes);
             deadlineMoment.second(0);
             if( timeInput == 0 )
             {
