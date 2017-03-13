@@ -618,6 +618,9 @@
     birthMoment.add(parseInt(this.dobMinutes),"minutes");
     if( localStorage.timerSetting == "left" )
     {
+      if( typeof deadlineMoment == 'undefined' ) {
+        return;
+      }
       duration = deadlineMoment - currentMoment;
       if( duration <= 0 )
       {
