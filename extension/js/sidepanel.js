@@ -750,7 +750,11 @@ function loadDropdowns()
   var largestPrecision = localStorage.getItem("largestPrecision");
   largestPrecisionDropdown = $('#largestPrecisionDropdown');
   if( largestPrecision != null ) {
-    largestPrecisionDropdown.val(largestPrecision);
+    var exists = 0 != $('#largestPrecisionDropdown option[value='+localStorage.largestPrecision+']').length;
+    if( exists )
+    {
+      $("#largestPrecisionDropdown").val(localStorage.largestPrecision);
+    }
   }
   else {
     largestPrecision = "year";
@@ -794,7 +798,10 @@ function loadDropdowns()
   selectLargestTimer = $( "#largestPrecisionContainer > div" );
   selectLargestTimerValue = $( "#largestPrecisionContainer > div > span" );
   currentLargestTimerValue = $("#largestPrecisionDropdown option[value='" + largestPrecision + "']").text();
-  selectLargestTimerValue.text(currentLargestTimerValue);
+  var exists = 0 != $('#largestPrecisionDropdown option[value='+localStorage.largestPrecision+']').length;
+  if( exists ) {
+    selectLargestTimerValue.text(currentLargestTimerValue);
+  }
   selectLargestTimer.click(function() {
     localStorage.largestPrecision = largestPrecisionDropdown.val();
     updateTimer();
