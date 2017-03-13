@@ -415,7 +415,7 @@ function loadSegmentedControls()
       $("#peopleTimerContainer").hide();
       $("#clockTimerContainer").hide();
       $("#precisionContainer").show();
-      $("#precisionLabel").text("Timer Precision");
+      $("#precisionLabel").text("Smallest Precision");
       swapPrecisionSelect("timer");
       localStorage.timerSetting = "spent";
       updateTimer();
@@ -430,7 +430,7 @@ function loadSegmentedControls()
       $("#peopleTimerContainer").hide();
       $("#clockTimerContainer").hide();
       $("#precisionContainer").show();
-      $("#precisionLabel").text("Timer Precision");
+      $("#precisionLabel").text("Smallest Precision");
       swapPrecisionSelect("timer");
       localStorage.timerSetting = "left";
       updateTimer();
@@ -482,7 +482,7 @@ function loadSegmentedControls()
       $("#spentTimerContainer").fadeOut(1);
       $("#leftTimerContainer").fadeIn(1);
       $("#precisionContainer").show();
-      $("#precisionLabel").text("Timer Precision");
+      $("#precisionLabel").text("Smallest Precision");
       swapPrecisionSelect("timer");
   }
   else if( localStorage.getItem("timerSetting") == "clock" || localStorage.getItem("timerSetting") == "population" || localStorage.getItem("timerSetting") == "hide" ) {
