@@ -737,7 +737,17 @@ function loadDropdowns()
     localStorage.timerPrecision = "ms";
   }
 
-  largestPrecision = localStorage.getItem("largestPrecision");
+  var precisionDictionary = {"year":1,"month":2,"day":3,"hour":4,"min":5,"sec":6,"ms":7,"decimal":8};
+  var precisionTextDictionary = {"year":"Years","month":"Months","day":"Days","hour":"Hours","min":"Minutes","sec":"Seconds"};
+  var smallestPrecision = localStorage.timerPrecision;
+  var largestPrecisionDropdownOptions = $('#largestPrecisionDropdown > option');
+  largestPrecisionDropdownOptions.each(function() {
+    if ( precisionDictionary[$(this).val()] > precisionDictionary[smallestPrecision]) {
+      $(this).remove();
+    }
+  });
+
+  var largestPrecision = localStorage.getItem("largestPrecision");
   largestPrecisionDropdown = $('#largestPrecisionDropdown');
   if( largestPrecision != null ) {
     largestPrecisionDropdown.val(largestPrecision);
@@ -796,6 +806,38 @@ function loadDropdowns()
   selectTimerValue.text(currentTimerValue);
   selectTimer.click(function() {
     localStorage.timerPrecision = timerPrecisionDropdown.val();
+
+    var output = ['<select id="largestPrecisionDropdown" class="cs-select cs-skin-elastic">'];
+    var selectOutput = [];
+    $.each(precisionTextDictionary, function(key, value)
+    {
+      var smallPrecision = localStorage.timerPrecision;
+      if ( precisionDictionary[key] <= precisionDictionary[smallPrecision]) {
+        output.push('<option value="'+ key +'">'+ value +'</option>');
+        selectOutput.push('<li data-option="" data-value="'+key+'"><span>'+value+'</span></li>');
+      }
+    });
+    output.push('</select>');
+    $('#largestPrecisionContainer > .cs-select').replaceWith(output.join(''));
+
+    var exists = 0 != $('#largestPrecisionDropdown option[value='+localStorage.largestPrecision+']').length;
+    if( exists )
+    {
+      $("#largestPrecisionDropdown").val(localStorage.largestPrecision);
+    }
+    new SelectFx(document.querySelector("#largestPrecisionDropdown"));
+
+    selectLargestTimer = $( "#largestPrecisionContainer > div" );
+    selectLargestTimerValue = $( "#largestPrecisionContainer > div > span" );
+    currentLargestTimerValue = $("#largestPrecisionDropdown option[value='" + localStorage.largestPrecision + "']").text();
+    if( exists )
+    {
+      selectLargestTimerValue.text(currentLargestTimerValue);
+    }
+    selectLargestTimer.click(function() {
+      localStorage.largestPrecision = $("#largestPrecisionDropdown").val();
+      updateTimer();
+    });
     updateTimer();
   });
 
