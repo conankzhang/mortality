@@ -16,7 +16,7 @@
 
   App.fn.versionCheck = function()
   {
-    if(localStorage.getItem("version") != "5.0.6") {
+    if(localStorage.getItem("version") != "5.1.0") {
       document.getElementById("updateBadge").style.display = "block";
       if( localStorage.hideUpdates != "YES" )
       {
