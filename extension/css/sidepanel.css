@@ -212,6 +212,9 @@
 
 .PressedButton span {
     color: #0091EA;
+    position: absolute;
+    top: 4px;
+    left: 0px;
 }
 
 .PressedButton:hover path {
@@ -223,9 +226,15 @@
 }
 
 
+.PressedButton {
+    position: relative;
+    top: -7px;
+}
+
 .navBar li span {
+    top: 21px;
     line-height: 55px;
-    margin-left: 1px;
+    width: 60px;
 }
 
 
