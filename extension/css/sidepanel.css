@@ -102,52 +102,6 @@
     content: '';
 }
 
-@media(max-width:1220px) {
-
-#aboutButton.PressedButton span:after {
-    content: '';
-}
-
-#updatesButton.PressedButton span:after {
-    content: '';
-}
-
-#themeButton.PressedButton span:after {
-    content: '';
-}
-
-#donateButton.PressedButton span:after {
-    content: '';
-}
-
-#settingsButton.PressedButton span:after {
-    content: '';
-}
-
-#aboutButton:hover span:after {
-    content: '';
-}
-
-#updatesButton:hover span:after {
-    content: '';
-}
-
-#themeButton:hover span:after {
-    content: '';
-}
-
-#donateButton:hover span:after {
-    content: '';
-}
-
-#settingsButton:hover span:after {
-    content: '';
-}
-
-}
-
-@media(min-width:1221px) {
-
 #aboutButton.PressedButton span:after {
     content: 'About';
 }
@@ -186,8 +140,6 @@
 
 #settingsButton:hover span:after {
     content: 'Settings';
-}
-
 }
 
 .UnpressedButton:hover {
