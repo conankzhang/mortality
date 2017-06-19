@@ -7,7 +7,6 @@
     
     2. 
     
-    3. 
     
     ##### Expected Results
     [what it should do]
