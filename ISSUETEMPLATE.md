@@ -18,5 +18,3 @@
     ----
     
     ###### Testing Notes
-    
-    ###### Developer Notes
