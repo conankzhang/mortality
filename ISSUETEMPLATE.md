@@ -20,7 +20,3 @@
     ###### Testing Notes
     
     ###### Developer Notes
-    
-    ###### Build
-    
-    ###### Mac OS
