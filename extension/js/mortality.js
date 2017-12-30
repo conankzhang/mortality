@@ -422,6 +422,7 @@
         }
 
         var months = endMoment.diff(startMoment, 'months');
+        var monthIndexOffset = months;
         if( months < 0 ) months = 0;
         if( largestPrecision == "month" )
         {
@@ -437,7 +438,6 @@
 
         if( months > 0 )
         {
-          var monthIndexOffset = months;
           for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
           {
             var currentIndexMonthDays = startMoment.daysInMonth();
@@ -691,6 +691,7 @@
       }
 
       var months = endMoment.diff(startMoment, 'months');
+      var monthIndexOffset = months;
       if( months < 0 ) months = 0;
       if( largestPrecision == "month" )
       {
@@ -705,7 +706,6 @@
 
       if( months > 0 )
       {
-        var monthIndexOffset = months;
         for( indexOffset = 0; indexOffset != monthIndexOffset; indexOffset++ )
         {
           var currentIndexMonthDays = startMoment.daysInMonth();
