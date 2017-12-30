@@ -540,6 +540,19 @@
     }
     var chapterPrecision = localStorage.chapterPrecision;
     var numberMonths = endMoment.diff(startMoment, chapterPrecision)+1;
+    if( chapterPrecision == "weeks" )
+    {
+      var numberDays = endMoment.diff(startMoment, "days");
+      var numberYears = endMoment.diff(startMoment, "years");
+      var leapDays = Math.floor(numberYears / 4);
+      var weekOffset = numberYears + leapDays; //there is 52 weeks + 1 day in each year
+      var numberDaysOffset = numberDays - weekOffset;
+      numberMonths = (numberDaysOffset/7);
+      if( numberDaysOffset%7 == 0 )
+      {
+        numberMonths+=1;
+      }
+    }
 
     for (var chapter = 0; chapter < chaptersArray.length; chapter++) {
       var startMonth = chaptersArray[chapter][0] + 1;
@@ -1176,10 +1189,22 @@ function updateProgressUnit()
   var startMoment = moment(getDOB());
 
   var chapterPrecision = localStorage.chapterPrecision;
-  var differenceInUnit = endMoment.diff(startMoment, chapterPrecision);
-  startMoment.add(differenceInUnit, chapterPrecision);
+  var differenceInDays;
 
-  var differenceInDays = endMoment.diff(startMoment, "days");
+  if( chapterPrecision == "weeks" )
+  {
+    differenceInDays = endMoment.diff(startMoment, "days");
+    var numberYears = endMoment.diff(startMoment, "years");
+    var leapDays = Math.floor(numberYears / 4);
+    var weekOffset = numberYears + leapDays; //there is 52 weeks + 1 day in each year
+    differenceInDays = (differenceInDays - weekOffset)%7;
+  }
+  else
+  {
+    var differenceInUnit = endMoment.diff(startMoment, chapterPrecision);
+    startMoment.add(differenceInUnit, chapterPrecision);
+    differenceInDays = endMoment.diff(startMoment, "days");
+  }
 
   var denominator = 365;
   if( chapterPrecision == "months" )
@@ -1191,11 +1216,7 @@ function updateProgressUnit()
     denominator = 7;
   }
 
-  var theta = 360 - ((differenceInDays/denominator)*360);
-  if( theta == 360 )
-  {
-    theta = 359;
-  }
+  var theta = -(differenceInDays/denominator)*360;
 
   var progressUnit = $('#progressUnit');
   if( progressUnit )
@@ -1222,11 +1243,12 @@ function updateProgressUnit()
       progressBackground.setAttribute("cy", radius);
       progressBackground.setAttribute("r", radius);
 
-      theta += 0.5;
       theta %= 360;
       var x = Math.sin(theta * Math.PI / 180) * radius;
       var y = Math.cos(theta * Math.PI / 180) * -radius;
-      var d = 'M0,0 v' + -radius + ' A' + radius + ',' + radius + ' 1 ' + ((theta > 180) ? 0 : 1) + ',0 ' + x + ',' + y + 'z';
+      console.log(x);
+      console.log(y);
+      var d = 'M0,0 v' + -radius + ' A' + radius + ',' + radius + ' 1 ' + ((theta < -180) ? 1 : 0) + ',0 ' + x + ',' + y + 'z';
       progressForeground.setAttribute('d', d);
       progressForeground.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
     }
