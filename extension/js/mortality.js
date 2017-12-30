@@ -1191,7 +1191,11 @@ function updateProgressUnit()
     denominator = 7;
   }
 
-  var theta = (differenceInDays/denominator)*360;
+  var theta = 360 - ((differenceInDays/denominator)*360);
+  if( theta == 360 )
+  {
+    theta = 359;
+  }
 
   var progressUnit = $('#progressUnit');
   if( progressUnit )
@@ -1222,7 +1226,7 @@ function updateProgressUnit()
       theta %= 360;
       var x = Math.sin(theta * Math.PI / 180) * radius;
       var y = Math.cos(theta * Math.PI / 180) * -radius;
-      var d = 'M0,0 v' + -radius + 'A' + radius + ',' + radius + ' 1 ' + ((theta > 180) ? 1 : 0) + ',1 ' + x + ',' + y + 'z';
+      var d = 'M0,0 v' + -radius + ' A' + radius + ',' + radius + ' 1 ' + ((theta > 180) ? 0 : 1) + ',0 ' + x + ',' + y + 'z';
       progressForeground.setAttribute('d', d);
       progressForeground.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
     }
