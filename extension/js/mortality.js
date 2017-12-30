@@ -1080,6 +1080,7 @@
 
 function updateProgressIntervalsAndSize(newWidth)
 {
+  var rowIsYear = localStorage.rowIsYear == "YES";
   var width = $(window).width();
   if( $('#main').data('sidePanelOpened') ) {
     width *= 0.50;
@@ -1113,11 +1114,26 @@ function updateProgressIntervalsAndSize(newWidth)
   else {
     totalProgressUnits *= 12;
     margin = 2.0;
+    if( rowIsYear )
+    {
+      margin = 0.5;
+    }
   }
+
   $('.circle').css('margin','{0}px'.format(margin));
   $('.pie').css('margin','{0}px'.format(margin));
 
   var partsX = Math.ceil(Math.sqrt(totalProgressUnits*width/height));
+  if( rowIsYear )
+  {
+    if( chapterPrecision == "weeks" ) {
+      partsX = 52;
+    }
+    else if( chapterPrecision == "months" ) {
+      partsX = 12;
+    }
+  }
+
   var sideX, sideY;
   if( Math.floor(partsX*height/width)*partsX < totalProgressUnits ) {
     sideX = height/Math.ceil(partsX*height/width);
@@ -1126,6 +1142,10 @@ function updateProgressIntervalsAndSize(newWidth)
     sideX = width/partsX;
   }
   var partsY = Math.ceil(Math.sqrt(totalProgressUnits*height/width));
+  if( rowIsYear )
+  {
+    partsY = Math.ceil(totalProgressUnits/partsX);
+  }
   if( Math.floor(partsY*width/height)*partsY < totalProgressUnits ) {
     sideY = width/Math.ceil(width*partsY/height);
   }
@@ -1133,6 +1153,10 @@ function updateProgressIntervalsAndSize(newWidth)
     sideY = height/partsY;
   }
   var allocatedUnitSide = Math.max(sideX, sideY);
+  if( rowIsYear )
+  {
+    allocatedUnitSide = Math.min(sideX, sideY);
+  }
   var widthMain = allocatedUnitSide * partsX;
   $('#circles').width(widthMain);
   allocatedUnitSide -= (margin*2);

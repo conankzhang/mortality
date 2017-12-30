@@ -1000,6 +1000,14 @@ input:disabled {
 #chapterSettingsContainer {
     display: none;
 }
+
+#rowIsYearContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 188px;
+}
+
+
 /*
 ===== Chapter Length Settings =====
 */

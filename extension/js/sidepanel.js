@@ -514,6 +514,7 @@ function loadSegmentedControls()
   chapterPrecisionSegmentedControl1.change( function () {
     if( $(this).is(":checked") ) {
       localStorage.setItem("chapterPrecision", "weeks");
+      document.getElementById("rowIsYearContainer").style.display = "block";
       updateProgressBecauseSettingsChanged()
     }
   });
@@ -521,6 +522,7 @@ function loadSegmentedControls()
   chapterPrecisionSegmentedControl2.change( function () {
     if( $(this).is(":checked") ) {
       localStorage.setItem("chapterPrecision", "months");
+      document.getElementById("rowIsYearContainer").style.display = "block";
       updateProgressBecauseSettingsChanged()
     }
   });
@@ -528,6 +530,7 @@ function loadSegmentedControls()
   chapterPrecisionSegmentedControl3.change( function () {
     if( $(this).is(":checked") ) {
       localStorage.setItem("chapterPrecision", "years");
+      document.getElementById("rowIsYearContainer").style.display = "none";
       updateProgressBecauseSettingsChanged()
     }
   });
@@ -541,6 +544,7 @@ function loadSegmentedControls()
   }
   else if( localStorage.getItem("chapterPrecision") == "years" ) {
       $('#chapterPrecisionSegmentedControl > input:nth-child(3)').prop('checked', true);
+      document.getElementById("rowIsYearContainer").style.display = "none";
   }
 
   var chapterLengthSegmentedControl1 = $("#chapterLengthSegmentedControl > input:nth-child(1)");
@@ -726,6 +730,16 @@ function loadCheckBoxes()
 
   hideUpdatesCheckbox.addEventListener('change', function () {
     localStorage.hideUpdates = hideUpdatesCheckbox.checked?"YES":"NO";
+  });
+
+  var rowIsYearCheckbox = document.querySelector('input[id=rowIsYearCheckbox]');
+  if (localStorage.getItem("rowIsYear") == "YES") {
+    rowIsYearCheckbox.checked = true;
+  }
+
+  rowIsYearCheckbox.addEventListener('change', function () {
+    localStorage.setItem("rowIsYear", rowIsYearCheckbox.checked?"YES":"NO");
+    updateProgressBecauseSettingsChanged();
   });
 }
 
