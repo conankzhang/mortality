@@ -697,6 +697,16 @@ function loadCheckBoxes()
     }
   });
 
+  var noMarginsCheckbox = document.querySelector('input[id=noMarginsCheckbox]');
+  if (localStorage.getItem("noChapterMargins") == "YES") {
+    noMarginsCheckbox.checked = true;
+  }
+
+  noMarginsCheckbox.addEventListener('change', function () {
+    localStorage.setItem("noChapterMargins", noMarginsCheckbox.checked?"YES":"NO");
+    updateProgressBecauseSettingsChanged();
+  });
+
   var twentyFourCheckbox = document.querySelector('input[id=twentyFourCheckbox]');
   if (localStorage.twentyFour == "YES") {
     twentyFourCheckbox.checked = true;

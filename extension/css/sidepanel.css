@@ -1001,12 +1001,17 @@ input:disabled {
     display: none;
 }
 
+#noMarginsContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 230px;
+}
+
 #rowIsYearContainer {
     margin: 0 auto;
     margin-top: 15px;
     width: 188px;
 }
-
 
 /*
 ===== Chapter Length Settings =====
