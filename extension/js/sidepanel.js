@@ -55,7 +55,6 @@ function closeNav()
   {
     updateTimer();
 
-    var newWidth = $(window).width() - 40;
     document.getElementById("theSidePanel").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
 
@@ -94,6 +93,11 @@ function closeNav()
       },300);
     }
 
+    var newWidth = $(window).width();
+    if( localStorage.fullscreen != "YES" )
+    {
+      newWidth -= 40;
+    }
     updateProgressIntervalsAndSize(newWidth);
     updateProgressUnit();
     window.app.versionCheck();

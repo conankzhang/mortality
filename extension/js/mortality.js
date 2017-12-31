@@ -1132,6 +1132,10 @@ function updateProgressIntervalsAndSize(newWidth)
       margin = 0.5;
     }
   }
+  if( localStorage.noChapterMargins == "YES" )
+  {
+    margin = 0;
+  }
 
   $('.circle').css('margin','{0}px'.format(margin));
   $('.pie').css('margin','{0}px'.format(margin));
@@ -1170,9 +1174,18 @@ function updateProgressIntervalsAndSize(newWidth)
   {
     allocatedUnitSide = Math.min(sideX, sideY);
   }
+
+  allocatedUnitSide = Math.round(allocatedUnitSide);
+
   var widthMain = allocatedUnitSide * partsX;
-  $('#circles').width(widthMain);
+  if( chapterPrecision == "years" )
+  {
+    allocatedUnitSide -= 1;
+    widthMain = allocatedUnitSide*partsX;
+  }
+
   allocatedUnitSide -= (margin*2);
+  $('#circles').width(widthMain);
 
   $('.circle').css('width','{0}px'.format(allocatedUnitSide));
   $('.circle').css('height','{0}px'.format(allocatedUnitSide));
@@ -1183,6 +1196,7 @@ function updateProgressIntervalsAndSize(newWidth)
 function updateProgressUnit()
 {
   var radius = $(".pie").width()/2;
+  var height = $(".pie").height();
 
   var endMoment = moment();
   var currentDate = endMoment.date();
@@ -1228,10 +1242,10 @@ function updateProgressUnit()
       progressBackground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
       progressForeground = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
-      progressBackground.setAttribute("height", (2 * radius));
+      progressBackground.setAttribute("height", height);
       progressBackground.setAttribute("width", (2 * radius));
-      var fraction = theta/360;
-      progressForeground.setAttribute("height", (2*radius));
+      var fraction = -theta/360;
+      progressForeground.setAttribute("height", height);
       progressForeground.setAttribute("width", (fraction*(2*radius)));
     }
     else
