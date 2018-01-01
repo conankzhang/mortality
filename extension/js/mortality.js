@@ -1260,8 +1260,6 @@ function updateProgressUnit()
       theta %= 360;
       var x = Math.sin(theta * Math.PI / 180) * radius;
       var y = Math.cos(theta * Math.PI / 180) * -radius;
-      console.log(x);
-      console.log(y);
       var d = 'M0,0 v' + -radius + ' A' + radius + ',' + radius + ' 1 ' + ((theta < -180) ? 1 : 0) + ',0 ' + x + ',' + y + 'z';
       progressForeground.setAttribute('d', d);
       progressForeground.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
