@@ -922,27 +922,27 @@
     if( localStorage.youngerOption == "YES" )
     {
       var populationYounger = 0;
-      populationYounger += Math.round(getBirthRateDictionary()[yearBorn] * percentageBirthYearPassed);
+      populationYounger += Math.round(getBirthRateValue(yearBorn) * percentageBirthYearPassed);
       yearBorn++;
 
       while( yearBorn < currentYear ) {
-        populationYounger += getBirthRateDictionary()[yearBorn];
+        populationYounger += getBirthRateValue(yearBorn);
         yearBorn++;
       }
 
-      populationYounger += Math.round(getBirthRateDictionary()[currentYear] * percentageYearPassed);
+      populationYounger += Math.round(getBirthRateValue(currentYear) * percentageYearPassed);
       populationYounger = Math.ceil(populationYounger/precision)*precision;
 
       populationString = numberWithCommas(populationYounger);
     }
     else
     {
-      var differenceToFirstYear = getPopulationDictionary()[yearBorn+1] - getPopulationDictionary()[yearBorn];
-      var populationOlder = getPopulationDictionary()[yearBorn] + (differenceToFirstYear*percentageBirthYearPassed);
+      var differenceToFirstYear = getPopulationValue(yearBorn+1) - getPopulationValue(yearBorn);
+      var populationOlder = getPopulationValue(yearBorn) + (differenceToFirstYear*percentageBirthYearPassed);
       var deaths = 0;
       while( yearBorn < currentYear ) {
-        var yearPopulationDifference = getPopulationDictionary()[yearBorn+1] - getPopulationDictionary()[yearBorn];
-        deaths = getBirthRateDictionary()[yearBorn] - yearPopulationDifference;
+        var yearPopulationDifference = getPopulationValue(yearBorn+1) - getPopulationValue(yearBorn);
+        deaths = getBirthRateValue(yearBorn) - yearPopulationDifference;
         populationOlder -= deaths;
         yearBorn++;
       }

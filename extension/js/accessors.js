@@ -203,9 +203,9 @@ function getColorTheme()
   }
 }
 
-function getPopulationDictionary()
+function getPopulationValue(forYearString)
 {
-  return {
+  var populationDictionary = {
     "1950":2525149000,
     "1951":2571868000,
     "1952":2617940000,
@@ -273,13 +273,26 @@ function getPopulationDictionary()
     "2014":7265786000,
     "2015":7349472000,
     "2016":7404976783,
-    "2017":7515280000
+    "2017":7515280000,
+    "2018":7632819325
+
+  };
+
+  if( !(forYearString in populationDictionary) ) {
+    forYearInt = Number(forYearString);
+    while( !(forYearInt.toString() in populationDictionary ) ) {
+      forYearInt-=1;
+    }
+    forYearString = forYearInt.toString();
   }
+  return populationDictionary[forYearString];
 }
 
-function getBirthRateDictionary()
+//https://esa.un.org/unpd/wpp/DataQuery/
+
+function getBirthRateValue(forYearString)
 {
-  return {
+  var birthRateDictionary = {
     "1950":97473000,
     "1951":97473000,
     "1952":97473000,
@@ -347,6 +360,18 @@ function getBirthRateDictionary()
     "2014":139843000,
     "2015":140625000,
     "2016":140625000,
-    "2017":140625000
+    "2017":140625000,
+    "2018":141970439
+  };
+
+  if( !(forYearString in birthRateDictionary) ) {
+    forYearInt = Number(forYearString);
+    while( !(forYearInt.toString() in birthRateDictionary ) ) {
+      forYearInt-=1;
+    }
+    forYearString = forYearInt.toString();
   }
+  return birthRateDictionary[forYearString];
 }
+
+//Crude birth rate, take population, divide by 1000, then multiply by the value
