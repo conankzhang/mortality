@@ -314,6 +314,7 @@
           }
 
           this.deathDate.setDate(this.deathDate.getDate() + Math.round(yearOffset*365));
+          $("#deathDateString").html(this.deathDate.dateWithDay());
         }
 
         var deadlineMoment = moment(this.deathDate);

@@ -1355,6 +1355,7 @@ function loadDOB()
 
 function loadDOD()
 {
+  updateTimer();
   var dodDate = getDOD();
   var dodDateInput = $("#dodInput");
   dodDateInput.val(dodDate.yyyymmdd());
