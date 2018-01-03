@@ -520,6 +520,7 @@ function loadSegmentedControls()
         $("#heightDropdownContainer").fadeIn(1);
         localStorage.surveyUnitsMetric = "NO";
         loadSurveyImperial();
+        updateTimer();
       });
     }
   });
@@ -533,6 +534,7 @@ function loadSegmentedControls()
         $("#heightMetricContainer").fadeIn(1);
         localStorage.surveyUnitsMetric = "YES";
         loadSurveyMetric();
+        updateTimer();
       });
     }
   });

@@ -272,6 +272,11 @@
           surveyHeightInches += surveyHeightFeet*12;
           var surveyWeightKG = surveyWeight*0.45;
           var surveyHeightCMSquared = (surveyHeightInches*0.025)*(surveyHeightInches*0.025);
+          if( localStorage.surveyUnitsMetric == "YES") {
+            surveyWeightKG = localStorage.surveyWeightKG;
+            var surveyHeightMeters = Number(localStorage.surveyHeightMeters)+(localStorage.surveyHeightCM/100);
+            surveyHeightCMSquared = surveyHeightMeters*surveyHeightMeters;
+          }
           var BMI = surveyWeightKG/surveyHeightCMSquared;
           if( BMI < 18.5 )
           {
