@@ -513,8 +513,11 @@ function loadSegmentedControls()
 
   surveyUnitsSegmentedControl1.change( function () {
     if( surveyUnitsSegmentedControl1.is(":checked") ) {
-      $("#chapterLengthsFixedContainer").fadeOut(1, function() {
-        $("#chapterLengthsSpecifyContainer").fadeIn(1);
+      $("#metricWeightContainer").fadeOut(1, function() {
+        $("#imperialWeightContainer").fadeIn(1);
+      });
+      $("#heightMetricContainer").fadeOut(1, function() {
+        $("#heightDropdownContainer").fadeIn(1);
         localStorage.surveyUnitsMetric = "NO";
       });
     }
@@ -522,17 +525,23 @@ function loadSegmentedControls()
 
   surveyUnitsSegmentedControl2.change( function () {
     if( surveyUnitsSegmentedControl2.is(":checked") ) {
-      // $("#chapterLengthsSpecifyContainer").fadeOut(1);
-      // $("#chapterLengthsFixedContainer").fadeIn(1);
-      localStorage.surveyUnitsMetric = "YES";
+      $("#imperialWeightContainer").fadeOut(1, function() {
+        $("#metricWeightContainer").fadeIn(1);
+      });
+      $("#heightDropdownContainer").fadeOut(1, function() {
+        $("#heightMetricContainer").fadeIn(1);
+        localStorage.surveyUnitsMetric = "YES";
+      });
     }
   });
 
   if( localStorage.surveyUnitsMetric == "YES" )
   {
-    $('#chapterLengthSegmentedControl > input:nth-child(2)').prop('checked', true);
-    // $("#chapterLengthsSpecifyContainer").fadeOut(1);
-    // $("#chapterLengthsFixedContainer").fadeIn(1);
+    $('#surveyUnitsSegmentedControl > input:nth-child(2)').prop('checked', true);
+    $("#imperialWeightContainer").fadeOut(1);
+    $("#metricWeightContainer").fadeIn(1);
+    $("#heightDropdownContainer").fadeOut(1);
+    $("#heightMetricContainer").fadeIn(1);
   }
 
   var chapterPrecisionSegmentedControl1 = $("#chapterPrecisionSegmentedControl > input:nth-child(1)");
@@ -594,10 +603,11 @@ function loadSegmentedControls()
 
   chapterLengthSegmentedControl2.change( function () {
     if( chapterLengthSegmentedControl2.is(":checked") ) {
-      $("#chapterLengthsSpecifyContainer").fadeOut(1);
-      $("#chapterLengthsFixedContainer").fadeIn(1);
-      localStorage.setItem("fixedChapters", "YES");
-      updateProgressBecauseSettingsChanged();
+      $("#chapterLengthsSpecifyContainer").fadeOut(1, function() {
+        $("#chapterLengthsFixedContainer").fadeIn(1);
+        localStorage.setItem("fixedChapters", "NO");
+        updateProgressBecauseSettingsChanged();
+      });
     }
   });
 

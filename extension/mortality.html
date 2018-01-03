@@ -655,8 +655,14 @@
           </div>
 
           <div class="surveyQuestionContainer">
-            <label for="weightTextfield" class="surveyQuestionLabel">How much do you weigh?</label>
-            <input type="number" id="weightTextfield" min="0" max="500">
+            <div id="imperialWeightContainer">
+              <label for="weightTextfield" class="surveyQuestionLabel">How much do you weigh? <b>(lbs)</b></label>
+              <input type="number" id="weightTextfield" min="0" max="500">
+            </div>
+            <div id="metricWeightContainer">
+              <label for="metricWeightTextfield" class="surveyQuestionLabel">How much do you weigh? <b>(kg)</b></label>
+              <input type="number" id="metricWeightTextfield" min="0" max="500">
+            </div>
           </div>
 
           <div class="surveyQuestionContainer">

@@ -693,6 +693,7 @@ input:disabled {
 
 #heightMetricContainer {
     width: 220px;
+    display: none;
 }
 
 #heightMeters-container {
@@ -743,6 +744,30 @@ input:disabled {
   -webkit-appearance: none;
   margin: 0;
 }
+
+#metricWeightContainer {
+    display:none;
+}
+
+#metricWeightTextfield {
+    float: right;
+    width: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+    -webkit-text-security: disc;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    border: 1px solid #aaa;
+    padding-left:5px;
+}
+
+#metricWeightTextfield::-webkit-outer-spin-button,
+#metricWeightTextfield::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 
 #timeupMessageContainer {
     margin-top: 15px;
@@ -1073,7 +1098,7 @@ input:disabled {
 
 #chapterLengthsSpecifyContainer {
     margin-top: 15px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 #chapterLengthStackView {
