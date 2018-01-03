@@ -3,7 +3,7 @@ function openNav()
 {
   $('#main').data('sidePanelOpened', true);
   var newWidth = $(window).width()*0.50 - 40;
-  document.getElementById("theSidePanel").style.width = "50vw";
+  document.getElementById("theSidePanel").style.left = "0";
   document.getElementById("main").style.marginLeft = "50vw";
 
   $('.timerContainer').animate({
@@ -55,7 +55,7 @@ function closeNav()
   {
     updateTimer();
 
-    document.getElementById("theSidePanel").style.width = "0";
+    document.getElementById("theSidePanel").style.left = "-50vw";
     document.getElementById("main").style.marginLeft = "0";
 
     $('.timerContainer').animate({
