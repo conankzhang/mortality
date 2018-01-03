@@ -919,7 +919,7 @@
     var percentageYearPassed = (today - start) / (end - start);
 
     var populationString;
-    if( localStorage.youngerOption == "YES" )
+    if( localStorage.populationOption == "YOUNGER" )
     {
       var populationYounger = 0;
       populationYounger += Math.round(getBirthRateValue(yearBorn) * percentageBirthYearPassed);
@@ -935,7 +935,7 @@
 
       populationString = numberWithCommas(populationYounger);
     }
-    else
+    else if( localStorage.populationOption == "OLDER" )
     {
       var differenceToFirstYear = getPopulationValue(yearBorn+1) - getPopulationValue(yearBorn);
       var populationOlder = getPopulationValue(yearBorn) + (differenceToFirstYear*percentageBirthYearPassed);
@@ -951,7 +951,14 @@
       populationOlder = Math.ceil(populationOlder/precision)*precision;
       populationString = numberWithCommas(populationOlder);
     }
-
+    else //Total Population
+    {
+      var totalPopulation = getPopulationValue(currentYear);    
+      var changeInCurrentYear = totalPopulation - getPopulationValue(currentYear-1);
+      totalPopulation += Math.round(changeInCurrentYear* percentageYearPassed);
+      totalPopulation = Math.ceil(totalPopulation/precision)*precision;
+      populationString = numberWithCommas(totalPopulation);
+    }
     var savedTheme = localStorage.getItem("colorTheme");
     if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
       var whiteFlag = "YES";

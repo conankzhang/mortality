@@ -585,21 +585,34 @@ function loadRadioButtons()
 {
   var youngerOption = document.querySelector('input[id=youngerOption]');
   var olderOption = document.querySelector('input[id=olderOption]');
-  if (localStorage.getItem("youngerOption") == "YES") {
+  var totalOption = document.querySelector('input[id=totalOption]');
+  if( localStorage.populationOption == "YOUNGER" ) {
     youngerOption.checked = true;
   }
-  else {
+  else if( localStorage.populationOption == "OLDER" ) {
     olderOption.checked = true;
+  }
+  else {
+    totalOption.checked = true;
   }
 
   youngerOption.addEventListener('change', function () {
-    localStorage.setItem("youngerOption", youngerOption.checked?"YES":"NO");
+    if( youngerOption.checked ) {
+      localStorage.populationOption = "YOUNGER";
+    }
   });
 
   olderOption.addEventListener('change', function () {
-    localStorage.setItem("youngerOption", olderOption.checked?"NO":"YES");
+    if( olderOption.checked ) {
+      localStorage.populationOption = "OLDER";
+    }
   });
 
+  totalOption.addEventListener('change', function () {
+    if( totalOption.checked ) {
+      localStorage.populationOption = "TOTAL";
+    }
+  });
 
   var circleOption = document.querySelector('input[id=circleOption]');
   var squareOption = document.querySelector('input[id=squareOption]');
