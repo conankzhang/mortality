@@ -691,6 +691,21 @@ input:disabled {
     border-radius: 5px;
 }
 
+#heightMetricContainer {
+    width: 220px;
+}
+
+#heightMeters-container {
+    display: inline-block;
+    float: right;
+}
+
+#heightCM-container {
+    display: inline-block;
+    float: right;
+    margin-left: 15px;
+}
+
 #heightDropdownContainer {
     width: 220px;
 }
