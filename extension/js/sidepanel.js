@@ -519,6 +519,7 @@ function loadSegmentedControls()
       $("#heightMetricContainer").fadeOut(1, function() {
         $("#heightDropdownContainer").fadeIn(1);
         localStorage.surveyUnitsMetric = "NO";
+        loadSurveyImperial();
       });
     }
   });
@@ -531,6 +532,7 @@ function loadSegmentedControls()
       $("#heightDropdownContainer").fadeOut(1, function() {
         $("#heightMetricContainer").fadeIn(1);
         localStorage.surveyUnitsMetric = "YES";
+        loadSurveyMetric();
       });
     }
   });
@@ -542,6 +544,10 @@ function loadSegmentedControls()
     $("#metricWeightContainer").fadeIn(1);
     $("#heightDropdownContainer").fadeOut(1);
     $("#heightMetricContainer").fadeIn(1);
+    loadSurveyMetric();
+  }
+  else {
+    loadSurveyImperial();
   }
 
   var chapterPrecisionSegmentedControl1 = $("#chapterPrecisionSegmentedControl > input:nth-child(1)");
@@ -958,6 +964,70 @@ function loadDropdowns()
   });
 }
 
+function loadSurveyMetric() {
+  var surveyHeightMeters = localStorage.getItem("surveyHeightMeters");
+  var surveyHeightMetersDropdown = $("#heightMeters-dropdown");
+  if (surveyHeightMeters !== null) {
+    surveyHeightMetersDropdown.val(surveyHeightMeters);
+  }
+  surveyHeightMetersDropdown.change(function() {
+    localStorage.surveyHeightMeters = surveyHeightMetersDropdown.val();
+    updateTimer();
+  });
+
+  var surveyHeightCM = localStorage.getItem("surveyHeightCM");
+  var surveyHeightCMDropdown = $("#heightCM-dropdown");
+  if (surveyHeightCM !== null) {
+    surveyHeightCMDropdown.val(surveyHeightCM);
+  }
+  surveyHeightCMDropdown.change(function() {
+    localStorage.surveyHeightCM = surveyHeightCMDropdown.val();
+    updateTimer();
+  });
+
+  var surveyWeightKG = localStorage.getItem("surveyWeightKG");
+  var surveyWeightKGTextfield = $("#metricWeightTextfield");
+  if( surveyWeightKG !== null ) {
+    surveyWeightKGTextfield.val(surveyWeightKG);
+  }
+  surveyWeightKGTextfield.on('input',function(e){
+    localStorage.surveyWeightKG = surveyWeightKGTextfield.val();
+    updateTimer();
+  });
+}
+
+function loadSurveyImperial() {
+  var surveyHeightFeet = localStorage.getItem("surveyHeightFeet");
+  var surveyHeightFeetDropdown = $("#heightFeet-dropdown");
+  if (surveyHeightFeet !== null) {
+    surveyHeightFeetDropdown.val(surveyHeightFeet);
+  }
+  surveyHeightFeetDropdown.change(function() {
+    localStorage.surveyHeightFeet = surveyHeightFeetDropdown.val();
+    updateTimer();
+  });
+
+  var surveyHeightInches = localStorage.getItem("surveyHeightInches");
+  var surveyHeightInchesDropdown = $("#heightInches-dropdown");
+  if (surveyHeightInches !== null) {
+    surveyHeightInchesDropdown.val(surveyHeightInches);
+  }
+  surveyHeightInchesDropdown.change(function() {
+    localStorage.surveyHeightInches = surveyHeightInchesDropdown.val();
+    updateTimer();
+  });
+
+  var surveyWeight = localStorage.getItem("surveyWeight");
+  var surveyWeightTextfield = $("#weightTextfield");
+  if (surveyWeight !== null) {
+    surveyWeightTextfield.val(surveyWeight);
+  }
+  surveyWeightTextfield.on('input',function(e){
+    localStorage.surveyWeight = surveyWeightTextfield.val();
+    updateTimer();
+  });
+}
+
 function loadSurvey()
 {
   var surveyGender = localStorage.getItem("surveyGender");
@@ -1007,36 +1077,6 @@ function loadSurvey()
   }
   surveyExerciseDropdown.change(function() {
     localStorage.surveyExercise = surveyExerciseDropdown.val();
-    updateTimer();
-  });
-
-  var surveyHeightFeet = localStorage.getItem("surveyHeightFeet");
-  var surveyHeightFeetDropdown = $("#heightFeet-dropdown");
-  if (surveyHeightFeet !== null) {
-    surveyHeightFeetDropdown.val(surveyHeightFeet);
-  }
-  surveyHeightFeetDropdown.change(function() {
-    localStorage.surveyHeightFeet = surveyHeightFeetDropdown.val();
-    updateTimer();
-  });
-
-  var surveyHeightInches = localStorage.getItem("surveyHeightInches");
-  var surveyHeightInchesDropdown = $("#heightInches-dropdown");
-  if (surveyHeightInches !== null) {
-    surveyHeightInchesDropdown.val(surveyHeightInches);
-  }
-  surveyHeightInchesDropdown.change(function() {
-    localStorage.surveyHeightInches = surveyHeightInchesDropdown.val();
-    updateTimer();
-  });
-
-  var surveyWeight = localStorage.getItem("surveyWeight");
-  var surveyWeightTextfield = $("#weightTextfield");
-  if (surveyWeight !== null) {
-    surveyWeightTextfield.val(surveyWeight);
-  }
-  surveyWeightTextfield.on('input',function(e){
-    localStorage.surveyWeight = surveyWeightTextfield.val();
     updateTimer();
   });
 
