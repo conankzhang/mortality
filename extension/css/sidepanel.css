@@ -855,6 +855,12 @@ input:disabled {
     width: 108px;
 }
 
+#decimalPrecisionCheckboxContainer {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 108px;
+}
+
 /*
 ===== Progress Settings =====
 */

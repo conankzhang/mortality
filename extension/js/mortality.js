@@ -4,6 +4,7 @@
   var hourMS = 3600000;
   var minuteMS = 60000;
   var secondMS = 1000;
+  var decimalDigits = 3;
 
   var App = function(appElement)
   {
@@ -380,7 +381,11 @@
       {
         if( savedPrecision == "decimal" )
         {
-          var decimalDigits = 3;
+          if ( localStorage.decimalPrecision == "YES" )
+            decimalDigits = 10;
+          else
+            decimalDigits = 3;
+
           if( largestPrecision == "year" ) {
             var years = endMoment.diff(originalStartMoment, 'years', true);
             years = years.toFixed(decimalDigits);
@@ -416,6 +421,7 @@
         var years = endMoment.diff(startMoment, 'years');
         startMoment.add(years, 'years');
         if( years < 0 ) years = 0;
+        years = years.toFixed(decimalDigits);
         var yearString = zeroFill(years.toString(), 2);
         if (savedPrecision == "year") {
           break;
@@ -656,12 +662,15 @@
     var savedPrecision = localStorage.getItem("timerPrecision");
     var largestPrecision = localStorage.largestPrecision;
     var originalStartMoment = startMoment.clone();
-
     while(true)
     {
       if( savedPrecision == "decimal" )
       {
-        var decimalDigits = 3;
+        if ( localStorage.decimalPrecision == "YES" )
+          decimalDigits = 10;
+        else
+          decimalDigits = 3;
+
         if( largestPrecision == "year" ) {
           var years = endMoment.diff(originalStartMoment, 'years', true);
           years = years.toFixed(decimalDigits);
@@ -698,6 +707,7 @@
       var years = endMoment.diff(startMoment, 'years');
       startMoment.add(years, 'years');
       if( years < 0 ) years = 0;
+      years = years.toFixed(decimalDigits);
       var yearString = zeroFill(years.toString(), 2);
       if (savedPrecision == "year") {
         break;
@@ -803,8 +813,10 @@
     }
     if(yearFlag) {
       year.innerHTML = yearString;
-      this.bubbleNumber(year, 2.1);
-      notBubbled = false;
+      if(notBubbled) {
+        this.bubbleNumber(year, 2.1);
+        notBubbled = false;
+      }
     }
 
     var month = document.getElementById('month-number');
@@ -1309,4 +1321,3 @@ function updateProgressUnit()
 })();
 
 window.onresize();
-

@@ -727,6 +727,16 @@ function loadCheckBoxes()
     updateTimer();
   });
 
+  var decimalPrecisionCheckbox = document.querySelector('input[id=decimalPrecisionCheckbox]');
+  if (localStorage.decimalPrecision == "YES") {
+    decimalPrecisionCheckbox.checked = true;
+  }
+
+  decimalPrecisionCheckbox.addEventListener('change', function () {
+    localStorage.decimalPrecision = decimalPrecisionCheckbox.checked?"YES":"NO";
+    updateTimer();
+  });
+
   var fullscreenCheckbox = document.querySelector('input[id=fullscreenCheckbox]');
   if (localStorage.fullscreen == "YES") {
     fullscreenCheckbox.checked = true;
