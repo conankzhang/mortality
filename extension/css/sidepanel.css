@@ -667,6 +667,12 @@ input:disabled {
     line-height: 22px;
 }
 
+#surveyUnitsSegmentedControl {
+    width: 200px;
+    font-size: 10px;
+    margin-bottom:20px;
+}
+
 .surveyQuestionLabel {
     float: left;
     margin-right:7px;

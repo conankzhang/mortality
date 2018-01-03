@@ -507,6 +507,34 @@ function loadSegmentedControls()
     }
     displayExtraSettingsContainer();
   }
+
+  var surveyUnitsSegmentedControl1 = $("#surveyUnitsSegmentedControl > input:nth-child(1)");
+  var surveyUnitsSegmentedControl2 = $("#surveyUnitsSegmentedControl > input:nth-child(2)");
+
+  surveyUnitsSegmentedControl1.change( function () {
+    if( surveyUnitsSegmentedControl1.is(":checked") ) {
+      $("#chapterLengthsFixedContainer").fadeOut(1, function() {
+        $("#chapterLengthsSpecifyContainer").fadeIn(1);
+        localStorage.surveyUnitsMetric = "NO";
+      });
+    }
+  });
+
+  surveyUnitsSegmentedControl2.change( function () {
+    if( surveyUnitsSegmentedControl2.is(":checked") ) {
+      // $("#chapterLengthsSpecifyContainer").fadeOut(1);
+      // $("#chapterLengthsFixedContainer").fadeIn(1);
+      localStorage.surveyUnitsMetric = "YES";
+    }
+  });
+
+  if( localStorage.surveyUnitsMetric == "YES" )
+  {
+    $('#chapterLengthSegmentedControl > input:nth-child(2)').prop('checked', true);
+    // $("#chapterLengthsSpecifyContainer").fadeOut(1);
+    // $("#chapterLengthsFixedContainer").fadeIn(1);
+  }
+
   var chapterPrecisionSegmentedControl1 = $("#chapterPrecisionSegmentedControl > input:nth-child(1)");
   var chapterPrecisionSegmentedControl2 = $("#chapterPrecisionSegmentedControl > input:nth-child(2)");
   var chapterPrecisionSegmentedControl3 = $("#chapterPrecisionSegmentedControl > input:nth-child(3)");
