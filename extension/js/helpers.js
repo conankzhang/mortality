@@ -5,6 +5,21 @@ Date.prototype.yyyymmdd = function() {
    return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]); // padding
 };
 
+Date.prototype.getDayOfWeek = function() {   
+  return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][this.getDay()];
+};
+
+Date.prototype.getMonthString = function() {
+  return ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"][this.getMonth()];
+};
+
+Date.prototype.dateWithDay = function() {
+   var yyyy = this.getFullYear().toString();
+   var dd  = this.getDate().toString();
+   return this.getDayOfWeek() + ", " + this.getMonthString() + " " + dd + " " + yyyy
+};
+
 Date.prototype.stdTimezoneOffset = function() {
   var jan = new Date(this.getFullYear(), 0, 1);
   var jul = new Date(this.getFullYear(), 6, 1);

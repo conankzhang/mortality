@@ -3,7 +3,7 @@ function openNav()
 {
   $('#main').data('sidePanelOpened', true);
   var newWidth = $(window).width()*0.50 - 40;
-  document.getElementById("theSidePanel").style.width = "50vw";
+  document.getElementById("theSidePanel").style.left = "0";
   document.getElementById("main").style.marginLeft = "50vw";
 
   $('.timerContainer').animate({
@@ -55,7 +55,7 @@ function closeNav()
   {
     updateTimer();
 
-    document.getElementById("theSidePanel").style.width = "0";
+    document.getElementById("theSidePanel").style.left = "-50vw";
     document.getElementById("main").style.marginLeft = "0";
 
     $('.timerContainer').animate({
@@ -507,6 +507,51 @@ function loadSegmentedControls()
     }
     displayExtraSettingsContainer();
   }
+
+  var surveyUnitsSegmentedControl1 = $("#surveyUnitsSegmentedControl > input:nth-child(1)");
+  var surveyUnitsSegmentedControl2 = $("#surveyUnitsSegmentedControl > input:nth-child(2)");
+
+  surveyUnitsSegmentedControl1.change( function () {
+    if( surveyUnitsSegmentedControl1.is(":checked") ) {
+      $("#metricWeightContainer").fadeOut(1, function() {
+        $("#imperialWeightContainer").fadeIn(1);
+      });
+      $("#heightMetricContainer").fadeOut(1, function() {
+        $("#heightDropdownContainer").fadeIn(1);
+        localStorage.surveyUnitsMetric = "NO";
+        loadSurveyImperial();
+        updateTimer();
+      });
+    }
+  });
+
+  surveyUnitsSegmentedControl2.change( function () {
+    if( surveyUnitsSegmentedControl2.is(":checked") ) {
+      $("#imperialWeightContainer").fadeOut(1, function() {
+        $("#metricWeightContainer").fadeIn(1);
+      });
+      $("#heightDropdownContainer").fadeOut(1, function() {
+        $("#heightMetricContainer").fadeIn(1);
+        localStorage.surveyUnitsMetric = "YES";
+        loadSurveyMetric();
+        updateTimer();
+      });
+    }
+  });
+
+  if( localStorage.surveyUnitsMetric == "YES" )
+  {
+    $('#surveyUnitsSegmentedControl > input:nth-child(2)').prop('checked', true);
+    $("#imperialWeightContainer").fadeOut(1);
+    $("#metricWeightContainer").fadeIn(1);
+    $("#heightDropdownContainer").fadeOut(1);
+    $("#heightMetricContainer").fadeIn(1);
+    loadSurveyMetric();
+  }
+  else {
+    loadSurveyImperial();
+  }
+
   var chapterPrecisionSegmentedControl1 = $("#chapterPrecisionSegmentedControl > input:nth-child(1)");
   var chapterPrecisionSegmentedControl2 = $("#chapterPrecisionSegmentedControl > input:nth-child(2)");
   var chapterPrecisionSegmentedControl3 = $("#chapterPrecisionSegmentedControl > input:nth-child(3)");
@@ -566,10 +611,11 @@ function loadSegmentedControls()
 
   chapterLengthSegmentedControl2.change( function () {
     if( chapterLengthSegmentedControl2.is(":checked") ) {
-      $("#chapterLengthsSpecifyContainer").fadeOut(1);
-      $("#chapterLengthsFixedContainer").fadeIn(1);
-      localStorage.setItem("fixedChapters", "YES");
-      updateProgressBecauseSettingsChanged();
+      $("#chapterLengthsSpecifyContainer").fadeOut(1, function() {
+        $("#chapterLengthsFixedContainer").fadeIn(1);
+        localStorage.setItem("fixedChapters", "NO");
+        updateProgressBecauseSettingsChanged();
+      });
     }
   });
 
@@ -585,21 +631,34 @@ function loadRadioButtons()
 {
   var youngerOption = document.querySelector('input[id=youngerOption]');
   var olderOption = document.querySelector('input[id=olderOption]');
-  if (localStorage.getItem("youngerOption") == "YES") {
+  var totalOption = document.querySelector('input[id=totalOption]');
+  if( localStorage.populationOption == "YOUNGER" ) {
     youngerOption.checked = true;
   }
-  else {
+  else if( localStorage.populationOption == "OLDER" ) {
     olderOption.checked = true;
+  }
+  else {
+    totalOption.checked = true;
   }
 
   youngerOption.addEventListener('change', function () {
-    localStorage.setItem("youngerOption", youngerOption.checked?"YES":"NO");
+    if( youngerOption.checked ) {
+      localStorage.populationOption = "YOUNGER";
+    }
   });
 
   olderOption.addEventListener('change', function () {
-    localStorage.setItem("youngerOption", olderOption.checked?"NO":"YES");
+    if( olderOption.checked ) {
+      localStorage.populationOption = "OLDER";
+    }
   });
 
+  totalOption.addEventListener('change', function () {
+    if( totalOption.checked ) {
+      localStorage.populationOption = "TOTAL";
+    }
+  });
 
   var circleOption = document.querySelector('input[id=circleOption]');
   var squareOption = document.querySelector('input[id=squareOption]');
@@ -917,6 +976,70 @@ function loadDropdowns()
   });
 }
 
+function loadSurveyMetric() {
+  var surveyHeightMeters = localStorage.getItem("surveyHeightMeters");
+  var surveyHeightMetersDropdown = $("#heightMeters-dropdown");
+  if (surveyHeightMeters !== null) {
+    surveyHeightMetersDropdown.val(surveyHeightMeters);
+  }
+  surveyHeightMetersDropdown.change(function() {
+    localStorage.surveyHeightMeters = surveyHeightMetersDropdown.val();
+    updateTimer();
+  });
+
+  var surveyHeightCM = localStorage.getItem("surveyHeightCM");
+  var surveyHeightCMDropdown = $("#heightCM-dropdown");
+  if (surveyHeightCM !== null) {
+    surveyHeightCMDropdown.val(surveyHeightCM);
+  }
+  surveyHeightCMDropdown.change(function() {
+    localStorage.surveyHeightCM = surveyHeightCMDropdown.val();
+    updateTimer();
+  });
+
+  var surveyWeightKG = localStorage.getItem("surveyWeightKG");
+  var surveyWeightKGTextfield = $("#metricWeightTextfield");
+  if( surveyWeightKG !== null ) {
+    surveyWeightKGTextfield.val(surveyWeightKG);
+  }
+  surveyWeightKGTextfield.on('input',function(e){
+    localStorage.surveyWeightKG = surveyWeightKGTextfield.val();
+    updateTimer();
+  });
+}
+
+function loadSurveyImperial() {
+  var surveyHeightFeet = localStorage.getItem("surveyHeightFeet");
+  var surveyHeightFeetDropdown = $("#heightFeet-dropdown");
+  if (surveyHeightFeet !== null) {
+    surveyHeightFeetDropdown.val(surveyHeightFeet);
+  }
+  surveyHeightFeetDropdown.change(function() {
+    localStorage.surveyHeightFeet = surveyHeightFeetDropdown.val();
+    updateTimer();
+  });
+
+  var surveyHeightInches = localStorage.getItem("surveyHeightInches");
+  var surveyHeightInchesDropdown = $("#heightInches-dropdown");
+  if (surveyHeightInches !== null) {
+    surveyHeightInchesDropdown.val(surveyHeightInches);
+  }
+  surveyHeightInchesDropdown.change(function() {
+    localStorage.surveyHeightInches = surveyHeightInchesDropdown.val();
+    updateTimer();
+  });
+
+  var surveyWeight = localStorage.getItem("surveyWeight");
+  var surveyWeightTextfield = $("#weightTextfield");
+  if (surveyWeight !== null) {
+    surveyWeightTextfield.val(surveyWeight);
+  }
+  surveyWeightTextfield.on('input',function(e){
+    localStorage.surveyWeight = surveyWeightTextfield.val();
+    updateTimer();
+  });
+}
+
 function loadSurvey()
 {
   var surveyGender = localStorage.getItem("surveyGender");
@@ -966,36 +1089,6 @@ function loadSurvey()
   }
   surveyExerciseDropdown.change(function() {
     localStorage.surveyExercise = surveyExerciseDropdown.val();
-    updateTimer();
-  });
-
-  var surveyHeightFeet = localStorage.getItem("surveyHeightFeet");
-  var surveyHeightFeetDropdown = $("#heightFeet-dropdown");
-  if (surveyHeightFeet !== null) {
-    surveyHeightFeetDropdown.val(surveyHeightFeet);
-  }
-  surveyHeightFeetDropdown.change(function() {
-    localStorage.surveyHeightFeet = surveyHeightFeetDropdown.val();
-    updateTimer();
-  });
-
-  var surveyHeightInches = localStorage.getItem("surveyHeightInches");
-  var surveyHeightInchesDropdown = $("#heightInches-dropdown");
-  if (surveyHeightInches !== null) {
-    surveyHeightInchesDropdown.val(surveyHeightInches);
-  }
-  surveyHeightInchesDropdown.change(function() {
-    localStorage.surveyHeightInches = surveyHeightInchesDropdown.val();
-    updateTimer();
-  });
-
-  var surveyWeight = localStorage.getItem("surveyWeight");
-  var surveyWeightTextfield = $("#weightTextfield");
-  if (surveyWeight !== null) {
-    surveyWeightTextfield.val(surveyWeight);
-  }
-  surveyWeightTextfield.on('input',function(e){
-    localStorage.surveyWeight = surveyWeightTextfield.val();
     updateTimer();
   });
 
@@ -1365,6 +1458,7 @@ function loadDOB()
 
 function loadDOD()
 {
+  updateTimer();
   var dodDate = getDOD();
   var dodDateInput = $("#dodInput");
   dodDateInput.val(dodDate.yyyymmdd());

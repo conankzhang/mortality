@@ -273,6 +273,11 @@
           surveyHeightInches += surveyHeightFeet*12;
           var surveyWeightKG = surveyWeight*0.45;
           var surveyHeightCMSquared = (surveyHeightInches*0.025)*(surveyHeightInches*0.025);
+          if( localStorage.surveyUnitsMetric == "YES") {
+            surveyWeightKG = localStorage.surveyWeightKG;
+            var surveyHeightMeters = Number(localStorage.surveyHeightMeters)+(localStorage.surveyHeightCM/100);
+            surveyHeightCMSquared = surveyHeightMeters*surveyHeightMeters;
+          }
           var BMI = surveyWeightKG/surveyHeightCMSquared;
           if( BMI < 18.5 )
           {
@@ -315,6 +320,7 @@
           }
 
           this.deathDate.setDate(this.deathDate.getDate() + Math.round(yearOffset*365));
+          $("#deathDateString").html(this.deathDate.dateWithDay());
         }
 
         var deadlineMoment = moment(this.deathDate);
@@ -930,30 +936,30 @@
     var percentageYearPassed = (today - start) / (end - start);
 
     var populationString;
-    if( localStorage.youngerOption == "YES" )
+    if( localStorage.populationOption == "YOUNGER" )
     {
       var populationYounger = 0;
-      populationYounger += Math.round(getBirthRateDictionary()[yearBorn] * percentageBirthYearPassed);
+      populationYounger += Math.round(getBirthRateValue(yearBorn) * percentageBirthYearPassed);
       yearBorn++;
 
       while( yearBorn < currentYear ) {
-        populationYounger += getBirthRateDictionary()[yearBorn];
+        populationYounger += getBirthRateValue(yearBorn);
         yearBorn++;
       }
 
-      populationYounger += Math.round(getBirthRateDictionary()[currentYear] * percentageYearPassed);
+      populationYounger += Math.round(getBirthRateValue(currentYear) * percentageYearPassed);
       populationYounger = Math.ceil(populationYounger/precision)*precision;
 
       populationString = numberWithCommas(populationYounger);
     }
-    else
+    else if( localStorage.populationOption == "OLDER" )
     {
-      var differenceToFirstYear = getPopulationDictionary()[yearBorn+1] - getPopulationDictionary()[yearBorn];
-      var populationOlder = getPopulationDictionary()[yearBorn] + (differenceToFirstYear*percentageBirthYearPassed);
+      var differenceToFirstYear = getPopulationValue(yearBorn+1) - getPopulationValue(yearBorn);
+      var populationOlder = getPopulationValue(yearBorn) + (differenceToFirstYear*percentageBirthYearPassed);
       var deaths = 0;
       while( yearBorn < currentYear ) {
-        var yearPopulationDifference = getPopulationDictionary()[yearBorn+1] - getPopulationDictionary()[yearBorn];
-        deaths = getBirthRateDictionary()[yearBorn] - yearPopulationDifference;
+        var yearPopulationDifference = getPopulationValue(yearBorn+1) - getPopulationValue(yearBorn);
+        deaths = getBirthRateValue(yearBorn) - yearPopulationDifference;
         populationOlder -= deaths;
         yearBorn++;
       }
@@ -962,7 +968,14 @@
       populationOlder = Math.ceil(populationOlder/precision)*precision;
       populationString = numberWithCommas(populationOlder);
     }
-
+    else //Total Population
+    {
+      var totalPopulation = getPopulationValue(currentYear);    
+      var changeInCurrentYear = totalPopulation - getPopulationValue(currentYear-1);
+      totalPopulation += Math.round(changeInCurrentYear* percentageYearPassed);
+      totalPopulation = Math.ceil(totalPopulation/precision)*precision;
+      populationString = numberWithCommas(totalPopulation);
+    }
     var savedTheme = localStorage.getItem("colorTheme");
     if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
       var whiteFlag = "YES";
@@ -1272,8 +1285,6 @@ function updateProgressUnit()
       theta %= 360;
       var x = Math.sin(theta * Math.PI / 180) * radius;
       var y = Math.cos(theta * Math.PI / 180) * -radius;
-      console.log(x);
-      console.log(y);
       var d = 'M0,0 v' + -radius + ' A' + radius + ',' + radius + ' 1 ' + ((theta < -180) ? 1 : 0) + ',0 ' + x + ',' + y + 'z';
       progressForeground.setAttribute('d', d);
       progressForeground.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
