@@ -338,9 +338,11 @@ function showSurveyIf(isChecked)
 {
   if( isChecked ) {
     $('#specifyDeathContainer').hide();
+    $('#surveyUnitsSegmentedControl').show();
     $('#surveyDeathContainer').show();
   } else {
     $('#surveyDeathContainer').hide();
+    $('#surveyUnitsSegmentedControl').hide();
     $('#specifyDeathContainer').show();
   }
 }
