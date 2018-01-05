@@ -873,7 +873,6 @@ function loadDropdowns()
     clockPrecision = "min";
     localStorage.clockPrecision = "min";
   }
-
   populationPrecision = localStorage.getItem("populationPrecision");
   populationPrecisionDropdown = $('#populationPrecisionDropdown');
   if( populationPrecision != null ) {
@@ -916,7 +915,11 @@ function loadDropdowns()
   selectTimerValue.text(currentTimerValue);
   selectTimer.click(function() {
     localStorage.timerPrecision = timerPrecisionDropdown.val();
-
+    if(localStorage.timerPrecision == "decimal")
+      $("#decimalPrecisionCheckboxContainer").show();
+    else {
+      $("#decimalPrecisionCheckboxContainer").hide();
+    }
     var output = ['<select id="largestPrecisionDropdown" class="cs-select cs-skin-elastic">'];
     var selectOutput = [];
     $.each(precisionTextDictionary, function(key, value)

@@ -427,7 +427,8 @@
         var years = endMoment.diff(startMoment, 'years');
         startMoment.add(years, 'years');
         if( years < 0 ) years = 0;
-        years = years.toFixed(decimalDigits);
+        if(savedPrecision == "decimal")
+          years = years.toFixed(decimalDigits);
         var yearString = zeroFill(years.toString(), 2);
         if (savedPrecision == "year") {
           break;
@@ -713,7 +714,8 @@
       var years = endMoment.diff(startMoment, 'years');
       startMoment.add(years, 'years');
       if( years < 0 ) years = 0;
-      years = years.toFixed(decimalDigits);
+      if(savedPrecision == "decimal")
+        years = years.toFixed(decimalDigits);
       var yearString = zeroFill(years.toString(), 2);
       if (savedPrecision == "year") {
         break;

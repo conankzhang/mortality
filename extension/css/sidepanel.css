@@ -900,7 +900,8 @@ input:disabled {
 #decimalPrecisionCheckboxContainer {
     margin: 0 auto;
     margin-top: 15px;
-    width: 108px;
+    margin-bottom: 15px;
+    width: 210px;
 }
 
 /*
