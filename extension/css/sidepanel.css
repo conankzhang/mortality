@@ -902,6 +902,7 @@ input:disabled {
     margin-top: 15px;
     margin-bottom: 15px;
     width: 210px;
+    display: none;
 }
 
 /*
