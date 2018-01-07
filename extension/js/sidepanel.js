@@ -913,11 +913,22 @@ function loadDropdowns()
   selectTimerValue = $( "#smallestPrecisionContainer > div > span" );
   currentTimerValue = $("#timerPrecisionDropdown option[value='" + timerPrecision + "']").text();
   selectTimerValue.text(currentTimerValue);
+  if(localStorage.timerPrecision == "decimal")
+  {
+    $("#decimalPrecisionCheckboxContainer").show();
+  }
+  else
+  {
+      $("#decimalPrecisionCheckboxContainer").hide();
+  }
   selectTimer.click(function() {
     localStorage.timerPrecision = timerPrecisionDropdown.val();
     if(localStorage.timerPrecision == "decimal")
+    {
       $("#decimalPrecisionCheckboxContainer").show();
-    else {
+    }
+    else
+    {
       $("#decimalPrecisionCheckboxContainer").hide();
     }
     var output = ['<select id="largestPrecisionDropdown" class="cs-select cs-skin-elastic">'];
