@@ -17,7 +17,7 @@
 
   App.fn.versionCheck = function()
   {
-    if(localStorage.getItem("version") != "5.1.0") {
+    if(localStorage.getItem("version") != "5.2.0") {
       document.getElementById("updateBadge").style.display = "block";
       if( localStorage.hideUpdates != "YES" )
       {
@@ -972,7 +972,7 @@
     }
     else //Total Population
     {
-      var totalPopulation = getPopulationValue(currentYear);    
+      var totalPopulation = getPopulationValue(currentYear);
       var changeInCurrentYear = totalPopulation - getPopulationValue(currentYear-1);
       totalPopulation += Math.round(changeInCurrentYear* percentageYearPassed);
       totalPopulation = Math.ceil(totalPopulation/precision)*precision;
